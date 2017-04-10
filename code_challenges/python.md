@@ -58,6 +58,7 @@ https://job-python.ivelum.com
   указывать это в своем портфолио.
 
 Итак, само задание: разработать функционал "Сохраненных поисков" для библиотеки
-DjangoQL. Обуждение здесь: https://github.com/ivelum/djangoql/issues/1
+DjangoQL. Обуждение здесь (на английском): 
+https://github.com/ivelum/djangoql/issues/1
 
 Присылайте ваше решение в виде ссылки на форк проекта.
