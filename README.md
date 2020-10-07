@@ -7,7 +7,7 @@
 Contact us: [job@ivelum.com](mailto:job@ivelum.com)
 
 
-### Лицензия
+### License 
 
 All material in this repository, including the wiki, is licensed with [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 This means that you can freely share, modify, and use any of its content,
