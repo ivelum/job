@@ -5,7 +5,7 @@
 This repository is all about working at ivelum.  It covers a range of topics, including
 our tech workflow, preferred communication style, and details about employee benefits.
 
-Everything's in the [wiki](http://github.com/ivelum/job/wiki/).
+[Everything's in the wiki](http://github.com/ivelum/job/wiki/).
 
 Contact us at [job@ivelum.com](mailto:job@ivelum.com)
 
