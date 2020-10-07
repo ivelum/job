@@ -2,9 +2,12 @@
 
 <img src="https://raw.githubusercontent.com/ivelum/job/master/assets/vault-boy.png" align="right">
 
-[This wiki is all about working at ivelum](http://github.com/ivelum/job/wiki/).
+This repository is all about working at ivelum.  It covers a range of topics, including
+our tech workflow, preferred communication style, and details about employee benefits.
 
-Contact: [job@ivelum.com](mailto:job@ivelum.com)
+Everything's in the [wiki](http://github.com/ivelum/job/wiki/).
+
+Contact us at [job@ivelum.com](mailto:job@ivelum.com)
 
 
 ### License 
