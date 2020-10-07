@@ -4,7 +4,7 @@
 
 [This wiki is all about working at ivelum](http://github.com/ivelum/job/wiki/).
 
-Contact us: [job@ivelum.com](mailto:job@ivelum.com)
+Contact: [job@ivelum.com](mailto:job@ivelum.com)
 
 
 ### License 
