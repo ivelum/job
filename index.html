@@ -1,0 +1,239 @@
+<html lang="ru">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-5557448-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-5557448-3');
+  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="imagetoolbar" content="no">
+  <meta name="msthemecompatible" content="no">
+  <meta name="cleartype" content="on">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="google" value="notranslate">
+  <title>ivelum: Анкета на вакансию разработчика</title>
+  <meta name="og:title" content="ivelum: Анкета на вакансию разработчика">
+  <meta name="og:url" content="/">
+  <meta name="og:locale" content="ru_RU">
+  <meta name="og:type" content="website">
+  <style type="text/css">
+    body {
+      font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+      font-size: 13px;
+      line-height: 135%;
+    }
+    .step1 {
+      box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
+      box-sizing: border-box;
+      color: rgba(0,0,0,.87);
+      margin: 30px auto;
+      max-width: 640px;
+      padding: 9px 34px 34px;
+      width: 100%;
+    }
+    h1 {
+      font-size: 34px;
+      font-weight: normal;
+      line-height: 45px;
+    }
+    .country-link {
+      color: rgba(0,0,0,.87);
+      display: inline-block;
+      margin: 10px;
+      text-align: center;
+      text-decoration: none;
+    }
+    .country-link:hover {
+      text-decoration: underline;
+    }
+    .country-img {
+      box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
+      display: block;
+      height: 54px;
+      margin-bottom: 5px;
+      width: 81px;
+    }
+    .country-small {
+      box-shadow: 0 1px 1px 0 rgba(0,0,0,0.37);
+      display: inline-block;
+      float: left;
+      height: 14px;
+      margin-right: 4px;
+      vertical-align: middle;
+      width: auto;
+    }
+    .step2 {
+      -webkit-overflow-scrolling: touch;
+      bottom: 0;
+      display: none;
+      height: 100%;
+      left: 0;
+      overflow:auto;
+      position: fixed;
+      right: 0;
+      top: 0;
+      width: 100%;
+    }
+    .frame {
+      border: none;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      overflow-y: scroll;
+      padding: 0;
+      width: 100%;
+      z-index: 999999;
+    }
+  </style>
+  <script>
+    var AM = ['am', 'Армения'];
+    var GE = ['ge', 'Грузия'];
+    var KG = ['kg', 'Кыргызстан'];
+    var MD = ['md', 'Молдова'];
+    var RU = ['ru', 'Россия'];
+    var UA = ['ua', 'Украина'];
+
+    var commentStandard = '<p>' +
+      'Если вашей страны нет в списке выше, пожалуйста, ' +
+      '<a href="mailto:job@ivelum.com">напишите нам</a>, чтобы уточнить, ' +
+      'есть ли у нас возможность работать с гражданами из вашей страны.' +
+      '</p>';
+    var commentNoRu = commentStandard +
+      '<p>' +
+      '<img src="flag-ru.svg" class="country-small" alt="Россия">' +
+      'Комментарий для проживающих в России: в настоящее время найм из ' +
+      'России по этой вакансии приостановлен. У нас есть внутренние ' +
+      'квоты на найм из разных стран, и квота по России в настоящий момент ' +
+      'полностью выбрана. Это временная ситуация. Как только появятся ' +
+      'свободные места, мы возобновим найм в России.' +
+      '</p>';
+
+    var domain = window.location.host.split('.')[0].toLowerCase();
+
+    var form = {
+      'job-php': {
+        title:'Full-stack разработчик в ivelum',
+        id: 'd/e/1FAIpQLSf-2NaYgI9rAxhUQaRx0rnAFeum8eAvOprX08cF-PaM_qS5bw',
+        countries: [AM, GE, KG, MD, UA],
+        comment: commentNoRu
+      },
+      'job-python': {
+        title: 'Full-stack разработчик в ivelum',
+        id: 'd/e/1FAIpQLSeOzVt6OqfzIwJ11DIN7BUp65A3yPh98RkyJ_9AmHoBX0PAjA',
+        countries: [AM, GE, KG, MD, UA],
+        comment: commentNoRu
+      },
+      'job-ux': {
+        title: 'UX-разработчик в ivelum',
+        id: 'd/e/1FAIpQLSeuoUJqIu1C0SSDtVnNS9NlDdHu6xajEDLn92Nj5SegfYzbzQ',
+        countries: [AM, GE, KG, MD, RU, UA],
+        comment: commentStandard
+      }
+    }[domain];
+  </script>
+</head>
+<body>
+  <div class="step1">
+    <h1>
+      <script>
+        document.write(form.title);
+      </script>
+    </h1>
+
+    <p>
+      Добро пожаловать! Это анкета на вакансию в
+      <a href="https://ivelum.com">ivelum</a>. Подробную информацию о нас и о
+      том как мы работаем вы можете найти в нашей
+      <a href="https://github.com/ivelum/job/wiki/Home-RU">вики</a>.
+    </p>
+
+    <p>
+      Если у вас есть любые вопросы, пожалуйста, не стесняйтесь задать их!
+      Вам будет рада ответить Ольга, её контакты:
+      <ul>
+        <li>
+          Telegram: <a href="tg://resolve?domain=lebedevaoi">@lebedevaoi</a>
+        </li>
+        <li>
+          Skype: <a href="skype:lebedevaoi?chat">lebedevaoi</a>
+        </li>
+        <li>
+          Email: <a href="mailto:job@ivelum.com">job@ivelum.com</a>
+        </li>
+      </ul>
+    </p>
+
+    <h1>Анкета</h1>
+
+    <p>
+      Выберите страну вашего постоянного проживания. Если вы планируете
+      переезд, выберите страну где вы собираетесь проживать в обозримом будущем:
+    </p>
+
+    <p class="country-select">
+      <script>
+        form.countries.forEach(function (country) {
+          var code = country[0];
+          var name = country[1];
+          document.write(
+            '<a href="#step2" class="country-link" onclick="onCountrySelect()">' +
+            '  <img src="flag-' + code + '.svg" class="country-img" alt="' + name + '">' + name +
+            '</a>'
+          );
+        });
+      </script>
+    </p>
+
+    <script>
+      document.write(form.comment);
+    </script>
+
+  </div>
+  <div class="step2">
+    Любишь заглядывать в исходники? Отлично :)
+    Заполни анкету, вдруг эта вакансия - именно то, что тебе нужно!
+  </div>
+
+  <script>
+    var step2Initialized = false;
+
+    function onCountrySelect() {
+      var formUrl = 'https://docs.google.com/forms/' + form.id +
+        '/viewform?embedded=true';
+      var step1 = document.querySelector('.step1');
+      var step2 = document.querySelector('.step2');
+      var frame = document.createElement("iframe");
+      frame.setAttribute('src', formUrl);
+      frame.classList.add('frame');
+      step2.innerHTML = '';
+      step2.appendChild(frame);
+      step1.style.display = 'none';
+      step2.style.display = 'block';
+      step2Initialized = true;
+    }
+
+    function dumbRouter() {
+      var step1 = document.querySelector('.step1');
+      var step2 = document.querySelector('.step2');
+      if (window.location.hash) {
+        if (window.location.hash === '#step2' && step2Initialized) {
+          step1.style.display = 'none';
+          step2.style.display = 'block';
+        } else {
+          window.location = window.location.pathname;
+        }
+      } else {
+        step1.style.display = 'block';
+        step2.style.display = 'none';
+      }
+    }
+
+    dumbRouter();
+    window.onhashchange = dumbRouter;
+  </script>
+</body>
+</html>

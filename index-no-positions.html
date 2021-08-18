@@ -1,0 +1,149 @@
+<html lang="ru">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-5557448-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-5557448-3');
+  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="imagetoolbar" content="no">
+  <meta name="msthemecompatible" content="no">
+  <meta name="cleartype" content="on">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="google" value="notranslate">
+  <title>ivelum: Анкета на вакансию разработчика</title>
+  <meta name="og:title" content="ivelum: Анкета на вакансию разработчика">
+  <meta name="og:url" content="/">
+  <meta name="og:locale" content="ru_RU">
+  <meta name="og:type" content="website">
+  <style type="text/css">
+    body {
+      font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+      font-size: 13px;
+      line-height: 135%;
+    }
+    .step1 {
+      box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
+      box-sizing: border-box;
+      color: rgba(0,0,0,.87);
+      margin: 30px auto;
+      max-width: 640px;
+      padding: 9px 34px 34px;
+      width: 100%;
+    }
+    h1 {
+      font-size: 34px;
+      font-weight: normal;
+      line-height: 45px;
+    }
+  </style>
+</head>
+<body>
+  <div class="step1">
+    <h1>Full-stack разработчик в ivelum</h1>
+
+    <p>
+      Привет! Когда в <a href="https://ivelum.com">ivelum</a> есть открытая
+      вакансия разработчика, на этой странице находится анкета для
+      <a href="https://github.com/ivelum/job/wiki">вики</a>.
+    </p>
+
+    <p>
+      Если у вас есть любые вопросы, пожалуйста, не стесняйтесь задать их!
+      Вам будет рада ответить Александра, её контакты:
+      <ul>
+        <li>
+          Skype: <a href="skype:alexa.kosilova?chat">alexa.kosilova</a>
+        </li>
+        <li>
+          Telegram: <a href="tg://resolve?domain=alexakosilova">@alexakosilova</a>
+        </li>
+        <li>
+          Email: <a href="mailto:job@ivelum.com">job@ivelum.com</a>
+        </li>
+      </ul>
+    </p>
+
+    <h1>Анкета: шаг 1 из 2</h1>
+
+    <p>
+      Выберите страну, в которой вы постоянно проживаете:
+    </p>
+
+    <p class="country-select">
+      <a href="#step2" class="country-link" onclick="onCountrySelect(1)">
+        <img src="flag-am.svg" class="country-img" alt="Армения">
+        Армения
+      </a>
+      <a href="#step2" class="country-link" onclick="onCountrySelect(1)">
+        <img src="flag-ge.svg" class="country-img" alt="Грузия">
+        Грузия
+      </a>
+      <a href="#step2" class="country-link" onclick="onCountrySelect(1)">
+        <img src="flag-kg.svg" class="country-img" alt="Кыргызстан">
+        Кыргызстан
+      </a>
+      <a href="#step2" class="country-link" onclick="onCountrySelect(1)">
+        <img src="flag-ua.svg" class="country-img" alt="Украина">
+        Украина
+      </a>
+    </p>
+
+    <p>
+      Если вашей страны нет в списке выше, пожалуйста,
+      <a href="mailto:job@ivelum.com">напишите нам</a>, чтобы уточнить, есть
+      ли у нас возможность работать с гражданами из вашей страны.
+    </p>
+
+  </div>
+  <div class="step2">
+    Любишь заглядывать в исходники? Отлично :)
+    Заполни анкету, вдруг эта вакансия - именно то, что тебе нужно!
+  </div>
+
+  <script>
+    var step2Initialized = false;
+
+    function onCountrySelect(formType) {
+      var formId = formType === 2
+        ? 'd/1mKRwSR6SrQ0-4kBJPQNLfI5DDr_3x1pTgsYiPhRruIA'
+        : 'd/e/1FAIpQLSeOzVt6OqfzIwJ11DIN7BUp65A3yPh98RkyJ_9AmHoBX0PAjA';
+      var formUrl = 'https://docs.google.com/forms/' + formId +
+        '/viewform?embedded=true';
+      var step1 = document.querySelector('.step1');
+      var step2 = document.querySelector('.step2');
+      var frame = document.createElement("iframe");
+      frame.setAttribute('src', formUrl);
+      frame.classList.add('frame');
+      step2.innerHTML = '';
+      step2.appendChild(frame);
+      step1.style.display = 'none';
+      step2.style.display = 'block';
+      step2Initialized = true;
+    }
+
+    function dumbRouter() {
+      var step1 = document.querySelector('.step1');
+      var step2 = document.querySelector('.step2');
+      if (window.location.hash) {
+        if (window.location.hash === '#step2' && step2Initialized) {
+          step1.style.display = 'none';
+          step2.style.display = 'block';
+        } else {
+          window.location = window.location.pathname;
+        }
+      } else {
+        step1.style.display = 'block';
+        step2.style.display = 'none';
+      }
+    }
+
+    dumbRouter();
+    window.onhashchange = dumbRouter;
+  </script>
+</body>
+</html>
