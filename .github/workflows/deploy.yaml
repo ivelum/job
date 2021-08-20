@@ -57,7 +57,7 @@ jobs:
 
   notify-build-success:
     if: ${{ github.event_name == 'push' }}
-    needs: tests
+    needs: deploy
     runs-on: ubuntu-latest
     steps:
       # Send notification on build success
