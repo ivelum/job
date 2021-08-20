@@ -1,0 +1,94 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Parameters:
+  BucketName:
+    Type: String
+  WebsiteCertificateARN:
+    Type: String
+Resources:
+  WebsiteBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName:
+        Ref: BucketName
+  WebsiteBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket:
+        Ref: WebsiteBucket
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+        - Action: "s3:GetObject"
+          Effect: Allow
+          Principal: "*"
+          Resource:
+            Fn::Sub: "arn:aws:s3:::${WebsiteBucket}/*"
+  WebsiteDistribution:
+    Type: AWS::CloudFront::Distribution
+    DependsOn: WebsiteBucket
+    Properties:
+      DistributionConfig:
+        Aliases:
+        - job.ivelum.com
+        Origins:
+        - DomainName:
+            Fn::GetAtt:
+            - WebsiteBucket
+            - RegionalDomainName
+          Id:
+            Ref: WebsiteBucket
+          CustomOriginConfig:
+            HTTPPort: 80
+            HTTPSPort: 443
+            OriginProtocolPolicy: 'http-only'
+        Enabled: 'true'
+        DefaultRootObject: index.html
+        DefaultCacheBehavior:
+          TargetOriginId:
+            Ref: WebsiteBucket
+          ViewerProtocolPolicy: 'redirect-to-https'
+          AllowedMethods:
+            - GET
+            - HEAD
+            - OPTIONS
+          CachedMethods:
+            - GET
+            - HEAD
+            - OPTIONS
+          Compress: true
+          ForwardedValues:
+            QueryString: false
+            Cookies:
+              Forward: none
+            Headers:
+            - Access-Control-Request-Headers
+            - Access-Control-Request-Method
+            - Origin
+        ViewerCertificate:
+          AcmCertificateArn:
+            Ref: WebsiteCertificateARN
+          MinimumProtocolVersion: TLSv1.2_2018
+          SslSupportMethod: sni-only
+  DeployUser:
+    Type: AWS::IAM::User
+    Properties:
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AWSCloudFormationReadOnlyAccess
+      Policies:
+      - PolicyDocument:
+          Statement:
+          - Action:
+              - s3:ListBucket
+            Effect: Allow
+            Resource:
+              Fn::Sub: "arn:aws:s3:::${WebsiteBucket}"
+          - Action:
+              - s3:*Object*
+            Effect: Allow
+            Resource:
+              Fn::Sub: "arn:aws:s3:::${WebsiteBucket}/*"
+          - Action:
+              - cloudfront:CreateInvalidation
+            Effect: Allow
+            Resource: "*"
+        PolicyName: manage-static-website

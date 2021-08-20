@@ -1,0 +1,71 @@
+name: Tests
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+jobs:
+  notify-build-start:
+    if: ${{ github.event_name == 'push' }}
+    runs-on: ubuntu-latest
+    steps:
+      # Send build notifications to Slack
+      - uses: voxmedia/github-action-slack-notify-build@v1
+        id: slack
+        with:
+          channel_id: G054C3DPL
+          status: STARTED
+          color: warning
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - name: update pip
+        run: |
+          pip install -U wheel
+          pip install -U setuptools
+          python -m pip install -U pip
+      - name: get pip cache dir
+        id: pip-cache
+        run: echo "::set-output name=dir::$(pip cache dir)"
+      - name: cache pip
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.pip-cache.outputs.dir }}
+          key: pip
+      - run: pip install -r requirements.txt
+      - env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: python run.py deploy
+
+      # Send notification on build failure
+      - name: Notify slack fail
+        uses: voxmedia/github-action-slack-notify-build@v1
+        if: failure()
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        with:
+          channel_id: G054C3DPL
+          status: FAILED
+          color: danger
+
+  notify-build-success:
+    if: ${{ github.event_name == 'push' }}
+    needs: tests
+    runs-on: ubuntu-latest
+    steps:
+      # Send notification on build success
+      - name: Notify slack success
+        uses: voxmedia/github-action-slack-notify-build@v1
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        with:
+          channel_id: G054C3DPL
+          status: SUCCESS
+          color: good
