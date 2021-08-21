@@ -1,0 +1,22 @@
+.frame {
+  border: 0;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  overflow-y: scroll;
+  padding: 0;
+  width: 100%;
+  z-index: 999999;
+}
+
+.wrapper {
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+}

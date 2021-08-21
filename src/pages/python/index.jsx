@@ -1,13 +1,14 @@
 import React from 'react';
 
-import About from '../About';
-import Benefits from '../Benefits';
-import ExternalLinks from '../ExternalLinks';
-import InterviewProcess from '../InterviewProcess';
-import JobPage from '../JobPage';
-import Youtube from '../Youtube';
+import About from '../../About';
+import Benefits from '../../Benefits';
+import CalloutLink from '../../CalloutLink';
+import ExternalLinks from '../../ExternalLinks';
+import InterviewProcess from '../../InterviewProcess';
+import JobPage from '../../JobPage';
+import Youtube from '../../Youtube';
 
-export default function python() {
+export default function index() {
   return (
     <JobPage title="Fullstack-разработчик (Python/Django + frontend)">
       <About />
@@ -81,6 +82,8 @@ export default function python() {
       <Benefits />
 
       <InterviewProcess />
+
+      <CalloutLink href="/python/form/">Откликнуться</CalloutLink>
     </JobPage>
   );
 }

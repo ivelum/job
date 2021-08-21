@@ -1,0 +1,10 @@
+.callout-link {
+  background: #3a0;
+  border-radius: 4px;
+  color: #fff;
+  display: inline-block;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 4px 10px;
+  text-decoration: none;
+}
