@@ -1,6 +1,7 @@
 import { Link } from 'gatsby';
 import React from 'react';
 
+import ExternalLinks from '../ExternalLinks';
 import GenericPage from '../GenericPage';
 
 export default function index() {
@@ -9,9 +10,9 @@ export default function index() {
       <h1>Вакансии в ivelum</h1>
       <p>
         Привет! Ниже перечислены все актуальные вакансии, которые сейчас
-        открыты в <a href="https://ivelum.com">ivelum</a>. Все вакансии
+        открыты в <a href={ExternalLinks.home}>ivelum</a>. Все вакансии
         подразумевают полную занятость,{' '}
-        <a href="https://github.com/ivelum/job/wiki/График-и-удаленная-работа">
+        <a href={ExternalLinks.wiki.remoteWork}>
           удаленную работу и свободный график
         </a>. Подробную информацию о нас и о том как мы работаем вы можете
         найти в нашей{' '}
