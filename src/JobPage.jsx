@@ -6,7 +6,7 @@ import GenericPage from './GenericPage';
 
 export default function JobPage({ children, title }) {
   return (
-    <GenericPage title={`${title} / вакансия в ivelum`}>
+    <GenericPage title={`${title} / работа в ivelum`}>
       <p>
         <Link to="/">&lt;- Все вакансии</Link>
       </p>

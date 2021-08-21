@@ -6,8 +6,8 @@ import GenericPage from '../GenericPage';
 
 export default function index() {
   return (
-    <GenericPage title="Вакансии в ivelum">
-      <h1>Вакансии в ivelum</h1>
+    <GenericPage title="Работа в ivelum">
+      <h1>Работа в ivelum</h1>
       <p>
         Привет! Ниже перечислены все актуальные вакансии, которые сейчас
         открыты в <a href={ExternalLinks.home}>ivelum</a>. Все вакансии
@@ -33,6 +33,7 @@ export default function index() {
         </li>
       </ul>
 
+      <h2>Открытые вакансии</h2>
       <p>
         <Link to="/php">
           Fullstack-разработчик (PHP + frontend)
