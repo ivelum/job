@@ -10,6 +10,9 @@ Resources:
     Properties:
       BucketName:
         Ref: BucketName
+      WebsiteConfiguration:
+        IndexDocument: index.html
+        ErrorDocument: 404.html
   WebsiteBucketPolicy:
     Type: AWS::S3::BucketPolicy
     Properties:
@@ -30,6 +33,10 @@ Resources:
       DistributionConfig:
         Aliases:
         - job.ivelum.com
+        CustomErrorResponses:
+          - ErrorCode: 403
+            ResponseCode: 404
+            ResponsePagePath: /404.html
         Origins:
         - DomainName:
             Fn::GetAtt:
