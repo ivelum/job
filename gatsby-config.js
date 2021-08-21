@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: "https://job.ivelum.com",
-    title: "ivelum careers",
+    siteUrl: 'https://job.ivelum.com',
+    title: 'ivelum careers',
   },
-  plugins: ["gatsby-plugin-sass"],
+  plugins: ['gatsby-plugin-sass'],
 };
