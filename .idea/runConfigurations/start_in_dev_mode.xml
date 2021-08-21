@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="start in dev mode" type="js.build_tools.npm">
+    <package-json value="$PROJECT_DIR$/package.json" />
+    <command value="run" />
+    <scripts>
+      <script value="start" />
+    </scripts>
+    <node-interpreter value="/usr/local/bin/node" />
+    <package-manager value="yarn" />
+    <envs />
+    <method v="2" />
+  </configuration>
+</component>

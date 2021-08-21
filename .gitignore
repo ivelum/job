@@ -1,4 +1,8 @@
+.cache/
 .DS_Store
+node_modules/
+public
+
 
 #
 # See https://github.com/github/gitignore/blob/master/Global/JetBrains.gitignore

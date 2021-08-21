@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "gatsby": "3.12.0",
+    "gatsby-plugin-sass": "4.12.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "sass": "1.38.0"
+  }
+}

@@ -23,7 +23,7 @@ def deploy():
         PROJECT_NAME,
         'WebsiteBucket',
     )['PhysicalResourceId']
-    dist_folder = os.path.join(BASE_DIR, 'dist')
+    dist_folder = os.path.join(BASE_DIR, 'public')
     aws(f's3 sync {dist_folder} s3://{s3_bucket} --delete', parse_output=False)
 
     # Invalidate CDN
