@@ -2,10 +2,10 @@ import React from 'react';
 
 import About from '../About';
 import Benefits from '../Benefits';
+import ExternalLinks from '../ExternalLinks';
 import InterviewProcess from '../InterviewProcess';
 import JobPage from '../JobPage';
 import Youtube from '../Youtube';
-import ExternalLinks from '../ExternalLinks';
 
 export default function python() {
   return (
