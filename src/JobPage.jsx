@@ -1,5 +1,6 @@
 import { Link } from 'gatsby';
-import * as React from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 import GenericPage from './GenericPage';
 
@@ -12,5 +13,14 @@ export default function JobPage({ children, title }) {
       <h1>{title}</h1>
       {children}
     </GenericPage>
-  )
+  );
 }
+
+JobPage.propTypes = {
+  children: PropTypes.node,
+  title: PropTypes.string.isRequired,
+};
+
+JobPage.defaultProps = {
+  children: null,
+};

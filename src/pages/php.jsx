@@ -4,8 +4,6 @@ import JobPage from '../JobPage';
 
 export default function php() {
   return (
-    <JobPage title="Fullstack-разработчик (PHP + frontend)">
-
-    </JobPage>
-  )
+    <JobPage title="Fullstack-разработчик (PHP + frontend)" />
+  );
 }

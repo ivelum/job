@@ -1,0 +1,52 @@
+{
+  "env": {
+    "browser": true
+  },
+  "extends": ["airbnb"],
+  "parser": "@babel/eslint-parser",
+  "rules": {
+    "func-names": 0,
+    "import/order": ["error", {
+      "alphabetize": {"order": "asc"},
+      "groups": [
+        ["builtin", "external"],
+        ["sibling", "parent", "internal"],
+        "index"
+      ],
+      "newlines-between": "always",
+      "pathGroups": [
+        {
+          "pattern": "./*.css",
+          "group": "index"
+        },
+        {
+          "pattern": "../*.css",
+          "group": "index"
+        }
+      ]
+    }],
+    "jsx-a11y/anchor-is-valid": ["error", {
+      "components": ["Link"],
+      "specialLink": ["to"],
+      "aspects": ["noHref", "invalidHref", "preferButton"]
+    }],
+    "jsx-a11y/click-events-have-key-events": [1],
+    "jsx-a11y/label-has-associated-control": "off",
+    "lines-between-class-members": ["error", "always", {
+      "exceptAfterSingleLine": true
+    }],
+    "max-len": [2, 80, 4],
+    "no-underscore-dangle": ["error", {
+      "allow": ["_isMounted"]
+    }],
+    "no-unused-expressions": ["error", {
+      "allowTernary": true
+    }],
+    "no-console": "error",
+    "react/destructuring-assignment": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/forbid-prop-types": [2, { "forbid": ["any"] }],
+    "react/jsx-props-no-spreading": "off",
+    "react/static-property-placement": ["off", "property assignment"]
+  }
+}

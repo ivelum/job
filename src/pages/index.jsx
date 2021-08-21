@@ -43,5 +43,5 @@ export default function index() {
         </Link>
       </p>
     </GenericPage>
-  )
+  );
 }
