@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import * as styles from './GenericPage.module.css';
+import * as styles from './GenericPage.module.scss';
 
 export default function GenericPage({ children, title }) {
   return (

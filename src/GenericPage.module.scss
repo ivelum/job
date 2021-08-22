@@ -1,0 +1,17 @@
+@import 'vars';
+
+.main {
+  color: #232330;
+  font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 30px auto;
+  max-width: 640px;
+  padding: 9px 3% 34px;
+  width: 100%;
+
+  @media (max-width: $small-screen-width) {
+    margin: 10px auto;
+    max-width: 94%;
+  }
+}

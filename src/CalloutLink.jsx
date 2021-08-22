@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import * as styles from './CalloutLink.module.css';
+import * as styles from './CalloutLink.module.scss';
 
 export default function CalloutLink({
   children,
