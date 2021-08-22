@@ -5,6 +5,7 @@ import About from '@components/About';
 import Benefits from '@components/Benefits';
 import InterviewProcess from '@components/InterviewProcess';
 import JobPage from '@components/JobPage';
+import TechLogos from '@components/TechLogos';
 import Youtube from '@components/Youtube';
 
 export default function index() {
@@ -27,17 +28,19 @@ export default function index() {
       <Youtube videoId="EPhvHNWfmQI" />;
 
       <h2>Технологии и процессы</h2>
+      <TechLogos brands={['PHP', 'Wordpress', 'Docker', 'Kubernetes', 'AWS']} />
       <p>
         На данный момент эти проекты используют Wordpress в качестве основного
         движка. Хостинг - в AWS на Kubernetes/EKS. Мы используем
         автоматизированный деплой и Infrastructure-as-a-Code, применяем
         линтеры и автоматизированное тестирование, делаем код-ревью.
       </p>
+      <TechLogos brands={['Python', 'Django', 'React', 'Next.js']} />
       <p>
         Через несколько месяцев планируется миграция с Wordpress на новую
-        платформу, в основе которой Python, Django и Next.js. Эта платформа
-        сейчас активно разрабатывается отдельной командой и постепенно вводится
-        в строй отдельными модулями.
+        платформу, в основе которой Python, Django, React и Next.js. Эта
+        платформа сейчас активно разрабатывается отдельной командой и
+        постепенно вводится в строй отдельными модулями.
       </p>
 
       <h2>О вас</h2>
