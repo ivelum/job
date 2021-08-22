@@ -12,7 +12,7 @@ jobs:
       - uses: voxmedia/github-action-slack-notify-build@v1
         id: slack
         with:
-          channel_id: G054C3DPL
+          channel_id: C0PT3267R
           status: STARTED
           color: warning
         env:
@@ -76,7 +76,7 @@ jobs:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         with:
           message_id: ${{ needs.notify-build-start.outputs.status_message_id }}
-          channel_id: G054C3DPL
+          channel_id: C0PT3267R
           status: FAILED
           color: danger
 
@@ -92,6 +92,6 @@ jobs:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         with:
           message_id: ${{ needs.notify-build-start.outputs.status_message_id }}
-          channel_id: G054C3DPL
+          channel_id: C0PT3267R
           status: SUCCESS
           color: good
