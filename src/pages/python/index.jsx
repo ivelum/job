@@ -33,7 +33,7 @@ export default function index() {
       <p>
         Посмотрите короткое видео (5 мин) с рассказом о проекте:
       </p>
-      <Youtube videoId="INym0k56LVc" />;
+      <Youtube videoId="INym0k56LVc" />
 
       <h2>Технологии и процессы</h2>
       <p>
