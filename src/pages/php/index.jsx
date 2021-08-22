@@ -2,14 +2,16 @@ import React from 'react';
 
 import About from '../../About';
 import Benefits from '../../Benefits';
-import CalloutLink from '../../CalloutLink';
 import InterviewProcess from '../../InterviewProcess';
 import JobPage from '../../JobPage';
 import Youtube from '../../Youtube';
 
 export default function index() {
   return (
-    <JobPage title="Fullstack-разработчик (PHP + frontend)">
+    <JobPage
+      applyLink="/php/form/"
+      title="Fullstack-разработчик (PHP + frontend)"
+    >
       <About />
 
       <h2>О проекте</h2>
@@ -66,8 +68,6 @@ export default function index() {
       <Benefits />
 
       <InterviewProcess />
-
-      <CalloutLink href="/php/form/">Откликнуться</CalloutLink>
     </JobPage>
   );
 }
