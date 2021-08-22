@@ -35,7 +35,7 @@
     "@babel/preset-react": "7.14.5",
     "eslint": "7.32.0",
     "eslint-config-airbnb": "18.2.1",
-    "eslint-import-resolver-webpack": "0.13.1",
+    "eslint-import-resolver-alias": "1.1.2",
     "eslint-loader": "4.0.2",
     "eslint-plugin-import": "2.24.1",
     "eslint-plugin-jsx-a11y": "6.4.1",

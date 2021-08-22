@@ -3,7 +3,7 @@ import React from 'react';
 
 import ExternalLinks from '../ExternalLinks';
 import Jobs from '../Jobs';
-import GenericPage from '../components/GenericPage';
+import GenericPage from '@components/GenericPage';
 
 export default function index() {
   return (

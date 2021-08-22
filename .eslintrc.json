@@ -48,5 +48,16 @@
     "react/forbid-prop-types": [2, { "forbid": ["any"] }],
     "react/jsx-props-no-spreading": "off",
     "react/static-property-placement": ["off", "property assignment"]
+  },
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [
+          ["@components", "./src/components"],
+          ["@images", "./src/images"]
+        ],
+        "extensions": [".js", ".jsx", ".png", "svg"]
+      }
+    }
   }
 }
