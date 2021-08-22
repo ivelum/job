@@ -6,6 +6,7 @@ import About from '@components/About';
 import Benefits from '@components/Benefits';
 import InterviewProcess from '@components/InterviewProcess';
 import JobPage from '@components/JobPage';
+import TechLogos from '@components/TechLogos';
 import Youtube from '@components/Youtube';
 
 export default function index() {
@@ -34,6 +35,11 @@ export default function index() {
       <Youtube videoId="INym0k56LVc" />
 
       <h2>Технологии и процессы</h2>
+
+      <TechLogos
+        brands={['Python', 'Django', 'React', 'GraphQL', 'Docker', 'AWS']}
+      />
+
       <p>
         Основные технологии: Python 3.9, Django 3.2, React.js, GraphQL, Docker,
         AWS. Все наши проекты глубоко автоматизированы, включая развертывание
