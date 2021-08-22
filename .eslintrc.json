@@ -16,14 +16,23 @@
       "newlines-between": "always",
       "pathGroups": [
         {
-          "pattern": "./*.css",
+          "pattern": "./*.scss",
           "group": "index"
         },
         {
-          "pattern": "../*.css",
+          "pattern": "../*.scss",
+          "group": "index"
+        },
+        {
+          "pattern": "@images/*.png",
+          "group": "index"
+        },
+        {
+          "pattern": "@images/*.svg",
           "group": "index"
         }
-      ]
+      ],
+      "pathGroupsExcludedImportTypes": ["builtin", "external"]
     }],
     "jsx-a11y/anchor-is-valid": ["error", {
       "components": ["Link"],
