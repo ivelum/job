@@ -3,5 +3,8 @@ module.exports = {
     siteUrl: 'https://job.ivelum.com',
     title: 'ivelum careers',
   },
-  plugins: ['gatsby-plugin-sass'],
+  plugins: [
+    'gatsby-plugin-force-trailing-slashes',
+    'gatsby-plugin-sass',
+  ],
 };

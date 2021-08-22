@@ -12,6 +12,7 @@
   "dependencies": {
     "classnames": "2.3.1",
     "gatsby": "3.12.0",
+    "gatsby-plugin-force-trailing-slashes": "1.0.5",
     "gatsby-plugin-sass": "4.12.0",
     "prop-types": "15.7.2",
     "react": "17.0.2",

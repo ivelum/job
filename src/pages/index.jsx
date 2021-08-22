@@ -35,12 +35,12 @@ export default function index() {
 
       <h2>Открытые вакансии</h2>
       <p>
-        <Link to="/php">
+        <Link to="/php/">
           Fullstack-разработчик (PHP + frontend)
         </Link>
       </p>
       <p>
-        <Link to="/python">
+        <Link to="/python/">
           Fullstack-разработчик (Python/Django + frontend)
         </Link>
       </p>
