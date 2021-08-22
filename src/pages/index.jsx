@@ -2,6 +2,7 @@ import { Link } from 'gatsby';
 import React from 'react';
 
 import ExternalLinks from '../ExternalLinks';
+import Jobs from '../Jobs';
 import GenericPage from '../components/GenericPage';
 
 export default function index() {
@@ -34,16 +35,11 @@ export default function index() {
       </ul>
 
       <h2>Открытые вакансии</h2>
-      <p>
-        <Link to="/php/">
-          Fullstack-разработчик (PHP + frontend)
-        </Link>
-      </p>
-      <p>
-        <Link to="/python/">
-          Fullstack-разработчик (Python/Django + frontend)
-        </Link>
-      </p>
+      {Object.keys(Jobs).map((key) => (
+        <p key={Jobs[key].url}>
+          <Link to={Jobs[key].url}>{Jobs[key].title}</Link>
+        </p>
+      ))}
     </GenericPage>
   );
 }

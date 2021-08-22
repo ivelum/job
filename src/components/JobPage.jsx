@@ -5,13 +5,14 @@ import React from 'react';
 import CalloutLink from './CalloutLink';
 import GenericPage from './GenericPage';
 
-export default function JobPage({ applyLink, children, title }) {
+export default function JobPage({ children, job }) {
+  const applyLink = `${job.url}form/`;
   return (
-    <GenericPage title={`${title} / работа в ivelum`}>
+    <GenericPage title={`${job.title} / работа в ivelum`}>
       <p>
         <Link to="/">&lt;- Все вакансии</Link>
       </p>
-      <h1>{title}</h1>
+      <h1>{job.title}</h1>
       <CalloutLink to={applyLink}>Откликнуться</CalloutLink>
 
       {children}
@@ -22,11 +23,9 @@ export default function JobPage({ applyLink, children, title }) {
 }
 
 JobPage.propTypes = {
-  applyLink: PropTypes.string.isRequired,
-  children: PropTypes.node,
-  title: PropTypes.string.isRequired,
-};
-
-JobPage.defaultProps = {
-  children: null,
+  children: PropTypes.node.isRequired,
+  job: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+  }).isRequired,
 };

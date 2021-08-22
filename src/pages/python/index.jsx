@@ -1,6 +1,7 @@
 import React from 'react';
 
 import ExternalLinks from '../../ExternalLinks';
+import Jobs from '../../Jobs';
 import About from '../../components/About';
 import Benefits from '../../components/Benefits';
 import InterviewProcess from '../../components/InterviewProcess';
@@ -9,10 +10,7 @@ import Youtube from '../../components/Youtube';
 
 export default function index() {
   return (
-    <JobPage
-      applyLink="/python/form/"
-      title="Fullstack-разработчик (Python/Django + frontend)"
-    >
+    <JobPage job={Jobs.python}>
       <About />
 
       <h2>О проекте</h2>

@@ -3,7 +3,7 @@ import React from 'react';
 
 import * as styles from './GoogleForm.module.css';
 
-export default function GoogleForm({ formId }) {
+export default function GoogleForm({ job: { formId } }) {
   return (
     <div className={styles.wrapper}>
       <iframe
@@ -16,5 +16,7 @@ export default function GoogleForm({ formId }) {
 }
 
 GoogleForm.propTypes = {
-  formId: PropTypes.string.isRequired,
+  job: PropTypes.shape({
+    formId: PropTypes.string.isRequired,
+  }).isRequired,
 };
