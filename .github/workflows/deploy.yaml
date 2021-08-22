@@ -10,8 +10,8 @@ jobs:
     steps:
       # Send build notifications to Slack
       - uses: voxmedia/github-action-slack-notify-build@v1
+        id: slack
         with:
-          id: slack
           channel_id: G054C3DPL
           status: STARTED
           color: warning
