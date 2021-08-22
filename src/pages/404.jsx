@@ -1,7 +1,7 @@
 import { Link } from 'gatsby';
 import React from 'react';
 
-import GenericPage from '../GenericPage';
+import GenericPage from '../components/GenericPage';
 
 export default function NotFoundPage() {
   return (

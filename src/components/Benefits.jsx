@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ExternalLinks from './ExternalLinks';
+import ExternalLinks from '../ExternalLinks';
 
 export default function Benefits() {
   return (

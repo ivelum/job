@@ -1,11 +1,11 @@
 import React from 'react';
 
-import About from '../../About';
-import Benefits from '../../Benefits';
 import ExternalLinks from '../../ExternalLinks';
-import InterviewProcess from '../../InterviewProcess';
-import JobPage from '../../JobPage';
-import Youtube from '../../Youtube';
+import About from '../../components/About';
+import Benefits from '../../components/Benefits';
+import InterviewProcess from '../../components/InterviewProcess';
+import JobPage from '../../components/JobPage';
+import Youtube from '../../components/Youtube';
 
 export default function index() {
   return (

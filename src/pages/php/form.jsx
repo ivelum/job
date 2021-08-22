@@ -1,6 +1,6 @@
 import React from 'react';
 
-import GoogleForm from '../../GoogleForm';
+import GoogleForm from '../../components/GoogleForm';
 
 export default function PHPForm() {
   return (

@@ -2,7 +2,7 @@ import { Link } from 'gatsby';
 import React from 'react';
 
 import ExternalLinks from '../ExternalLinks';
-import GenericPage from '../GenericPage';
+import GenericPage from '../components/GenericPage';
 
 export default function index() {
   return (
