@@ -1,0 +1,9 @@
+@import '../vars';
+
+.required {
+  color: $error-color;
+}
+
+.help-text {
+  font-size: 0.8rem;
+}

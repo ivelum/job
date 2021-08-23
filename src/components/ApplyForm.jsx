@@ -4,7 +4,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 
 import CountryDropdown from './CountryDropdown';
-import FormErrorMessage from './FormErrorMessage';
+import Field from './Field';
 import GenericPage from './GenericPage';
 
 import * as styles from './ApplyForm.module.scss';
@@ -27,6 +27,23 @@ export default function ApplyForm({ job }) {
   // eslint-disable-next-line no-console
   const onSubmit = (data) => console.log(data);
 
+  const renderField = ({
+    name, label, helpText, isRequired,
+    component, componentProps, registerProps,
+  } = {}) => (
+    <Field
+      name={name}
+      label={label}
+      helpText={helpText}
+      isRequired={isRequired}
+      errors={errors}
+      component={component}
+      componentProps={componentProps}
+      registerField={register}
+      registerProps={registerProps}
+    />
+  );
+
   return (
     <GenericPage title={`Отклик на вакансию ${job.title}`}>
       <p>
@@ -34,46 +51,85 @@ export default function ApplyForm({ job }) {
         <Link to={job.url}>{job.title}</Link>
       </p>
       <h1>Отклик на вакансию</h1>
-
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="fullName">
-          Ваше имя и фамилия
-          <span className={styles.required}>*</span>
-        </label>
-        <input
-          {...register('fullName', {
-            required: 'Обязательное поле',
-          })}
-          autoFocus // eslint-disable-line jsx-a11y/no-autofocus
-          id="fullName"
-        />
-        <FormErrorMessage error={errors.fullName} />
-
-        <label htmlFor="country">
-          Страна проживания
-          <span className={styles.required}>*</span>
-        </label>
-        <CountryDropdown
-          {...register('country', {
-            required: 'Обязательное поле',
-            validate: checkCountry,
-          })}
-          id="country"
-        />
-        <FormErrorMessage error={errors.country} />
-
-        <label htmlFor="city">
-          Город или населенный пункт
-          <span className={styles.required}>*</span>
-        </label>
-        <input
-          {...register('city', {
-            required: 'Обязательное поле',
-          })}
-          id="city"
-        />
-        <FormErrorMessage error={errors.city} />
-
+        {renderField({
+          name: 'fullName',
+          label: 'Ваше имя и фамилия',
+          componentProps: { autoFocus: true },
+        })}
+        {renderField({
+          name: 'country',
+          label: 'Страна проживания',
+          component: CountryDropdown,
+          registerProps: { validate: checkCountry },
+        })}
+        {renderField({
+          name: 'city',
+          label: 'Город или населенный пункт',
+        })}
+        {renderField({
+          name: 'email',
+          label: 'Ваш Email',
+        })}
+        {renderField({
+          name: 'telegram',
+          label: 'Telegram',
+          isRequired: false,
+        })}
+        {renderField({
+          name: 'skype',
+          label: 'Skype',
+          isRequired: false,
+        })}
+        {renderField({
+          name: 'experienceOverall',
+          label: 'Сколько у вас лет опыта в программировании?',
+        })}
+        {renderField({
+          name: 'experienceWeb',
+          label: 'Сколько из этих лет было связано с веб-разработкой?',
+        })}
+        {renderField({
+          name: 'education',
+          label: 'Какое у вас образование?',
+          helpText: 'Учебное заведение, год окончания, специальность',
+        })}
+        {renderField({
+          name: 'linuxCommands',
+          label: 'Назовите консольные команды Linux, '
+            + 'состоящих из 3 символов, сколько вспомните.',
+          helpText: 'Подглядывать нечестно.',
+        })}
+        {renderField({
+          name: 'lovedTasks',
+          label: 'Какого рода задачами вам больше всего нравится заниматься?',
+          helpText: 'Кто-то любит проектировать архитектуру, кто-то UI, '
+            + 'кто-то заниматься исследованиями нового. То, что нравится, '
+            + 'обычно делается легко и быстро.',
+        })}
+        {renderField({
+          name: 'unlovedTasks',
+          label: 'А чем не нравится заниматься?',
+          helpText: 'Бывают вещи, от которых воротит, которые приходится '
+            + 'делать через силу. Их не получется делать быстро или не '
+            + 'получается делать совсем.',
+        })}
+        {renderField({
+          name: 'sourceCode',
+          label: 'Где можно посмотреть ваш код? GitHub, Bitbucket, иное.',
+          helpText: 'Желательно ссылки на свои проекты, не форки.',
+        })}
+        {renderField({
+          name: 'english',
+          label: 'Как у вас с английским?',
+          helpText: 'С письменным, с устным?',
+        })}
+        {renderField({
+          name: 'referrer',
+          label: 'Откуда вы узнали о вакансии?',
+          helpText: 'Наименование сайта с объявлением / '
+            + 'может, мы вам написали сами / или друзья прислали ссылку',
+        })}
         <button className={styles.submit} type="submit">Отправить</button>
       </form>
     </GenericPage>
