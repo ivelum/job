@@ -1,0 +1,18 @@
+@import '../vars';
+
+.row {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.label {
+  flex-grow: 1;
+}
+
+.button {
+  width: 40px;
+
+  label {
+    display: inline !important;
+  }
+}

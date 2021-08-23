@@ -4,10 +4,16 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 
 import CountryDropdown from './CountryDropdown';
+import ExperienceRadioField, {
+  allExperienceTypes,
+} from './ExperienceRadioField';
 import Field from './Field';
+import FieldLabel from './FieldLabel';
 import GenericPage from './GenericPage';
 
 import * as styles from './ApplyForm.module.scss';
+
+export { allExperienceTypes };
 
 function checkCountry(value) {
   if (value === 'RU') {
@@ -22,7 +28,7 @@ function checkCountry(value) {
   return null;
 }
 
-export default function ApplyForm({ job }) {
+export default function ApplyForm({ job, experienceTypes }) {
   const { register, handleSubmit, formState: { errors } } = useForm();
   // eslint-disable-next-line no-console
   const onSubmit = (data) => console.log(data);
@@ -89,6 +95,24 @@ export default function ApplyForm({ job }) {
           name: 'experienceWeb',
           label: 'Сколько из этих лет было связано с веб-разработкой?',
         })}
+        <FieldLabel
+          name=""
+          label="Оцените свой опыт"
+          helpText="0 - Нет опыта;
+          1 - Небольшой опыт, занимаюсь время от времени;
+          2 - Работаю с этим почти каждый день;
+          3 - Работаю много лет, знаю много интересных вещей;
+          4 - Эксперт, пишу статьи, выступаю на конференциях и т.д."
+          isRequired
+        />
+        {Object.keys(experienceTypes).map((name) => (
+          <ExperienceRadioField
+            key={name}
+            name={name}
+            errors={errors}
+            register={register}
+          />
+        ))}
         {renderField({
           name: 'education',
           label: 'Какое у вас образование?',
@@ -141,4 +165,5 @@ ApplyForm.propTypes = {
     title: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
   }).isRequired,
+  experienceTypes: PropTypes.object.isRequired,
 };

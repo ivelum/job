@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import * as styles from '@components/Field.module.scss';
-import FormErrorMessage from '@components/FormErrorMessage';
+import FieldLabel from './FieldLabel';
+import FormErrorMessage from './FormErrorMessage';
 
 export default function Field({
   name, label, helpText, isRequired, errors,
@@ -16,11 +16,12 @@ export default function Field({
   }
   return (
     <>
-      <label htmlFor={name}>
-        {label}
-        {isRequired && <span className={styles.required}>*</span>}
-      </label>
-      {helpText && <div className={styles.helpText}>{helpText}</div>}
+      <FieldLabel
+        name={name}
+        label={label}
+        helpText={helpText}
+        isRequired={isRequired}
+      />
       <Component
         {...registerField(name, registerValues)}
         {...componentProps}
