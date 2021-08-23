@@ -1,0 +1,15 @@
+@import '../vars';
+
+.form {
+  label {
+    display: block;
+  }
+}
+
+.required {
+  color: $error-color;
+}
+
+.submit {
+  display: block;
+}

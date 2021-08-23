@@ -1,8 +1,8 @@
 import React from 'react';
 
 import Jobs from '../../Jobs';
-import GoogleForm from '@components/GoogleForm';
+import ApplyForm from '@components/ApplyForm';
 
 export default function PHPForm() {
-  return <GoogleForm job={Jobs.php} />;
+  return <ApplyForm job={Jobs.php} />;
 }
