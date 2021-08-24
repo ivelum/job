@@ -21,12 +21,7 @@ export default function ExperienceRadioField({ name, errors, register }) {
   const label = allExperienceTypes[name];
   const fullName = `experience${name}`;
   return (
-    <div
-      className={styles.row}
-      {...register(fullName, {
-        required: 'Обязательное поле',
-      })}
-    >
+    <div className={styles.row}>
       <div className={styles.label}>
         {label}
       </div>
@@ -38,6 +33,7 @@ export default function ExperienceRadioField({ name, errors, register }) {
             id={`${fullName}-${level}`}
             name={fullName}
             value={level}
+            {...register(fullName, { required: 'Обязательное поле' })}
           />
         </div>
       )))}
