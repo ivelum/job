@@ -51,7 +51,10 @@ def lambda_handler(event, context):
     slack_client = WebClient(token=os.environ['SLACK_BOT_TOKEN'])
     slack_client.chat_postMessage(
         channel='G054C3DPL',
-        text=f'New "{job}" job application :tada:',
+        text=(
+            f'New "{job}" job application :tada:. '
+            f'<{ws.url}|Open applications list>'
+        ),
     )
 
     return {'status': 'ok'}
