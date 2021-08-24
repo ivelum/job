@@ -2,7 +2,8 @@
 .DS_Store
 node_modules/
 public
-
+lambda-package/dependencies/
+lambda-package/lambda-package.zip
 
 #
 # See https://github.com/github/gitignore/blob/master/Global/JetBrains.gitignore
