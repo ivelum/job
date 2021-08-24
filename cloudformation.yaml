@@ -100,7 +100,7 @@ Resources:
             Resource: "*"
           - Action:
               - lambda:UpdateFunctionCode
-              - lambda:UpdateFunctionCofiguration
+              - lambda:UpdateFunctionConfiguration
             Effect: Allow
             Resource: !GetAtt JobApplicationLambda.Arn
         PolicyName: manage-static-website
