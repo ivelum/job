@@ -1,3 +1,40 @@
 $accent-color: #3a0;
-$error-color: #f00;
+$error-color: #ff7a7a;
 $small-screen-width: 767px;
+
+/* */
+
+$variable-prefix: default-;
+$spacer: 20px;
+$spacers: (0: 0, 5: $spacer / 4, 10: $spacer / 2, 15: $spacer * 0.75, 20: $spacer, 30: $spacer * 1.5, 40: $spacer * 2, 50: $spacer * 2.5, 60: $spacer * 3, 70: $spacer * 3.5);
+$grid-columns: 12;
+$grid-gutter-width: 30px;
+$grid-row-columns: 6;
+$gutters: $spacers;
+$container-padding-x: $grid-gutter-width / 2;
+$enable-grid-classes: true;
+$grid-breakpoints: (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px);
+$container-max-widths: (sm: 540px, md: 720px, lg: 960px, xl: 1140px);
+
+$displays: none, block, flex;
+$text-align: left, center, right;
+
+$body-background-color: #fff;
+
+$font-family-base: 'PT Mono', monospace;
+$font-size-base: 15px;
+$font-weight-base: normal;
+$line-height-base: 2.2;
+$font-color: #1a1a1a;
+$font-color-gray: #666;
+$font-color-orange: #f36717;
+
+$link-color: #f36717;
+$link-hover-color: #C04600;
+$link-decoration: none;
+
+$border-color: #666;
+
+$form-border-color: #ccc;
+$form-focus-border-color: #666;
+$form-label-color: #1a1a1a;

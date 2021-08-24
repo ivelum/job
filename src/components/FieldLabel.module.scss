@@ -4,6 +4,9 @@
   color: $error-color;
 }
 
-.help-text {
-  font-size: 0.8rem;
+.helpText {
+  color: rgba($font-color-gray, 0.8);
+  font-size: 13px;
+  line-height: 1.8;
+  margin-top: 10px;
 }

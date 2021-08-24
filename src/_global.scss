@@ -1,0 +1,144 @@
+@import './vars';
+@import './reset';
+@import './typography';
+@import './breakpoints';
+@import './grid';
+@import './transitions';
+@import './forms';
+
+body {
+  background-image: url('./images/body-background.jpg');
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+
+/* Title */
+
+h1 {
+  font-size: 46px;
+  font-weight: bold;
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+/* Links */
+
+a {
+  @include tr(color 0.5s);
+
+  &:hover {
+    color: $link-hover-color;
+  }
+}
+
+.underLined {
+  display: inline-block;
+  position: relative;
+
+  &::after {
+    background-color: $font-color-gray;
+    bottom: 5px;
+    content: '';
+    height: 1px;
+    left: 0;
+    position: absolute;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s;
+    width: 100%;
+  }
+
+  &:hover {
+    color: $font-color-orange;
+
+    &::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+  }
+}
+
+/* Hr */
+
+.hrLine {
+  border: 0;
+  border-bottom: 1px solid $border-color;
+  margin: 60px 0 0;
+  position: relative;
+
+  &::after {
+    background-color: $border-color;
+    content: '';
+    height: 40px;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    width: 1px;
+  }
+}
+
+/* Text */
+
+p + p {
+  margin-top: $spacer;
+}
+
+/* List */
+
+ul,
+ol {
+  color: $font-color;
+  counter-reset: item;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  counter-increment: item;
+  margin: 15px 0 0;
+  padding: 0 0 0 36px;
+  position: relative;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &::before {
+    background-image: url('./images/list-dot.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+    content: '';
+    height: 16px;
+    left: 5px;
+    position: absolute;
+    top: calc((1em * 2.2) / 2 - 8px);
+    width: 16px;
+  }
+}
+
+ol li {
+  counter-increment: item;
+  margin: 15px 0 0;
+  padding: 0 0 0 36px;
+  position: relative;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &::before {
+    color: $font-color-orange;
+    content: counter(item) '.';
+    left: 5px;
+    position: absolute;
+    top: 3px;
+  }
+}

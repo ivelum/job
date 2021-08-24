@@ -1,5 +1,17 @@
 @import '../vars';
 
+.vacancyTitle {
+  color: $font-color;
+  font-weight: bold;
+  line-height: 1.7;
+}
+
+.subTitle {
+  color: $font-color-gray;
+  display: block;
+  font-weight: normal;
+}
+
 .form {
   label {
     display: block;
@@ -8,4 +20,11 @@
 
 .submit {
   display: block;
+}
+
+.experienceLegend {
+  color: rgba($font-color-gray, 0.8);
+  font-size: 13px;
+  line-height: 1.8;
+  margin-top: 10px;
 }

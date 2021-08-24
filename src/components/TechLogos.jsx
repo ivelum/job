@@ -30,7 +30,12 @@ export default function TechLogos({ brands }) {
   return (
     <p>
       {brands.map((brand) => (
-        <img alt={brand} className={styles.logo} src={logos[brand]} />
+        <img
+          key={brand.key}
+          alt={brand}
+          className={styles.logo}
+          src={logos[brand]}
+        />
       ))}
     </p>
   );

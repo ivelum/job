@@ -1,0 +1,50 @@
+@import '../../vars';
+@import '../../breakpoints';
+@import '../../transitions';
+
+.githubButton {
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+
+.logo {
+  @include tr(opacity 0.4s);
+
+  &:hover {
+    opacity: 0.65;
+  }
+}
+
+.logoDisabled {
+  pointer-events: none;
+}
+
+.cat {
+  border-bottom: 1px solid $border-color;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+.catImage {
+  bottom: -3px;
+  position: absolute;
+  right: 20px;
+}
+
+.titleWrapper {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 70px;
+}
+
+.backLink {
+  > img {
+    margin-left: 10px;
+  }
+}
+
+.content {
+  margin-top: 60px;
+}

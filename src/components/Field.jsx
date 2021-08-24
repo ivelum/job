@@ -3,6 +3,7 @@ import React from 'react';
 
 import FieldLabel from './FieldLabel';
 import FormErrorMessage from './FormErrorMessage';
+import * as styles from '@components/FieldLabel.module.scss';
 
 export default function Field({
   name, label, helpText, isRequired, errors,
@@ -15,11 +16,10 @@ export default function Field({
     registerValues.required = 'Обязательное поле';
   }
   return (
-    <>
+    <div className="formGroup">
       <FieldLabel
         name={name}
         label={label}
-        helpText={helpText}
         isRequired={isRequired}
       />
       <Component
@@ -27,8 +27,9 @@ export default function Field({
         {...componentProps}
         id={name}
       />
+      {helpText && <div className={styles.helpText}>{helpText}</div>}
       <FormErrorMessage error={errors && errors[name]} />
-    </>
+    </div>
   );
 }
 

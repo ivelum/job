@@ -1,18 +1,83 @@
 @import '../vars';
+@import '../transitions';
 
-.row {
+.expName {
+  line-height: 1.6;
+}
+
+.expRange {
+  align-items: center;
   display: flex;
-  flex-wrap: nowrap;
 }
 
-.label {
+.expButton {
   flex-grow: 1;
+  position: relative;
 }
 
-.button {
-  width: 40px;
+.expInput {
+  margin: 0;
+  opacity: 0;
+  position: absolute;
+}
 
-  label {
-    display: inline !important;
+.expLabel {
+  @include tr(border-color 0.5s, color 0.5s);
+  border: 1px solid $form-border-color;
+  color: rgba($font-color-gray, 0.6);
+  cursor: pointer;
+  height: 50px;
+  line-height: 50px;
+  margin: 0 0 0 -1px;
+  padding: 0;
+  position: relative;
+  text-align: center;
+
+  &::before {
+    @include tr(transform 0.2s, opacity 0.2s);
+    background-color: $font-color-orange;
+    border-radius: 3px;
+    bottom: -2px;
+    content: '';
+    left: -2px;
+    opacity: 0;
+    position: absolute;
+    right: -2px;
+    top: -2px;
+    transform: scale(0.7);
+  }
+
+  > span {
+    position: relative;
+  }
+  
+  &:hover {
+    border-color: rgba($font-color-gray, 0.5);
+    color: $font-color-gray;
+    z-index: 2;
   }
 }
+
+.expButton:last-child .expLabel {
+  border-radius: 0 3px 3px 0;
+}
+
+.expButton:first-child .expLabel {
+  border-radius: 3px 0 0 3px;
+}
+
+.expInput:checked + .expLabel {
+  color: $body-background-color;
+  font-weight: bold;
+
+  &::before {
+    opacity: 1;
+    transform: none;
+    z-index: 3;
+  }
+
+  > span {
+    z-index: 4;
+  }
+}
+

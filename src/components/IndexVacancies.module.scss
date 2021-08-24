@@ -1,0 +1,70 @@
+@import '../vars';
+@import '../transitions';
+
+.vacanciesList {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 50px;
+}
+
+.vacancyItem {
+  border: 1px solid $border-color;
+  color: $font-color;
+  display: flex;
+  padding: 20px 30px;
+  position: relative;
+
+  &::before {
+    @include tr(transform 0.4s);
+    background-color: $font-color;
+    bottom: 0;
+    content: '';
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+
+  &::after {
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='9' viewBox='0 0 10 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9 6.5V0.5M9 0.5H2M9 0.5L1 8.5' stroke='%231A1A1A'/%3E%3C/svg%3E");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 8px 8px;
+    content: '';
+    display: block;
+    height: 8px;
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    width: 8px;
+  }
+
+  &:hover {
+    color: $body-background-color;
+
+    &::before {
+      transform: none;
+    }
+  }
+}
+
+.num {
+  margin-right: 30px;
+  opacity: 0.5;
+  z-index: 2;
+}
+
+.title {
+  font-weight: bold;
+  line-height: 1.7;
+  z-index: 2;
+}
+
+.subTitle {
+  display: block;
+  font-weight: normal;
+  opacity: 0.5;
+}

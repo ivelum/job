@@ -1,0 +1,326 @@
+/* Grid Mixins */
+
+@mixin make-row($gutter: $grid-gutter-width) {
+  --#{$variable-prefix}gutter-x: #{$gutter};
+  --#{$variable-prefix}gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: calc(var(--#{$variable-prefix}gutter-x) * -0.5);
+  margin-right: calc(var(--#{$variable-prefix}gutter-x) * -0.5);
+  margin-top: calc(var(--#{$variable-prefix}gutter-y) * -1);
+}
+@mixin make-col-ready($gutter: $grid-gutter-width) {
+  box-sizing: if(variable-exists(include-column-box-sizing) and $include-column-box-sizing, border-box, null);
+  flex-shrink: 0;
+  margin-top: var(--#{$variable-prefix}gutter-y);
+  max-width: 100%;
+  padding-left: calc(var(--#{$variable-prefix}gutter-x) * 0.5);
+  padding-right: calc(var(--#{$variable-prefix}gutter-x) * 0.5);
+  width: 100%;
+}
+@mixin make-col($size: false, $columns: $grid-columns) {
+  @if $size {
+    flex: 0 0 auto;
+    width: percentage(divide($size, $columns));
+  } @else {
+    flex: 1 1 0;
+    max-width: 100%;
+  }
+}
+@mixin make-col-auto() {
+  flex: 0 0 auto;
+  width: auto;
+}
+@mixin make-col-offset($size, $columns: $grid-columns) {
+  $num: divide($size, $columns);
+  margin-left: if($num == 0, 0, percentage($num));
+}
+@mixin row-cols($count) {
+  > * {
+    flex: 0 0 auto;
+    width: divide(100%, $count);
+  }
+}
+@mixin make-grid-columns($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints) {
+  @each $breakpoint in map-keys($breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+    @include media-breakpoint-up($breakpoint, $breakpoints) {
+      .col#{$infix} {
+        flex: 1 0 0;
+      }
+      .row-cols#{$infix}-auto > * {
+        @include make-col-auto();
+      }
+      @if $grid-row-columns > 0 {
+        @for $i from 1 through $grid-row-columns {
+          .row-cols#{$infix}-#{$i} {
+            @include row-cols($i);
+          }
+        }
+      }
+      .col#{$infix}-auto {
+        @include make-col-auto();
+      }
+      @if $columns > 0 {
+        @for $i from 1 through $columns {
+          .col#{$infix}-#{$i} {
+            @include make-col($i, $columns);
+          }
+        }
+        @for $i from 0 through ($columns - 1) {
+          @if not ($infix == '' and $i == 0) {
+            .offset#{$infix}-#{$i} {
+              @include make-col-offset($i, $columns);
+            }
+          }
+        }
+      }
+      @each $key, $value in $gutters {
+        .g#{$infix}-#{$key},
+        .gx#{$infix}-#{$key} {
+          --#{$variable-prefix}gutter-x: #{$value};
+        }
+        .g#{$infix}-#{$key},
+        .gy#{$infix}-#{$key} {
+          --#{$variable-prefix}gutter-y: #{$value};
+        }
+      }
+    }
+  }
+}
+
+@mixin make-container($gutter: $container-padding-x) {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--#{$variable-prefix}gutter-x, #{$gutter});
+  padding-right: var(--#{$variable-prefix}gutter-x, #{$gutter});
+  width: 100%;
+}
+
+/* Grid Init */
+
+@if $enable-grid-classes {
+  .container,
+  .container-fluid {
+    @include make-container();
+  }
+  @each $breakpoint, $container-max-width in $container-max-widths {
+    .container-#{$breakpoint} {
+      @extend .container-fluid;
+    }
+    @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+      %responsive-container-#{$breakpoint} {
+        max-width: $container-max-width;
+      }
+      $extend-breakpoint: true;
+      @each $name, $width in $grid-breakpoints {
+        @if ($extend-breakpoint) {
+          .container#{breakpoint-infix($name, $grid-breakpoints)} {
+            @extend %responsive-container-#{$breakpoint};
+          }
+          @if ($breakpoint == $name) {
+            $extend-breakpoint: false;
+          }
+        }
+      }
+    }
+  }
+}
+@if $enable-grid-classes {
+  .row {
+    @include make-row();
+
+    > * {
+      @include make-col-ready();
+    }
+  }
+}
+@if $enable-grid-classes {
+  @include make-grid-columns();
+}
+
+/* Padding & Margins */
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    @each $prop, $abbrev in (margin: m, padding: p) {
+      @each $size, $length in $spacers {
+        .#{$abbrev}#{$infix}-#{$size} {
+          #{$prop}: $length !important;
+        }
+        .#{$abbrev}t#{$infix}-#{$size},
+        .#{$abbrev}y#{$infix}-#{$size} {
+          #{$prop}-top: $length !important;
+        }
+        .#{$abbrev}r#{$infix}-#{$size},
+        .#{$abbrev}x#{$infix}-#{$size} {
+          #{$prop}-right: $length !important;
+        }
+        .#{$abbrev}b#{$infix}-#{$size},
+        .#{$abbrev}y#{$infix}-#{$size} {
+          #{$prop}-bottom: $length !important;
+        }
+        .#{$abbrev}l#{$infix}-#{$size},
+        .#{$abbrev}x#{$infix}-#{$size} {
+          #{$prop}-left: $length !important;
+        }
+      }
+    }
+    .m#{$infix}-auto {
+      margin: auto !important;
+    }
+    .mt#{$infix}-auto,
+    .my#{$infix}-auto {
+      margin-top: auto !important;
+    }
+    .mr#{$infix}-auto,
+    .mx#{$infix}-auto {
+      margin-right: auto !important;
+    }
+    .mb#{$infix}-auto,
+    .my#{$infix}-auto {
+      margin-bottom: auto !important;
+    }
+    .ml#{$infix}-auto,
+    .mx#{$infix}-auto {
+      margin-left: auto !important;
+    }
+  }
+};
+
+/* Flex */
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    .flex#{$infix}-row {
+      flex-direction: row !important;
+    }
+    .flex#{$infix}-column {
+      flex-direction: column !important;
+    }
+    .flex#{$infix}-row-reverse {
+      flex-direction: row-reverse !important;
+    }
+    .flex#{$infix}-column-reverse {
+      flex-direction: column-reverse !important;
+    }
+    .flex#{$infix}-wrap {
+      flex-wrap: wrap !important;
+    }
+    .flex#{$infix}-nowrap {
+      flex-wrap: nowrap !important;
+    }
+    .flex#{$infix}-wrap-reverse {
+      flex-wrap: wrap-reverse !important;
+    }
+    .flex#{$infix}-fill {
+      flex: 1 1 auto !important;
+    }
+    .flex#{$infix}-grow-0 {
+      flex-grow: 0 !important;
+    }
+    .flex#{$infix}-grow-1 {
+      flex-grow: 1 !important;
+    }
+    .flex#{$infix}-shrink-0 {
+      flex-shrink: 0 !important;
+    }
+    .flex#{$infix}-shrink-1 {
+      flex-shrink: 1 !important;
+    }
+    .justify-content#{$infix}-start {
+      justify-content: flex-start !important;
+    }
+    .justify-content#{$infix}-end {
+      justify-content: flex-end !important;
+    }
+    .justify-content#{$infix}-center {
+      justify-content: center !important;
+    }
+    .justify-content#{$infix}-between {
+      justify-content: space-between !important;
+    }
+    .justify-content#{$infix}-around {
+      justify-content: space-around !important;
+    }
+    .align-items#{$infix}-start {
+      align-items: flex-start !important;
+    }
+    .align-items#{$infix}-end {
+      align-items: flex-end !important;
+    }
+    .align-items#{$infix}-center {
+      align-items: center !important;
+    }
+    .align-items#{$infix}-baseline {
+      align-items: baseline !important;
+    }
+    .align-items#{$infix}-stretch {
+      align-items: stretch !important;
+    }
+    .align-content#{$infix}-start {
+      align-content: flex-start !important;
+    }
+    .align-content#{$infix}-end {
+      align-content: flex-end !important;
+    }
+    .align-content#{$infix}-center {
+      align-content: center !important;
+    }
+    .align-content#{$infix}-between {
+      align-content: space-between !important;
+    }
+    .align-content#{$infix}-around {
+      align-content: space-around !important;
+    }
+    .align-content#{$infix}-stretch {
+      align-content: stretch !important;
+    }
+    .align-self#{$infix}-auto {
+      align-self: auto !important;
+    }
+    .align-self#{$infix}-start {
+      align-self: flex-start !important;
+    }
+    .align-self#{$infix}-end {
+      align-self: flex-end !important;
+    }
+    .align-self#{$infix}-center {
+      align-self: center !important;
+    }
+    .align-self#{$infix}-baseline {
+      align-self: baseline !important;
+    }
+    .align-self#{$infix}-stretch {
+      align-self: stretch !important;
+    }
+  }
+};
+
+/* Display */
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    @each $value in $displays {
+      .d#{$infix}-#{$value} {
+        display: $value !important;
+      }
+    }
+  }
+};
+
+/* Text-align */
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    @each $value in $text-align {
+      .text-align#{$infix}-#{$value} {
+        text-align: $value !important;
+      }
+    }
+  }
+};

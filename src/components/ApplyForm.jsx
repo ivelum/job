@@ -1,4 +1,4 @@
-import { Link } from 'gatsby';
+// import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -8,8 +8,8 @@ import ExperienceRadioField, {
   allExperienceTypes,
 } from './ExperienceRadioField';
 import Field from './Field';
-import FieldLabel from './FieldLabel';
-import GenericPage from './GenericPage';
+// import FieldLabel from './FieldLabel';
+// import GenericPage from './GenericPage';
 import FormErrorMessage from '@components/FormErrorMessage';
 
 import * as styles from './ApplyForm.module.scss';
@@ -93,133 +93,236 @@ export default function ApplyForm({ job, experienceTypes }) {
   );
 
   return (
-    <GenericPage title={`Отклик на вакансию ${job.title}`}>
-      <p>
-        <Link to="/">&lt;- Все вакансии</Link> /{' '}
-        <Link to={job.url}>{job.title}</Link>
-      </p>
-      <h1>Отклик на вакансию</h1>
-      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-        {renderField({
-          name: 'fullName',
-          label: 'Ваше имя и фамилия',
-          componentProps: { autoFocus: true },
-        })}
-        {renderField({
-          name: 'country',
-          label: 'Страна проживания',
-          component: CountryDropdown,
-          registerProps: { validate: checkCountry },
-        })}
-        {renderField({
-          name: 'city',
-          label: 'Город или населенный пункт',
-        })}
-        {renderField({
-          name: 'email',
-          label: 'Ваш Email',
-        })}
-        {renderField({
-          name: 'telegram',
-          label: 'Telegram',
-          isRequired: false,
-        })}
-        {renderField({
-          name: 'skype',
-          label: 'Skype',
-          isRequired: false,
-        })}
-        {renderField({
-          name: 'experienceOverall',
-          label: 'Сколько у вас лет опыта в программировании?',
-        })}
-        {renderField({
-          name: 'experienceWeb',
-          label: 'Сколько из этих лет было связано с веб-разработкой?',
-        })}
-        <FieldLabel
-          name=""
-          label="Оцените свой опыт"
-          helpText="0 - Нет опыта;
-          1 - Небольшой опыт, занимаюсь время от времени;
-          2 - Работаю с этим почти каждый день;
-          3 - Работаю много лет, знаю много интересных вещей;
-          4 - Эксперт, пишу статьи, выступаю на конференциях и т.д."
-          isRequired
-        />
-        {Object.keys(experienceTypes).map((name) => (
-          <ExperienceRadioField
-            key={name}
-            name={name}
-            errors={errors}
-            register={register}
-          />
-        ))}
-        {renderField({
-          name: 'education',
-          label: 'Какое у вас образование?',
-          helpText: 'Учебное заведение, год окончания, специальность',
-        })}
-        {renderField({
-          name: 'linuxCommands',
-          label: 'Назовите консольные команды Linux, '
-            + 'состоящих из 3 символов, сколько вспомните.',
-          helpText: 'Подглядывать нечестно.',
-        })}
-        {renderField({
-          name: 'lovedTasks',
-          label: 'Какого рода задачами вам больше всего нравится заниматься?',
-          helpText: 'Кто-то любит проектировать архитектуру, кто-то UI, '
-            + 'кто-то заниматься исследованиями нового. То, что нравится, '
-            + 'обычно делается легко и быстро.',
-        })}
-        {renderField({
-          name: 'unlovedTasks',
-          label: 'А чем не нравится заниматься?',
-          helpText: 'Бывают вещи, от которых воротит, которые приходится '
-            + 'делать через силу. Их не получется делать быстро или не '
-            + 'получается делать совсем.',
-        })}
-        {renderField({
-          name: 'sourceCode',
-          label: 'Где можно посмотреть ваш код? GitHub, Bitbucket, иное.',
-          helpText: 'Желательно ссылки на свои проекты, не форки.',
-        })}
-        {renderField({
-          name: 'english',
-          label: 'Как у вас с английским?',
-          helpText: 'С письменным, с устным?',
-        })}
-        {renderField({
-          name: 'referrer',
-          label: 'Откуда вы узнали о вакансии?',
-          helpText: 'Наименование сайта с объявлением / '
-            + 'может, мы вам написали сами / или друзья прислали ссылку',
-        })}
-        <button
-          className={styles.submit}
-          type="submit"
-          disabled={submitting}
-        >
-          {submitting ? 'Отправляем...' : 'Отправить'}
-        </button>
-        <FormErrorMessage
-          error={
-            submittingError ? {
-              message: (
-                <>
-                  При отправке формы произошла ошибка.<br />
-                  При повторении ошибки напишите нам на{' '}
-                  <a href="mailto:job@ivelum.com">
-                    job@ivelum.com
-                  </a>
-                </>
-              ),
-            } : null
-          }
-        />
-      </form>
-    </GenericPage>
+    <div className="row justify-content-center">
+      <div className="col-10">
+        <div className={styles.vacancyTitle}>
+          {job.title}
+          <span className={styles.subTitle}>{job.subTitle}</span>
+        </div>
+        <hr className="hrLine" />
+        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+          <h2 className="mt-50">О вас</h2>
+          <div className="mt-30">
+            <div className="row gy-30">
+              <div className="col-6">
+                {renderField({
+                  name: 'fullName',
+                  label: 'Ваше имя и фамилия:',
+                  componentProps: {
+                    autoFocus: true,
+                    className: 'formControl',
+                  },
+                })}
+              </div>
+              <div className="w-100 mt-0" />
+              <div className="col-6">
+                {renderField({
+                  name: 'country',
+                  label: 'Страна проживания',
+                  component: CountryDropdown,
+                  registerProps: { validate: checkCountry },
+                  componentProps: {
+                    className: 'customSelect',
+                  },
+                })}
+              </div>
+              <div className="col-6">
+                {renderField({
+                  name: 'city',
+                  label: 'Город или населенный пункт',
+                  componentProps: {
+                    className: 'formControl',
+                  },
+                })}
+              </div>
+              <div className="col-4">
+                {renderField({
+                  name: 'email',
+                  label: 'Ваш Email',
+                  componentProps: {
+                    className: 'formControl',
+                  },
+                })}
+              </div>
+              <div className="col-4">
+                {renderField({
+                  name: 'telegram',
+                  label: 'Telegram',
+                  isRequired: false,
+                  componentProps: {
+                    className: 'formControl',
+                  },
+                })}
+              </div>
+              <div className="col-4">
+                {renderField({
+                  name: 'skype',
+                  label: 'Skype',
+                  isRequired: false,
+                  componentProps: {
+                    className: 'formControl',
+                  },
+                })}
+              </div>
+            </div>
+          </div>
+          <h2 className="mt-50">Ваш опыт</h2>
+          <div className="mt-30">
+            <div className="row gy-30">
+              <div className="col-6">
+                {renderField({
+                  name: 'experienceOverall',
+                  label: 'Сколько лет опыта в программировании?',
+                  componentProps: {
+                    className: 'formControl',
+                  },
+                })}
+              </div>
+              <div className="col-6">
+                {renderField({
+                  name: 'experienceWeb',
+                  label: 'Сколько из них с веб-разработкой?',
+                  componentProps: {
+                    className: 'formControl',
+                  },
+                })}
+              </div>
+            </div>
+          </div>
+          <h2 className="mt-50">Оцените свой опыт</h2>
+          <div className="mt-30">
+            <div className={styles.experienceLegend}>
+              0&nbsp;&mdash; Нет опыта;
+              1&nbsp;&mdash; Небольшой опыт, занимаюсь время от&nbsp;времени;
+              2&nbsp;&mdash; Работаю с&nbsp;этим почти каждый день;
+              3&nbsp;&mdash; Работаю много лет, знаю много интересных вещей;
+              4&nbsp;&mdash; Эксперт, пишу статьи, выступаю
+              на&nbsp;конференциях и&nbsp;т.д.
+            </div>
+            <div className="mt-30">
+              <div className="row gy-30">
+                {Object.keys(experienceTypes).map((name) => (
+                  <ExperienceRadioField
+                    key={name}
+                    name={name}
+                    errors={errors}
+                    register={register}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+          <h2 className="mt-50">Дополнительно</h2>
+          <div className="mt-30">
+            <div className="row gy-30">
+              <div className="col-12">
+                {renderField({
+                  name: 'education',
+                  label: 'Какое у вас образование?',
+                  helpText: 'Учебное заведение, год окончания, специальность.',
+                  componentProps: {
+                    className: 'formControl',
+                  },
+                })}
+              </div>
+              <div className="col-12">
+                {renderField({
+                  name: 'linuxCommands',
+                  label: 'Назовите консольные команды Linux, '
+                    + 'состоящих из 3 символов, сколько вспомните?',
+                  helpText: 'Подглядывать нечестно.',
+                  componentProps: {
+                    className: 'formControl',
+                  },
+                })}
+              </div>
+              <div className="col-12">
+                {renderField({
+                  name: 'lovedTasks',
+                  label: 'Какого рода задачами вам больше '
+                    + 'всего нравится заниматься?',
+                  helpText: 'Кто-то любит проектировать архитектуру, '
+                    + 'кто-то UI, кто-то заниматься исследованиями нового. '
+                    + 'То, что нравится, обычно делается легко и быстро.',
+                  componentProps: {
+                    className: 'formControl',
+                  },
+                })}
+              </div>
+              <div className="col-12">
+                {renderField({
+                  name: 'unlovedTasks',
+                  label: 'А чем не нравится заниматься?',
+                  helpText: 'Бывают вещи, от которых воротит, которые '
+                    + 'приходится делать через силу. Их не получется делать '
+                    + 'быстро или не получается делать совсем.',
+                  componentProps: {
+                    className: 'formControl',
+                  },
+                })}
+              </div>
+              <div className="col-12">
+                {renderField({
+                  name: 'sourceCode',
+                  label: 'Где можно посмотреть ваш код? GitHub, '
+                    + 'Bitbucket, иное.',
+                  helpText: 'Желательно ссылки на свои проекты, не форки.',
+                  componentProps: {
+                    className: 'formControl',
+                  },
+                })}
+              </div>
+              <div className="col-12">
+                {renderField({
+                  name: 'english',
+                  label: 'Как у вас с английским?',
+                  helpText: 'С письменным, с устным?',
+                  componentProps: {
+                    className: 'formControl',
+                  },
+                })}
+              </div>
+              <div className="col-12">
+                {renderField({
+                  name: 'referrer',
+                  label: 'Откуда вы узнали о вакансии?',
+                  helpText: 'Наименование сайта с объявлением / может, '
+                    + 'мы вам написали сами / или друзья прислали ссылку',
+                  componentProps: {
+                    className: 'formControl',
+                  },
+                })}
+              </div>
+            </div>
+            <hr className="hrLine" />
+            <div className="mt-50">
+              <button
+                className={styles.submit}
+                type="submit"
+                disabled={submitting}
+              >
+                {submitting ? 'Отправляем...' : 'Отправить'}
+              </button>
+              <FormErrorMessage
+                error={
+                  submittingError ? {
+                    message: (
+                      <>
+                        При отправке формы произошла ошибка.<br />
+                        При повторении ошибки напишите нам на{' '}
+                        <a href="mailto:job@ivelum.com">
+                          job@ivelum.com
+                        </a>
+                      </>
+                    ),
+                  } : null
+                }
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 }
 
@@ -227,6 +330,7 @@ ApplyForm.propTypes = {
   job: PropTypes.shape({
     name: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
+    subTitle: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
   }).isRequired,
   experienceTypes: PropTypes.object.isRequired,

@@ -1,0 +1,42 @@
+@import '../vars';
+
+.contacts {
+  margin-top: 30px;
+}
+
+.title {
+  border-bottom: 1px solid $border-color;
+  padding-bottom: 10px;
+  position: relative;
+
+  &::after {
+    background-color: $border-color;
+    content: '';
+    height: 40px;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    width: 1px;
+  }
+}
+
+.body {
+  margin-top: 30px;
+}
+
+.name > span {
+  color: $font-color-gray;
+}
+
+.link {
+  &::after {
+    left: 29px !important;
+    width: calc(100% - 29px) !important;
+  }
+}
+
+.ico {
+  height: 14px;
+  margin-right: 15px;
+  width: 14px;
+}

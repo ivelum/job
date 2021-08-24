@@ -2,12 +2,14 @@
 const Jobs = {
   php: {
     name: 'PHP',
-    title: 'Full-stack разработчик (PHP + frontend)',
+    title: 'Full-stack разработчик',
+    subTitle: 'PHP + Front-end',
     url: '/php/',
   },
   python: {
     name: 'Python',
-    title: 'Full-stack разработчик (Python/Django + frontend)',
+    title: 'Full-stack разработчик',
+    subTitle: 'Python/Django + Front-end',
     url: '/python/',
   },
 };
