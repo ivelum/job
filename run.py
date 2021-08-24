@@ -63,13 +63,15 @@ def deploy_lambda():
     info = os.environ['GOOGLE_API_SERVICE_ACCOUNT_INFO']
     info = info.replace('"', '\\"')  # encode quotes inside json string
     spreadsheet_id = os.environ['GOOGLE_SPREADSHEET_ID']
+    slack_bot_token = os.environ['SLACK_BOT_TOKEN']
 
     aws(
         f'lambda update-function-configuration '
         f'--function-name {function_name} '
         f'--environment "Variables={{'
         f'GOOGLE_API_SERVICE_ACCOUNT_INFO=\'{info}\','
-        f'GOOGLE_SPREADSHEET_ID={spreadsheet_id}'
+        f'GOOGLE_SPREADSHEET_ID={spreadsheet_id},'
+        f'SLACK_BOT_TOKEN={slack_bot_token}'
         f'}}"',
     )
 

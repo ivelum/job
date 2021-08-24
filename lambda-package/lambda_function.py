@@ -5,6 +5,7 @@ from datetime import datetime
 from json import JSONDecodeError
 
 import gspread
+from slack_sdk import WebClient
 
 
 def lambda_handler(event, context):
@@ -46,5 +47,11 @@ def lambda_handler(event, context):
     ws.update(f'A{new_row_num}', [values])
     if missing_values:
         ws.update_cell(new_row_num, len(values) + 1, json.dumps(missing_values))
+
+    slack_client = WebClient(token=os.environ['SLACK_BOT_TOKEN'])
+    slack_client.chat_postMessage(
+        channel='G054C3DPL',
+        text=f'New "{job}" job application :tada:',
+    )
 
     return {'status': 'ok'}

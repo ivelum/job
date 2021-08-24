@@ -1,1 +1,2 @@
 gspread==4.0.1
+slack-sdk==3.9.1

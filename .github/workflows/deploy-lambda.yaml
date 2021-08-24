@@ -52,6 +52,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           GOOGLE_API_SERVICE_ACCOUNT_INFO: ${{ secrets.GOOGLE_API_SERVICE_ACCOUNT_INFO }}
           GOOGLE_SPREADSHEET_ID: ${{ secrets.GOOGLE_SPREADSHEET_ID }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         run: python run.py deploy-lambda
 
       # Send notification on build or deploy failure
