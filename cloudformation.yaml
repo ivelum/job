@@ -109,19 +109,8 @@ Resources:
             Principal:
               Service: lambda.amazonaws.com
             Action: sts:AssumeRole
-      Path: /
-      Policies:
-        - PolicyName: lambda_handle_job_application
-          PolicyDocument:
-            Version: '2012-10-17'
-            Statement:
-              - Effect: Allow
-                Action:
-                  - logs:CreateLogGroup
-                  - logs:CreateLogStream
-                  - logs:PutLogEvents
-                Resource:
-                  - arn:aws:logs:*:*:*
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
   JobApplicationLambda:
     Type: "AWS::Lambda::Function"
     Properties:
@@ -134,3 +123,25 @@ Resources:
         ZipFile: import this
       Runtime: "python3.9"
       Timeout: 10
+  JobApplicationAPI:
+    Type: AWS::ApiGatewayV2::Api
+    Properties:
+      Description: Job Application HTTP API
+      Name: job-application-lambda-api
+      ProtocolType: HTTP
+      Target: !GetAtt JobApplicationLambda.Arn
+      CorsConfiguration:
+        AllowOrigins: ["https://job.ivelum.com"]
+        AllowMethods: ["GET", "HEAD", "OPTIONS", "POST"]
+        AllowHeaders: ["*"]
+  JobApplicationAPIInvokeLambdaPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref JobApplicationLambda
+      Action: lambda:InvokeFunction
+      Principal: apigateway.amazonaws.com
+      SourceArn: !Sub arn:${AWS::Partition}:execute-api:${AWS::Region}:${AWS::AccountId}:${JobApplicationAPI}/$default/$default
+
+Outputs:
+  JobApplicationInvokeURL:
+    Value: !Sub https://${JobApplicationAPI}.execute-api.${AWS::Region}.amazonaws.com
