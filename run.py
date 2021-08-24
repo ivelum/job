@@ -5,7 +5,7 @@ from pathlib import Path
 import click
 
 from deploy.aws import aws, resource_details
-from deploy.settings import AWS_ACCOUNT_ID, PROJECT_NAME
+from deploy.settings import PROJECT_NAME
 from deploy.utils import run, timing
 
 
@@ -40,6 +40,11 @@ def deploy_app():
 @cli.command(help='Deploy lambda function to production')
 @timing
 def deploy_lambda():
+    function_name = resource_details(
+        PROJECT_NAME,
+        'JobApplicationLambda',
+    )['PhysicalResourceId']
+
     package_path = Path('lambda-package')
     package_deps_path = package_path / 'dependencies'
     code_archive_name = 'lambda-package.zip'
@@ -47,32 +52,13 @@ def deploy_lambda():
     run(f'zip -r ../{code_archive_name} .', cwd=package_deps_path)
     run(f'zip -g {code_archive_name} lambda_function.py', cwd=package_path)
 
-    function_name = 'handle_job_application'
     code_archive_path = f'fileb://{package_path}/{code_archive_name}'
-    try:
-        aws(
-            f'lambda update-function-code '
-            f'--function-name {function_name} '
-            f'--zip-file {code_archive_path} '
-            f'--publish',
-        )
-    except RuntimeError as ex:
-        if 'Function not found' not in str(ex):
-            raise
-        role_id = resource_details(
-            PROJECT_NAME,
-            'LambdaExecutionRole',
-        )['PhysicalResourceId']
-        role_arn = f'arn:aws:iam::{AWS_ACCOUNT_ID}:role/{role_id}'
-        aws(
-            f'lambda create-function '
-            f'--role {role_arn} '
-            f'--function-name {function_name} '
-            f'--zip-file {code_archive_path} '
-            f'--runtime python3.9 '
-            f'--handler lambda_function.lambda_handler '
-            f'--publish',
-        )
+    aws(
+        f'lambda update-function-code '
+        f'--function-name {function_name} '
+        f'--zip-file {code_archive_path} '
+        f'--publish',
+    )
 
     info = os.environ['GOOGLE_API_SERVICE_ACCOUNT_INFO']
     info = info.replace('"', '\\"')  # encode quotes inside json string
@@ -81,7 +67,6 @@ def deploy_lambda():
     aws(
         f'lambda update-function-configuration '
         f'--function-name {function_name} '
-        f'--timeout 10 '
         f'--environment "Variables={{'
         f'GOOGLE_API_SERVICE_ACCOUNT_INFO=\'{info}\','
         f'GOOGLE_SPREADSHEET_ID={spreadsheet_id}'

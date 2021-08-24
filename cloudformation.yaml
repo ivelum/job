@@ -122,3 +122,15 @@ Resources:
                   - logs:PutLogEvents
                 Resource:
                   - arn:aws:logs:*:*:*
+  JobApplicationLambda:
+    Type: "AWS::Lambda::Function"
+    Properties:
+      Handler: "lambda_function.lambda_handler"
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Code:
+        # use CF feature - it compares yaml config with its previous version
+        # without looking at the actual state of the lambda function
+        # this way we can update code, deps and env vars during deploy
+        ZipFile: import this
+      Runtime: "python3.9"
+      Timeout: 10
