@@ -11,24 +11,20 @@ def lambda_handler(event, context):
     info = json.loads(os.environ['GOOGLE_API_SERVICE_ACCOUNT_INFO'])
     spreadsheet_id = os.environ['GOOGLE_SPREADSHEET_ID']
 
+    def error_response(message):
+        sys.stdout.write(str(event))
+        return {'status': 'error', 'message': message}
+
     try:
         event_body = json.loads(event['body'])
         assert isinstance(event_body, dict)
     except (KeyError, JSONDecodeError, AssertionError):
-        sys.stdout.write(str(event))
-        return {
-            'status': 'error',
-            'message': 'Wrong input: malformed body.',
-        }
+        return error_response('Wrong input: malformed body.')
 
     try:
         job = event_body.pop('job')
     except KeyError:
-        sys.stdout.write(str(event))
-        return {
-            'status': 'error',
-            'message': 'Wrong input: missing "job" param.',
-        }
+        return error_response('Wrong input: missing "job" param.')
 
     event_body['ts'] = datetime.now().isoformat()
 
@@ -37,7 +33,8 @@ def lambda_handler(event, context):
     try:
         ws = wb.worksheet(job)
     except gspread.exceptions.WorksheetNotFound:
-        ws = wb.add_worksheet(job, rows=1000, cols=100)
+        return error_response(f'Wrong input: unknown "{job}" job.')
+
     fields = ws.row_values(1)
 
     values = []
