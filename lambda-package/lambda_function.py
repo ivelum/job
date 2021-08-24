@@ -49,11 +49,16 @@ def lambda_handler(event, context):
         ws.update_cell(new_row_num, len(values) + 1, json.dumps(missing_values))
 
     slack_client = WebClient(token=os.environ['SLACK_BOT_TOKEN'])
+    # `ws.url` returns link to google api, but we need a link to google docs
+    ws_url = (
+        f'https://docs.google.com/spreadsheets/d/{spreadsheet_id}/'
+        f'edit#gid={ws.id}'
+    )
     slack_client.chat_postMessage(
         channel='G054C3DPL',
         text=(
             f'New "{job}" job application :tada:. '
-            f'<{ws.url}|Open applications list>'
+            f'<{ws_url}|Open applications list>'
         ),
     )
 
