@@ -1,0 +1,97 @@
+name: Deploy App
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+jobs:
+  notify-build-start:
+    if: ${{ github.event_name == 'push' }}
+    runs-on: ubuntu-latest
+    steps:
+      # Send build notifications to Slack
+      - uses: voxmedia/github-action-slack-notify-build@v1
+        id: slack
+        with:
+          channel_id: C0PT3267R
+          status: STARTED
+          color: warning
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+    outputs:
+      status_message_id: ${{ steps.slack.outputs.message_id }}
+
+  deploy:
+    needs: notify-build-start
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      # Lint and Build
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '15'
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v2
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - run: yarn --prefer-offline
+      - run: yarn eslint
+      - run: yarn stylelint
+      - run: yarn build
+
+      # Deploy
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - name: update pip
+        run: |
+          pip install -U wheel
+          pip install -U setuptools
+          python -m pip install -U pip
+      - name: get pip cache dir
+        id: pip-cache
+        run: echo "::set-output name=dir::$(pip cache dir)"
+      - name: cache pip
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.pip-cache.outputs.dir }}
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+      - run: pip install -r requirements.txt
+      - env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: python run.py deploy-app
+
+      # Send notification on build or deploy failure
+      - name: Notify slack fail
+        uses: voxmedia/github-action-slack-notify-build@v1
+        if: failure()
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        with:
+          message_id: ${{ needs.notify-build-start.outputs.status_message_id }}
+          channel_id: C0PT3267R
+          status: FAILED
+          color: danger
+
+  notify-build-success:
+    if: ${{ github.event_name == 'push' }}
+    needs: [deploy, notify-build-start]
+    runs-on: ubuntu-latest
+    steps:
+      # Send notification on build success
+      - name: Notify slack success
+        uses: voxmedia/github-action-slack-notify-build@v1
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        with:
+          message_id: ${{ needs.notify-build-start.outputs.status_message_id }}
+          channel_id: C0PT3267R
+          status: SUCCESS
+          color: good

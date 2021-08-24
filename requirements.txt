@@ -1,3 +1,5 @@
 awscli==1.20.25
 click==8.0.1
+flake8==3.9.2
+isort==5.9.3
 sarge==0.1.6

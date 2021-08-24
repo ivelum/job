@@ -8,6 +8,7 @@ from deploy.aws import aws, resource_details
 from deploy.settings import AWS_ACCOUNT_ID, PROJECT_NAME
 from deploy.utils import run, timing
 
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
@@ -16,9 +17,9 @@ def cli():
     pass
 
 
-@cli.command(help='Deploy to production')
+@cli.command(help='Deploy app to production')
 @timing
-def deploy():
+def deploy_app():
     # Upload website static content
     s3_bucket = resource_details(
         PROJECT_NAME,
@@ -37,15 +38,12 @@ def deploy():
 
 
 @cli.command(help='Deploy lambda function to production')
+@timing
 def deploy_lambda():
     package_path = Path('lambda-package')
     package_deps_path = package_path / 'dependencies'
     code_archive_name = 'lambda-package.zip'
 
-    run(
-        f'pip install --target {package_deps_path} '
-        f'-r {package_path}/requirements.txt',
-    )
     run(f'zip -r ../{code_archive_name} .', cwd=package_deps_path)
     run(f'zip -g {code_archive_name} lambda_function.py', cwd=package_path)
 
@@ -77,7 +75,7 @@ def deploy_lambda():
         )
 
     info = os.environ['GOOGLE_API_SERVICE_ACCOUNT_INFO']
-    info = info.replace('"', '\\"')
+    info = info.replace('"', '\\"')  # encode quotes inside json string
     spreadsheet_id = os.environ['GOOGLE_SPREADSHEET_ID']
 
     aws(
