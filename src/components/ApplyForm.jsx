@@ -1,6 +1,6 @@
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import CountryDropdown from './CountryDropdown';
@@ -10,6 +10,7 @@ import ExperienceRadioField, {
 import Field from './Field';
 import FieldLabel from './FieldLabel';
 import GenericPage from './GenericPage';
+import FormErrorMessage from '@components/FormErrorMessage';
 
 import * as styles from './ApplyForm.module.scss';
 
@@ -28,10 +29,51 @@ function checkCountry(value) {
   return null;
 }
 
+const apiUrl = 'https://1jlrn8msi3.execute-api.eu-north-1.amazonaws.com/';
+
+const submitData = async (data) => {
+  const response = await fetch(apiUrl, {
+    method: 'POST',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
+  return response.json();
+};
+
 export default function ApplyForm({ job, experienceTypes }) {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const [submitting, setSubmitting] = useState(false);
+  const [submittingError, setSubmittingError] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   // eslint-disable-next-line no-console
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    let err = false;
+    setSubmitting(true);
+    setSubmittingError(false);
+    try {
+      const response = await submitData({
+        ...data,
+        job: job.name,
+      });
+      if (response.status === 'ok') {
+        window.location = '/job-application-accepted';
+      } else {
+        err = true;
+      }
+    } catch {
+      err = true;
+    }
+    if (err) {
+      setSubmitting(false);
+      setSubmittingError(true);
+    }
+  };
 
   const renderField = ({
     name, label, helpText, isRequired,
@@ -154,7 +196,28 @@ export default function ApplyForm({ job, experienceTypes }) {
           helpText: 'Наименование сайта с объявлением / '
             + 'может, мы вам написали сами / или друзья прислали ссылку',
         })}
-        <button className={styles.submit} type="submit">Отправить</button>
+        <button
+          className={styles.submit}
+          type="submit"
+          disabled={submitting}
+        >
+          {submitting ? 'Отправляем...' : 'Отправить'}
+        </button>
+        <FormErrorMessage
+          error={
+            submittingError ? {
+              message: (
+                <>
+                  При отправке формы произошла ошибка.<br />
+                  При повторении ошибки напишите нам на{' '}
+                  <a href="mailto:job@ivelum.com">
+                    job@ivelum.com
+                  </a>
+                </>
+              ),
+            } : null
+          }
+        />
       </form>
     </GenericPage>
   );
@@ -162,6 +225,7 @@ export default function ApplyForm({ job, experienceTypes }) {
 
 ApplyForm.propTypes = {
   job: PropTypes.shape({
+    name: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
   }).isRequired,
