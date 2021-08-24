@@ -98,6 +98,11 @@ Resources:
               - cloudfront:CreateInvalidation
             Effect: Allow
             Resource: "*"
+          - Action:
+              - lambda:UpdateFunctionCode
+              - lambda:UpdateFunctionCofiguration
+            Effect: Allow
+            Resource: !GetAtt JobApplicationLambda.Arn
         PolicyName: manage-static-website
   LambdaExecutionRole:
     Type: AWS::IAM::Role
