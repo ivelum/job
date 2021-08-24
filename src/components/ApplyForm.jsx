@@ -1,4 +1,4 @@
-// import { Link } from 'gatsby';
+// import { Link, navigate } from 'gatsby';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -45,7 +45,7 @@ const submitData = async (data) => {
 
 export default function ApplyForm({ job, experienceTypes }) {
   const [submitting, setSubmitting] = useState(false);
-  const [submittingError, setSubmittingError] = useState(false);
+  const [submissionError, setSubmissionError] = useState(false);
   const {
     register,
     handleSubmit,
@@ -55,14 +55,14 @@ export default function ApplyForm({ job, experienceTypes }) {
   const onSubmit = async (data) => {
     let err = false;
     setSubmitting(true);
-    setSubmittingError(false);
+    setSubmissionError(false);
     try {
       const response = await submitData({
         ...data,
         job: job.name,
       });
       if (response.status === 'ok') {
-        window.location = '/job-application-accepted';
+        await navigate('/job-application-accepted/');
       } else {
         err = true;
       }
@@ -71,7 +71,7 @@ export default function ApplyForm({ job, experienceTypes }) {
     }
     if (err) {
       setSubmitting(false);
-      setSubmittingError(true);
+      setSubmissionError(true);
     }
   };
 
