@@ -45,7 +45,7 @@ const submitData = async (data) => {
 };
 
 export default function ApplyForm({ job, experienceTypes }) {
-  const [submitting, setSubmitting] = useState(false);
+  const [setSubmitting] = useState(false);
   const [submissionError, setSubmissionError] = useState(false);
   const {
     register,
