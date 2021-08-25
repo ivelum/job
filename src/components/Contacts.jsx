@@ -1,10 +1,10 @@
 import React from 'react';
 
 import ExternalLink from '@components/ExternalLink';
+import SvgImage from '@components/SvgImage';
 
 import * as styles from './Contacts.module.scss';
 import icoMail from '@images/ico-mail.svg';
-import icoTg from '@images/ico-telegram.svg';
 
 export default function Contacts() {
   return (
@@ -31,8 +31,7 @@ export default function Contacts() {
               href="tg://resolve?domain=lebedevaoi"
               className={styles.link}
             >
-              <img className={styles.ico} src={icoTg} alt="TG lebedevaoi" />
-              @lebedevaoi
+              <SvgImage name="ico-telegram" /> @lebedevaoi
             </ExternalLink>
           </div>
           <div className={`col-5 ${styles.name}`}>
@@ -43,8 +42,7 @@ export default function Contacts() {
               href="tg://resolve?domain=stebunovd"
               className={styles.link}
             >
-              <img className={styles.ico} src={icoTg} alt="TG stebunovd" />
-              @stebunovd
+              <SvgImage name="ico-telegram" /> @stebunovd
             </ExternalLink>
           </div>
         </div>
