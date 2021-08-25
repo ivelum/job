@@ -1,4 +1,4 @@
-// import { Link, navigate } from 'gatsby';
+import { navigate } from 'gatsby';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -305,7 +305,7 @@ export default function ApplyForm({ job, experienceTypes }) {
               </button>
               <FormErrorMessage
                 error={
-                  submittingError ? {
+                  submissionError ? {
                     message: (
                       <>
                         При отправке формы произошла ошибка.<br />
