@@ -4,6 +4,7 @@ import Jobs from '../../Jobs';
 import About from '@components/About';
 import Benefits from '@components/Benefits';
 import CalloutLink from '@components/CalloutLink';
+import HrLine from '@components/HrLine';
 import InterviewProcess from '@components/InterviewProcess';
 import TechLogos from '@components/TechLogos';
 import Youtube from '@components/Youtube';
@@ -16,7 +17,7 @@ const phpJob = () => (
     <div className="row justify-content-center">
       <div className="col-10">
         <About />
-        <hr className="hrLine" />
+        <HrLine />
         <h2 className="mt-50">О проекте</h2>
         <div className="mt-30">
           <p>
@@ -88,7 +89,7 @@ const phpJob = () => (
         </div>
         <Benefits />
         <InterviewProcess />
-        <hr className="hrLine" />
+        <HrLine />
         <div className="mt-50">
           <CalloutLink to={`${Jobs.php.url}form/`}>
             Откликнуться на вакансию

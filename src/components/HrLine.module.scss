@@ -1,0 +1,18 @@
+@import '../vars';
+
+.line {
+  border: 0;
+  border-bottom: 1px solid $border-color;
+  margin: 60px 0 0;
+  position: relative;
+
+  &::after {
+    background-color: $border-color;
+    content: '';
+    height: 40px;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    width: 1px;
+  }
+}

@@ -12,6 +12,7 @@ import Field from './Field';
 // import GenericPage from './GenericPage';
 import ExternalLink from '@components/ExternalLink';
 import FormErrorMessage from '@components/FormErrorMessage';
+import HrLine from '@components/HrLine';
 
 import * as styles from './ApplyForm.module.scss';
 
@@ -100,7 +101,7 @@ export default function ApplyForm({ job, experienceTypes }) {
           {job.title}
           <span className={styles.subTitle}>{job.subTitle}</span>
         </div>
-        <hr className="hrLine" />
+        <HrLine />
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <h2 className="mt-50">О вас</h2>
           <div className="mt-30">
@@ -295,7 +296,7 @@ export default function ApplyForm({ job, experienceTypes }) {
                 })}
               </div>
             </div>
-            <hr className="hrLine" />
+            <HrLine />
             <div className="mt-50">
               <button
                 className={styles.submit}

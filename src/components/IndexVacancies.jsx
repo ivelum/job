@@ -2,12 +2,13 @@ import { Link } from 'gatsby';
 import React from 'react';
 
 import Jobs from '../Jobs';
+import HrLine from '@components/HrLine';
 import * as styles from '@components/IndexVacancies.module.scss';
 
 export default function IndexVacancies() {
   return (
     <>
-      <hr className="hrLine" />
+      <HrLine />
       <h2 className="mt-50">Открытые вакансии</h2>
       <div className={styles.vacanciesList}>
         {Object.keys(Jobs).map((key, index) => (

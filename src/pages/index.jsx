@@ -1,6 +1,6 @@
-import Contacts from '@components/Contacts';
 import React from 'react';
 
+import Contacts from '@components/Contacts';
 import IndexText from '@components/IndexText';
 import IndexVacancies from '@components/IndexVacancies';
 import Layout from '@components/layout/Layout';
