@@ -22,12 +22,12 @@ export default function Field({
         label={label}
         isRequired={isRequired}
       />
+      {helpText && <div className={styles.helpText}>{helpText}</div>}
       <Component
         {...registerField(name, registerValues)}
         {...componentProps}
         id={name}
       />
-      {helpText && <div className={styles.helpText}>{helpText}</div>}
       <FormErrorMessage error={errors && errors[name]} />
     </div>
   );

@@ -28,10 +28,10 @@ const logos = {
 
 export default function TechLogos({ brands }) {
   return (
-    <p>
+    <p className={styles.wrapper}>
       {brands.map((brand) => (
         <img
-          key={brand.key}
+          key={brand}
           alt={brand}
           className={styles.logo}
           src={logos[brand]}

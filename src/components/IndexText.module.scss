@@ -1,3 +1,44 @@
 .hiIco {
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+  animation-name: hand;
+  animation-timing-function: linear;
+  margin-left: 5px;
   margin-top: -15px;
+  transform-origin: bottom center;
+}
+
+@keyframes hand {
+  0% {
+    animation-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    transform: rotate(0deg);
+  }
+
+  5% {
+    animation-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    transform: rotate(-10deg);
+  }
+
+  10% {
+    animation-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    transform: rotate(10deg);
+  }
+
+  15% {
+    animation-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    transform: rotate(-10deg);
+  }
+
+  20% {
+    animation-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    transform: rotate(10deg);
+  }
+
+  25% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
 }

@@ -3,7 +3,8 @@ import React from 'react';
 import Jobs from '../../Jobs';
 import About from '@components/About';
 import Benefits from '@components/Benefits';
-import CalloutLink from '@components/CalloutLink';
+import Button from '@components/Button';
+// import CalloutLink from '@components/CalloutLink';
 import HrLine from '@components/HrLine';
 import InterviewProcess from '@components/InterviewProcess';
 import TechLogos from '@components/TechLogos';
@@ -15,11 +16,11 @@ const backLink = { url: '/', text: 'Все вакансии' };
 const phpJob = () => (
   <Layout pageTitle={Jobs.php.title} backLink={backLink}>
     <div className="row justify-content-center">
-      <div className="col-10">
+      <div className="col-12 col-xl-10">
         <About />
         <HrLine />
-        <h2 className="mt-50">О проекте</h2>
-        <div className="mt-30">
+        <h2 className="mt-30 mt-lg-40 mt-xl-50">О проекте</h2>
+        <div className="mt-20 mt-md-30">
           <p>
             Мы&nbsp;ищем разработчика в&nbsp;команду которая занимается
             разработкой и&nbsp;поддержкой новостных сайтов.
@@ -35,8 +36,8 @@ const phpJob = () => (
           </p>
         </div>
         <Youtube videoId="EPhvHNWfmQI" />
-        <h2 className="mt-50">Технологии и процессы</h2>
-        <div className="mt-30">
+        <h2 className="mt-30 mt-lg-40 mt-xl-50">Технологии и процессы</h2>
+        <div className="mt-20 mt-md-30">
           <TechLogos
             brands={['PHP', 'Wordpress', 'Docker', 'Kubernetes', 'AWS']}
           />
@@ -58,8 +59,8 @@ const phpJob = () => (
             отдельными модулями.
           </p>
         </div>
-        <h2 className="mt-50">О вас</h2>
-        <div className="mt-30">
+        <h2 className="mt-30 mt-lg-40 mt-xl-50">О вас</h2>
+        <div className="mt-20 mt-md-30">
           <p>
             Мы&nbsp;ожидаем, что у&nbsp;вас не&nbsp;меньше пары лет опыта
             в&nbsp;веб-разработке, и&nbsp;вы&nbsp;готовы работать как над
@@ -90,10 +91,10 @@ const phpJob = () => (
         <Benefits />
         <InterviewProcess />
         <HrLine />
-        <div className="mt-50">
-          <CalloutLink to={`${Jobs.php.url}form/`}>
+        <div className="mt-40 mt-xl-50 d-flex flex-column flex-sm-row">
+          <Button confettiAnimation href={`${Jobs.php.url}form/`}>
             Откликнуться на вакансию
-          </CalloutLink>
+          </Button>
         </div>
       </div>
     </div>

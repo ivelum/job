@@ -4,22 +4,29 @@ import * as React from 'react';
 
 import ExternalLink from '@components/ExternalLink';
 import Footer from '@components/Footer';
+import SvgImage from '@components/SvgImage';
 import * as styles from '@components/layout/Layout.module.scss';
 
 import catImage from '@images/cat.png';
 import githubLogo from '@images/github-button.svg';
-import icoLongArrow from '@images/ico-long-arrow.svg';
 import logoIvelum from '@images/logo.svg';
 
 const Layout = ({ pageTitle, children, backLink }) => (
-  <div className="container mt-70">
+  <div className={styles.container}>
     <title>{pageTitle}</title>
     <ExternalLink
-      href="https://github.com"
+      href="https://github.com/ivelum/job"
       className={styles.githubButton}
       noUnderline
     >
-      <img src={githubLogo} alt="Fork me on GitHub" />
+      <div className={styles.githubCat}>
+        <img
+          src={githubLogo}
+          className={styles.githubCatImage}
+          alt="Fork me on GitHub"
+        />
+      </div>
+      <span className={styles.githubText}>Fork me!</span>
     </ExternalLink>
     <Link
       to="/"
@@ -28,7 +35,7 @@ const Layout = ({ pageTitle, children, backLink }) => (
     >
       <img src={logoIvelum} alt="Ivelum" />
     </Link>
-    <div className="col-6 mt-60">
+    <div className={`col-xl-6 col-lg-8 col-md-10 col-12 ${styles.catWrapper}`}>
       <div className={styles.cat}>
         Мы занимаемся продуктовой разработкой с 2003.
         <img className={styles.catImage} src={catImage} alt="Ivelum cat" />
@@ -39,7 +46,7 @@ const Layout = ({ pageTitle, children, backLink }) => (
       {(backLink) ? (
         <Link className={styles.backLink} to={backLink.url}>
           {backLink.text}
-          <img src={icoLongArrow} alt={backLink.text} />
+          <SvgImage name="ico-long-arrow" className={styles.ico} />
         </Link>
       ) : null}
     </div>

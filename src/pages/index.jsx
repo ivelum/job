@@ -10,15 +10,15 @@ import '../_global.scss';
 const IndexPage = () => (
   <Layout pageTitle="Работа в Ivelum">
     <div className="row">
-      <div className="col-5 offset-1">
+      <div className="col-lg-6 col-xl-5 offset-xl-1">
         <IndexText />
       </div>
-      <div className="col-5 offset-1">
+      <div className="col-lg-6 col-xl-5 offset-xl-1">
         <Contacts />
       </div>
     </div>
-    <div className="row">
-      <div className="col-10 offset-1">
+    <div className="row justify-content-center">
+      <div className="col-12 col-xl-10">
         <IndexVacancies />
       </div>
     </div>

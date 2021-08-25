@@ -1,13 +1,16 @@
 @import '../vars';
+@import '../breakpoints';
 
 .contacts {
   margin-top: 30px;
+  @include media-breakpoint-down(sm) { margin-top: 20px; }
 }
 
 .title {
   border-bottom: 1px solid $border-color;
   padding-bottom: 10px;
   position: relative;
+  @include media-breakpoint-down(sm) { padding-bottom: 20px; }
 
   &::after {
     background-color: $border-color;
@@ -17,26 +20,39 @@
     right: 0;
     top: 100%;
     width: 1px;
+    @include media-breakpoint-down(lg) { height: 20px; }
   }
 }
 
 .body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   margin-top: 30px;
+  @include media-breakpoint-down(sm) {
+    grid-template-columns: 1fr;
+    margin-top: 20px;
+  }
 }
 
-.name > span {
-  color: $font-color-gray;
+.name {
+  > span {
+    color: rgba($font-color-gray, 0.5);
+  }
+}
+
+.contact {
+  @include media-breakpoint-down(sm) {
+    margin-bottom: 10px;
+    padding-left: 20px;
+  }
 }
 
 .link {
-  &::after {
-    left: 29px !important;
-    width: calc(100% - 29px) !important;
-  }
+  background-position: 30px 100%;
 }
 
 .ico {
   height: 14px;
-  margin-right: 15px;
+  margin-right: 16px;
   width: 14px;
 }

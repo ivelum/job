@@ -1,0 +1,155 @@
+@import '../vars';
+@import '../transitions';
+@import '../breakpoints';
+
+.button {
+  @include tr(border-color 0.5s, color 0.5s);
+  background: transparent;
+  border: 5px solid $font-color;
+  color: #111;
+  cursor: pointer;
+  display: inline-block;
+  font-family: inherit;
+  font-weight: 700;
+  outline: none;
+  padding: 10px 60px;
+  position: relative;
+  text-align: center;
+  user-select: none;
+  @include media-breakpoint-down(md) {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  @include media-breakpoint-down(sm) {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  &::after,
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+  }
+
+  &::before {
+    @include tr(transform 0.5s);
+    background: $font-color;
+    bottom: -10px;
+    height: 5px;
+    left: -10px;
+    width: 5px;
+    z-index: 1;
+  }
+
+  &::after {
+    background: $body-background-color;
+    bottom: -5px;
+    height: 5px;
+    left: -5px;
+    width: 5px;
+    z-index: 1;
+  }
+
+  &:hover {
+    border-color: $font-color-orange;
+    color: $font-color-orange;
+
+    &::before {
+      background-color: $font-color-orange;
+      transform: translate3d(-5px, 5px, 0);
+    }
+
+    .confetti-animation {
+      transform: translate3d(0, -50%, 0) scale(1.5);
+
+      &::before {
+        animation: topBubbles 0.75s ease-in-out forwards;
+        display: block;
+      }
+
+      &::after {
+        animation: bottomBubbles 0.75s ease-in-out forwards;
+        display: block;
+      }
+    }
+
+  }
+}
+
+.confetti-animation {
+  border-radius: 50%;
+  height: 45px;
+  left: 0;
+  margin: 0 auto;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate3d(0, -50%, 0) scale(0.25);
+  transition: transform 0.25s;
+  width: 90px;
+
+  &::before,
+  &::after {
+    animation: none;
+    background-image:
+      url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNyIgaGVpZ2h0PSI3IiB2aWV3Qm94PSIwIDAgNyA3IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSI3IiBmaWxsPSIjRjM2NzE3Ii8+Cjwvc3ZnPg=='),
+      url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMCAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iMS40MjQwMSIgeT0iMS4yNTU4NiIgd2lkdGg9IjcuNTI2MTkiIGhlaWdodD0iNy41MjYxOSIgc3Ryb2tlPSIjRjM2NzE3Ii8+Cjwvc3ZnPg=='),
+      url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNyIgaGVpZ2h0PSI3IiB2aWV3Qm94PSIwIDAgNyA3IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSI3IiBmaWxsPSIjRjM2NzE3Ii8+Cjwvc3ZnPg=='),
+      url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNyIgaGVpZ2h0PSI3IiB2aWV3Qm94PSIwIDAgNyA3IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSI3IiBmaWxsPSIjZjM2NzE3Ii8+Cjwvc3ZnPg=='),
+      url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNyIgaGVpZ2h0PSI3IiB2aWV3Qm94PSIwIDAgNyA3IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSI3IiBmaWxsPSIjZjM2NzE3Ii8+Cjwvc3ZnPgo='),
+      url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMCAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iMS40MjQwMSIgeT0iMS4yNTU4NiIgd2lkdGg9IjcuNTI2MTkiIGhlaWdodD0iNy41MjYxOSIgc3Ryb2tlPSIjZjM2NzE3Ii8+Cjwvc3ZnPgo='),
+      url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNyIgaGVpZ2h0PSI3IiB2aWV3Qm94PSIwIDAgNyA3IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSI3IiBmaWxsPSIjZjM2NzE3Ii8+Cjwvc3ZnPgo=');
+    background-repeat: no-repeat;
+    content: '';
+    display: none;
+    height: 100%;
+    left: -20%;
+    pointer-events: none;
+    position: absolute;
+    transition: 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+    width: 140%;
+    z-index: -1000;
+  }
+
+  &::before {
+    background-size: 3px 3px,12px 12px,6px 6px,12px 12px,10px 10px,3px 3px,6px 6px,3px 3px,10px 10px;
+    top: -75%;
+  }
+
+  &::after {
+    background-size: 6px 6px,12px 12px,10px 10px,12px 12px,6px 6px,3px 3px,12px 12px;
+    bottom: -75%;
+  }
+}
+
+@keyframes topBubbles {
+  0% {
+    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
+  }
+
+  50% {
+    background-position: 0 70%, 0 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%;
+  }
+
+  to {
+    background-position: 0 70%, 0 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%;
+    background-size: 0 0, 0 0, 0 0, 0 0, 0 0;
+  }
+}
+
+@keyframes bottomBubbles {
+  0% {
+    background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%, 70% -10%, 70% 0;
+  }
+
+  50% {
+    background-position: 5% 50%, 20% 90%, 45% 70%, 60% 100%, 75% 80%, 95% 70%, 100% 10%;
+  }
+
+  to {
+    background-position: 5% 50%, 20% 90%, 45% 70%, 60% 100%, 75% 80%, 95% 70%, 100% 10%;
+    background-size: 0 0, 0 0, 0 0, 0 0, 0 0;
+  }
+}

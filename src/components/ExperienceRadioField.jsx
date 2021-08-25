@@ -22,11 +22,11 @@ export default function ExperienceRadioField({ name, errors, register }) {
   const fullName = `experience${name}`;
   return (
     <>
-      <div className={`col-5 ${styles.expName}`}>
+      <div className={`col-12 col-md-5 ${styles.expName}`}>
         {label}
         <FormErrorMessage error={errors && errors[fullName]} />
       </div>
-      <div className="col-7">
+      <div className="col-12 col-md-7 gy-10">
         <div className={styles.expRange}>
           {(range(0, 5).map((level) => (
             <div key={`${fullName}-${level}`} className={styles.expButton}>

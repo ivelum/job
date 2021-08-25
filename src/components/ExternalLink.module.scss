@@ -1,28 +1,13 @@
 @import '../vars';
+@import '../breakpoints';
 
 .underlined {
-  display: inline-block;
-  position: relative;
-
-  &::after {
-    background-color: $font-color-gray;
-    bottom: 5px;
-    content: '';
-    height: 1px;
-    left: 0;
-    position: absolute;
-    transform: scaleX(0);
-    transform-origin: bottom right;
-    transition: transform 0.3s;
-    width: 100%;
-  }
+  background-image: linear-gradient($font-color-orange, $font-color-orange);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0 1px;
 
   &:hover {
-    color: $font-color-orange;
-
-    &::after {
-      transform: scaleX(1);
-      transform-origin: bottom left;
-    }
+    background-size: 100% 1px;
   }
 }

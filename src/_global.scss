@@ -11,7 +11,14 @@ body {
   background-position: center top;
   background-repeat: no-repeat;
   background-size: auto;
+  @include media-breakpoint-down(sm) { line-height: 1.8; }
 }
+
+::selection {
+  background-color: rgba($font-color-orange, 0.3);
+  //color: $font-color-gray;
+}
+
 
 /* Title */
 
@@ -19,21 +26,32 @@ h1 {
   font-size: 46px;
   font-weight: bold;
   line-height: 1.1;
+  @include media-breakpoint-down(xl) { font-size: 40px; }
+  @include media-breakpoint-down(lg) {
+    font-size: 34px;
+    line-height: 1.2;
+  }
+  @include media-breakpoint-down(sm) {
+    font-size: 28px;
+    line-height: 1.3;
+  }
 }
 
 h2 {
   font-size: 24px;
   font-weight: bold;
   line-height: 1.2;
+  @include media-breakpoint-down(lg) { font-size: 22px; }
+  @include media-breakpoint-down(sm) { font-size: 20px; }
 }
 
 /* Links */
 
 a {
-  @include tr(color 0.5s);
+  @include tr(color 0.6s, background-size 0.6s);
 
   &:hover {
-    color: $link-hover-color;
+    color: $font-color;
   }
 }
 
@@ -75,6 +93,9 @@ ul li {
     position: absolute;
     top: calc((1em * 2.2) / 2 - 8px);
     width: 16px;
+    @include media-breakpoint-down(sm) {
+      top: calc((1em * 1.8) / 2 - 8px);
+    }
   }
 }
 
@@ -94,5 +115,8 @@ ol li {
     left: 5px;
     position: absolute;
     top: 3px;
+    @include media-breakpoint-down(sm) {
+      top: 0;
+    }
   }
 }

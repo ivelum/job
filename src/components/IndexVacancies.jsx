@@ -4,12 +4,13 @@ import React from 'react';
 import Jobs from '../Jobs';
 import HrLine from '@components/HrLine';
 import * as styles from '@components/IndexVacancies.module.scss';
+import SvgImage from '@components/SvgImage';
 
 export default function IndexVacancies() {
   return (
     <>
       <HrLine />
-      <h2 className="mt-50">Открытые вакансии</h2>
+      <h2 className="mt-30 mt-lg-40 mt-xl-50">Открытые вакансии</h2>
       <div className={styles.vacanciesList}>
         {Object.keys(Jobs).map((key, index) => (
           <Link
@@ -27,6 +28,7 @@ export default function IndexVacancies() {
               {Jobs[key].title}
               <span className={styles.subTitle}>{Jobs[key].subTitle}</span>
             </span>
+            <SvgImage name="ico-angle-arrow" className={styles.ico} />
           </Link>
         ))}
       </div>

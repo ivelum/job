@@ -8,6 +8,7 @@ import ExperienceRadioField, {
   allExperienceTypes,
 } from './ExperienceRadioField';
 import Field from './Field';
+import Button from '@components/Button';
 import ExternalLink from '@components/ExternalLink';
 import FormErrorMessage from '@components/FormErrorMessage';
 import HrLine from '@components/HrLine';
@@ -93,17 +94,17 @@ export default function ApplyForm({ job, experienceTypes }) {
 
   return (
     <div className="row justify-content-center">
-      <div className="col-10">
+      <div className="col-12 col-xl-10">
         <div className={styles.vacancyTitle}>
           {job.title}
           <span className={styles.subTitle}>{job.subTitle}</span>
         </div>
         <HrLine />
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-          <h2 className="mt-50">О вас</h2>
-          <div className="mt-30">
+          <h2 className="mt-30 mt-lg-40 mt-xl-50">О вас</h2>
+          <div className="mt-20 mt-md-30">
             <div className="row gy-30">
-              <div className="col-6">
+              <div className="col-12 col-lg-6">
                 {renderField({
                   name: 'fullName',
                   label: 'Ваше имя и фамилия:',
@@ -114,7 +115,7 @@ export default function ApplyForm({ job, experienceTypes }) {
                 })}
               </div>
               <div className="w-100 mt-0" />
-              <div className="col-6">
+              <div className="col-12 col-md-6">
                 {renderField({
                   name: 'country',
                   label: 'Страна проживания',
@@ -125,7 +126,7 @@ export default function ApplyForm({ job, experienceTypes }) {
                   },
                 })}
               </div>
-              <div className="col-6">
+              <div className="col-12 col-md-6">
                 {renderField({
                   name: 'city',
                   label: 'Город или населенный пункт',
@@ -134,7 +135,7 @@ export default function ApplyForm({ job, experienceTypes }) {
                   },
                 })}
               </div>
-              <div className="col-4">
+              <div className="col-12 col-md-4">
                 {renderField({
                   name: 'email',
                   label: 'Ваш Email',
@@ -143,7 +144,7 @@ export default function ApplyForm({ job, experienceTypes }) {
                   },
                 })}
               </div>
-              <div className="col-4">
+              <div className="col-12 col-md-4">
                 {renderField({
                   name: 'telegram',
                   label: 'Telegram',
@@ -153,7 +154,7 @@ export default function ApplyForm({ job, experienceTypes }) {
                   },
                 })}
               </div>
-              <div className="col-4">
+              <div className="col-12 col-md-4">
                 {renderField({
                   name: 'skype',
                   label: 'Skype',
@@ -165,10 +166,10 @@ export default function ApplyForm({ job, experienceTypes }) {
               </div>
             </div>
           </div>
-          <h2 className="mt-50">Ваш опыт</h2>
-          <div className="mt-30">
+          <h2 className="mt-30 mt-lg-40 mt-xl-50">Ваш опыт</h2>
+          <div className="mt-20 mt-md-30">
             <div className="row gy-30">
-              <div className="col-6">
+              <div className="col-12 col-md-6">
                 {renderField({
                   name: 'experienceOverall',
                   label: 'Сколько лет опыта в программировании?',
@@ -177,7 +178,7 @@ export default function ApplyForm({ job, experienceTypes }) {
                   },
                 })}
               </div>
-              <div className="col-6">
+              <div className="col-12 col-md-6">
                 {renderField({
                   name: 'experienceWeb',
                   label: 'Сколько из них с веб-разработкой?',
@@ -188,8 +189,8 @@ export default function ApplyForm({ job, experienceTypes }) {
               </div>
             </div>
           </div>
-          <h2 className="mt-50">Оцените свой опыт</h2>
-          <div className="mt-30">
+          <h2 className="mt-30 mt-lg-40 mt-xl-50">Оцените свой опыт</h2>
+          <div className="mt-20 mt-md-30">
             <div className={styles.experienceLegend}>
               0&nbsp;&mdash; Нет опыта;
               1&nbsp;&mdash; Небольшой опыт, занимаюсь время от&nbsp;времени;
@@ -198,8 +199,8 @@ export default function ApplyForm({ job, experienceTypes }) {
               4&nbsp;&mdash; Эксперт, пишу статьи, выступаю
               на&nbsp;конференциях и&nbsp;т.д.
             </div>
-            <div className="mt-30">
-              <div className="row gy-30">
+            <div className="mt-20 mt-md-30">
+              <div className="row gy-30 align-items-center">
                 {Object.keys(experienceTypes).map((name) => (
                   <ExperienceRadioField
                     key={name}
@@ -211,8 +212,8 @@ export default function ApplyForm({ job, experienceTypes }) {
               </div>
             </div>
           </div>
-          <h2 className="mt-50">Дополнительно</h2>
-          <div className="mt-30">
+          <h2 className="mt-30 mt-lg-40 mt-xl-50">Дополнительно</h2>
+          <div className="mt-20 mt-md-30">
             <div className="row gy-30">
               <div className="col-12">
                 {renderField({
@@ -294,14 +295,13 @@ export default function ApplyForm({ job, experienceTypes }) {
               </div>
             </div>
             <HrLine />
-            <div className="mt-50">
-              <button
-                className={styles.submit}
+            <div className="mt-40 mt-xl-50 d-flex flex-column flex-sm-row">
+              <Button
+                confettiAnimation
                 type="submit"
-                disabled={submitting}
               >
-                {submitting ? 'Отправляем...' : 'Отправить'}
-              </button>
+                Откликнуться на вакансию
+              </Button>
               <FormErrorMessage
                 error={
                   submissionError ? {

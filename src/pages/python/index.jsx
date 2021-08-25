@@ -3,7 +3,7 @@ import React from 'react';
 import Jobs from '../../Jobs';
 import About from '@components/About';
 import Benefits from '@components/Benefits';
-import CalloutLink from '@components/CalloutLink';
+import Button from '@components/Button';
 import ExternalLink from '@components/ExternalLink';
 import HrLine from '@components/HrLine';
 import InterviewProcess from '@components/InterviewProcess';
@@ -16,16 +16,16 @@ const backLink = { url: '/', text: 'Все вакансии' };
 const pythonJob = () => (
   <Layout pageTitle={Jobs.php.title} backLink={backLink}>
     <div className="row justify-content-center">
-      <div className="col-10">
+      <div className="col-12 col-xl-10">
         <About />
         <HrLine />
-        <h2 className="mt-50">О проекте</h2>
-        <div className="mt-30">
+        <h2 className="mt-30 mt-lg-40 mt-xl-50">О проекте</h2>
+        <div className="mt-20 mt-md-30">
           <p>
             Данная вакансия предполагает работу
             над одним из&nbsp;следующих проектов:
           </p>
-          <ul className="mt-30">
+          <ul className="mt-20 mt-md-30">
             <li>
               <ExternalLink link="teamplify.home">Teamplify</ExternalLink>
               &nbsp;&mdash; инструмент для продуктивной работы команд
@@ -36,14 +36,14 @@ const pythonJob = () => (
               Платформа нового поколения для медиа-изданий в&nbsp;Интернет.
             </li>
           </ul>
-          <p className="mt-30">
+          <p className="mt-20 mt-md-30">
             Посмотрите короткое видео (5&nbsp;мин)
             с&nbsp;рассказом о&nbsp;проекте:
           </p>
         </div>
         <Youtube videoId="INym0k56LVc" />
-        <h2 className="mt-50">Технологии и процессы</h2>
-        <div className="mt-30">
+        <h2 className="mt-30 mt-lg-40 mt-xl-50">Технологии и процессы</h2>
+        <div className="mt-20 mt-md-30">
           <TechLogos
             brands={['Python', 'Django', 'React', 'GraphQL', 'Docker', 'AWS']}
           />
@@ -55,7 +55,7 @@ const pythonJob = () => (
             применяем автоматизированное тестирование, линтеры и&nbsp;code
             review. См. также:
           </p>
-          <ul className="mt-30">
+          <ul className="mt-20 mt-md-30">
             <li>
               более полный {' '}
               <ExternalLink link="wiki.technology">
@@ -67,12 +67,12 @@ const pythonJob = () => (
               вебинар о&nbsp;том{' '}
               <ExternalLink link="webinar.continuousDeployment">
                 как мы&nbsp;предпочитаем деплоить в&nbsp;прод
-              </ExternalLink>.
+              </ExternalLink>
             </li>
           </ul>
         </div>
-        <h2 className="mt-50">О вас</h2>
-        <div className="mt-30">
+        <h2 className="mt-30 mt-lg-40 mt-xl-50">О вас</h2>
+        <div className="mt-20 mt-md-30">
           <p>
             Мы&nbsp;ожидаем, что у&nbsp;вас не&nbsp;меньше пары лет опыта
             в&nbsp;веб-разработке, и&nbsp;вы&nbsp;готовы работать как над
@@ -103,10 +103,10 @@ const pythonJob = () => (
         <Benefits />
         <InterviewProcess />
         <HrLine />
-        <div className="mt-50">
-          <CalloutLink to={`${Jobs.python.url}form/`}>
+        <div className="mt-40 mt-xl-50 d-flex flex-column flex-sm-row">
+          <Button confettiAnimation href={`${Jobs.python.url}form/`}>
             Откликнуться на вакансию
-          </CalloutLink>
+          </Button>
         </div>
       </div>
     </div>

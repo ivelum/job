@@ -17,11 +17,16 @@ imagesCtx.keys().forEach((path) => {
   svgByName[name] = ReactComponent;
 });
 
-export default function SvgImage({ name }) {
+export default function SvgImage({ name, className }) {
   const Icon = svgByName[name];
-  return <Icon />;
+  return <Icon className={className} />;
 }
 
 SvgImage.propTypes = {
   name: PropTypes.oneOf(Object.keys(svgByName)).isRequired,
+  className: PropTypes.string,
+};
+
+SvgImage.defaultProps = {
+  className: '',
 };

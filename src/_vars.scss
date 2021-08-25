@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 $accent-color: #3a0;
 $error-color: #ff7a7a;
 $small-screen-width: 767px;
@@ -6,12 +8,12 @@ $small-screen-width: 767px;
 
 $variable-prefix: default-;
 $spacer: 20px;
-$spacers: (0: 0, 5: $spacer / 4, 10: $spacer / 2, 15: $spacer * 0.75, 20: $spacer, 30: $spacer * 1.5, 40: $spacer * 2, 50: $spacer * 2.5, 60: $spacer * 3, 70: $spacer * 3.5);
+$spacers: (0: 0, 5: math.div($spacer, 4), 10: math.div($spacer, 2), 15: math.div($spacer, 0.75), 20: $spacer, 30: $spacer * 1.5, 40: $spacer * 2, 50: $spacer * 2.5, 60: $spacer * 3, 70: $spacer * 3.5);
 $grid-columns: 12;
 $grid-gutter-width: 30px;
 $grid-row-columns: 6;
 $gutters: $spacers;
-$container-padding-x: $grid-gutter-width / 2;
+$container-padding-x: math.div($grid-gutter-width, 2);
 $enable-grid-classes: true;
 $grid-breakpoints: (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px);
 $container-max-widths: (sm: 540px, md: 720px, lg: 960px, xl: 1140px);
@@ -30,7 +32,7 @@ $font-color-gray: #666;
 $font-color-orange: #f36717;
 
 $link-color: #f36717;
-$link-hover-color: #C04600;
+$link-hover-color: #c04600;
 $link-decoration: none;
 
 $border-color: #666;

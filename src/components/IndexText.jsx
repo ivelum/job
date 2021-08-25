@@ -10,7 +10,7 @@ export default function IndexText() {
     <p>
       Привет!
       <img className={styles.hiIco} src={hiIco} alt="Привет" /><br />
-      Ниже перечислены все актуальные вакансии,которые сейчас
+      Ниже перечислены все актуальные вакансии, которые сейчас
       открыты в&nbsp;<ExternalLink link="company.home">Ivelum</ExternalLink>.
       Все вакансии подразумевают полную занятость,{' '}
       <ExternalLink link="wiki.remoteWork">удаленную работу</ExternalLink>{' '}
