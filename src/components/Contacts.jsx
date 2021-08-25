@@ -1,12 +1,12 @@
 import React from 'react';
 
 import ExternalLink from '@components/ExternalLink';
-import * as styles from '@components/IndexContacts.module.scss';
 
+import * as styles from './Contacts.module.scss';
 import icoMail from '@images/ico-mail.svg';
 import icoTg from '@images/ico-telegram.svg';
 
-export default function IndexContacts() {
+export default function Contacts() {
   return (
     <div className={styles.contacts}>
       <div className={styles.title}>

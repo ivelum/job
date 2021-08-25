@@ -26,7 +26,7 @@ const links = {
 };
 
 export default function ExternalLink({
-  link, href, children, className, noUnderline
+  link, href, children, className, noUnderline,
 }) {
   const blankProps = href && href.startsWith('mailto:') ? {} : {
     target: '_blank',

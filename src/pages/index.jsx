@@ -1,6 +1,6 @@
+import Contacts from '@components/Contacts';
 import React from 'react';
 
-import IndexContacts from '@components/IndexContacts';
 import IndexText from '@components/IndexText';
 import IndexVacancies from '@components/IndexVacancies';
 import Layout from '@components/layout/Layout';
@@ -14,7 +14,7 @@ const IndexPage = () => (
         <IndexText />
       </div>
       <div className="col-5 offset-1">
-        <IndexContacts />
+        <Contacts />
       </div>
     </div>
     <div className="row">
