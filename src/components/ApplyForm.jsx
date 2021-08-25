@@ -8,8 +8,6 @@ import ExperienceRadioField, {
   allExperienceTypes,
 } from './ExperienceRadioField';
 import Field from './Field';
-// import FieldLabel from './FieldLabel';
-// import GenericPage from './GenericPage';
 import ExternalLink from '@components/ExternalLink';
 import FormErrorMessage from '@components/FormErrorMessage';
 import HrLine from '@components/HrLine';
@@ -53,7 +51,6 @@ export default function ApplyForm({ job, experienceTypes }) {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  // eslint-disable-next-line no-console
   const onSubmit = async (data) => {
     let err = false;
     setSubmitting(true);
