@@ -1,12 +1,11 @@
 import { Link } from 'gatsby';
 import React from 'react';
 
-import GenericPage from '@components/GenericPage';
+import Layout from '@components/layout/Layout';
 
 export default function NotFoundPage() {
   return (
-    <GenericPage title="Not found">
-      <h1>Page not found</h1>
+    <Layout pageTitle="Page not found">
       <p>
         Sorry{' '}
         <span role="img" aria-label="Pensive emoji">
@@ -16,6 +15,6 @@ export default function NotFoundPage() {
         <br />
         <Link to="/">Go home</Link>.
       </p>
-    </GenericPage>
+    </Layout>
   );
 }
