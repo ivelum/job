@@ -1,10 +1,10 @@
 import React from 'react';
 
-import ExternalLinks from '../../ExternalLinks';
 import Jobs from '../../Jobs';
 import About from '@components/About';
 import Benefits from '@components/Benefits';
 import CalloutLink from '@components/CalloutLink';
+import ExternalLink from '@components/ExternalLink';
 import InterviewProcess from '@components/InterviewProcess';
 import TechLogos from '@components/TechLogos';
 import Youtube from '@components/Youtube';
@@ -26,8 +26,7 @@ const pythonJob = () => (
           </p>
           <ul className="mt-30">
             <li>
-              {/* eslint-disable-next-line max-len */}
-              <a href="https://teamplify.com" target="_blank" rel="noreferrer" className="underLined">Teamplify</a>
+              <ExternalLink link="teamplify.home">Teamplify</ExternalLink>
               &nbsp;&mdash; инструмент для продуктивной работы команд
               разработчиков, который мы&nbsp;изначально разработали для себя,
               а&nbsp;сейчас предлагаем как публичный продукт;
@@ -57,12 +56,17 @@ const pythonJob = () => (
           </p>
           <ul className="mt-30">
             <li>
-              {/* eslint-disable-next-line max-len */}
-              более полный <a href={ExternalLinks.wiki.technology} target="_blank" rel="noreferrer" className="underLined">список технологий</a> в&nbsp;нашей вики;
+              более полный {' '}
+              <ExternalLink link="wiki.technology">
+                список технологий
+              </ExternalLink> в&nbsp;нашей вики;
             </li>
             <li>
               {/* eslint-disable-next-line max-len */}
-              вебинар о&nbsp;том <a href={ExternalLinks.webinar.continuousDeployment} target="_blank" rel="noreferrer" className="underLined">как мы&nbsp;предпочитаем деплоить в&nbsp;прод</a>.
+              вебинар о&nbsp;том{' '}
+              <ExternalLink link="webinar.continuousDeployment">
+                как мы&nbsp;предпочитаем деплоить в&nbsp;прод
+              </ExternalLink>.
             </li>
           </ul>
         </div>

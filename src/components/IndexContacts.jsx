@@ -1,5 +1,6 @@
 import React from 'react';
 
+import ExternalLink from '@components/ExternalLink';
 import * as styles from '@components/IndexContacts.module.scss';
 
 import icoMail from '@images/ico-mail.svg';
@@ -17,37 +18,34 @@ export default function IndexContacts() {
             <span>/</span> Почта
           </div>
           <div className="col-7">
-            <a
-              href="mailto:job@ivelum.com"
-              className={`underLined ${styles.link}`}
-            >
+            <ExternalLink href="mailto:job@ivelum.com" className={styles.link}>
               <img className={styles.ico} src={icoMail} alt="Mail" />
               job@ivelum.com
-            </a>
+            </ExternalLink>
           </div>
           <div className={`col-5 ${styles.name}`}>
             <span>/</span> Телеграм, Ольга
           </div>
           <div className="col-7">
-            <a
+            <ExternalLink
               href="tg://resolve?domain=lebedevaoi"
-              className={`underLined ${styles.link}`}
+              className={styles.link}
             >
-              <img className={styles.ico} src={icoTg} alt="Mail" />
+              <img className={styles.ico} src={icoTg} alt="TG lebedevaoi" />
               @lebedevaoi
-            </a>
+            </ExternalLink>
           </div>
           <div className={`col-5 ${styles.name}`}>
             <span>/</span> Телеграм, Денис
           </div>
           <div className="col-7">
-            <a
+            <ExternalLink
               href="tg://resolve?domain=stebunovd"
-              className={`underLined ${styles.link}`}
+              className={styles.link}
             >
-              <img className={styles.ico} src={icoTg} alt="Mail" />
+              <img className={styles.ico} src={icoTg} alt="TG stebunovd" />
               @stebunovd
-            </a>
+            </ExternalLink>
           </div>
         </div>
       </div>

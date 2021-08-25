@@ -1,5 +1,6 @@
 import React from 'react';
 
+import ExternalLink from '@components/ExternalLink';
 import GenericPage from '@components/GenericPage';
 
 export default function index() {
@@ -16,13 +17,9 @@ export default function index() {
 
       <p>
         Пожалуйста, выберите одну удобную вам дату и время по ссылке:<br />
-        <a
-          href="https://calendly.com/olga-lebedeva/developer-job-interview"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <ExternalLink link="company.bookInterview">
           https://calendly.com/alexandr-strokach/developer-job-interview
-        </a><br />
+        </ExternalLink><br />
         Ссылка на Zoom-конференцию будет создана автоматически и придет вам
         на почту.
       </p>

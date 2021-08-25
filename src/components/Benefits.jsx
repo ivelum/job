@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ExternalLinks from '../ExternalLinks';
+import ExternalLink from '@components/ExternalLink';
 
 export default function Benefits() {
   return (
@@ -8,20 +8,23 @@ export default function Benefits() {
       <h2>Условия</h2>
       <ul className="mt-30">
         <li>
-          {/* eslint-disable-next-line max-len */}
-          <a href={ExternalLinks.wiki.remoteWork} target="_blank" rel="noreferrer" className="underLined">Удаленка</a>, <a href={ExternalLinks.wiki.remoteWork} target="_blank" rel="noreferrer" className="underLined">свободный график</a>,
+          <ExternalLink link="wiki.remoteWork">Удаленка</ExternalLink>,{' '}
+          <ExternalLink link="wiki.remoteWork">свободный график</ExternalLink>,
           полная занятость. Работа с&nbsp;частичной занятостью
           не&nbsp;рассматривается;
         </li>
         <li>
           Корпоративный Macbook, или денежная компенсация на&nbsp;покупку
           собственного оборудования. Подробнее&nbsp;&mdash;
-          {/* eslint-disable-next-line max-len */}
-          в&nbsp;разделе <a href={ExternalLinks.wiki.compensationPackage} target="_blank" rel="noreferrer" className="underLined">пакет компенсаций</a> в&nbsp;нашей вики;
+          в&nbsp;разделе{' '}
+          <ExternalLink link="wiki.compensationPackage">
+            пакет компенсаций
+          </ExternalLink> в&nbsp;нашей вики;
         </li>
         <li>
-          {/* eslint-disable-next-line max-len */}
-          <a href={ExternalLinks.wiki.englishLessons} target="_blank" rel="noreferrer" className="underLined">Курсы английского</a> с&nbsp;профессиональным преподавателем из&nbsp;США;
+          <ExternalLink link="wiki.englishLessons">
+            Курсы английского
+          </ExternalLink> с&nbsp;профессиональным преподавателем из&nbsp;США;
         </li>
       </ul>
     </div>

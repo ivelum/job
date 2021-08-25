@@ -37,33 +37,6 @@ a {
   }
 }
 
-.underLined {
-  display: inline-block;
-  position: relative;
-
-  &::after {
-    background-color: $font-color-gray;
-    bottom: 5px;
-    content: '';
-    height: 1px;
-    left: 0;
-    position: absolute;
-    transform: scaleX(0);
-    transform-origin: bottom right;
-    transition: transform 0.3s;
-    width: 100%;
-  }
-
-  &:hover {
-    color: $font-color-orange;
-
-    &::after {
-      transform: scaleX(1);
-      transform-origin: bottom left;
-    }
-  }
-}
-
 /* Hr */
 
 .hrLine {

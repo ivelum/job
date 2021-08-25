@@ -2,6 +2,7 @@ import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import * as React from 'react';
 
+import ExternalLink from '@components/ExternalLink';
 import Footer from '@components/Footer';
 import * as styles from '@components/layout/Layout.module.scss';
 
@@ -13,14 +14,13 @@ import logoIvelum from '@images/logo.svg';
 const Layout = ({ pageTitle, children, backLink }) => (
   <div className="container mt-70">
     <title>{pageTitle}</title>
-    <a
-      className={styles.githubButton}
+    <ExternalLink
       href="https://github.com"
-      target="_blank"
-      rel="noreferrer"
+      className={styles.githubButton}
+      noUnderline
     >
       <img src={githubLogo} alt="Fork me on GitHub" />
-    </a>
+    </ExternalLink>
     <Link
       to="/"
       className={styles.logo}
