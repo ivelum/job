@@ -45,7 +45,7 @@ const submitData = async (data) => {
 };
 
 export default function ApplyForm({ job, experienceTypes }) {
-  const [setSubmitting] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [submissionError, setSubmissionError] = useState(false);
   const {
     register,
@@ -300,7 +300,9 @@ export default function ApplyForm({ job, experienceTypes }) {
                 confettiAnimation
                 type="submit"
               >
-                Откликнуться на вакансию
+                {submitting
+                  ? 'Отправляем отклик...'
+                  : 'Откликнуться на вакансию'}
               </Button>
               <FormErrorMessage
                 error={
