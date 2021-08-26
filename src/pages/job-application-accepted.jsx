@@ -15,9 +15,9 @@ export default function index() {
       </p>
 
       <p>
-        Пожалуйста, выберите одну удобную вам дату и время по ссылке:<br />
+        Пожалуйста, выберите одну удобную вам дату и время{' '}
         <ExternalLink link="company.bookInterview">
-          https://calendly.com/alexandr-strokach/developer-job-interview
+          по ссылке
         </ExternalLink><br />
         Ссылка на Zoom-конференцию будет создана автоматически и придет вам
         на почту.

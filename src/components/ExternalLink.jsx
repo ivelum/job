@@ -8,7 +8,9 @@ import * as styles from './ExternalLink.module.scss';
 const links = {
   company: {
     home: 'https://ivelum.com',
-    bookInterview: 'https://calendly.com/olga-lebedeva/developer-job-interview',
+    bookInterview: (
+      'https://calendly.com/olga_lebedeva_/developer-job-interview'
+    ),
   },
   teamplify: {
     home: 'https://templify.com',
