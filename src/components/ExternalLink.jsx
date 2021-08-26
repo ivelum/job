@@ -26,17 +26,19 @@ const links = {
 };
 
 export default function ExternalLink({
-  link, href, children, className, noUnderline,
+  link, href, children, className, noUnderline, ...props
 }) {
-  const blankProps = href && href.startsWith('mailto:') ? {} : {
+  const hrefProp = href || get(links, link);
+  const blankProps = hrefProp.startsWith('http') ? {
     target: '_blank',
     rel: 'noreferrer',
-  };
+  } : {};
   return (
     <a
-      href={href || get(links, link)}
+      href={hrefProp}
       className={cn(!noUnderline && styles.underlined, className)}
       {...blankProps}
+      {...props}
     >
       {children}
     </a>

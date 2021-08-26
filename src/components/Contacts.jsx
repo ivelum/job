@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { openChat } from '../chat';
 import ExternalLink from '@components/ExternalLink';
 import SvgImage from '@components/SvgImage';
 
@@ -12,6 +13,20 @@ export default function Contacts() {
         С&nbsp;любыми вопросами, пожалуйста, пишите:
       </div>
       <div className={styles.body}>
+        <div className={styles.name}><span>/</span> Чат</div>
+        <div className={styles.contact}>
+          <ExternalLink
+            href="#"
+            className={styles.link}
+            onClick={(e) => {
+              e.preventDefault();
+              openChat();
+            }}
+          >
+            <SvgImage name="ico-chat" className={styles.ico} />
+            Написать в чат
+          </ExternalLink>
+        </div>
         <div className={styles.name}><span>/</span> Почта</div>
         <div className={styles.contact}>
           <ExternalLink
