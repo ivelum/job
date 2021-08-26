@@ -37,24 +37,14 @@ export default function Contacts() {
             job@ivelum.com
           </ExternalLink>
         </div>
-        <div className={styles.name}><span>/</span> Телеграм, Ольга</div>
+        <div className={styles.name}><span>/</span> Телеграм</div>
         <div className={styles.contact}>
           <ExternalLink
-            href="tg://resolve?domain=lebedevaoi"
+            href="tg://resolve?domain=IvelumBot"
             className={styles.link}
           >
             <SvgImage name="ico-telegram" className={styles.ico} />
-            @lebedevaoi
-          </ExternalLink>
-        </div>
-        <div className={styles.name}><span>/</span> Телеграм, Денис</div>
-        <div className={styles.contact}>
-          <ExternalLink
-            href="tg://resolve?domain=stebunovd"
-            className={styles.link}
-          >
-            <SvgImage name="ico-telegram" className={styles.ico} />
-            @stebunovd
+            @ivelum
           </ExternalLink>
         </div>
       </div>
