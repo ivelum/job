@@ -63,7 +63,8 @@
       "alias": {
         "map": [
           ["@components", "./src/components"],
-          ["@images", "./src/images"]
+          ["@images", "./src/images"],
+          ["@hooks", "./src/hooks"]
         ],
         "extensions": [".js", ".jsx", ".png", "svg"]
       }
