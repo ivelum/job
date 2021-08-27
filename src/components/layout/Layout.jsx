@@ -13,9 +13,11 @@ import Footer from '@/components/Footer';
 import SvgImage from '@/components/SvgImage';
 import * as styles from '@/components/layout/Layout.module.scss';
 
-const Layout = ({ pageTitle, children, backLink }) => (
+const Layout = ({
+  pageTitle, htmlTitle, children, backLink,
+}) => (
   <>
-    <Metadata pageTitle={pageTitle} />
+    <Metadata pageTitle={htmlTitle || pageTitle} />
     <div className={styles.container}>
       <ExternalLink
         href="https://github.com/ivelum/job"
@@ -66,14 +68,14 @@ const Layout = ({ pageTitle, children, backLink }) => (
 );
 
 Layout.propTypes = {
-  pageTitle: PropTypes.string,
-  children: PropTypes.node,
+  pageTitle: PropTypes.string.isRequired,
+  htmlTitle: PropTypes.string,
+  children: PropTypes.node.isRequired,
   backLink: PropTypes.object,
 };
 
 Layout.defaultProps = {
-  children: null,
-  pageTitle: null,
+  htmlTitle: null,
   backLink: null,
 };
 

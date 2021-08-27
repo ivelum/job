@@ -14,7 +14,11 @@ import Layout from '@/components/layout/Layout';
 const backLink = { url: '/', text: 'Все вакансии' };
 
 const pythonJob = () => (
-  <Layout pageTitle={Jobs.python.title} backLink={backLink}>
+  <Layout
+    pageTitle={Jobs.python.title}
+    htmlTitle={Jobs.python.fullTitle}
+    backLink={backLink}
+  >
     <div className="row justify-content-center">
       <div className="col-12 col-xl-10">
         <About />

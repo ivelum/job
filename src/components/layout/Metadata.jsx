@@ -5,11 +5,14 @@ import { Helmet } from 'react-helmet';
 
 import logoIvelum from '@/images/logo.png';
 
+import Jobs from '@/Jobs';
 import useSiteMetadata from '@/hooks/use-site-metadata';
 
 export default function Metadata({ pageTitle }) {
   const location = useLocation();
-  const { siteUrl, title: siteName, description } = useSiteMetadata();
+  const { siteUrl, title: siteName } = useSiteMetadata();
+  const description = 'Сегодня открыты две вакансии: '
+      + `${Jobs.php.fullTitle} и ${Jobs.python.fullTitle}`;
   const metaTitle = pageTitle === siteName
     ? pageTitle
     : `${siteName} - ${pageTitle}`;
