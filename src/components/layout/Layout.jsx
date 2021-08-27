@@ -15,8 +15,8 @@ import logoIvelumSvg from '@images/logo.svg';
 
 const siteName = 'Работа в Ivelum';
 const siteDescription = (
-  'Ivelum - продуктовая разработка программного обеспечения. '
-  + 'Перечень актуальных вакансий и формы отклика для кандидатов.'
+  'Сегодня открыты две вакансии: Full-stack разработчик (PHP + frontend) и '
+  + 'Full-stack разработчик (Python + frontend)'
 );
 
 const Layout = ({ pageTitle, children, backLink }) => {
