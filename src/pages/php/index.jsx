@@ -1,14 +1,14 @@
 import React from 'react';
 
-import Jobs from '../../Jobs';
-import About from '@components/About';
-import Benefits from '@components/Benefits';
-import Button from '@components/Button';
-import HrLine from '@components/HrLine';
-import InterviewProcess from '@components/InterviewProcess';
-import TechLogos from '@components/TechLogos';
-import Youtube from '@components/Youtube';
-import Layout from '@components/layout/Layout';
+import Jobs from '@/Jobs';
+import About from '@/components/About';
+import Benefits from '@/components/Benefits';
+import Button from '@/components/Button';
+import HrLine from '@/components/HrLine';
+import InterviewProcess from '@/components/InterviewProcess';
+import TechLogos from '@/components/TechLogos';
+import Youtube from '@/components/Youtube';
+import Layout from '@/components/layout/Layout';
 
 const backLink = { url: '/', text: 'Все вакансии' };
 

@@ -24,11 +24,11 @@
           "group": "index"
         },
         {
-          "pattern": "@images/*.png",
+          "pattern": "@/images/*.png",
           "group": "index"
         },
         {
-          "pattern": "@images/*.svg",
+          "pattern": "@/images/*.svg",
           "group": "index"
         }
       ],
@@ -62,9 +62,7 @@
     "import/resolver": {
       "alias": {
         "map": [
-          ["@components", "./src/components"],
-          ["@images", "./src/images"],
-          ["@hooks", "./src/hooks"]
+          ["@", "./src"]
         ],
         "extensions": [".js", ".jsx", ".png", "svg"]
       }

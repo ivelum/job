@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import * as styles from '@components/FieldLabel.module.scss';
+import * as styles from '@/components/FieldLabel.module.scss';
 
 export default function FieldLabel({
   name, label, isRequired,

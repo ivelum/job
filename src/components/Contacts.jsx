@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { openChat } from '../chat';
-import ExternalLink from '@components/ExternalLink';
-import SvgImage from '@components/SvgImage';
-
 import * as styles from './Contacts.module.scss';
+
+import { openChat } from '@/chat';
+import ExternalLink from '@/components/ExternalLink';
+import SvgImage from '@/components/SvgImage';
 
 export default function Contacts() {
   return (

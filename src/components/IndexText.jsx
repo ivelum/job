@@ -3,7 +3,7 @@ import React from 'react';
 import ExternalLink from './ExternalLink';
 
 import * as styles from './IndexText.module.scss';
-import hiIco from '@images/hi-ico.png';
+import hiIco from '@/images/hi-ico.png';
 
 export default function IndexText() {
   return (

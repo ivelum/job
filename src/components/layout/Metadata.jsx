@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-import useSiteMetadata from '@hooks/use-site-metadata';
+import logoIvelum from '@/images/logo.png';
 
-import logoIvelum from '@images/logo.png';
+import useSiteMetadata from '@/hooks/use-site-metadata';
 
 export default function Metadata({ pageTitle }) {
   const location = useLocation();

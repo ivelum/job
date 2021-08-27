@@ -8,12 +8,13 @@ import ExperienceRadioField, {
   allExperienceTypes,
 } from './ExperienceRadioField';
 import Field from './Field';
-import Button from '@components/Button';
-import ExternalLink from '@components/ExternalLink';
-import FormErrorMessage from '@components/FormErrorMessage';
-import HrLine from '@components/HrLine';
 
 import * as styles from './ApplyForm.module.scss';
+
+import Button from '@/components/Button';
+import ExternalLink from '@/components/ExternalLink';
+import FormErrorMessage from '@/components/FormErrorMessage';
+import HrLine from '@/components/HrLine';
 
 export { allExperienceTypes };
 

@@ -2,9 +2,9 @@ import range from 'lodash/range';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import FormErrorMessage from '@components/FormErrorMessage';
-
 import * as styles from './ExperienceRadioField.module.scss';
+
+import FormErrorMessage from '@/components/FormErrorMessage';
 
 export const allExperienceTypes = {
   linux: 'Linux',

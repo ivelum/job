@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Contacts from '@components/Contacts';
-import ExternalLink from '@components/ExternalLink';
-import Layout from '@components/layout/Layout';
+import Contacts from '@/components/Contacts';
+import ExternalLink from '@/components/ExternalLink';
+import Layout from '@/components/layout/Layout';
 
 export default function index() {
   return (

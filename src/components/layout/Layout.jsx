@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 import * as React from 'react';
 
 import Metadata from './Metadata';
-import ExternalLink from '@components/ExternalLink';
-import Footer from '@components/Footer';
-import SvgImage from '@components/SvgImage';
-import * as styles from '@components/layout/Layout.module.scss';
 
-import catImage from '@images/cat.png';
-import githubLogo from '@images/github-button.svg';
-import logoIvelum from '@images/logo.svg';
+import catImage from '@/images/cat.png';
+import githubLogo from '@/images/github-button.svg';
+import logoIvelum from '@/images/logo.svg';
+
+import ExternalLink from '@/components/ExternalLink';
+import Footer from '@/components/Footer';
+import SvgImage from '@/components/SvgImage';
+import * as styles from '@/components/layout/Layout.module.scss';
 
 const Layout = ({ pageTitle, children, backLink }) => (
   <>

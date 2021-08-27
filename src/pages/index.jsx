@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Contacts from '@components/Contacts';
-import IndexText from '@components/IndexText';
-import IndexVacancies from '@components/IndexVacancies';
-import Layout from '@components/layout/Layout';
+import Contacts from '@/components/Contacts';
+import IndexText from '@/components/IndexText';
+import IndexVacancies from '@/components/IndexVacancies';
+import Layout from '@/components/layout/Layout';
 
 import '../_global.scss';
 
