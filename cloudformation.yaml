@@ -39,9 +39,7 @@ Resources:
             ResponsePagePath: /404.html
         Origins:
         - DomainName:
-            Fn::GetAtt:
-            - WebsiteBucket
-            - RegionalDomainName
+            Ref: WebsiteBucket
           Id:
             Ref: WebsiteBucket
           CustomOriginConfig:
