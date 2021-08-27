@@ -15,8 +15,8 @@ import logoIvelumSvg from '@images/logo.svg';
 
 const siteName = 'Работа в Ivelum';
 const siteDescription = (
-  'Ivelum - продуктовая разработка программного обеспечения. ' +
-  'Перечень актуальных вакансий и формы отклика для кандидатов.'
+  'Ivelum - продуктовая разработка программного обеспечения. '
+  + 'Перечень актуальных вакансий и формы отклика для кандидатов.'
 );
 
 const Layout = ({ pageTitle, children, backLink }) => {
@@ -84,7 +84,7 @@ const Layout = ({ pageTitle, children, backLink }) => {
       </div>
     </>
   );
-}
+};
 
 Layout.propTypes = {
   pageTitle: PropTypes.string,
