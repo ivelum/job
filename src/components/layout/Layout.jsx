@@ -1,3 +1,4 @@
+import { useLocation } from '@reach/router';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import * as React from 'react';
@@ -20,6 +21,7 @@ const siteDescription = (
 );
 
 const Layout = ({ pageTitle, children, backLink }) => {
+  const location = useLocation();
   const metaTitle = pageTitle === siteName
     ? pageTitle
     : `${siteName} - ${pageTitle}`;
@@ -32,8 +34,8 @@ const Layout = ({ pageTitle, children, backLink }) => {
         <meta name="og:title" content={metaTitle} />
         <meta name="og:description" content={siteDescription} />
         <meta name="og:type" content="website" />
-        <meta name="og:image" content={`${window.location}/${logoIvelumPng}`} />
-        <meta name="og:url" content={window.location.href} />
+        <meta name="og:image" content={`${location.origin}${logoIvelumPng}`} />
+        <meta name="og:url" content={location.href} />
         <meta name="og:locale" content="ru_RU" />
       </Helmet>
       <div className={styles.container}>
