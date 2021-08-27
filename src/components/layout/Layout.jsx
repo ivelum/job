@@ -14,6 +14,10 @@ import logoIvelumPng from '@images/logo.png';
 import logoIvelumSvg from '@images/logo.svg';
 
 const siteName = 'Работа в Ivelum';
+const siteDescription = (
+  'Ivelum - продуктовая разработка программного обеспечения. ' +
+  'Перечень актуальных вакансий и формы отклика для кандидатов.'
+);
 
 const Layout = ({ pageTitle, children, backLink }) => {
   const metaTitle = pageTitle === siteName
@@ -23,13 +27,10 @@ const Layout = ({ pageTitle, children, backLink }) => {
     <>
       <Helmet>
         <title>{pageTitle}</title>
+        <meta name="description" content={siteDescription} />
         <meta name="og:site_name" content={siteName} />
         <meta name="og:title" content={metaTitle} />
-        <meta
-          name="og:description"
-          content="Ivelum - продуктовая разработка программного обеспечения.
-          Перечень актуальных вакансий и формы отклика для кандидатов."
-        />
+        <meta name="og:description" content={siteDescription} />
         <meta name="og:type" content="website" />
         <meta name="og:image" content={`${window.location}/${logoIvelumPng}`} />
         <meta name="og:url" content={window.location.href} />
