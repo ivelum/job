@@ -8,14 +8,9 @@ import * as styles from '@/components/FieldLabel.module.scss';
 
 export default function Field({
   name, label, helpText, isRequired, errors,
-  component, componentProps,
-  registerField, registerProps,
+  component, componentProps, registerField,
 }) {
   const Component = component;
-  const registerValues = { ...registerProps };
-  if (isRequired) {
-    registerValues.required = 'Обязательное поле';
-  }
   return (
     <div className="formGroup">
       <FieldLabel
@@ -25,7 +20,7 @@ export default function Field({
       />
       {helpText && <div className={styles.helpText}>{helpText}</div>}
       <Component
-        {...registerField(name, registerValues)}
+        {...registerField(name)}
         {...componentProps}
         id={name}
       />

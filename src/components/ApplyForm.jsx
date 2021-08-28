@@ -1,7 +1,9 @@
+import { yupResolver } from '@hookform/resolvers/yup';
 import { navigate } from 'gatsby';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
 
 import CountryDropdown from './CountryDropdown';
 import ExperienceRadioField, {
@@ -18,20 +20,30 @@ import HrLine from '@/components/HrLine';
 
 export { allExperienceTypes };
 
-function checkCountry(value) {
-  if (value === 'RU') {
-    return 'Найм из России по этой вакансии временно приостановлен. '
-      + 'У нас есть внутренние квоты по найму из разных стран, и квота по '
-      + 'России на данный момент полностью выбрана. Это временная ситуация. '
-      + 'Как только появятся квоты, мы возобновим найм в России.';
-  }
-  if (['AZ', 'CN', 'KZ', 'LV', 'UZ'].indexOf(value) >= 0) {
-    return 'В настоящее время у нас нет возможности работать с этой страной';
-  }
-  return null;
-}
+const ruLockedErr = (
+  'Найм из России по этой вакансии временно приостановлен. '
+  + 'У нас есть внутренние квоты по найму из разных стран, и квота по '
+  + 'России на данный момент полностью выбрана. Это временная ситуация. '
+  + 'Как только появятся квоты, мы возобновим найм в России.'
+);
+
+const lockedCountryErr = (
+  'В настоящее время у нас нет возможности работать с этой страной.'
+);
+
+const numberTypeErr = 'Ожидается число.';
 
 const apiUrl = 'https://1jlrn8msi3.execute-api.eu-north-1.amazonaws.com/';
+
+yup.setLocale({
+  mixed: {
+    required: 'Обязательное поле.',
+  },
+  number: {
+    // eslint-disable-next-line no-template-curly-in-string
+    min: 'Минимальное значение - ${min}',
+  },
+});
 
 const submitData = async (data) => {
   const response = await fetch(apiUrl, {
@@ -48,11 +60,37 @@ const submitData = async (data) => {
 export default function ApplyForm({ job, experienceTypes }) {
   const [submitting, setSubmitting] = useState(false);
   const [submissionError, setSubmissionError] = useState(false);
+  const schema = yup.object().shape({
+    fullName: yup.string().required(),
+    country: yup.string().required().test(
+      'checkRuLocked',
+      ruLockedErr,
+      (value) => value !== 'RU',
+    ).test(
+      'checkCountryLocked',
+      lockedCountryErr,
+      (value) => ['AZ', 'CN', 'KZ', 'LV', 'UZ'].indexOf(value) === -1,
+    ),
+    city: yup.string().required(),
+    email: yup.string().required().email(),
+    experienceOverall: yup.number().typeError(numberTypeErr).required().min(0),
+    experienceWeb: yup.number().typeError(numberTypeErr).required().min(0),
+    education: yup.string().required(),
+    linuxCommands: yup.string().required(),
+    lovedTasks: yup.string().required(),
+    unlovedTasks: yup.string().required(),
+    sourceCode: yup.string().required(),
+    english: yup.string().required(),
+    referrer: yup.string().required(),
+  });
+  Object.keys(experienceTypes).forEach((name) => {
+    schema[name] = yup.number().typeError(numberTypeErr).required();
+  });
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({ resolver: yupResolver(schema) });
   const onSubmit = async (data) => {
     let err = false;
     setSubmitting(true);
@@ -78,7 +116,7 @@ export default function ApplyForm({ job, experienceTypes }) {
 
   const renderField = ({
     name, label, helpText, isRequired,
-    component, componentProps, registerProps,
+    component, componentProps,
   } = {}) => (
     <Field
       name={name}
@@ -89,7 +127,6 @@ export default function ApplyForm({ job, experienceTypes }) {
       component={component}
       componentProps={componentProps}
       registerField={register}
-      registerProps={registerProps}
     />
   );
 
@@ -121,7 +158,6 @@ export default function ApplyForm({ job, experienceTypes }) {
                   name: 'country',
                   label: 'Страна проживания',
                   component: CountryDropdown,
-                  registerProps: { validate: checkCountry },
                   componentProps: {
                     className: 'customSelect',
                   },
