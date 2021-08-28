@@ -3,9 +3,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-import logoIvelumSmall from '@/images/logo-small.png';
-import logoIvelum from '@/images/logo.png';
-
 import Jobs from '@/Jobs';
 import useSiteMetadata from '@/hooks/use-site-metadata';
 
@@ -27,16 +24,15 @@ export default function Metadata({ pageTitle }) {
       <meta name="og:type" content="website" />
       <meta name="og:url" content={`${siteUrl}${location.pathname}`} />
       <meta name="og:locale" content="ru_RU" />
-      <meta name="og:image" content={`${siteUrl}${logoIvelum}`} />
-      <meta name="og:image:width" content="1200" />
-      <meta name="og:image:height" content="250" />
-      <meta name="og:image" content={`${siteUrl}${logoIvelumSmall}`} />
-      <meta name="og:image:width" content="270" />
-      <meta name="og:image:height" content="250" />
     </Helmet>
   );
 }
 
 Metadata.propTypes = {
   pageTitle: PropTypes.string.isRequired,
+  description: PropTypes.string,
+};
+
+Metadata.defaultProps = {
+  description: '',
 };
