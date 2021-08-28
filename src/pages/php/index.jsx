@@ -15,7 +15,7 @@ const backLink = { url: '/', text: 'Все вакансии' };
 const phpJob = () => (
   <Layout
     pageTitle={Jobs.php.title}
-    htmlTitle={Jobs.php.fullTitle}
+    metaDescription={Jobs.php.description}
     backLink={backLink}
   >
     <div className="row justify-content-center">

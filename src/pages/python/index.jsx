@@ -16,7 +16,7 @@ const backLink = { url: '/', text: 'Все вакансии' };
 const pythonJob = () => (
   <Layout
     pageTitle={Jobs.python.title}
-    htmlTitle={Jobs.python.fullTitle}
+    metaDescription={Jobs.python.description}
     backLink={backLink}
   >
     <div className="row justify-content-center">

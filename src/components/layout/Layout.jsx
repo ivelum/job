@@ -14,10 +14,13 @@ import SvgImage from '@/components/SvgImage';
 import * as styles from '@/components/layout/Layout.module.scss';
 
 const Layout = ({
-  pageTitle, htmlTitle, children, backLink,
+  pageTitle, metaTitle, metaDescription, children, backLink,
 }) => (
   <>
-    <Metadata pageTitle={htmlTitle || pageTitle} />
+    <Metadata
+      pageTitle={metaTitle || pageTitle}
+      description={metaDescription}
+    />
     <div className={styles.container}>
       <ExternalLink
         href="https://github.com/ivelum/job"
@@ -69,13 +72,15 @@ const Layout = ({
 
 Layout.propTypes = {
   pageTitle: PropTypes.string.isRequired,
-  htmlTitle: PropTypes.string,
+  metaTitle: PropTypes.string,
+  metaDescription: PropTypes.string,
   children: PropTypes.node.isRequired,
   backLink: PropTypes.object,
 };
 
 Layout.defaultProps = {
-  htmlTitle: null,
+  metaTitle: null,
+  metaDescription: null,
   backLink: null,
 };
 

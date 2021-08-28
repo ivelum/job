@@ -9,7 +9,12 @@ const backLink = { url: '/', text: 'Все вакансии' };
 
 export default function PHPForm() {
   return (
-    <Layout pageTitle="Отклик на вакансию" backLink={backLink}>
+    <Layout
+      pageTitle="Отклик на вакансию"
+      metaTitle={`Отклик на вакансию - ${Jobs.php.title}`}
+      metaDescription={Jobs.php.description}
+      backLink={backLink}
+    >
       <ApplyForm
         job={Jobs.php}
         experienceTypes={omit(allExperienceTypes, ['django'])}

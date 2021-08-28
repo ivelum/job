@@ -6,21 +6,22 @@ import { Helmet } from 'react-helmet';
 import Jobs from '@/Jobs';
 import useSiteMetadata from '@/hooks/use-site-metadata';
 
-export default function Metadata({ pageTitle }) {
+export default function Metadata({ pageTitle, description }) {
   const location = useLocation();
   const { siteUrl, title: siteName } = useSiteMetadata();
-  const description = 'Сегодня открыты две вакансии: '
-      + `${Jobs.php.fullTitle} и ${Jobs.python.fullTitle}`;
+  const metaDescription = description || (
+    'Сегодня открыты две вакансии: '
+    + `${Jobs.php.description} и ${Jobs.python.description}`
+  );
   const metaTitle = pageTitle === siteName
     ? pageTitle
     : `${siteName} - ${pageTitle}`;
   return (
     <Helmet>
-      <title>{pageTitle}</title>,
-      <meta name="description" content={description} />
-      <meta name="og:site_name" content={siteName} />
+      <title>{pageTitle}</title>
+      <meta name="description" content={metaDescription} />
       <meta name="og:title" content={metaTitle} />
-      <meta name="og:description" content={description} />
+      <meta name="og:description" content={metaDescription} />
       <meta name="og:type" content="website" />
       <meta name="og:url" content={`${siteUrl}${location.pathname}`} />
       <meta name="og:locale" content="ru_RU" />
