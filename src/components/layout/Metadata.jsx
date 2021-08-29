@@ -20,6 +20,10 @@ export default function Metadata({ pageTitle, description }) {
     <Helmet>
       <title>{pageTitle}</title>
       <meta name="description" content={metaDescription} />
+      <link rel="icon" href="/favicon.ico" sizes="any" />
+      <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+      <link rel="manifest" href="/site.webmanifest" />
       <meta name="og:title" content={metaTitle} />
       <meta name="og:description" content={metaDescription} />
       <meta name="og:type" content="website" />
