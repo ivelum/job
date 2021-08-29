@@ -39,11 +39,15 @@ def lambda_handler(event, context):
     fields = ws.row_values(1)
 
     values = []
-    for field in fields:
+    for col_index, field in enumerate(fields, start=1):
+        if field == 'ts':
+            # save timestamp col index as it should always have a value
+            # and we can check its values count later
+            ts_col_index = col_index
         values.append(event_body.get(field, ''))
 
     missing_values = {k: v for k, v in event_body.items() if k not in fields}
-    new_row_num = len(ws.col_values(1)) + 1
+    new_row_num = len(ws.col_values(ts_col_index)) + 1
     ws.update(f'A{new_row_num}', [values])
     if missing_values:
         ws.update_cell(new_row_num, len(values) + 1, json.dumps(missing_values))
