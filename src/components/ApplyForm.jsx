@@ -88,6 +88,7 @@ export default function ApplyForm({ job, experienceTypes }) {
   });
   const {
     register,
+    trigger,
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
@@ -160,6 +161,7 @@ export default function ApplyForm({ job, experienceTypes }) {
                   component: CountryDropdown,
                   componentProps: {
                     className: 'customSelect',
+                    onBlur: () => { trigger(['country']); },
                   },
                 })}
               </div>
