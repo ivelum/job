@@ -4,7 +4,7 @@ import Jobs from '@/Jobs';
 import About from '@/components/About';
 import Benefits from '@/components/Benefits';
 import Button from '@/components/Button';
-import ExternalLink, {ExternalLinks} from '@/components/ExternalLink';
+import ExternalLink, { ExternalLinks } from '@/components/ExternalLink';
 import HrLine from '@/components/HrLine';
 import InterviewProcess from '@/components/InterviewProcess';
 import TechLogos from '@/components/TechLogos';

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Contacts from '@/components/Contacts';
-import ExternalLink, {ExternalLinks} from '@/components/ExternalLink';
+import ExternalLink, { ExternalLinks } from '@/components/ExternalLink';
 import Layout from '@/components/layout/Layout';
 
 export default function index() {

@@ -3,7 +3,7 @@ import React from 'react';
 import * as styles from './Contacts.module.scss';
 
 import { openChat } from '@/chat';
-import ExternalLink, {ExternalLinks} from '@/components/ExternalLink';
+import ExternalLink, { ExternalLinks } from '@/components/ExternalLink';
 import SvgImage from '@/components/SvgImage';
 
 export default function Contacts() {
