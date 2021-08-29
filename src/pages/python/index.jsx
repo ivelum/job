@@ -4,7 +4,7 @@ import Jobs from '@/Jobs';
 import About from '@/components/About';
 import Benefits from '@/components/Benefits';
 import Button from '@/components/Button';
-import ExternalLink from '@/components/ExternalLink';
+import ExternalLink, {ExternalLinks} from '@/components/ExternalLink';
 import HrLine from '@/components/HrLine';
 import InterviewProcess from '@/components/InterviewProcess';
 import TechLogos from '@/components/TechLogos';
@@ -31,7 +31,9 @@ const pythonJob = () => (
           </p>
           <ul className="mt-20 mt-md-30">
             <li>
-              <ExternalLink link="teamplify.home">Teamplify</ExternalLink>
+              <ExternalLink href={ExternalLinks.teamplify.home}>
+                Teamplify
+              </ExternalLink>
               &nbsp;&mdash; инструмент для продуктивной работы команд
               разработчиков, который мы&nbsp;изначально разработали для себя,
               а&nbsp;сейчас предлагаем как публичный продукт;
@@ -62,14 +64,14 @@ const pythonJob = () => (
           <ul className="mt-20 mt-md-30">
             <li>
               более полный {' '}
-              <ExternalLink link="wiki.technology">
+              <ExternalLink href={ExternalLinks.wiki.technology}>
                 список технологий
               </ExternalLink> в&nbsp;нашей вики;
             </li>
             <li>
               {/* eslint-disable-next-line max-len */}
               вебинар о&nbsp;том{' '}
-              <ExternalLink link="webinar.continuousDeployment">
+              <ExternalLink href={ExternalLinks.webinar.continuousDeployment}>
                 как мы&nbsp;предпочитаем деплоить в&nbsp;прод
               </ExternalLink>
             </li>

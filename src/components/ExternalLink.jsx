@@ -1,16 +1,20 @@
 import cn from 'classnames';
-import get from 'lodash/get';
 import PropTypes from 'prop-types';
 import React from 'react';
 
 import * as styles from './ExternalLink.module.scss';
 
-const links = {
+export const ExternalLinks = {
   company: {
     home: 'https://ivelum.com',
+    jobRepo: 'https://github.com/ivelum/job',
     bookInterview: (
       'https://calendly.com/olga_lebedeva_/developer-job-interview'
     ),
+  },
+  contacts: {
+    email: 'mailto:job@ivelum.com',
+    telegram: 'tg://resolve?domain=IvelumBot',
   },
   teamplify: {
     home: 'https://templify.com',
@@ -28,16 +32,15 @@ const links = {
 };
 
 export default function ExternalLink({
-  link, href, children, className, noUnderline, ...props
+  href, children, className, noUnderline, ...props
 }) {
-  const hrefProp = href || get(links, link);
-  const blankProps = hrefProp.startsWith('http') ? {
+  const blankProps = href.startsWith('http') ? {
     target: '_blank',
     rel: 'noreferrer',
   } : {};
   return (
     <a
-      href={hrefProp}
+      href={href}
       className={cn(!noUnderline && styles.underlined, className)}
       {...blankProps}
       {...props}
@@ -48,16 +51,13 @@ export default function ExternalLink({
 }
 
 ExternalLink.propTypes = {
-  link: PropTypes.string,
-  href: PropTypes.string,
+  href: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   noUnderline: PropTypes.bool,
 };
 
 ExternalLink.defaultProps = {
-  link: null,
-  href: null,
   className: null,
   noUnderline: false,
 };

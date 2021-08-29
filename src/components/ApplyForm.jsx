@@ -14,7 +14,7 @@ import Field from './Field';
 import * as styles from './ApplyForm.module.scss';
 
 import Button from '@/components/Button';
-import ExternalLink from '@/components/ExternalLink';
+import ExternalLink, { ExternalLinks } from '@/components/ExternalLink';
 import FormErrorMessage from '@/components/FormErrorMessage';
 import HrLine from '@/components/HrLine';
 
@@ -350,7 +350,7 @@ export default function ApplyForm({ job, experienceTypes }) {
                       <>
                         При отправке формы произошла ошибка.<br />
                         При повторении ошибки напишите нам на{' '}
-                        <ExternalLink href="mailto:job@ivelum.com">
+                        <ExternalLink href={ExternalLinks.contacts.email}>
                           job@ivelum.com
                         </ExternalLink>
                       </>

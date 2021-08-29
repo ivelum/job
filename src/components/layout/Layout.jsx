@@ -8,7 +8,7 @@ import catImage from '@/images/cat.png';
 import githubLogo from '@/images/github-button.svg';
 import logoIvelum from '@/images/logo.svg';
 
-import ExternalLink from '@/components/ExternalLink';
+import ExternalLink, {ExternalLinks} from '@/components/ExternalLink';
 import Footer from '@/components/Footer';
 import SvgImage from '@/components/SvgImage';
 import * as styles from '@/components/layout/Layout.module.scss';
@@ -23,9 +23,8 @@ const Layout = ({
     />
     <div className={styles.container}>
       <ExternalLink
-        href="https://github.com/ivelum/job"
+        href={ExternalLinks.company.jobRepo}
         className={styles.githubButton}
-        noUnderline
       >
         <div className={styles.githubCat}>
           <img

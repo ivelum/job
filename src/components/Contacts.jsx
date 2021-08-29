@@ -3,7 +3,7 @@ import React from 'react';
 import * as styles from './Contacts.module.scss';
 
 import { openChat } from '@/chat';
-import ExternalLink from '@/components/ExternalLink';
+import ExternalLink, {ExternalLinks} from '@/components/ExternalLink';
 import SvgImage from '@/components/SvgImage';
 
 export default function Contacts() {
@@ -30,7 +30,7 @@ export default function Contacts() {
         <div className={styles.name}><span>/</span> Почта</div>
         <div className={styles.contact}>
           <ExternalLink
-            href="mailto:job@ivelum.com"
+            href={ExternalLinks.contacts.email}
             className={styles.link}
           >
             <SvgImage name="ico-mail" className={styles.ico} />
@@ -40,7 +40,7 @@ export default function Contacts() {
         <div className={styles.name}><span>/</span> Телеграм</div>
         <div className={styles.contact}>
           <ExternalLink
-            href="tg://resolve?domain=IvelumBot"
+            href={ExternalLinks.contacts.telegram}
             className={styles.link}
           >
             <SvgImage name="ico-telegram" className={styles.ico} />

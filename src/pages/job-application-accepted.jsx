@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Contacts from '@/components/Contacts';
-import ExternalLink from '@/components/ExternalLink';
+import ExternalLink, {ExternalLinks} from '@/components/ExternalLink';
 import Layout from '@/components/layout/Layout';
 
 export default function index() {
@@ -16,7 +16,7 @@ export default function index() {
 
       <p>
         Пожалуйста, выберите одну удобную вам дату и время{' '}
-        <ExternalLink link="company.bookInterview">
+        <ExternalLink href={ExternalLinks.company.bookInterview}>
           по ссылке
         </ExternalLink><br />
         Ссылка на Zoom-конференцию будет создана автоматически и придет вам

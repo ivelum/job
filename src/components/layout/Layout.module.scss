@@ -25,6 +25,7 @@
   transform-origin: bottom center;
   width: 150px;
   z-index: 10;
+  background-image: none;
   @include media-breakpoint-down(md) {
     right: -15px;
     top: -65px;
