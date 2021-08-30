@@ -93,23 +93,28 @@ export default function ApplyForm({ job, experienceTypes }) {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
   const onSubmit = async (data) => {
-    let err = false;
     setSubmitting(true);
     setSubmissionError(false);
+    let successSending = false;
     try {
-      const response = await submitData({
-        ...data,
-        job: job.name,
-      });
-      if (response.status === 'ok') {
-        await navigate('/job-application-accepted/');
+      if (process.env.NODE_ENV === 'production') {
+        const response = await submitData({
+          ...data,
+          job: job.name,
+        });
+        successSending = response.status === 'ok';
       } else {
-        err = true;
+        // eslint-disable-next-line no-console
+        console.log(data);
+        successSending = true;
+      }
+      if (successSending) {
+        await navigate('/job-application-accepted/');
       }
     } catch {
-      err = true;
+      successSending = false;
     }
-    if (err) {
+    if (!successSending) {
       setSubmitting(false);
       setSubmissionError(true);
     }
