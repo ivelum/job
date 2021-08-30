@@ -1,12 +1,16 @@
 # Work at ivelum
 
+This repo hosts the company wiki, and the source code for its
+job vacancies site.
+
 ## Wiki
 
 <img src="https://raw.githubusercontent.com/ivelum/job/master/assets/vault-boy.png" align="right">
 
-This repository contains wiki section about working at ivelum. 
-It covers a range of topics, including our tech workflow, 
-preferred communication style, and details about employee benefits.
+ivelum has a bilingual company wiki that documents our work
+processes and philosophy. It covers a range of topics, including
+our tech workflow, preferred communication style, and details
+about employee benefits.
 
 [Everything's in the wiki](http://github.com/ivelum/job/wiki/).
 
@@ -19,6 +23,9 @@ our [vacancies site](https://job.ivelum.com).
 Feel free to investigate and give us a star if you like it :)
 
 ## Installation and deployment instructions for job.ivelum.com 
+
+If you want a quick demonstration of how ivelum writes and deploys code,
+follow these instructions to develop on our jobs site..
 
 ### Start your development environment
 
@@ -43,13 +50,13 @@ Feel free to investigate and give us a star if you like it :)
    $ python --version
    3.9.6
    ```
-4. Install the JS dependencies with Yarn:
+3. Install the JS dependencies with Yarn:
    
    ```shell
    $ yarn
    ```
 
-5Install the Python dependencies with pip:
+4. Install the Python dependencies with pip:
    
    ```shell
    $ pip install -r requirements.txt
@@ -58,19 +65,20 @@ Feel free to investigate and give us a star if you like it :)
 5. Start the development server. If you're using a JetBrains IDE, you can use 
    the shared Run/Debug configuration that is included in the repo. 
    Alternatively, start it from the command line:
+   
    ```shell
    $ yarn start
    ```
    
-   The command above starts the development server in the "watch" mode, 
+   `yarn start` starts the development server in "watch" mode, 
    automatically updating the build as you change the source code. The source 
    code is located in the `src` folder and is based on 
    [Gatsby](https://www.gatsbyjs.com/docs/tutorial/). 
 
 ### Codestyle checks
 
-Before pushing your work to the repo, please make sure that the code style 
-checks pass with your changes. We're using [ESLint](https://eslint.org) for 
+Before pushing your work to the repo, make sure that the code style 
+checks pass with your changes. We use [ESLint](https://eslint.org) for 
 JavaScript/React code, [Stylelint](https://stylelint.io) for CSS/SASS, 
 and [isort](https://pycqa.github.io/isort/) and 
 [flake8](https://flake8.pycqa.org/en/latest/) for python code. 
@@ -103,10 +111,10 @@ Git pre-commit hook. How to do this:
 
 ### Deploy to production
 
-Any push to the `master` branch in this repo will trigger an automated 
+Any push to the `master` branch in this repo triggers an automated 
 deployment to production on AWS, which typically takes ~2 minutes plus a minute 
 or two for the CloudFront cache to clear. You can watch the progress and build 
-status at the [Actions](https://github.com/ivelum/job-form/actions) tab. 
+status on the [Actions](https://github.com/ivelum/job-form/actions) tab. 
 
 Please note that we run linters before the build, so the build will fail if the 
 code doesn't pass [Codestyle checks](#Codestyle checks).
