@@ -1,14 +1,14 @@
 # Work at ivelum
 
-This repo hosts the company wiki, and the source code for its
+This repo hosts the company wiki and the source code for its
 job vacancies site.
 
 ## Wiki
 
 <img src="https://raw.githubusercontent.com/ivelum/job/master/assets/vault-boy.png" align="right">
 
-ivelum has a bilingual company wiki that documents our work
-processes and philosophy. It covers a range of topics, including
+A bilingual wiki documents the ivelum work
+processes and philosophy. The wiki covers a range of topics, including
 our tech workflow, preferred communication style, and details
 about employee benefits.
 
@@ -25,7 +25,7 @@ Feel free to investigate and give us a star if you like it :)
 ## Installation and deployment instructions for job.ivelum.com 
 
 If you want a quick demonstration of how ivelum writes and deploys code,
-follow these instructions to develop on our jobs site..
+follow these instructions to develop on our jobs site.
 
 ### Start your development environment
 
