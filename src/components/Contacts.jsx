@@ -24,7 +24,7 @@ export default function Contacts() {
             }}
           >
             <SvgImage name="ico-chat" className={styles.ico} />
-            Написать в чат
+            Открыть чат
           </ExternalLink>
         </div>
         <div className={styles.name}><span>/</span> Почта</div>
