@@ -17,7 +17,7 @@ export default function Benefits() {
           не&nbsp;рассматривается;
         </li>
         <li>
-          Корпоративный Macbook, или денежная компенсация на&nbsp;покупку
+          Корпоративный Macbook или денежная компенсация на&nbsp;покупку
           собственного оборудования. Подробнее&nbsp;&mdash;
           в&nbsp;разделе{' '}
           <ExternalLink href={ExternalLinks.wiki.compensationPackage}>
