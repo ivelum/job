@@ -117,7 +117,7 @@ or two for the CloudFront cache to clear. You can watch the progress and build
 status on the [Actions](https://github.com/ivelum/job-form/actions) tab. 
 
 Please note that we run linters before the build, so the build will fail if the 
-code doesn't pass [Codestyle checks](#Codestyle checks).
+code doesn't pass [Codestyle checks](#codestyle-checks).
 
 ## License 
 
