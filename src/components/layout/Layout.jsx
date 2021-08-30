@@ -48,7 +48,7 @@ const Layout = ({
           }
       >
         <div className={styles.cat}>
-          Мы занимаемся продуктовой разработкой с 2003.
+          Занимаемся продуктовой разработкой с 2003
           <img className={styles.catImage} src={catImage} alt="Ivelum cat" />
         </div>
       </div>
