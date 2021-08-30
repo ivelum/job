@@ -27,7 +27,7 @@ export default function Benefits() {
         <li>
           <ExternalLink href={ExternalLinks.wiki.englishLessons}>
             Курсы английского
-          </ExternalLink> с&nbsp;профессиональным преподавателем из&nbsp;США;
+          </ExternalLink> с&nbsp;профессиональным преподавателем из&nbsp;США.
         </li>
       </ul>
     </div>
