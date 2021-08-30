@@ -23,8 +23,9 @@ export { allExperienceTypes };
 const ruLockedErr = (
   'Найм из России по этой вакансии временно приостановлен. '
   + 'У нас есть внутренние квоты по найму из разных стран, и квота по '
-  + 'России на данный момент полностью выбрана. Это временная ситуация. '
-  + 'Как только появятся квоты, мы возобновим найм в России.'
+  + 'России сейчас полностью выбрана. Это временная ситуация. Сроки '
+  + 'возобновления найма в России прогнозировать сложно, но, скорее всего, '
+  + 'это произойдет не раньше чем через 2-3 месяца.'
 );
 
 const lockedCountryErr = (
@@ -69,7 +70,7 @@ export default function ApplyForm({ job, experienceTypes }) {
     ).test(
       'checkCountryLocked',
       lockedCountryErr,
-      (value) => ['AZ', 'CN', 'KZ', 'LV', 'UZ'].indexOf(value) === -1,
+      (value) => ['AZ', 'BY', 'CN', 'KZ', 'LV', 'UZ'].indexOf(value) === -1,
     ),
     city: yup.string().required(),
     email: yup.string().required().email(),
