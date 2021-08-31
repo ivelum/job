@@ -11,7 +11,7 @@ source code.
 <img src="https://raw.githubusercontent.com/ivelum/job/master/assets/vault-boy.png" align="right">
 
 The wiki covers a wide range of topics, including our work processes, 
-technologies used in ivelum, preferred communication style, employee benefits, 
+our technologies used, preferred communication style, employee benefits, 
 etc. Available in two languages:
 
 - [English](http://github.com/ivelum/job/wiki/)
@@ -21,13 +21,13 @@ Contact us at [job@ivelum.com](mailto:job@ivelum.com)
 
 ## Code challenges
 
-We currently have two:
+We currently have two challenges:
 
 - for [Python developers](https://github.com/ivelum/job/blob/master/challenges/python.md);
 - for [PHP developers](https://github.com/ivelum/job/blob/master/challenges/php.md).
 
 If you'd like to complete one of the code challenges and send us your solution, 
-please make apply for the corresponding position first at 
+please apply for the corresponding position first at 
 [job.ivelum.com](https://job.ivelum.com).  
 
 ## [job.ivelum.com](https://job.ivelum.com) source code
@@ -81,8 +81,8 @@ technologies used:
 
 ### Codestyle checks
 
-Before pushing your work to the repo, please make sure that the code style 
-checks pass with your changes. We use [ESLint](https://eslint.org) for 
+Before pushing your work to the repo, please make sure that your changes 
+pass the code style checks. We use [ESLint](https://eslint.org) for 
 JavaScript/React code and [Stylelint](https://stylelint.io) for SCSS. 
 How to run the checks locally:
 
@@ -99,6 +99,7 @@ Git pre-commit hook. Here's how to do this:
 
 1. create a file `.git/hooks/pre-commit` if it doesn't exist yet;
 2. open this file for editing and add the following line:
+
    ```shell
    yarn eslint && yarn stylelint
    ```
@@ -115,7 +116,7 @@ machine.
 Any push to the `master` branch in this repo triggers an automated 
 deployment to production on AWS, which typically takes ~2 minutes plus a minute 
 or two for the CloudFront cache to clear. You can watch the progress and build 
-status on the [Actions](https://github.com/ivelum/job-form/actions) tab. 
+status [on the Actions tab](https://github.com/ivelum/job-form/actions). 
 
 Please note that we run linters before the build, so the build will fail if the 
 code doesn't pass [Codestyle checks](#codestyle-checks).
@@ -123,17 +124,19 @@ code doesn't pass [Codestyle checks](#codestyle-checks).
 
 ### Working with Python sources
 
-Python is used for deploy scripts and the lambda function which is responsible 
+Python is used for deploy scripts and the lambda function, which is responsible 
 for the job applications form processing. If you need to modify these parts:
 
 1. Make sure that you have [Python v3.9+](https://www.python.org/downloads/) 
    installed:
+   
    ```shell
    $ python --version
    Python 3.9.7
    ```
    
 2. Install the Python dependencies:
+
    ```shell
    $ pip install -r requirements.txt
    ```
