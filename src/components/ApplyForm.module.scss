@@ -1,12 +1,12 @@
 @import '../vars';
 
-.vacancyTitle {
+.vacancy-title {
   color: $font-color;
   font-weight: bold;
   line-height: 1.7;
 }
 
-.subTitle {
+.sub-title {
   color: $font-color-gray;
   display: block;
   font-weight: normal;
@@ -22,7 +22,7 @@
   display: block;
 }
 
-.experienceLegend {
+.experience-legend {
   color: rgba($font-color-gray, 0.8);
   font-size: 13px;
   line-height: 1.8;

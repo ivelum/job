@@ -89,7 +89,7 @@ export default function ApplyForm({ job, experienceTypes }) {
   });
   const {
     register,
-    trigger,
+    setValue,
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
@@ -155,7 +155,7 @@ export default function ApplyForm({ job, experienceTypes }) {
                   label: 'Ваше имя и фамилия:',
                   componentProps: {
                     autoFocus: true,
-                    className: 'formControl',
+                    className: 'form-control',
                   },
                 })}
               </div>
@@ -166,8 +166,14 @@ export default function ApplyForm({ job, experienceTypes }) {
                   label: 'Страна проживания',
                   component: CountryDropdown,
                   componentProps: {
-                    className: 'customSelect',
-                    onBlur: () => { trigger(['country']); },
+                    className: 'custom-select',
+                    onChange: (e) => {
+                      setValue(
+                        'country',
+                        e.target.value,
+                        { shouldValidate: true },
+                      );
+                    },
                   },
                 })}
               </div>
@@ -176,7 +182,7 @@ export default function ApplyForm({ job, experienceTypes }) {
                   name: 'city',
                   label: 'Город или населенный пункт',
                   componentProps: {
-                    className: 'formControl',
+                    className: 'form-control',
                   },
                 })}
               </div>
@@ -185,7 +191,7 @@ export default function ApplyForm({ job, experienceTypes }) {
                   name: 'email',
                   label: 'Ваш Email',
                   componentProps: {
-                    className: 'formControl',
+                    className: 'form-control',
                   },
                 })}
               </div>
@@ -195,7 +201,7 @@ export default function ApplyForm({ job, experienceTypes }) {
                   label: 'Telegram',
                   isRequired: false,
                   componentProps: {
-                    className: 'formControl',
+                    className: 'form-control',
                   },
                 })}
               </div>
@@ -205,7 +211,7 @@ export default function ApplyForm({ job, experienceTypes }) {
                   label: 'Skype',
                   isRequired: false,
                   componentProps: {
-                    className: 'formControl',
+                    className: 'form-control',
                   },
                 })}
               </div>
@@ -218,7 +224,7 @@ export default function ApplyForm({ job, experienceTypes }) {
                   name: 'experienceOverall',
                   label: 'Сколько у вас лет опыта в программировании?',
                   componentProps: {
-                    className: 'formControl',
+                    className: 'form-control',
                   },
                 })}
               </div>
@@ -227,7 +233,7 @@ export default function ApplyForm({ job, experienceTypes }) {
                   name: 'experienceWeb',
                   label: 'Сколько из них связано с веб-разработкой?',
                   componentProps: {
-                    className: 'formControl',
+                    className: 'form-control',
                   },
                 })}
               </div>
@@ -240,7 +246,7 @@ export default function ApplyForm({ job, experienceTypes }) {
                 label: 'Какое у вас образование?',
                 helpText: 'Учебное заведение, год окончания, специальность.',
                 componentProps: {
-                  className: 'formControl',
+                  className: 'form-control',
                 },
               })}
             </div>
@@ -252,7 +258,7 @@ export default function ApplyForm({ job, experienceTypes }) {
                 label: 'Как у вас с английским?',
                 helpText: 'С письменным, с устным?',
                 componentProps: {
-                  className: 'formControl',
+                  className: 'form-control',
                 },
               })}
             </div>
@@ -290,7 +296,7 @@ export default function ApplyForm({ job, experienceTypes }) {
                     + 'состоящих из 3 символов, сколько вспомните?',
                   helpText: 'Подглядывать нечестно.',
                   componentProps: {
-                    className: 'formControl',
+                    className: 'form-control',
                   },
                 })}
               </div>
@@ -303,7 +309,7 @@ export default function ApplyForm({ job, experienceTypes }) {
                     + 'кто-то UI, кто-то заниматься исследованиями нового. '
                     + 'То, что нравится, обычно делается легко и быстро.',
                   componentProps: {
-                    className: 'formControl',
+                    className: 'form-control',
                   },
                 })}
               </div>
@@ -315,7 +321,7 @@ export default function ApplyForm({ job, experienceTypes }) {
                     + 'приходится делать через силу. Их не получется делать '
                     + 'быстро или не получается делать совсем.',
                   componentProps: {
-                    className: 'formControl',
+                    className: 'form-control',
                   },
                 })}
               </div>
@@ -326,7 +332,7 @@ export default function ApplyForm({ job, experienceTypes }) {
                     + 'GitLab, иное.',
                   helpText: 'Желательно ссылки на свои проекты, не форки.',
                   componentProps: {
-                    className: 'formControl',
+                    className: 'form-control',
                   },
                 })}
               </div>
@@ -337,7 +343,7 @@ export default function ApplyForm({ job, experienceTypes }) {
                   helpText: 'Наименование сайта с объявлением / может, '
                     + 'мы вам написали сами / или друзья прислали ссылку',
                   componentProps: {
-                    className: 'formControl',
+                    className: 'form-control',
                   },
                 })}
               </div>

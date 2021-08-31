@@ -105,14 +105,11 @@
     @include make-container();
   }
   @each $breakpoint, $container-max-width in $container-max-widths {
-    .container-#{$breakpoint} {
-      @extend .container-fluid;
-    }
     @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+      $extend-breakpoint: true;
       %responsive-container-#{$breakpoint} {
         max-width: $container-max-width;
       }
-      $extend-breakpoint: true;
       @each $name, $width in $grid-breakpoints {
         @if ($extend-breakpoint) {
           .container#{breakpoint-infix($name, $grid-breakpoints)} {
@@ -123,6 +120,9 @@
           }
         }
       }
+    }
+    .container-#{$breakpoint} {
+      @include make-container();
     }
   }
 }

@@ -6,8 +6,8 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "eslint": "eslint --ext .js --ext .jsx  src",
-    "stylelint": "cd src && stylelint --syntax scss **/*.css",
-    "stylefix": "cd src && stylelint --fix --syntax scss **/*.css"
+    "stylelint": "stylelint --syntax scss src/**/*.scss",
+    "stylefix": "stylelint --fix --syntax scss src/**/*.scss"
   },
   "dependencies": {
     "@reach/router": "1.3.4",

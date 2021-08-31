@@ -12,7 +12,7 @@ export default function Field({
 }) {
   const Component = component;
   return (
-    <div className="formGroup">
+    <div className="form-group">
       <FieldLabel
         name={name}
         label={label}

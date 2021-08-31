@@ -15,7 +15,8 @@
   }
 }
 
-.githubButton {
+.github-button {
+  background-image: none;
   display: block;
   height: 100px;
   position: fixed;
@@ -25,7 +26,6 @@
   transform-origin: bottom center;
   width: 150px;
   z-index: 10;
-  background-image: none;
   @include media-breakpoint-down(md) {
     right: -15px;
     top: -65px;
@@ -33,25 +33,25 @@
   }
 
   &:hover {
-    .githubCat {
+    .github-cat {
       background-color: lighten($font-color, 5%);
     }
 
-    .githubCatImage {
+    .github-cat-image {
       animation-duration: 1s;
       animation-iteration-count: 1;
       animation-name: gitCat;
       animation-timing-function: linear;
     }
 
-    .githubText {
+    .github-text {
       opacity: 1;
       transform: none;
     }
   }
 }
 
-.githubCat {
+.github-cat {
   @include tr(background-color 0.5s);
   background-color: $font-color;
   bottom: 0;
@@ -63,7 +63,7 @@
   z-index: 2;
 }
 
-.githubCatImage {
+.github-cat-image {
   @include tr(transform 0.5s);
   backface-visibility: hidden;
   bottom: -10px;
@@ -80,7 +80,7 @@
   }
 }
 
-.githubText {
+.github-text {
   @include tr(transform 0.3s, opacity 0.45s);
   color: $font-color;
   font-size: 13px;
@@ -140,7 +140,7 @@
   }
 }
 
-.logoDisabled {
+.logo-disabled {
   pointer-events: none;
 }
 
@@ -161,13 +161,13 @@
   }
 }
 
-.catImage {
+.cat-image {
   bottom: -3px;
   position: absolute;
   right: 20px;
 }
 
-.titleWrapper {
+.title-wrapper {
   align-items: center;
   display: flex;
   justify-content: space-between;
@@ -180,7 +180,7 @@
   }
 }
 
-.backLink {
+.back-link {
   @include media-breakpoint-down(md) {
     align-items: center;
     display: inline-flex;

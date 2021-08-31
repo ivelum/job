@@ -2,7 +2,7 @@
 @import '../transitions';
 @import '../breakpoints';
 
-.vacanciesList {
+.vacancies-list {
   display: grid;
   grid-gap: 30px;
   grid-template-columns: 1fr 1fr;
@@ -16,7 +16,7 @@
   }
 }
 
-.vacancyItem {
+.vacancy-item {
   border: 1px solid $border-color;
   border-radius: 3px;
   color: $font-color;
@@ -87,7 +87,7 @@
   z-index: 2;
 }
 
-.subTitle {
+.sub-title {
   display: block;
   font-weight: normal;
   opacity: 0.5;
