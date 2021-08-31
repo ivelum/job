@@ -211,13 +211,12 @@ export default function ApplyForm({ job, experienceTypes }) {
               </div>
             </div>
           </div>
-          <h2 className="mt-30 mt-lg-40 mt-xl-50">Ваш опыт</h2>
           <div className="mt-20 mt-md-30">
             <div className="row gy-30">
               <div className="col-12 col-md-6">
                 {renderField({
                   name: 'experienceOverall',
-                  label: 'Сколько лет опыта в программировании?',
+                  label: 'Сколько у вас лет опыта в программировании?',
                   componentProps: {
                     className: 'formControl',
                   },
@@ -226,12 +225,36 @@ export default function ApplyForm({ job, experienceTypes }) {
               <div className="col-12 col-md-6">
                 {renderField({
                   name: 'experienceWeb',
-                  label: 'Сколько из них с веб-разработкой?',
+                  label: 'Сколько из них связано с веб-разработкой?',
                   componentProps: {
                     className: 'formControl',
                   },
                 })}
               </div>
+            </div>
+          </div>
+          <div className="mt-20 mt-md-30">
+            <div className="col-12">
+              {renderField({
+                name: 'education',
+                label: 'Какое у вас образование?',
+                helpText: 'Учебное заведение, год окончания, специальность.',
+                componentProps: {
+                  className: 'formControl',
+                },
+              })}
+            </div>
+          </div>
+          <div className="mt-20 mt-md-30">
+            <div className="col-12">
+              {renderField({
+                name: 'english',
+                label: 'Как у вас с английским?',
+                helpText: 'С письменным, с устным?',
+                componentProps: {
+                  className: 'formControl',
+                },
+              })}
             </div>
           </div>
           <h2 className="mt-30 mt-lg-40 mt-xl-50">Оцените свой опыт</h2>
@@ -260,16 +283,6 @@ export default function ApplyForm({ job, experienceTypes }) {
           <h2 className="mt-30 mt-lg-40 mt-xl-50">Дополнительно</h2>
           <div className="mt-20 mt-md-30">
             <div className="row gy-30">
-              <div className="col-12">
-                {renderField({
-                  name: 'education',
-                  label: 'Какое у вас образование?',
-                  helpText: 'Учебное заведение, год окончания, специальность.',
-                  componentProps: {
-                    className: 'formControl',
-                  },
-                })}
-              </div>
               <div className="col-12">
                 {renderField({
                   name: 'linuxCommands',
@@ -310,18 +323,8 @@ export default function ApplyForm({ job, experienceTypes }) {
                 {renderField({
                   name: 'sourceCode',
                   label: 'Где можно посмотреть ваш код? GitHub, '
-                    + 'Bitbucket, иное.',
+                    + 'GitLab, иное.',
                   helpText: 'Желательно ссылки на свои проекты, не форки.',
-                  componentProps: {
-                    className: 'formControl',
-                  },
-                })}
-              </div>
-              <div className="col-12">
-                {renderField({
-                  name: 'english',
-                  label: 'Как у вас с английским?',
-                  helpText: 'С письменным, с устным?',
                   componentProps: {
                     className: 'formControl',
                   },
