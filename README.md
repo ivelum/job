@@ -1,31 +1,45 @@
-# Work at ivelum
+# [job.ivelum.com](https://job.ivelum.com)
 
-This repo hosts the company wiki and the source code for its
-job vacancies site.
+This repo hosts everything related to working at [ivelum](https://ivelum.com), 
+including our [public wiki](http://github.com/ivelum/job/wiki/), the
+[code challenges](https://github.com/ivelum/job/tree/master/challenges) that we 
+use in our job interviews, and the [job.ivelum.com](https://job.ivelum.com) 
+source code.
 
 ## Wiki
 
 <img src="https://raw.githubusercontent.com/ivelum/job/master/assets/vault-boy.png" align="right">
 
-A bilingual wiki documents the ivelum work
-processes and philosophy. The wiki covers a range of topics, including
-our tech workflow, preferred communication style, and details
-about employee benefits.
+The wiki covers a wide range of topics, including our work processes, 
+technologies used in ivelum, preferred communication style, employee benefits, 
+etc. Available in two languages:
 
-[Everything's in the wiki](http://github.com/ivelum/job/wiki/).
+- [English](http://github.com/ivelum/job/wiki/)
+- [Русский](https://github.com/ivelum/job/wiki/Home-RU)
 
 Contact us at [job@ivelum.com](mailto:job@ivelum.com)
 
-## job.ivelum.com source code
+## Code challenges
 
-We love opensource, so we decided to open access to the source code of
-our [vacancies site](https://job.ivelum.com). 
-Feel free to investigate and give us a star if you like it :)
+We currently have two:
 
-## Installation and deployment instructions for job.ivelum.com 
+- for [Python developers](https://github.com/ivelum/job/blob/master/challenges/python.md);
+- for [PHP developers](https://github.com/ivelum/job/blob/master/challenges/php.md).
 
-If you want a quick demonstration of how ivelum writes and deploys code,
-follow these instructions to develop on our jobs site.
+If you'd like to complete one of the code challenges and send us your solution, 
+please make apply for the corresponding position first at 
+[job.ivelum.com](https://job.ivelum.com).  
+
+## [job.ivelum.com](https://job.ivelum.com) source code
+
+The instructions below describe how to work with the jobs site source code. Key 
+technologies used:
+
+- Frontend: [Gatsby.js](https://www.gatsbyjs.com/docs/tutorial/), React, CSS 
+  modules, SCSS;
+- Production: AWS, S3, CloudFront, Lambda;
+- Deploy automation: CloudFormation, GitHub Actions, Python scripts; 
+- Linters: ESLint, Stylelint, Flake8, isort.
 
 ### Start your development environment
 
@@ -35,8 +49,7 @@ follow these instructions to develop on our jobs site.
    $ git clone git@github.com:ivelum/job.git
    ```
 
-2. Make sure that you have [Python 3.9+](https://www.python.org/),
-   [Node v15 or later](https://nodejs.org/en/) and 
+2. Make sure that you have [Node v15 or later](https://nodejs.org/en/) and 
    [Yarn v1.x](https://classic.yarnpkg.com/en/) installed on your machine. 
    Check the versions as:
 
@@ -46,9 +59,6 @@ follow these instructions to develop on our jobs site.
    
    $ yarn --version
    1.22.10
-
-   $ python --version
-   3.9.6
    ```
 3. Install the JS dependencies with Yarn:
    
@@ -56,58 +66,49 @@ follow these instructions to develop on our jobs site.
    $ yarn
    ```
 
-4. Install the Python dependencies with pip:
-   
-   ```shell
-   $ pip install -r requirements.txt
-   ```
-
-5. Start the development server. If you're using a JetBrains IDE, you can use 
-   the shared Run/Debug configuration that is included in the repo. 
-   Alternatively, start it from the command line:
+4. Start the development server. If you're using a JetBrains IDE, such as 
+   WebStorm or PyCharm, you can use the shared Run/Debug configuration that is 
+   included in the repo. Alternatively, start it from the command line:
    
    ```shell
    $ yarn start
    ```
    
-   `yarn start` starts the development server in "watch" mode, 
+   The command above starts the development server in the "watch" mode, 
    automatically updating the build as you change the source code. The source 
    code is located in the `src` folder and is based on 
    [Gatsby](https://www.gatsbyjs.com/docs/tutorial/). 
 
 ### Codestyle checks
 
-Before pushing your work to the repo, make sure that the code style 
+Before pushing your work to the repo, please make sure that the code style 
 checks pass with your changes. We use [ESLint](https://eslint.org) for 
-JavaScript/React code, [Stylelint](https://stylelint.io) for CSS/SASS, 
-and [isort](https://pycqa.github.io/isort/) and 
-[flake8](https://flake8.pycqa.org/en/latest/) for python code. 
+JavaScript/React code and [Stylelint](https://stylelint.io) for SCSS. 
 How to run the checks locally:
 
 ```shell
 $ yarn eslint
 
 $ yarn stylelint
-
-$ isort .
-
-$ flake8 .
 ```
 
 ### Pre-commit hooks for codestyle
 
 We strongly encourage you to add the code style checks in your local
-Git pre-commit hook. How to do this:
+Git pre-commit hook. Here's how to do this:
 
 1. create a file `.git/hooks/pre-commit` if it doesn't exist yet;
 2. open this file for editing and add the following line:
    ```shell
-   yarn eslint && yarn stylelint && isort . && flake8 .
+   yarn eslint && yarn stylelint
    ```
 3. make the file executable:
    ```shell
    $ chmod +x .git/hooks/pre-commit
    ```
+   
+Voila, now codestyle checks will run automatically before every commit on your 
+machine.
 
 ### Deploy to production
 
@@ -119,8 +120,35 @@ status on the [Actions](https://github.com/ivelum/job-form/actions) tab.
 Please note that we run linters before the build, so the build will fail if the 
 code doesn't pass [Codestyle checks](#codestyle-checks).
 
+
+### Working with Python sources
+
+Python is used for deploy scripts and the lambda function which is responsible 
+for the job applications form processing. If you need to modify these parts:
+
+1. Make sure that you have [Python v3.9+](https://www.python.org/downloads/) 
+   installed:
+   ```shell
+   $ python --version
+   Python 3.9.7
+   ```
+   
+2. Install the Python dependencies:
+   ```shell
+   $ pip install -r requirements.txt
+   ```
+   
+3. Breathe normally and work with the source code. When you're ready to push 
+   your changes to the repo, please check the Python code style and fix any 
+   problems reported:
+
+   ```shell
+   $ flake8 . && isort . 
+   ```
+
+
 ## License 
 
-Source code is licensed under the MIT license.
-All materials in Wiki, code challenges, and vacancy texts are licensed under
-[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+The [job.ivelum.com](https://job.ivelum.com) source code is licensed under the 
+MIT license. All materials in Wiki, code challenges, and public website texts 
+are licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
