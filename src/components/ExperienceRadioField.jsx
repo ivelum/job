@@ -22,24 +22,24 @@ export default function ExperienceRadioField({ name, errors, register }) {
   const fullName = `experience${name}`;
   return (
     <>
-      <div className={styles.expName}>
+      <div className={styles.name}>
         {label}
         <FormErrorMessage error={errors && errors[fullName]} />
       </div>
-      <div className={styles.expRange}>
+      <div className={styles.range}>
         {(range(0, 5).map((level) => (
-          <div key={`${fullName}-${level}`} className={styles.expButton}>
+          <div key={`${fullName}-${level}`} className={styles.button}>
             <input
               type="radio"
               id={`${fullName}-${level}`}
               name={fullName}
               value={level}
-              className={styles.expInput}
+              className={styles.input}
               {...register(fullName, { required: 'Обязательное поле' })}
             />
             <label
               htmlFor={`${fullName}-${level}`}
-              className={styles.expLabel}
+              className={styles.label}
             >
               <span>{level}</span>
             </label>

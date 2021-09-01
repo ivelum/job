@@ -9,7 +9,7 @@ export default function WelcomeText() {
   return (
     <div className={styles.welcome}>
       Привет!
-      <img className={styles.welcomeIco} src={hiIco} alt="Привет" /><br />
+      <img className={styles.ico} src={hiIco} alt="Привет" /><br />
       Ниже перечислены актуальные вакансии, которые сейчас
       открыты в&nbsp;
       <ExternalLink href={ExternalLinks.company.home}>

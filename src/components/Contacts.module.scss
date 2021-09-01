@@ -9,15 +9,15 @@
   padding-right: ($gutter-width * 0.5);
   width: 100%;
   @include media-up(lg) {
-    width: (100% / $grid-columns * 6);
+    width: col-percent(6);
   }
   @include media-up(xl) {
-    margin-left: (100% / $grid-columns * 1);
-    width: (100% / $grid-columns * 5);
+    margin-left: col-percent(1);
+    width: col-percent(5);
   }
 }
 
-.contacts-title {
+.caption {
   border-bottom: 1px solid $border-color;
   padding-bottom: 20px;
   position: relative;
@@ -46,7 +46,7 @@
   }
 }
 
-.list-name {
+.name {
   flex: 0 0 auto;
   margin-top: 10px;
   width: 100%;
@@ -59,7 +59,7 @@
   }
 }
 
-.list-val {
+.val {
   flex: 0 0 auto;
   padding-left: 20px;
   width: 100%;
@@ -68,11 +68,11 @@
   }
 }
 
-.list-link {
+.link {
   background-position: 30px 100% !important;
 }
 
-.list-ico {
+.ico {
   height: 14px;
   margin-right: 16px;
   width: 14px;

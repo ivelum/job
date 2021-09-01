@@ -5,11 +5,11 @@
   @include media-up(xl) {
     flex: 0 0 auto;
     margin: 0 auto;
-    width: (100% / $grid-columns * 10);
+    width: col-percent(10);
   }
 }
 
-.vacancies-wrapper {
+.wrapper {
   margin-top: 30px;
   @include media-up(lg) {
     margin-top: 40px;
@@ -19,7 +19,7 @@
   }
 }
 
-.vacancies-list {
+.list {
   display: grid;
   grid-gap: 15px;
   grid-template-columns: 1fr;
@@ -31,7 +31,7 @@
   }
 }
 
-.vacancy-item {
+.item {
   border: 1px solid $border-color;
   border-radius: 3px;
   color: $font-color;
@@ -62,13 +62,13 @@
       transform: none;
     }
 
-    .vacancy-title {
+    .title {
       @include media-up(lg) {
         transform: translateX(-10px);
       }
     }
 
-    .vacancy-ico {
+    .ico {
       @include media-up(lg) {
         transform: translate3d(10px, -10px, 0);
       }
@@ -76,7 +76,7 @@
   }
 }
 
-.vacancy-num {
+.num {
   line-height: 1.7;
   margin-right: 15px;
   opacity: 0.5;
@@ -86,20 +86,20 @@
   }
 }
 
-.vacancy-title {
+.title {
   @include tr(transform 0.5s);
   font-weight: bold;
   line-height: 1.7;
   z-index: 2;
 }
 
-.vacancy-sub-title {
+.sub-title {
   display: block;
   font-weight: normal;
   opacity: 0.5;
 }
 
-.vacancy-ico {
+.ico {
   @include tr(transform 0.5s);
   display: block;
   height: 10px;

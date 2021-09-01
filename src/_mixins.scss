@@ -1,3 +1,4 @@
+@use 'sass:math';
 
 /* Media Queries */
 
@@ -38,4 +39,10 @@
     $unfolded-transition: append($unfolded-transition, $p);
   }
   @return $unfolded-transition;
+};
+
+/* Column Width */
+
+@function col-percent($amount) {
+  @return (math.div(100%, $grid-columns) * $amount);
 };

@@ -10,28 +10,28 @@ export default function IndexVacancies() {
   return (
     <div className={styles.vacancies}>
       <HrLine />
-      <div className={styles.vacanciesWrapper}>
+      <div className={styles.wrapper}>
         <h2>Открытые вакансии</h2>
-        <div className={styles.vacanciesList}>
+        <div className={styles.list}>
           {Object.keys(Jobs).map((key, index) => (
             <Link
-              className={styles.vacancyItem}
+              className={styles.item}
               to={Jobs[key].url}
               key={Jobs[key].url}
             >
-              <span className={styles.vacancyNum}>
+              <span className={styles.num}>
                 {(index + 1).toLocaleString('en-US', {
                   minimumIntegerDigits: 2,
                   useGrouping: false,
                 })}
               </span>
-              <span className={styles.vacancyTitle}>
+              <span className={styles.title}>
                 {Jobs[key].title}
-                <span className={styles.vacancySubTitle}>
+                <span className={styles.subTitle}>
                   {Jobs[key].subTitle}
                 </span>
               </span>
-              <SvgImage name="ico-angle-arrow" className={styles.vacancyIco} />
+              <SvgImage name="ico-angle-arrow" className={styles.ico} />
             </Link>
           ))}
         </div>

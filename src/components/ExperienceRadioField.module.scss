@@ -1,7 +1,7 @@
 @import '../vars';
 @import '../mixins';
 
-.exp-name {
+.name {
   flex: 0 0 auto;
   line-height: 1.6;
   margin-top: $gutter-width;
@@ -10,11 +10,11 @@
   width: 100%;
   @include media-up(md) {
     align-self: center;
-    width: (100% / $grid-columns * 5);
+    width: col-percent(5);
   }
 }
 
-.exp-range {
+.range {
   display: flex;
   flex: 0 0 auto;
   margin-top: 10px;
@@ -23,29 +23,29 @@
   width: 100%;
   @include media-up(md) {
     margin-top: $gutter-width;
-    width: (100% / $grid-columns * 7);
+    width: col-percent(7);
   }
 }
 
-.exp-button {
+.button {
   flex-grow: 1;
   position: relative;
 
-  &:last-child .exp-label {
+  &:last-child .label {
     border-radius: 0 3px 3px 0;
   }
 
-  &:first-child .exp-label {
+  &:first-child .label {
     border-radius: 3px 0 0 3px;
   }
 }
 
-.exp-input {
+.input {
   margin: 0;
   opacity: 0;
   position: absolute;
 
-  &:checked + .exp-label {
+  &:checked + .label {
     color: $body-background-color;
     font-weight: bold;
 
@@ -61,7 +61,7 @@
   }
 }
 
-.exp-label {
+.label {
   @include tr(border-color 0.5s, color 0.5s);
   border: 1px solid $form-border-color;
   color: rgba($font-color-gray, 0.6);

@@ -7,15 +7,15 @@
   padding-right: ($gutter-width * 0.5);
   width: 100%;
   @include media-up(lg) {
-    width: (100% / $grid-columns * 6);
+    width: col-percent(6);
   }
   @include media-up(xl) {
-    margin-left: (100% / $grid-columns * 1);
-    width: (100% / $grid-columns * 5);
+    margin-left: col-percent(1);
+    width: col-percent(5);
   }
 }
 
-.welcome-ico {
+.ico {
   animation-duration: 6s;
   animation-iteration-count: infinite;
   animation-name: hand;

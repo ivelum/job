@@ -14,9 +14,9 @@ export default function PageTitle({ title, subTitle, backLink }) {
         <SvgImage name="ico-long-arrow" className={styles.backLinkIco} />
       </Link>
       )}
-      <div className={styles.titleBody}>
+      <div className={styles.body}>
         <h1>{title}</h1>
-        {!!subTitle && (<div className={styles.titleSub}>{subTitle}</div>)}
+        {!!subTitle && (<div className={styles.subTitle}>{subTitle}</div>)}
       </div>
     </div>
   );

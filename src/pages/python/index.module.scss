@@ -5,7 +5,7 @@
   @include media-up(xl) {
     flex: 0 0 auto;
     margin: 0 auto;
-    width: (100% / $grid-columns * 10);
+    width: col-percent(10);
   }
 }
 
