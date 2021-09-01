@@ -4,6 +4,7 @@
     "max-nesting-depth": [4],
     "selector-max-compound-selectors": [4],
     "selector-no-qualifying-type": true,
-    "function-parentheses-space-inside": "never-single-line"
+    "function-parentheses-space-inside": "never-single-line",
+    "max-empty-lines": [1]
   }
 }
