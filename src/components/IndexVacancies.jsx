@@ -8,30 +8,34 @@ import SvgImage from '@/components/SvgImage';
 
 export default function IndexVacancies() {
   return (
-    <>
+    <div className={styles.vacancies}>
       <HrLine />
-      <h2 className="mt-30 mt-lg-40 mt-xl-50">Открытые вакансии</h2>
-      <div className={styles.vacanciesList}>
-        {Object.keys(Jobs).map((key, index) => (
-          <Link
-            className={styles.vacancyItem}
-            to={Jobs[key].url}
-            key={Jobs[key].url}
-          >
-            <span className={styles.num}>
-              {(index + 1).toLocaleString('en-US', {
-                minimumIntegerDigits: 2,
-                useGrouping: false,
-              })}
-            </span>
-            <span className={styles.title}>
-              {Jobs[key].title}
-              <span className={styles.subTitle}>{Jobs[key].subTitle}</span>
-            </span>
-            <SvgImage name="ico-angle-arrow" className={styles.ico} />
-          </Link>
-        ))}
+      <div className={styles.vacanciesWrapper}>
+        <h2>Открытые вакансии</h2>
+        <div className={styles.vacanciesList}>
+          {Object.keys(Jobs).map((key, index) => (
+            <Link
+              className={styles.vacancyItem}
+              to={Jobs[key].url}
+              key={Jobs[key].url}
+            >
+              <span className={styles.vacancyNum}>
+                {(index + 1).toLocaleString('en-US', {
+                  minimumIntegerDigits: 2,
+                  useGrouping: false,
+                })}
+              </span>
+              <span className={styles.vacancyTitle}>
+                {Jobs[key].title}
+                <span className={styles.vacancySubTitle}>
+                  {Jobs[key].subTitle}
+                </span>
+              </span>
+              <SvgImage name="ico-angle-arrow" className={styles.vacancyIco} />
+            </Link>
+          ))}
+        </div>
       </div>
-    </>
+    </div>
   );
 }

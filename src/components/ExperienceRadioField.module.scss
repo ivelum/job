@@ -1,13 +1,30 @@
 @import '../vars';
-@import '../transitions';
+@import '../mixins';
 
 .exp-name {
+  flex: 0 0 auto;
   line-height: 1.6;
+  margin-top: $gutter-width;
+  padding-left: ($gutter-width * 0.5);
+  padding-right: ($gutter-width * 0.5);
+  width: 100%;
+  @include media-up(md) {
+    align-self: center;
+    width: (100% / $grid-columns * 5);
+  }
 }
 
 .exp-range {
-  align-items: center;
   display: flex;
+  flex: 0 0 auto;
+  margin-top: 10px;
+  padding-left: ($gutter-width * 0.5);
+  padding-right: ($gutter-width * 0.5);
+  width: 100%;
+  @include media-up(md) {
+    margin-top: $gutter-width;
+    width: (100% / $grid-columns * 7);
+  }
 }
 
 .exp-button {
@@ -49,6 +66,7 @@
   border: 1px solid $form-border-color;
   color: rgba($font-color-gray, 0.6);
   cursor: pointer;
+  display: block;
   height: 50px;
   line-height: 50px;
   margin: 0 0 0 -1px;

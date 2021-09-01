@@ -1,13 +1,13 @@
 @import '../vars';
 
-.required {
-  color: $error-color;
+label {
+  color: $form-label-color;
+  display: inline-block;
+  line-height: 1.7;
+  margin: 0 0 10px;
+  position: relative;
 }
 
-.help-text {
-  color: rgba($font-color-gray, 0.8);
-  font-size: 13px;
-  line-height: 1.8;
-  margin-bottom: 15px;
-  margin-top: -5px;
+.required {
+  color: $error-color;
 }

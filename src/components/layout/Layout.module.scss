@@ -1,217 +1,23 @@
 @import '../../vars';
-@import '../../breakpoints';
-@import '../../transitions';
+@import '../../mixins';
 
 .container {
-  margin: 70px auto 0;
-  max-width: map-get($container-max-widths, xl);
-  padding-left: 30px;
-  padding-right: 30px;
-  @include media-breakpoint-down(xl) { margin-top: 50px; }
-  @include media-breakpoint-down(lg) { margin-top: 30px; }
-  @include media-breakpoint-down(sm) {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-}
-
-.github-button {
-  background-image: none;
-  display: block;
-  height: 100px;
-  position: fixed;
-  right: -25px;
-  top: -50px;
-  transform: rotate(45deg);
-  transform-origin: bottom center;
-  width: 150px;
-  z-index: 10;
-  @include media-breakpoint-down(md) {
-    right: -15px;
-    top: -65px;
-    width: 100px;
-  }
-
-  &:hover {
-    .github-cat {
-      background-color: lighten($font-color, 5%);
-    }
-
-    .github-cat-image {
-      animation-duration: 1s;
-      animation-iteration-count: 1;
-      animation-name: gitCat;
-      animation-timing-function: linear;
-    }
-
-    .github-text {
-      opacity: 1;
-      transform: none;
-    }
-  }
-}
-
-.github-cat {
-  @include tr(background-color 0.5s);
-  background-color: $font-color;
-  bottom: 0;
-  left: 0;
-  overflow: hidden;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: 2;
-}
-
-.github-cat-image {
-  @include tr(transform 0.5s);
-  backface-visibility: hidden;
-  bottom: -10px;
-  height: 50px;
-  left: calc(50% - 20px);
-  position: absolute;
-  transform-origin: bottom center;
-  width: 40px;
-  @include media-breakpoint-down(md) {
-    bottom: -5px;
-    height: auto;
-    left: calc(50% - 12px);
-    width: 26px;
-  }
-}
-
-.github-text {
-  @include tr(transform 0.3s, opacity 0.45s);
-  color: $font-color;
-  font-size: 13px;
-  left: 0;
-  margin-top: 5px;
-  opacity: 0;
-  position: absolute;
-  right: 0;
-  text-align: center;
-  top: 100%;
-  transform: translateY(-2.2em);
-  z-index: 1;
-}
-
-@keyframes gitCat {
-  0% {
-    animation-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
-    transform: rotate(0deg) translateZ(0);
-  }
-
-  20% {
-    animation-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
-    transform: rotate(-5deg) translateY(-3px) translateZ(0);
-  }
-
-  40% {
-    animation-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
-    transform: rotate(5deg) translateY(-3px) translateZ(0);
-  }
-
-  60% {
-    animation-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
-    transform: rotate(-5deg) translateY(-3px) translateZ(0);
-  }
-
-  80% {
-    animation-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
-    transform: rotate(5deg) translateY(-3px) translateZ(0);
-  }
-
-  100% {
-    transform: rotate(0deg) translateZ(0);
-  }
-}
-
-.logo {
-  @include tr(opacity 0.4s);
-
-  &:hover {
-    opacity: 0.65;
-  }
-
-  img {
-    height: auto;
-    max-width: 149px;
-    @include media-breakpoint-down(sm) { max-width: 129px; }
-  }
-}
-
-.logo-disabled {
-  pointer-events: none;
-}
-
-.cat-wrapper {
-  border-bottom: 1px solid $border-color;
-  margin-top: 60px;
-  position: relative;
-  @include media-breakpoint-down(xl) { margin-top: 50px; }
-  @include media-breakpoint-down(lg) { margin-top: 30px; }
-}
-
-.cat {
-  padding-bottom: 10px;
-  @include media-breakpoint-down(sm) {
-    line-height: 1.8;
-    max-width: 240px;
-    padding-bottom: 20px;
-  }
-}
-
-.cat-image {
-  bottom: -3px;
-  position: absolute;
-  right: 20px;
-}
-
-.title-wrapper {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 70px;
-  @include media-breakpoint-down(xl) { margin-top: 60px; }
-  @include media-breakpoint-down(lg) { margin-top: 40px; }
-  @include media-breakpoint-down(md) {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-}
-
-.back-link {
-  @include media-breakpoint-down(md) {
-    align-items: center;
-    display: inline-flex;
-    flex-direction: row-reverse;
-    margin-bottom: 15px;
-    order: -1;
-  }
-
-  &:hover .ico {
-    transform: translateX(5px);
-    @include media-breakpoint-down(md) {
-      transform: rotate(180deg) translateX(5px);
-    }
-  }
-}
-
-.ico {
-  @include tr(transform 0.5s);
-  height: 11px;
-  margin-left: 10px;
-  width: 22px;
-  @include media-breakpoint-down(md) {
-    margin-left: 0;
-    margin-right: 10px;
-    margin-top: -2px;
-    transform: rotate(180deg);
+  margin: 0 auto;
+  max-width: $container-max-width;
+  padding-left: ($gutter-width * 0.5);
+  padding-right: ($gutter-width * 0.5);
+  @include media-up(sm) {
+    padding-left: $gutter-width;
+    padding-right: $gutter-width;
   }
 }
 
 .content {
-  margin-top: 60px;
-  @include media-breakpoint-down(xl) { margin-top: 50px; }
-  @include media-breakpoint-down(lg) { margin-top: 30px; }
+  margin-top: 30px;
+  @include media-up(lg) {
+    margin-top: 50px;
+  }
+  @include media-up(xl) {
+    margin-top: 60px;
+  }
 }

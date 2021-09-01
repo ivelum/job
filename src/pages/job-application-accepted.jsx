@@ -2,27 +2,30 @@ import React from 'react';
 
 import Contacts from '@/components/Contacts';
 import ExternalLink, { ExternalLinks } from '@/components/ExternalLink';
+import Row from '@/components/Row';
 import Layout from '@/components/layout/Layout';
 
 export default function index() {
   return (
     <Layout pageTitle="Отклик принят!">
       <p>
-        Спасибо за заполнение анкеты.
-        Приглашем вас на короткое интервью, которое пройдет в аудиоформате и на
-        котором мы немного больше расскажем вам о проекте, а вы сможете задать
+        Спасибо за&nbsp;заполнение анкеты.
+        Приглашем вас на&nbsp;короткое интервью, которое
+        пройдет в&nbsp;аудиоформате и&nbsp;на котором мы&nbsp;немного
+        больше расскажем вам о&nbsp;проекте, а&nbsp;вы&nbsp;сможете задать
         интересующие вопросы.
       </p>
-
       <p>
-        Пожалуйста, выберите одну удобную вам дату и время{' '}
+        Пожалуйста, выберите одну удобную вам дату и&nbsp;время{' '}
         <ExternalLink href={ExternalLinks.company.bookInterview}>
-          по ссылке
+          по&nbsp;ссылке
         </ExternalLink><br />
-        Ссылка на Zoom-конференцию будет создана автоматически и придет вам
-        на почту.
+        Ссылка на&nbsp;Zoom-конференцию будет создана
+        автоматически и&nbsp;придет вам на&nbsp;почту.
       </p>
-      <Contacts />
+      <Row>
+        <Contacts />
+      </Row>
     </Layout>
   );
 }

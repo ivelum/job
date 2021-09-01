@@ -1,0 +1,46 @@
+@import '../vars';
+@import '../mixins';
+
+.github-link {
+  @include tr(background-color 0.5s);
+  background-color: $font-color;
+  display: block;
+  height: 100px;
+  overflow: hidden;
+  position: fixed;
+  right: -15px;
+  top: -65px;
+  transform: rotate(45deg);
+  transform-origin: bottom center;
+  width: 100px;
+  z-index: 10;
+  @include media-up(md) {
+    right: -25px;
+    top: -50px;
+    width: 150px;
+  }
+
+  &:hover {
+    background-color: lighten($font-color, 5%);
+
+    .image {
+      transform: translateY(-5px);
+    }
+  }
+}
+
+.image {
+  @include tr(transform 0.5s);
+  backface-visibility: hidden;
+  bottom: -5px;
+  height: auto;
+  left: calc(50% - 12px);
+  position: absolute;
+  transform-origin: bottom center;
+  width: 26px;
+  @include media-up(md) {
+    bottom: -10px;
+    left: calc(50% - 20px);
+    width: 40px;
+  }
+}

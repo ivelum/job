@@ -1,51 +1,50 @@
 @import './vars';
 @import './reset';
 @import './typography';
-@import './breakpoints';
-@import './grid';
-@import './transitions';
-@import './forms';
+@import './mixins';
 
 body {
   background-image: url('./images/body-background.jpg');
   background-position: center top;
   background-repeat: no-repeat;
   background-size: auto;
-  @include media-breakpoint-down(sm) { line-height: 1.8; }
+  @include media-up(sm) {
+    line-height: 2.2;
+  }
 }
 
 ::selection {
   background-color: rgba($font-color-orange, 0.3);
-  //color: $font-color-gray;
 }
 
-
-/* Title */
-
 h1 {
-  font-size: 46px;
+  font-size: 28px;
   font-weight: bold;
-  line-height: 1.1;
-  @include media-breakpoint-down(xl) { font-size: 40px; }
-  @include media-breakpoint-down(lg) {
+  line-height: 1.3;
+  @include media-up(md) {
     font-size: 34px;
     line-height: 1.2;
   }
-  @include media-breakpoint-down(sm) {
-    font-size: 28px;
-    line-height: 1.3;
+  @include media-up(lg) {
+    font-size: 40px;
+  }
+  @include media-up(xl) {
+    font-size: 46px;
+    line-height: 1.1;
   }
 }
 
 h2 {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
   line-height: 1.2;
-  @include media-breakpoint-down(lg) { font-size: 22px; }
-  @include media-breakpoint-down(sm) { font-size: 20px; }
+  @include media-up(lg) {
+    font-size: 22px;
+  }
+  @include media-up(xl) {
+    font-size: 24px;
+  }
 }
-
-/* Links */
 
 a {
   @include tr(color 0.6s, background-size 0.6s);
@@ -55,20 +54,20 @@ a {
   }
 }
 
-/* Text */
+p {
+  margin-top: 20px;
 
-p + p {
-  margin-top: $spacer;
+  &:first-child {
+    margin-top: 0;
+  }
 }
-
-/* List */
 
 ul,
 ol {
   color: $font-color;
   counter-reset: item;
   list-style: none;
-  margin: 0;
+  margin: 20px 0 0;
   padding: 0;
 }
 
@@ -91,10 +90,10 @@ ul li {
     height: 16px;
     left: 5px;
     position: absolute;
-    top: calc((1em * 2.2) / 2 - 8px);
+    top: calc((1em * 1.8) / 2 - 8px);
     width: 16px;
-    @include media-breakpoint-down(sm) {
-      top: calc((1em * 1.8) / 2 - 8px);
+    @include media-up(sm) {
+      top: calc((1em * 2.2) / 2 - 8px);
     }
   }
 }
@@ -114,9 +113,9 @@ ol li {
     content: counter(item) '.';
     left: 5px;
     position: absolute;
-    top: 3px;
-    @include media-breakpoint-down(sm) {
-      top: 0;
+    top: 0;
+    @include media-up(sm) {
+      top: 3px;
     }
   }
 }

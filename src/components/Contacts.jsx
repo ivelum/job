@@ -9,41 +9,41 @@ import SvgImage from '@/components/SvgImage';
 export default function Contacts() {
   return (
     <div className={styles.contacts}>
-      <div className={styles.title}>
+      <div className={styles.contactsTitle}>
         С&nbsp;любыми вопросами, пожалуйста, пишите:
       </div>
-      <div className={styles.body}>
-        <div className={styles.name}><span>/</span> Чат</div>
-        <div className={styles.contact}>
+      <div className={styles.list}>
+        <div className={styles.listName}><span>/</span> Чат</div>
+        <div className={styles.listVal}>
           <ExternalLink
             href="#"
-            className={styles.link}
+            className={styles.listLink}
             onClick={(e) => {
               e.preventDefault();
               openChat();
             }}
           >
-            <SvgImage name="ico-chat" className={styles.ico} />
+            <SvgImage name="ico-chat" className={styles.listIco} />
             Открыть чат
           </ExternalLink>
         </div>
-        <div className={styles.name}><span>/</span> Почта</div>
-        <div className={styles.contact}>
+        <div className={styles.listName}><span>/</span> Почта</div>
+        <div className={styles.listVal}>
           <ExternalLink
             href={ExternalLinks.contacts.email}
-            className={styles.link}
+            className={styles.listLink}
           >
-            <SvgImage name="ico-mail" className={styles.ico} />
+            <SvgImage name="ico-mail" className={styles.listIco} />
             job@ivelum.com
           </ExternalLink>
         </div>
-        <div className={styles.name}><span>/</span> Телеграм</div>
-        <div className={styles.contact}>
+        <div className={styles.listName}><span>/</span> Телеграм</div>
+        <div className={styles.listVal}>
           <ExternalLink
             href={ExternalLinks.contacts.telegram}
-            className={styles.link}
+            className={styles.listLink}
           >
-            <SvgImage name="ico-telegram" className={styles.ico} />
+            <SvgImage name="ico-telegram" className={styles.listIco} />
             @ivelum
           </ExternalLink>
         </div>

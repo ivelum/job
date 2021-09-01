@@ -1,0 +1,17 @@
+@import '../vars';
+
+.form-group {
+  position: relative;
+
+  & + & {
+    margin-top: $gutter-width;
+  }
+}
+
+.help-text {
+  color: rgba($font-color-gray, 0.8);
+  font-size: 13px;
+  line-height: 1.8;
+  margin-bottom: 15px;
+  margin-top: -5px;
+}

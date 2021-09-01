@@ -1,18 +1,33 @@
 @import '../vars';
-@import '../transitions';
-@import '../breakpoints';
+@import '../mixins';
+
+.vacancies {
+  @include media-up(xl) {
+    flex: 0 0 auto;
+    margin: 0 auto;
+    width: (100% / $grid-columns * 10);
+  }
+}
+
+.vacancies-wrapper {
+  margin-top: 30px;
+  @include media-up(lg) {
+    margin-top: 40px;
+  }
+  @include media-up(xl) {
+    margin-top: 50px;
+  }
+}
 
 .vacancies-list {
   display: grid;
-  grid-gap: 30px;
-  grid-template-columns: 1fr 1fr;
-  margin-top: 50px;
-  @include media-breakpoint-down(lg) {
-    grid-template-columns: 1fr;
-    margin-top: 30px;
-  }
-  @include media-breakpoint-down(sm) {
-    grid-gap: 10px;
+  grid-gap: 15px;
+  grid-template-columns: 1fr;
+  margin-top: 30px;
+  @include media-up(lg) {
+    grid-gap: 30px;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 50px;
   }
 }
 
@@ -21,10 +36,10 @@
   border-radius: 3px;
   color: $font-color;
   display: flex;
-  padding: 20px 30px;
+  padding: 10px 15px;
   position: relative;
-  @include media-breakpoint-down(sm) {
-    padding: 10px 15px;
+  @include media-up(lg) {
+    padding: 20px 30px;
   }
 
   &::before {
@@ -47,48 +62,53 @@
       transform: none;
     }
 
-    .title {
-      transform: translateX(-10px);
-      @include media-breakpoint-down(sm) { transform: none; }
+    .vacancy-title {
+      @include media-up(lg) {
+        transform: translateX(-10px);
+      }
     }
 
-    .ico {
-      transform: translate3d(10px, -10px, 0);
-      @include media-breakpoint-down(sm) { transform: none; }
+    .vacancy-ico {
+      @include media-up(lg) {
+        transform: translate3d(10px, -10px, 0);
+      }
     }
   }
 }
 
-.ico {
-  @include tr(transform 0.5s);
-  display: block;
-  height: 10px;
-  position: absolute;
-  right: 30px;
-  top: 30px;
-  width: 10px;
-  @include media-breakpoint-down(sm) {
-    right: 20px;
-    top: 20px;
-  }
-}
-
-.num {
-  margin-right: 30px;
+.vacancy-num {
+  line-height: 1.7;
+  margin-right: 15px;
   opacity: 0.5;
   z-index: 2;
-  @include media-breakpoint-down(sm) { margin-right: 15px; }
+  @include media-up(lg) {
+    margin-right: 30px;
+  }
 }
 
-.title {
+.vacancy-title {
   @include tr(transform 0.5s);
   font-weight: bold;
   line-height: 1.7;
   z-index: 2;
 }
 
-.sub-title {
+.vacancy-sub-title {
   display: block;
   font-weight: normal;
   opacity: 0.5;
+}
+
+.vacancy-ico {
+  @include tr(transform 0.5s);
+  display: block;
+  height: 10px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 10px;
+  @include media-up(sm) {
+    right: 30px;
+    top: 30px;
+  }
 }

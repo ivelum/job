@@ -1,0 +1,19 @@
+@import '../vars';
+@import '../mixins';
+
+.job {
+  margin-top: 30px;
+  @include media-up(lg) {
+    margin-top: 40px;
+  }
+  @include media-up(xl) {
+    margin-top: 50px;
+  }
+}
+
+.job-text {
+  margin-top: 20px;
+  @include media-up(lg) {
+    margin-top: 30px;
+  }
+}

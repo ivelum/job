@@ -2,14 +2,14 @@ import React from 'react';
 
 import ExternalLink, { ExternalLinks } from './ExternalLink';
 
-import * as styles from './IndexText.module.scss';
+import * as styles from './WelcomeText.module.scss';
 import hiIco from '@/images/hi-ico.png';
 
-export default function IndexText() {
+export default function WelcomeText() {
   return (
-    <p>
+    <div className={styles.welcome}>
       Привет!
-      <img className={styles.hiIco} src={hiIco} alt="Привет" /><br />
+      <img className={styles.welcomeIco} src={hiIco} alt="Привет" /><br />
       Ниже перечислены актуальные вакансии, которые сейчас
       открыты в&nbsp;
       <ExternalLink href={ExternalLinks.company.home}>
@@ -21,9 +21,10 @@ export default function IndexText() {
       </ExternalLink> и&nbsp;
       <ExternalLink href={ExternalLinks.wiki.remoteWork}>
         свободный
-      </ExternalLink> график. Подробную информацию о&nbsp;нас и&nbsp;о&nbsp;том,
-      как мы&nbsp;работаем, вы&nbsp;можете найти в&nbsp;нашей{' '}
+      </ExternalLink> график. Подробную информацию о&nbsp;нас
+      и&nbsp;о&nbsp;том, как мы&nbsp;работаем, вы&nbsp;можете
+      найти в&nbsp;нашей{' '}
       <ExternalLink href={ExternalLinks.wiki.home}>Wiki</ExternalLink>.
-    </p>
+    </div>
   );
 }

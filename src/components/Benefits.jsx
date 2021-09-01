@@ -4,9 +4,8 @@ import ExternalLink, { ExternalLinks } from '@/components/ExternalLink';
 
 export default function Benefits() {
   return (
-    <div className="mt-50">
-      <h2>Условия</h2>
-      <ul className="mt-30">
+    <>
+      <ul>
         <li>
           <ExternalLink href={ExternalLinks.wiki.remoteWork}>
             Удалёнка
@@ -30,6 +29,6 @@ export default function Benefits() {
           </ExternalLink> с&nbsp;профессиональным преподавателем из&nbsp;США.
         </li>
       </ul>
-    </div>
+    </>
   );
 }

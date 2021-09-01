@@ -22,31 +22,29 @@ export default function ExperienceRadioField({ name, errors, register }) {
   const fullName = `experience${name}`;
   return (
     <>
-      <div className={`col-12 col-md-5 ${styles.expName}`}>
+      <div className={styles.expName}>
         {label}
         <FormErrorMessage error={errors && errors[fullName]} />
       </div>
-      <div className="col-12 col-md-7 gy-10 gy-md-30">
-        <div className={styles.expRange}>
-          {(range(0, 5).map((level) => (
-            <div key={`${fullName}-${level}`} className={styles.expButton}>
-              <input
-                type="radio"
-                id={`${fullName}-${level}`}
-                name={fullName}
-                value={level}
-                className={styles.expInput}
-                {...register(fullName, { required: 'Обязательное поле' })}
-              />
-              <label
-                htmlFor={`${fullName}-${level}`}
-                className={styles.expLabel}
-              >
-                <span>{level}</span>
-              </label>
-            </div>
-          )))}
-        </div>
+      <div className={styles.expRange}>
+        {(range(0, 5).map((level) => (
+          <div key={`${fullName}-${level}`} className={styles.expButton}>
+            <input
+              type="radio"
+              id={`${fullName}-${level}`}
+              name={fullName}
+              value={level}
+              className={styles.expInput}
+              {...register(fullName, { required: 'Обязательное поле' })}
+            />
+            <label
+              htmlFor={`${fullName}-${level}`}
+              className={styles.expLabel}
+            >
+              <span>{level}</span>
+            </label>
+          </div>
+        )))}
       </div>
     </>
   );

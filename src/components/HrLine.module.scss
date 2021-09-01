@@ -1,23 +1,32 @@
 @import '../vars';
-@import '../breakpoints';
+@import '../mixins';
 
 .line {
   border: 0;
   border-bottom: 1px solid $border-color;
-  margin: 60px 0 0;
+  margin: 30px 0 0;
   position: relative;
-  @include media-breakpoint-down(xl) { margin-top: 50px; }
-  @include media-breakpoint-down(lg) { margin-top: 30px; }
+  @include media-up(lg) {
+    margin-top: 50px;
+  }
+  @include media-up(xl) {
+    margin-top: 60px;
+  }
 
   &::after {
     background-color: $border-color;
     content: '';
-    height: 40px;
+    display: none;
+    height: 20px;
     position: absolute;
     right: 0;
     top: 100%;
     width: 1px;
-    @include media-breakpoint-down(lg) { height: 20px; }
-    @include media-breakpoint-down(sm) { display: none; }
+    @include media-up(sm) {
+      display: block;
+    }
+    @include media-up(lg) {
+      height: 40px;
+    }
   }
 }

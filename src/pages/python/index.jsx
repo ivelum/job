@@ -1,5 +1,7 @@
 import React from 'react';
 
+import * as styles from './index.module.scss';
+
 import Jobs from '@/Jobs';
 import About from '@/components/About';
 import Benefits from '@/components/Benefits';
@@ -7,29 +9,35 @@ import Button from '@/components/Button';
 import ExternalLink, { ExternalLinks } from '@/components/ExternalLink';
 import HrLine from '@/components/HrLine';
 import InterviewProcess from '@/components/InterviewProcess';
+import JobTextBlock from '@/components/JobTextBlock';
 import TechLogos from '@/components/TechLogos';
 import Youtube from '@/components/Youtube';
 import Layout from '@/components/layout/Layout';
 
 const backLink = { url: '/', text: 'Все вакансии' };
 
-const pythonJob = () => (
-  <Layout
-    pageTitle={Jobs.python.title}
-    metaDescription={Jobs.python.description}
-    backLink={backLink}
-  >
-    <div className="row justify-content-center">
-      <div className="col-12 col-xl-10">
+export default function pythonJob() {
+  return (
+    <Layout
+      pageTitle={Jobs.python.title}
+      subTitle={Jobs.python.subTitle}
+      metaDescription={Jobs.python.description}
+      backLink={backLink}
+    >
+      <div className={styles.job}>
         <About />
+        <div className={styles.jobButton}>
+          <Button confettiAnimation href={`${Jobs.python.url}form/`}>
+            Откликнуться на вакансию
+          </Button>
+        </div>
         <HrLine />
-        <h2 className="mt-30 mt-lg-40 mt-xl-50">О проекте</h2>
-        <div className="mt-20 mt-md-30">
+        <JobTextBlock title="О проекте">
           <p>
             Данная вакансия предполагает работу
             над одним из&nbsp;следующих проектов:
           </p>
-          <ul className="mt-20 mt-md-30">
+          <ul>
             <li>
               <ExternalLink href={ExternalLinks.teamplify.home}>
                 Teamplify
@@ -42,14 +50,13 @@ const pythonJob = () => (
               Платформа нового поколения для медиа-изданий в&nbsp;Интернет.
             </li>
           </ul>
-          <p className="mt-20 mt-md-30">
+          <p>
             Посмотрите короткое видео (5&nbsp;мин)
             с&nbsp;рассказом о&nbsp;проекте:
           </p>
-        </div>
-        <Youtube videoId="INym0k56LVc" />
-        <h2 className="mt-30 mt-lg-40 mt-xl-50">Технологии и процессы</h2>
-        <div className="mt-20 mt-md-30">
+          <Youtube videoId="INym0k56LVc" />
+        </JobTextBlock>
+        <JobTextBlock title="Технологии и процессы">
           <TechLogos
             brands={['Python', 'Django', 'React', 'GraphQL', 'Docker', 'AWS']}
           />
@@ -61,7 +68,7 @@ const pythonJob = () => (
             применяем автоматизированное тестирование, линтеры и&nbsp;code
             review. См. также:
           </p>
-          <ul className="mt-20 mt-md-30">
+          <ul>
             <li>
               более полный {' '}
               <ExternalLink href={ExternalLinks.wiki.technology}>
@@ -69,16 +76,14 @@ const pythonJob = () => (
               </ExternalLink> в&nbsp;нашей вики;
             </li>
             <li>
-              {/* eslint-disable-next-line max-len */}
               вебинар о&nbsp;том{' '}
               <ExternalLink href={ExternalLinks.webinar.continuousDeployment}>
                 как мы&nbsp;предпочитаем деплоить в&nbsp;прод
               </ExternalLink>.
             </li>
           </ul>
-        </div>
-        <h2 className="mt-30 mt-lg-40 mt-xl-50">О вас</h2>
-        <div className="mt-20 mt-md-30">
+        </JobTextBlock>
+        <JobTextBlock title="О вас">
           <p>
             Мы&nbsp;ожидаем, что у&nbsp;вас не&nbsp;меньше пары лет опыта
             в&nbsp;веб-разработке и&nbsp;вы&nbsp;готовы работать как над
@@ -105,18 +110,20 @@ const pythonJob = () => (
             и&nbsp;готовности его улучшать (у&nbsp;нас налажено корпоративное
             обучение английскому).
           </p>
-        </div>
-        <Benefits />
-        <InterviewProcess />
+        </JobTextBlock>
+        <JobTextBlock title="Условия">
+          <Benefits />
+        </JobTextBlock>
+        <JobTextBlock title="Как проходит интервью">
+          <InterviewProcess />
+        </JobTextBlock>
         <HrLine />
-        <div className="mt-40 mt-xl-50 d-flex flex-column flex-sm-row">
+        <div className={styles.jobButton}>
           <Button confettiAnimation href={`${Jobs.python.url}form/`}>
             Откликнуться на вакансию
           </Button>
         </div>
       </div>
-    </div>
-  </Layout>
-);
-
-export default pythonJob;
+    </Layout>
+  );
+}

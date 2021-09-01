@@ -1,57 +1,78 @@
 @import '../vars';
-@import '../breakpoints';
+@import '../mixins';
 
 .contacts {
+  display: block;
+  flex: 0 0 auto;
   margin-top: 30px;
-  @include media-breakpoint-down(sm) { margin-top: 20px; }
+  padding-left: ($gutter-width * 0.5);
+  padding-right: ($gutter-width * 0.5);
+  width: 100%;
+  @include media-up(lg) {
+    width: (100% / $grid-columns * 6);
+  }
+  @include media-up(xl) {
+    margin-left: (100% / $grid-columns * 1);
+    width: (100% / $grid-columns * 5);
+  }
 }
 
-.title {
+.contacts-title {
   border-bottom: 1px solid $border-color;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
   position: relative;
-  @include media-breakpoint-down(sm) { padding-bottom: 20px; }
+  @include media-up(md) {
+    padding-bottom: 15px;
+  }
 
   &::after {
     background-color: $border-color;
+    bottom: -20px;
     content: '';
     height: 40px;
     position: absolute;
     right: 0;
-    top: 100%;
     width: 1px;
-    @include media-breakpoint-down(lg) { height: 20px; }
   }
 }
 
-.body {
+.list {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin-top: 30px;
-  @include media-breakpoint-down(sm) {
-    grid-template-columns: 1fr;
+  margin-top: 10px;
+  @include media-up(sm) {
+    grid-gap: 0 30px;
+    grid-template-columns: auto auto;
     margin-top: 20px;
   }
 }
 
-.name {
+.list-name {
+  flex: 0 0 auto;
+  margin-top: 10px;
+  width: 100%;
+  @include media-up(sm) {
+    margin-top: 0;
+  }
+
   > span {
     color: rgba($font-color-gray, 0.5);
   }
 }
 
-.contact {
-  @include media-breakpoint-down(sm) {
-    margin-bottom: 10px;
-    padding-left: 20px;
+.list-val {
+  flex: 0 0 auto;
+  padding-left: 20px;
+  width: 100%;
+  @include media-up(sm) {
+    padding-left: 0;
   }
 }
 
-.link {
-  background-position: 30px 100%;
+.list-link {
+  background-position: 30px 100% !important;
 }
 
-.ico {
+.list-ico {
   height: 14px;
   margin-right: 16px;
   width: 14px;

@@ -1,29 +1,157 @@
 @import '../vars';
+@import '../mixins';
+
+.apply-form {
+  @include media-up(xl) {
+    flex: 0 0 auto;
+    margin: 0 auto;
+    width: (100% / $grid-columns * 10);
+  }
+}
 
 .vacancy-title {
-  color: $font-color;
-  font-weight: bold;
   line-height: 1.7;
 }
 
-.sub-title {
+.vacancy-link {
+  color: $font-color;
+
+  &:hover {
+    color: $font-color-orange;
+  }
+}
+
+.vacancy-sub-title {
   color: $font-color-gray;
   display: block;
   font-weight: normal;
 }
 
-.form {
-  label {
-    display: block;
+.form-title {
+  margin-top: 30px;
+  @include media-up(lg) {
+    margin-top: 40px;
+  }
+  @include media-up(xl) {
+    margin-top: 50px;
   }
 }
 
-.submit {
-  display: block;
+.form-block {
+  margin-top: 20px;
+  @include media-up(lg) {
+    margin-top: 30px;
+  }
+}
+
+.form-col-1,
+.form-col-2,
+.form-col-3 {
+  flex: 0 0 auto;
+  margin-top: 30px;
+  padding-left: ($gutter-width * 0.5);
+  padding-right: ($gutter-width * 0.5);
+  width: 100%;
+}
+
+@include media-up(md) {
+  .form-col-2 {
+    flex: 0 0 auto;
+    width: (100% / $grid-columns * 6);
+  }
+
+  .form-col-3 {
+    flex: 0 0 auto;
+    width: (100% / $grid-columns * 4);
+  }
+}
+
+.form-spacer {
+  flex: 0 0 auto;
+  width: 100%;
 }
 
 .experience-legend {
   color: rgba($font-color-gray, 0.8);
   font-size: 13px;
   line-height: 1.8;
+  margin-top: 20px;
+  @include media-up(lg) {
+    margin-top: 30px;
+  }
+}
+
+.form-button {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  @include media-up(sm) {
+    flex-direction: row;
+  }
+  @include media-up(lg) {
+    margin-top: 40px;
+  }
+  @include media-up(xl) {
+    margin-top: 50px;
+  }
+}
+
+.form-control {
+  @include tr(border-color 0.5s);
+  appearance: none;
+  background-clip: padding-box;
+  background-color: $body-background-color;
+  border: 1px solid $form-border-color;
+  border-radius: 3px;
+  caret-color: $font-color-orange;
+  color: $font-color;
+  display: block;
+  font-family: inherit;
+  font-size: 16px;
+  height: 50px;
+  line-height: inherit;
+  margin: 0;
+  padding: 7px 15px;
+  width: 100%;
+
+  &::placeholder {
+    color: rgba($border-color, 0.4);
+  }
+
+  &:focus,
+  &:hover {
+    border-color: $form-focus-border-color;
+  }
+
+  &--disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+.form-select {
+  @include tr(border-color 0.5s);
+  appearance: none;
+  background: $body-background-color url("data:image/svg+xml,%3Csvg width='11' height='7' viewBox='0 0 11 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5.5 5.5L10 1' stroke='%231A1A1A' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 15px center;
+  background-clip: padding-box;
+  background-size: 11px 7px;
+  border: 1px solid $form-border-color;
+  border-radius: 3px;
+  color: $font-color;
+  display: block;
+  font-family: inherit;
+  font-size: 16px;
+  height: 50px;
+  line-height: inherit;
+  margin: 0;
+  overflow-x: hidden;
+  padding: 5px 40px 5px 15px;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  width: 100%;
+
+  &:focus,
+  &:hover {
+    border-color: $form-focus-border-color;
+  }
 }

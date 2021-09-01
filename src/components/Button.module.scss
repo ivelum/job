@@ -1,6 +1,5 @@
 @import '../vars';
-@import '../transitions';
-@import '../breakpoints';
+@import '../mixins';
 
 .button {
   @include tr(border-color 0.5s, color 0.5s);
@@ -12,17 +11,17 @@
   font-family: inherit;
   font-weight: 700;
   outline: none;
-  padding: 10px 60px;
+  padding: 10px 15px;
   position: relative;
   text-align: center;
   user-select: none;
-  @include media-breakpoint-down(md) {
+  @include media-up(sm) {
     padding-left: 30px;
     padding-right: 30px;
   }
-  @include media-breakpoint-down(sm) {
-    padding-left: 15px;
-    padding-right: 15px;
+  @include media-up(md) {
+    padding-left: 60px;
+    padding-right: 60px;
   }
 
   &::after,

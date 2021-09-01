@@ -1,4 +1,21 @@
-.hi-ico {
+@import '../vars';
+@import '../mixins';
+
+.welcome {
+  flex: 0 0 auto;
+  padding-left: ($gutter-width * 0.5);
+  padding-right: ($gutter-width * 0.5);
+  width: 100%;
+  @include media-up(lg) {
+    width: (100% / $grid-columns * 6);
+  }
+  @include media-up(xl) {
+    margin-left: (100% / $grid-columns * 1);
+    width: (100% / $grid-columns * 5);
+  }
+}
+
+.welcome-ico {
   animation-duration: 6s;
   animation-iteration-count: infinite;
   animation-name: hand;
@@ -41,4 +58,5 @@
   100% {
     transform: rotate(0deg);
   }
+
 }

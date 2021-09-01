@@ -1,4 +1,15 @@
 
+/* Media Queries */
+
+@mixin media-up($name, $mq-breakpoints: $grid-breakpoints) {
+  @if map-has-key($mq-breakpoints, $name) {
+    $name: map-get($mq-breakpoints, $name);
+  }
+  @media screen and (min-width: #{$name}) {
+    @content;
+  }
+}
+
 /* Transitions */
 
 @mixin tr($transitions...) {

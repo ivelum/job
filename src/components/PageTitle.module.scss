@@ -1,0 +1,48 @@
+@import '../vars';
+@import '../mixins';
+
+.title {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  @include media-up(md) {
+    align-items: baseline;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 40px;
+  }
+  @include media-up(lg) {
+    margin-top: 60px;
+  }
+  @include media-up(xl) {
+    margin-top: 70px;
+  }
+}
+
+.title-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.title-sub {
+  margin-top: 5px;
+}
+
+.back-link {
+  align-items: center;
+  display: inline-flex;
+  margin-bottom: 20px;
+  @include media-up(md) {
+    margin-bottom: 0;
+    order: 1;
+  }
+
+  &:hover .back-link-ico {
+    transform: translateX(5px);
+  }
+}
+
+.back-link-ico {
+  @include tr(transform 0.5s);
+  margin-left: 10px;
+}
