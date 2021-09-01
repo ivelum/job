@@ -9,7 +9,7 @@ export default function GithubButton() {
   return (
     <ExternalLink
       href={ExternalLinks.company.jobRepo}
-      className={styles.githubLink}
+      className={styles.github}
       noUnderline
     >
       <img

@@ -1,30 +1,28 @@
 @import '../vars';
 @import '../mixins';
 
-.github-link {
+.github {
   @include tr(background-color 0.5s);
   background-color: $font-color;
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
   display: block;
-  height: 100px;
+  height: 70px;
   overflow: hidden;
   position: fixed;
-  right: -15px;
-  top: -65px;
-  transform: rotate(45deg);
-  transform-origin: bottom center;
-  width: 100px;
+  right: 0;
+  top: 0;
+  width: 70px;
   z-index: 10;
   @include media-up(md) {
-    right: -25px;
-    top: -50px;
-    width: 150px;
+    height: 100px;
+    width: 100px;
   }
 
   &:hover {
-    background-color: lighten($font-color, 5%);
+    background-color: lighten($font-color, 7%);
 
     .image {
-      transform: translateY(-5px);
+      transform: rotate(45deg) translate3d(0, 4px, 0);
     }
   }
 }
@@ -32,14 +30,14 @@
 .image {
   @include tr(transform 0.5s);
   backface-visibility: hidden;
-  bottom: -5px;
   height: auto;
-  left: calc(50% - 12px);
+  left: calc(50% - 13px);
   position: absolute;
+  top: 0;
+  transform: rotate(45deg) translate3d(0, 8px, 0);
   transform-origin: bottom center;
   width: 26px;
   @include media-up(md) {
-    bottom: -10px;
     left: calc(50% - 20px);
     width: 40px;
   }
