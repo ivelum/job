@@ -1,13 +1,9 @@
 import React from 'react';
 
-import * as styles from './index.module.scss';
-
 import Jobs from '@/Jobs';
-import About from '@/components/About';
 import Benefits from '@/components/Benefits';
-import Button from '@/components/Button';
-import HrLine from '@/components/HrLine';
 import InterviewProcess from '@/components/InterviewProcess';
+import JobPage from '@/components/JobPage';
 import JobTextBlock from '@/components/JobTextBlock';
 import TechLogos from '@/components/TechLogos';
 import Youtube from '@/components/Youtube';
@@ -23,14 +19,7 @@ export default function phpJob() {
       metaDescription={Jobs.php.description}
       backLink={backLink}
     >
-      <div className={styles.job}>
-        <About />
-        <div className={styles.jobButton}>
-          <Button confettiAnimation href={`${Jobs.php.url}form/`}>
-            Откликнуться на вакансию
-          </Button>
-        </div>
-        <HrLine />
+      <JobPage job={Jobs.php}>
         <JobTextBlock title="О проекте">
           <p>
             Мы&nbsp;ищем разработчика в&nbsp;команду, которая занимается
@@ -102,13 +91,7 @@ export default function phpJob() {
         <JobTextBlock title="Как проходит интервью">
           <InterviewProcess />
         </JobTextBlock>
-        <HrLine />
-        <div className={styles.jobButton}>
-          <Button confettiAnimation href={`${Jobs.php.url}form/`}>
-            Откликнуться на вакансию
-          </Button>
-        </div>
-      </div>
+      </JobPage>
     </Layout>
   );
 }
