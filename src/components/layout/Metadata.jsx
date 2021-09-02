@@ -11,7 +11,7 @@ export default function Metadata({ pageTitle, description }) {
   const { siteUrl, title: siteName } = useSiteMetadata();
   const metaDescription = description || (
     'Сегодня открыты две вакансии: '
-    + `${Jobs.php.description} и ${Jobs.python.description}`
+    + `${Jobs.python.description} + ${Jobs.php.description}`
   );
   const metaTitle = pageTitle === siteName
     ? pageTitle
