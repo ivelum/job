@@ -17,7 +17,7 @@ export const ExternalLinks = {
     telegram: 'tg://resolve?domain=IvelumBot',
   },
   teamplify: {
-    home: 'https://templify.com',
+    home: 'https://teamplify.com',
   },
   webinar: {
     continuousDeployment: 'https://youtu.be/pt_MkFT51aA',
