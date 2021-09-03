@@ -62,7 +62,7 @@ const submitData = async (data) => {
 export default function ApplyForm({ job, experienceTypes }) {
   const [submitting, setSubmitting] = useState(false);
   const [submissionError, setSubmissionError] = useState(false);
-  const schema = yup.object().shape({
+  const dataShape = {
     fullName: yup.string().required(),
     country: yup.string().required().test(
       'checkRuLocked',
@@ -84,16 +84,20 @@ export default function ApplyForm({ job, experienceTypes }) {
     sourceCode: yup.string().required(),
     english: yup.string().required(),
     referrer: yup.string().required(),
-  });
+  };
   Object.keys(experienceTypes).forEach((name) => {
-    schema[name] = yup.number().typeError(numberTypeErr).required();
+    const fieldName = `experience${name}`;
+    dataShape[fieldName] = yup.mixed().required();
   });
+  const schema = yup.object().shape(dataShape);
+
   const {
     register,
     setValue,
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
+
   const onSubmit = async (data) => {
     setSubmitting(true);
     setSubmissionError(false);

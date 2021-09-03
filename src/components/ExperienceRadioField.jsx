@@ -35,7 +35,7 @@ export default function ExperienceRadioField({ name, errors, register }) {
               name={fullName}
               value={level}
               className={styles.input}
-              {...register(fullName, { required: 'Обязательное поле' })}
+              {...register(fullName)}
             />
             <label
               htmlFor={`${fullName}-${level}`}
