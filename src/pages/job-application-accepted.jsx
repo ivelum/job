@@ -16,9 +16,9 @@ export default function index() {
         интересующие вопросы.
       </p>
       <p>
-        Пожалуйста, выберите одну удобную вам дату и&nbsp;время{' '}
+        Пожалуйста, выберите одну удобную вам дату и&nbsp;время по ссылке:<br />
         <ExternalLink href={ExternalLinks.company.bookInterview}>
-          по&nbsp;ссылке
+          {ExternalLinks.company.bookInterview}
         </ExternalLink><br />
         Ссылка на&nbsp;Zoom-конференцию будет создана
         автоматически и&nbsp;придет вам на&nbsp;почту.
