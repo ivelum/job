@@ -43,7 +43,7 @@ export default function pythonJob() {
             Посмотрите короткое видео (5&nbsp;мин)
             с&nbsp;рассказом о&nbsp;проекте:
           </p>
-          <Youtube videoId="INym0k56LVc" />
+          <Youtube videoId="dMJCfevglKw" />
         </JobTextBlock>
         <JobTextBlock title="Технологии и процессы">
           <TechLogos
