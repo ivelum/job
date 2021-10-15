@@ -59,20 +59,26 @@ const submitData = async (data) => {
   return response.json();
 };
 
-export default function ApplyForm({ job, experienceTypes }) {
+export default function ApplyForm({ job, experienceTypes, ruEnabled }) {
   const [submitting, setSubmitting] = useState(false);
   const [submissionError, setSubmissionError] = useState(false);
-  const dataShape = {
-    fullName: yup.string().required(),
-    country: yup.string().required().test(
+
+  let country = yup.string().required().test(
+    'checkCountryLocked',
+    lockedCountryErr,
+    (value) => ['AZ', 'BY', 'CN', 'KZ', 'LV', 'UZ'].indexOf(value) === -1,
+  );
+  if (!ruEnabled) {
+    country = country.test(
       'checkRuLocked',
       ruLockedErr,
       (value) => value !== 'RU',
-    ).test(
-      'checkCountryLocked',
-      lockedCountryErr,
-      (value) => ['AZ', 'BY', 'CN', 'KZ', 'LV', 'UZ'].indexOf(value) === -1,
-    ),
+    );
+  }
+
+  const dataShape = {
+    fullName: yup.string().required(),
+    country,
     city: yup.string().required(),
     email: yup.string().required().email(),
     experienceOverall: yup.number().typeError(numberTypeErr).required().min(0),
@@ -384,4 +390,9 @@ ApplyForm.propTypes = {
     url: PropTypes.string.isRequired,
   }).isRequired,
   experienceTypes: PropTypes.object.isRequired,
+  ruEnabled: PropTypes.bool,
+};
+
+ApplyForm.defaultProps = {
+  ruEnabled: false,
 };
