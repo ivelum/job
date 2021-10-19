@@ -50,6 +50,7 @@ h2 {
 
 a {
   @include tr(color 0.6s, background-size 0.6s);
+  overflow-wrap: anywhere;
 
   &:hover {
     color: $font-color;
