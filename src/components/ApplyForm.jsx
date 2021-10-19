@@ -1,8 +1,10 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { navigate, Link } from 'gatsby';
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import TextareaAutosize from 'react-textarea-autosize';
 import * as yup from 'yup';
 
 import CountryDropdown from './CountryDropdown';
@@ -132,10 +134,14 @@ export default function ApplyForm({ job, experienceTypes, ruEnabled }) {
     }
   };
 
+  const breakpoints = useBreakpoint();
+
+  const textareaMaxRows = breakpoints.md ? 11 : 7;
+
   const renderField = ({
     name, label, helpText, isRequired,
     component, componentProps,
-  } = {}) => (
+  }) => (
     <Field
       name={name}
       label={label}
@@ -309,8 +315,10 @@ export default function ApplyForm({ job, experienceTypes, ruEnabled }) {
                   helpText: 'Кто-то любит проектировать архитектуру, '
                     + 'кто-то UI, кто-то заниматься исследованиями нового. '
                     + 'То, что нравится, обычно делается легко и быстро.',
+                  component: TextareaAutosize,
                   componentProps: {
                     className: styles.formControl,
+                    maxRows: textareaMaxRows,
                   },
                 })}
               </div>
@@ -321,8 +329,10 @@ export default function ApplyForm({ job, experienceTypes, ruEnabled }) {
                   helpText: 'Бывают вещи, от которых воротит, которые '
                     + 'приходится делать через силу. Их не получется делать '
                     + 'быстро или не получается делать совсем.',
+                  component: TextareaAutosize,
                   componentProps: {
                     className: styles.formControl,
+                    maxRows: textareaMaxRows,
                   },
                 })}
               </div>
