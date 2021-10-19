@@ -10,10 +10,11 @@
     "stylefix": "stylelint --fix --syntax scss 'src/**/*.scss'"
   },
   "dependencies": {
-    "@reach/router": "1.3.4",
     "@hookform/resolvers": "2.8.0",
+    "@reach/router": "1.3.4",
     "classnames": "2.3.1",
     "gatsby": "3.12.0",
+    "gatsby-plugin-breakpoints": "^1.3.5",
     "gatsby-plugin-force-trailing-slashes": "1.0.5",
     "gatsby-plugin-react-helmet": "4.12.0",
     "gatsby-plugin-sass": "4.12.0",
@@ -23,6 +24,7 @@
     "react-dom": "17.0.2",
     "react-helmet": "6.1.0",
     "react-hook-form": "7.13.0",
+    "react-textarea-autosize": "^8.3.3",
     "sass": "1.38.0",
     "yup": "0.32.9"
   },
