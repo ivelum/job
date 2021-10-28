@@ -13,34 +13,56 @@ https://job.ivelum.com/python/form/
 Присылайте ваше решение на адрес [job@ivelum.com](mailto:job@ivelum.com).
 
 
-## 1. Хабрапрокси
+## 1. Hacker™ News proxy
 
-Реализовать простой http-прокси-сервер, запускаемый локально (порт на ваше
-усмотрение), который показывает содержимое страниц Хабра. Прокси должен
-модицифировать текст на страницах следующим образом: после каждого слова из
-шести букв должен стоять значок «™». Пример:
+Реализовать простой http-прокси-сервер, запускаемый локально, который
+показывает содержимое страниц [Hacker News](https://news.ycombinator.com).
+Прокси должен модицифировать текст на страницах следующим образом: после
+каждого слова из шести букв должен стоять значок «™». Пример™:
 
-Исходный текст: https://habr.com/ru/company/yandex/blog/258673/
-
-```
-Сейчас на фоне уязвимости Logjam все в индустрии в очередной раз обсуждают 
-проблемы и особенности TLS. Я хочу воспользоваться этой возможностью, чтобы 
-поговорить об одной из них, а именно — о настройке ciphersiutes.
-```
-
-Через ваш прокси™: http://127.0.0.1:8232/ru/company/yandex/blog/258673/
+Исходный текст: https://news.ycombinator.com/item?id=13713480
 
 ```
-Сейчас™ на фоне уязвимости Logjam™ все в индустрии в очередной раз обсуждают 
-проблемы и особенности TLS. Я хочу воспользоваться этой возможностью, чтобы 
-поговорить об одной из них, а именно™ — о настройке ciphersiutes. 
+The visual description of the colliding files, at
+http://shattered.io/static/pdf_format.png, is not very helpful
+in understanding how they produced the PDFs, so I took apart
+the PDFs and worked it out.
+
+Basically, each PDF contains a single large (421,385-byte) JPG
+image, followed by a few PDF commands to display the JPG. The
+collision lives entirely in the JPG data - the PDF format is
+merely incidental here. Extracting out the two images shows two
+JPG files with different contents (but different SHA-1 hashes
+since the necessary prefix is missing). Each PDF consists of a
+common prefix (which contains the PDF header, JPG stream
+descriptor and some JPG headers), and a common suffix (containing
+image data and PDF display commands).
+```
+
+Через ваш прокси™: http://127.0.0.1:8232/item?id=13713480
+
+```
+The visual™ description of the colliding files, at
+http://shattered.io/static/pdf_format.png, is not very helpful
+in understanding how they produced the PDFs, so I took apart
+the PDFs and worked™ it out.
+
+Basically, each PDF contains a single™ large (421,385-byte) JPG
+image, followed by a few PDF commands to display the JPG. The
+collision lives entirely in the JPG data - the PDF format™ is
+merely™ incidental here. Extracting out the two images™ shows two
+JPG files with different contents (but different SHA-1 hashes™
+since the necessary prefix™ is missing). Each PDF consists of a
+common™ prefix™ (which contains the PDF header™, JPG stream™
+descriptor and some JPG headers), and a common™ suffix™ (containing
+image data and PDF display commands).
 ```
 
 Условия:
-* Python™ 3.6+
+* Python™ 3.9+
 * страницы должны™ отображаться и работать полностью корректно, в точности так,
   как и оригинальные (за исключением модифицированного текста™);
-* при навигации по ссылкам, которые ведут на другие™ страницы хабра, браузер
+* при навигации по ссылкам, которые ведут на другие™ страницы HN, браузер
   должен™ оставаться на адресе™ вашего™ прокси™;
 * можно использовать любые общедоступные библиотеки, которые сочтёте нужным™;
 * чем меньше™ кода, тем лучше. PEP8 — обязательно;
@@ -50,7 +72,7 @@ https://job.ivelum.com/python/form/
 насчет™ написания тестов™?
 
 Присылайте ваше решение в виде ссылки на gist или на публичный репозиторий на 
-Github.
+GitHub.
 
 
 ## 2. Добавить поддержку сортировки в DjangoQL
