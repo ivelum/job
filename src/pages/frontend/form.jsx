@@ -7,17 +7,17 @@ import Layout from '@/components/layout/Layout';
 
 const backLink = { url: '/', text: 'Все вакансии' };
 
-export default function PHPForm() {
+export default function FrontendForm() {
   return (
     <Layout
       pageTitle="Отклик на вакансию"
-      metaTitle={`Отклик на вакансию - ${Jobs.php.title}`}
-      metaDescription={Jobs.php.description}
+      metaTitle={`Отклик на вакансию - ${Jobs.frontend.title}`}
+      metaDescription={Jobs.frontend.description}
       backLink={backLink}
     >
       <ApplyForm
-        job={Jobs.php}
-        experienceTypes={omit(allExperienceTypes, ['django'])}
+        job={Jobs.frontend}
+        experienceTypes={omit(allExperienceTypes, ['php', 'python', 'django'])}
       />
     </Layout>
   );
