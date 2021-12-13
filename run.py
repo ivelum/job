@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import os
+import time
 from pathlib import Path
 
 import click
@@ -59,6 +60,13 @@ def deploy_lambda():
         f'--zip-file {code_archive_path} '
         f'--publish',
     )
+
+    get_function_cmd = f'lambda get-function --function-name {function_name}'
+    function_info = aws(get_function_cmd)
+
+    while function_info['Configuration']['LastUpdateStatus'] != 'Successful':
+        time.sleep(1)
+        function_info = aws(get_function_cmd)
 
     info = os.environ['GOOGLE_API_SERVICE_ACCOUNT_INFO']
     info = info.replace('"', '\\"')  # encode quotes inside json string
