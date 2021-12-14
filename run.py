@@ -61,12 +61,25 @@ def deploy_lambda():
         f'--publish',
     )
 
-    get_function_cmd = f'lambda get-function --function-name {function_name}'
-    function_info = aws(get_function_cmd)
+    def get_function_config():
+        return aws(
+            f'lambda get-function --function-name {function_name}',
+        )['Configuration']
 
-    while function_info['Configuration']['LastUpdateStatus'] != 'Successful':
+    function_config = get_function_config()
+    status = function_config['LastUpdateStatus']
+    while status == 'InProgress':
         time.sleep(1)
-        function_info = aws(get_function_cmd)
+        function_config = get_function_config()
+        status = function_config['LastUpdateStatus']
+
+    if status == 'Failed':
+        status_reason = function_config['LastUpdateStatusReason']
+        status_reason_code = function_config['LastUpdateStatusReasonCode']
+        raise RuntimeError(
+            f'Failed to update lambda function. '
+            f'Reason: {status_reason_code} | {status_reason}.',
+        )
 
     info = os.environ['GOOGLE_API_SERVICE_ACCOUNT_INFO']
     info = info.replace('"', '\\"')  # encode quotes inside json string
