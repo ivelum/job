@@ -347,6 +347,20 @@ export default function ApplyForm({ job, experienceTypes, ruEnabled }) {
             </div>
             <div className={styles.formCol1}>
               {renderField({
+                name: 'recommendedBy',
+                label: 'Знакомы ли вы с кем-то из ivelum?',
+                helpText: 'Если кто-то из наших сотрудников может вас ' +
+                  'порекомендовать, это упростит прохождение собеседований и ' +
+                  'предоставит дополнительные бонусы. Если вы знаете такого ' +
+                  'человека, укажите его имя здесь',
+                isRequired: false,
+                componentProps: {
+                  className: styles.formControl,
+                },
+              })}
+            </div>
+            <div className={styles.formCol1}>
+              {renderField({
                 name: 'referrer',
                 label: 'Откуда вы узнали о вакансии?',
                 helpText: 'Наименование сайта с объявлением / может, '
