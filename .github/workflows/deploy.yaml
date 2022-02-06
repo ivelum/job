@@ -14,7 +14,7 @@ jobs:
         with:
           channel_id: C0PT3267R
           status: STARTED
-          color: warning
+          color: '#ee9b00'
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
     outputs:
@@ -48,7 +48,7 @@ jobs:
         with:
           channel_id: C0PT3267R
           status: FAILED
-          color: danger
+          color: '#d7263d'
 
   deploy-app:
     needs: lint
@@ -80,7 +80,7 @@ jobs:
         with:
           channel_id: C0PT3267R
           status: FAILED
-          color: danger
+          color: '#d7263d'
 
   deploy-lambda:
     needs: lint
@@ -111,7 +111,7 @@ jobs:
         with:
           channel_id: C0PT3267R
           status: FAILED
-          color: danger
+          color: '#d7263d'
 
   notify-build-success:
     if: ${{ github.event_name == 'push' }}
@@ -127,4 +127,4 @@ jobs:
           message_id: ${{ needs.notify-build-start.outputs.status_message_id }}
           channel_id: C0PT3267R
           status: SUCCESS
-          color: good
+          color: '#16db65'
