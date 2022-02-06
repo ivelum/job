@@ -3,15 +3,13 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-import Jobs from '@/Jobs';
 import useSiteMetadata from '@/hooks/use-site-metadata';
 
 export default function Metadata({ pageTitle, description }) {
   const location = useLocation();
   const { siteUrl, title: siteName } = useSiteMetadata();
   const metaDescription = description || (
-    'Сегодня открыты две вакансии: '
-    + `${Jobs.python.description} и ${Jobs.frontend.description}`
+    'Сегодня есть вакансии для разработчиков на Python, PHP, React.js'
   );
   const metaTitle = pageTitle === siteName
     ? pageTitle

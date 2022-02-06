@@ -21,9 +21,8 @@ Contact us at [job@ivelum.com](mailto:job@ivelum.com)
 
 ## Code challenges
 
-We currently have two challenges:
-
 - for [Python developers](https://github.com/ivelum/job/blob/master/challenges/python.md);
+- for [PHP developers](https://github.com/ivelum/job/blob/master/challenges/php.md);
 - for [Frontend developers](https://github.com/ivelum/job/blob/master/challenges/frontend.md).
 
 If you'd like to complete one of the code challenges and send us your solution, 
