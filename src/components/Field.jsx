@@ -4,7 +4,7 @@ import React from 'react';
 import FieldLabel from './FieldLabel';
 import FormErrorMessage from './FormErrorMessage';
 
-import * as styles from '@/components/Field.module.scss';
+import * as styles from './Field.module.scss';
 
 export default function Field({
   name, label, helpText, isRequired, errors,

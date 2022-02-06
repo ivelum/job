@@ -2,9 +2,10 @@ import { Link } from 'gatsby';
 import React from 'react';
 
 import Jobs from '@/Jobs';
-import HrLine from '@/components/HrLine';
-import * as styles from '@/components/IndexVacancies.module.scss';
-import SvgImage from '@/components/SvgImage';
+import HrLine from './HrLine';
+import SvgImage from './SvgImage';
+
+import * as styles from './IndexVacancies.module.scss';
 
 export default function IndexVacancies() {
   return (

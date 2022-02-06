@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import * as React from 'react';
 
-import * as styles from '@/components/JobTextBlock.module.scss';
+import * as styles from './JobTextBlock.module.scss';
 
 export default function JobTextBlock({ title, children }) {
   return (

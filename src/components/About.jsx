@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ExternalLink, { ExternalLinks } from '@/components/ExternalLink';
+import ExternalLink, { ExternalLinks } from './ExternalLink';
 
 export default function About() {
   return (

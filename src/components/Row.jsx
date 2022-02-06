@@ -2,7 +2,7 @@ import cn from 'classnames';
 import PropTypes from 'prop-types';
 import * as React from 'react';
 
-import * as styles from '@/components/Row.module.scss';
+import * as styles from './Row.module.scss';
 
 export default function Row({ children, gutterY }) {
   return (

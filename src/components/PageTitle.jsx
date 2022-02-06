@@ -2,8 +2,9 @@ import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import * as React from 'react';
 
-import * as styles from '@/components/PageTitle.module.scss';
-import SvgImage from '@/components/SvgImage';
+import SvgImage from './SvgImage';
+
+import * as styles from './PageTitle.module.scss';
 
 export default function PageTitle({ title, subTitle, backLink }) {
   return (

@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import githubLogo from '@/images/github-button.svg';
+import ExternalLink, { ExternalLinks } from './ExternalLink';
 
-import ExternalLink, { ExternalLinks } from '@/components/ExternalLink';
-import * as styles from '@/components/GithubButton.module.scss';
+import * as styles from './GithubButton.module.scss';
+import githubLogo from '@/images/github-button.svg';
 
 export default function GithubButton() {
   return (

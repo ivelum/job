@@ -7,19 +7,18 @@ import { useForm } from 'react-hook-form';
 import TextareaAutosize from 'react-textarea-autosize';
 import * as yup from 'yup';
 
+import Button from './Button';
 import CountryDropdown from './CountryDropdown';
 import ExperienceRadioField, {
   allExperienceTypes,
 } from './ExperienceRadioField';
+import ExternalLink, { ExternalLinks } from './ExternalLink';
 import Field from './Field';
+import FormErrorMessage from './FormErrorMessage';
+import HrLine from './HrLine';
+import Row from './Row';
 
 import * as styles from './ApplyForm.module.scss';
-
-import Button from '@/components/Button';
-import ExternalLink, { ExternalLinks } from '@/components/ExternalLink';
-import FormErrorMessage from '@/components/FormErrorMessage';
-import HrLine from '@/components/HrLine';
-import Row from '@/components/Row';
 
 export { allExperienceTypes };
 
@@ -155,240 +154,238 @@ export default function ApplyForm({ job, experienceTypes, ruEnabled }) {
   );
 
   return (
-    <>
-      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-        <div className={styles.applyForm}>
-          <div className={styles.vacancyTitle}>
-            <Link className={styles.vacancyLink} to={job.url}>{job.title}</Link>
-            <span className={styles.vacancySubTitle}>{job.subTitle}</span>
-          </div>
-          <HrLine />
-          <h2 className={styles.formTitle}>О вас</h2>
-          <div className={styles.formBlock}>
-            <Row gutterY>
-              <div className={styles.formCol2}>
-                {renderField({
-                  name: 'fullName',
-                  label: 'Ваше имя и фамилия:',
-                  componentProps: {
-                    autoFocus: true,
-                    className: styles.formControl,
-                  },
-                })}
-              </div>
-              <div className={styles.formSpacer} />
-              <div className={styles.formCol2}>
-                {renderField({
-                  name: 'country',
-                  label: 'Страна проживания',
-                  component: CountryDropdown,
-                  componentProps: {
-                    className: styles.formSelect,
-                    onChange: (e) => {
-                      setValue(
-                        'country',
-                        e.target.value,
-                        { shouldValidate: true },
-                      );
-                    },
-                  },
-                })}
-              </div>
-              <div className={styles.formCol2}>
-                {renderField({
-                  name: 'city',
-                  label: 'Город или населенный пункт',
-                  componentProps: {
-                    className: styles.formControl,
-                  },
-                })}
-              </div>
-              <div className={styles.formCol3}>
-                {renderField({
-                  name: 'email',
-                  label: 'Ваш Email',
-                  componentProps: {
-                    className: styles.formControl,
-                  },
-                })}
-              </div>
-              <div className={styles.formCol3}>
-                {renderField({
-                  name: 'telegram',
-                  label: 'Telegram',
-                  isRequired: false,
-                  componentProps: {
-                    className: styles.formControl,
-                  },
-                })}
-              </div>
-              <div className={styles.formCol3}>
-                {renderField({
-                  name: 'skype',
-                  label: 'Skype',
-                  isRequired: false,
-                  componentProps: {
-                    className: styles.formControl,
-                  },
-                })}
-              </div>
-              <div className={styles.formCol2}>
-                {renderField({
-                  name: 'experienceOverall',
-                  label: 'Сколько у вас лет опыта в программировании?',
-                  componentProps: {
-                    className: styles.formControl,
-                  },
-                })}
-              </div>
-              <div className={styles.formCol2}>
-                {renderField({
-                  name: 'experienceWeb',
-                  label: 'Сколько из них связано с веб-разработкой?',
-                  componentProps: {
-                    className: styles.formControl,
-                  },
-                })}
-              </div>
-              <div className={styles.formCol1}>
-                {renderField({
-                  name: 'education',
-                  label: 'Какое у вас образование?',
-                  helpText: 'Учебное заведение, год окончания, специальность.',
-                  componentProps: {
-                    className: styles.formControl,
-                  },
-                })}
-              </div>
-              <div className={styles.formCol1}>
-                {renderField({
-                  name: 'english',
-                  label: 'Как у вас с английским?',
-                  helpText: 'С письменным, с устным?',
-                  componentProps: {
-                    className: styles.formControl,
-                  },
-                })}
-              </div>
-            </Row>
-          </div>
-          <h2 className={styles.formTitle}>Оцените свой опыт</h2>
-          <div className={styles.experienceLegend}>
-            0&nbsp;&mdash; Нет опыта;
-            1&nbsp;&mdash; Небольшой опыт, занимаюсь время от&nbsp;времени;
-            2&nbsp;&mdash; Работаю с&nbsp;этим почти каждый день;
-            3&nbsp;&mdash; Работаю много лет, знаю много интересных вещей;
-            4&nbsp;&mdash; Эксперт, пишу статьи, выступаю
-            на&nbsp;конференциях и&nbsp;т.д.
-          </div>
-          <div className={styles.formBlock}>
-            <Row gutterY>
-              {Object.keys(experienceTypes).map((name) => (
-                <ExperienceRadioField
-                  key={name}
-                  name={name}
-                  errors={errors}
-                  register={register}
-                />
-              ))}
-            </Row>
-          </div>
-          <h2 className={styles.formTitle}>Дополнительно</h2>
-          <div className={styles.formBlock}>
-            <Row gutterY>
-              <div className={styles.formCol1}>
-                {renderField({
-                  name: 'linuxCommands',
-                  label: 'Назовите консольные команды Linux, '
-                    + 'состоящих из 3 символов, сколько вспомните?',
-                  helpText: 'Подглядывать нечестно.',
-                  componentProps: {
-                    className: styles.formControl,
-                  },
-                })}
-              </div>
-              <div className={styles.formCol1}>
-                {renderField({
-                  name: 'lovedTasks',
-                  label: 'Какого рода задачами вам больше '
-                    + 'всего нравится заниматься?',
-                  helpText: 'Кто-то любит проектировать архитектуру, '
-                    + 'кто-то UI, кто-то заниматься исследованиями нового. '
-                    + 'То, что нравится, обычно делается легко и быстро.',
-                  component: TextareaAutosize,
-                  componentProps: {
-                    className: styles.formControl,
-                    maxRows: textareaMaxRows,
-                  },
-                })}
-              </div>
-              <div className={styles.formCol1}>
-                {renderField({
-                  name: 'unlovedTasks',
-                  label: 'А чем не нравится заниматься?',
-                  helpText: 'Бывают вещи, от которых воротит, которые '
-                    + 'приходится делать через силу. Их не получется делать '
-                    + 'быстро или не получается делать совсем.',
-                  component: TextareaAutosize,
-                  componentProps: {
-                    className: styles.formControl,
-                    maxRows: textareaMaxRows,
-                  },
-                })}
-              </div>
-              <div className={styles.formCol1}>
-                {renderField({
-                  name: 'sourceCode',
-                  label: 'Где можно посмотреть ваш код? GitHub, '
-                    + 'GitLab, иное.',
-                  helpText: 'Желательно ссылки на свои проекты, не форки.',
-                  componentProps: {
-                    className: styles.formControl,
-                  },
-                })}
-              </div>
-              <div className={styles.formCol1}>
-                {renderField({
-                  name: 'referrer',
-                  label: 'Откуда вы узнали о вакансии?',
-                  helpText: 'Наименование сайта с объявлением / может, '
-                    + 'мы вам написали сами / или друзья прислали ссылку',
-                  componentProps: {
-                    className: styles.formControl,
-                  },
-                })}
-              </div>
-            </Row>
-          </div>
-          <HrLine />
-          <div className={styles.formButton}>
-            <Button
-              confettiAnimation
-              type="submit"
-            >
-              {submitting
-                ? 'Отправляем...'
-                : 'Отправить'}
-            </Button>
-            <FormErrorMessage
-              error={
-                submissionError ? {
-                  message: (
-                    <>
-                      При отправке формы произошла ошибка.<br />
-                      При повторении ошибки напишите нам на{' '}
-                      <ExternalLink href={ExternalLinks.contacts.email}>
-                        job@ivelum.com
-                      </ExternalLink>
-                    </>
-                  ),
-                } : null
-              }
-            />
-          </div>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div className={styles.applyForm}>
+        <div className={styles.vacancyTitle}>
+          <Link className={styles.vacancyLink} to={job.url}>{job.title}</Link>
+          <span className={styles.vacancySubTitle}>{job.subTitle}</span>
         </div>
-      </form>
-    </>
+        <HrLine />
+        <h2 className={styles.formTitle}>О вас</h2>
+        <div className={styles.formBlock}>
+          <Row gutterY>
+            <div className={styles.formCol2}>
+              {renderField({
+                name: 'fullName',
+                label: 'Ваше имя и фамилия:',
+                componentProps: {
+                  autoFocus: true,
+                  className: styles.formControl,
+                },
+              })}
+            </div>
+            <div className={styles.formSpacer} />
+            <div className={styles.formCol2}>
+              {renderField({
+                name: 'country',
+                label: 'Страна проживания',
+                component: CountryDropdown,
+                componentProps: {
+                  className: styles.formSelect,
+                  onChange: (e) => {
+                    setValue(
+                      'country',
+                      e.target.value,
+                      { shouldValidate: true },
+                    );
+                  },
+                },
+              })}
+            </div>
+            <div className={styles.formCol2}>
+              {renderField({
+                name: 'city',
+                label: 'Город или населенный пункт',
+                componentProps: {
+                  className: styles.formControl,
+                },
+              })}
+            </div>
+            <div className={styles.formCol3}>
+              {renderField({
+                name: 'email',
+                label: 'Ваш Email',
+                componentProps: {
+                  className: styles.formControl,
+                },
+              })}
+            </div>
+            <div className={styles.formCol3}>
+              {renderField({
+                name: 'telegram',
+                label: 'Telegram',
+                isRequired: false,
+                componentProps: {
+                  className: styles.formControl,
+                },
+              })}
+            </div>
+            <div className={styles.formCol3}>
+              {renderField({
+                name: 'skype',
+                label: 'Skype',
+                isRequired: false,
+                componentProps: {
+                  className: styles.formControl,
+                },
+              })}
+            </div>
+            <div className={styles.formCol2}>
+              {renderField({
+                name: 'experienceOverall',
+                label: 'Сколько у вас лет опыта в программировании?',
+                componentProps: {
+                  className: styles.formControl,
+                },
+              })}
+            </div>
+            <div className={styles.formCol2}>
+              {renderField({
+                name: 'experienceWeb',
+                label: 'Сколько из них связано с веб-разработкой?',
+                componentProps: {
+                  className: styles.formControl,
+                },
+              })}
+            </div>
+            <div className={styles.formCol1}>
+              {renderField({
+                name: 'education',
+                label: 'Какое у вас образование?',
+                helpText: 'Учебное заведение, год окончания, специальность.',
+                componentProps: {
+                  className: styles.formControl,
+                },
+              })}
+            </div>
+            <div className={styles.formCol1}>
+              {renderField({
+                name: 'english',
+                label: 'Как у вас с английским?',
+                helpText: 'С письменным, с устным?',
+                componentProps: {
+                  className: styles.formControl,
+                },
+              })}
+            </div>
+          </Row>
+        </div>
+        <h2 className={styles.formTitle}>Оцените свой опыт</h2>
+        <div className={styles.experienceLegend}>
+          0&nbsp;&mdash; Нет опыта;
+          1&nbsp;&mdash; Небольшой опыт, занимаюсь время от&nbsp;времени;
+          2&nbsp;&mdash; Работаю с&nbsp;этим почти каждый день;
+          3&nbsp;&mdash; Работаю много лет, знаю много интересных вещей;
+          4&nbsp;&mdash; Эксперт, пишу статьи, выступаю
+          на&nbsp;конференциях и&nbsp;т.д.
+        </div>
+        <div className={styles.formBlock}>
+          <Row gutterY>
+            {Object.keys(experienceTypes).map((name) => (
+              <ExperienceRadioField
+                key={name}
+                name={name}
+                errors={errors}
+                register={register}
+              />
+            ))}
+          </Row>
+        </div>
+        <h2 className={styles.formTitle}>Дополнительно</h2>
+        <div className={styles.formBlock}>
+          <Row gutterY>
+            <div className={styles.formCol1}>
+              {renderField({
+                name: 'linuxCommands',
+                label: 'Назовите консольные команды Linux, '
+                  + 'состоящих из 3 символов, сколько вспомните?',
+                helpText: 'Подглядывать нечестно.',
+                componentProps: {
+                  className: styles.formControl,
+                },
+              })}
+            </div>
+            <div className={styles.formCol1}>
+              {renderField({
+                name: 'lovedTasks',
+                label: 'Какого рода задачами вам больше '
+                  + 'всего нравится заниматься?',
+                helpText: 'Кто-то любит проектировать архитектуру, '
+                  + 'кто-то UI, кто-то заниматься исследованиями нового. '
+                  + 'То, что нравится, обычно делается легко и быстро.',
+                component: TextareaAutosize,
+                componentProps: {
+                  className: styles.formControl,
+                  maxRows: textareaMaxRows,
+                },
+              })}
+            </div>
+            <div className={styles.formCol1}>
+              {renderField({
+                name: 'unlovedTasks',
+                label: 'А чем не нравится заниматься?',
+                helpText: 'Бывают вещи, от которых воротит, которые '
+                  + 'приходится делать через силу. Их не получется делать '
+                  + 'быстро или не получается делать совсем.',
+                component: TextareaAutosize,
+                componentProps: {
+                  className: styles.formControl,
+                  maxRows: textareaMaxRows,
+                },
+              })}
+            </div>
+            <div className={styles.formCol1}>
+              {renderField({
+                name: 'sourceCode',
+                label: 'Где можно посмотреть ваш код? GitHub, '
+                  + 'GitLab, иное.',
+                helpText: 'Желательно ссылки на свои проекты, не форки.',
+                componentProps: {
+                  className: styles.formControl,
+                },
+              })}
+            </div>
+            <div className={styles.formCol1}>
+              {renderField({
+                name: 'referrer',
+                label: 'Откуда вы узнали о вакансии?',
+                helpText: 'Наименование сайта с объявлением / может, '
+                  + 'мы вам написали сами / или друзья прислали ссылку',
+                componentProps: {
+                  className: styles.formControl,
+                },
+              })}
+            </div>
+          </Row>
+        </div>
+        <HrLine />
+        <div className={styles.formButton}>
+          <Button
+            confettiAnimation
+            type="submit"
+          >
+            {submitting
+              ? 'Отправляем...'
+              : 'Отправить'}
+          </Button>
+          <FormErrorMessage
+            error={
+              submissionError ? {
+                message: (
+                  <>
+                    При отправке формы произошла ошибка.<br />
+                    При повторении ошибки напишите нам на{' '}
+                    <ExternalLink href={ExternalLinks.contacts.email}>
+                      job@ivelum.com
+                    </ExternalLink>
+                  </>
+                ),
+              } : null
+            }
+          />
+        </div>
+      </div>
+    </form>
   );
 }
 

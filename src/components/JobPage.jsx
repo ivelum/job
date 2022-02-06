@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import About from '@/components/About';
-import Button from '@/components/Button';
-import HrLine from '@/components/HrLine';
-import * as styles from '@/components/JobPage.module.scss';
+import About from './About';
+import Button from './Button';
+import HrLine from './HrLine';
+
+import * as styles from './JobPage.module.scss';
 
 export default function JobPage({ children, job }) {
   return (
