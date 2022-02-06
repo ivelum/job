@@ -5,7 +5,7 @@
     <scripts>
       <script value="build" />
     </scripts>
-    <node-interpreter value="/usr/local/bin/node" />
+    <node-interpreter value="project" />
     <package-manager value="yarn" />
     <envs />
     <method v="2" />
