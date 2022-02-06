@@ -1,9 +1,9 @@
 import { Link } from 'gatsby';
 import React from 'react';
 
-import Jobs from '@/Jobs';
 import HrLine from './HrLine';
 import SvgImage from './SvgImage';
+import Jobs from '@/Jobs';
 
 import * as styles from './IndexVacancies.module.scss';
 
