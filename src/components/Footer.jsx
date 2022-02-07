@@ -5,7 +5,7 @@ import * as styles from './Footer.module.scss';
 export default function Footer() {
   return (
     <div className={styles.footer}>
-      © ivelum 2003 – 2021
+      © ivelum 2003 – 2022
     </div>
   );
 }
