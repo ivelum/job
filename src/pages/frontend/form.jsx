@@ -18,6 +18,7 @@ export default function FrontendForm() {
       <ApplyForm
         job={Jobs.frontend}
         experienceTypes={omit(allExperienceTypes, ['php', 'python', 'django'])}
+        ruEnabled
       />
     </Layout>
   );
