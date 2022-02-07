@@ -43,7 +43,7 @@
   }
 
   &::before {
-    @include tr(transform 0.5s);
+    @include tr(transform 0.3s);
     background-color: $font-color;
     bottom: 0;
     content: '';
