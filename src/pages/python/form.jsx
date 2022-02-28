@@ -18,7 +18,6 @@ export default function PythonForm() {
       <ApplyForm
         job={Jobs.python}
         experienceTypes={omit(allExperienceTypes, ['php'])}
-        ruEnabled
       />
     </Layout>
   );
