@@ -178,6 +178,8 @@ export default function ApplyForm({ job, experienceTypes, ruEnabled }) {
               {renderField({
                 name: 'country',
                 label: 'Страна проживания',
+                helpText: 'Если вы планируете переезд в ближайшем времени, '
+                  + 'укажите страну куда собираетесь переезжать',
                 component: CountryDropdown,
                 componentProps: {
                   className: styles.formSelect,
@@ -191,6 +193,7 @@ export default function ApplyForm({ job, experienceTypes, ruEnabled }) {
                 },
               })}
             </div>
+            <div className={styles.formSpacer} />
             <div className={styles.formCol2}>
               {renderField({
                 name: 'city',
@@ -200,6 +203,7 @@ export default function ApplyForm({ job, experienceTypes, ruEnabled }) {
                 },
               })}
             </div>
+            <div className={styles.formSpacer} />
             <div className={styles.formCol3}>
               {renderField({
                 name: 'email',
