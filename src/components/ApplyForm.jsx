@@ -66,7 +66,7 @@ export default function ApplyForm({ job, experienceTypes, ruEnabled }) {
   let country = yup.string().required().test(
     'checkCountryLocked',
     lockedCountryErr,
-    (value) => ['AZ', 'BY', 'CN', 'KZ', 'LV', 'UZ'].indexOf(value) === -1,
+    (value) => ['AZ', 'BY', 'CN', 'KP', 'KZ', 'LV', 'UZ'].indexOf(value) === -1,
   );
   if (!ruEnabled) {
     country = country.test(
