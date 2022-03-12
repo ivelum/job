@@ -22,13 +22,6 @@ import * as styles from './ApplyForm.module.scss';
 
 export { allExperienceTypes };
 
-const ruLockedErr = (
-  'Найм из России по этой вакансии временно приостановлен. '
-  + 'Мы надеемся, что это временная ситуация. Сроки возобновления '
-  + 'найма в России прогнозировать сложно, но, скорее всего, '
-  + 'это произойдет не раньше чем через несколько недель.'
-);
-
 const lockedCountryErr = (
   'В настоящее время у нас нет возможности работать с этой страной.'
 );
@@ -59,22 +52,15 @@ const submitData = async (data) => {
   return response.json();
 };
 
-export default function ApplyForm({ job, experienceTypes, ruEnabled }) {
+export default function ApplyForm({ job, experienceTypes }) {
   const [submitting, setSubmitting] = useState(false);
   const [submissionError, setSubmissionError] = useState(false);
 
-  let country = yup.string().required().test(
+  const country = yup.string().required().test(
     'checkCountryLocked',
     lockedCountryErr,
-    (value) => ['AZ', 'BY', 'CN', 'KP', 'KZ', 'LV'].indexOf(value) === -1,
+    (value) => ['AZ', 'BY', 'CN', 'KP', 'KZ', 'LV', 'RU'].indexOf(value) === -1,
   );
-  if (!ruEnabled) {
-    country = country.test(
-      'checkRuLocked',
-      ruLockedErr,
-      (value) => value !== 'RU',
-    );
-  }
 
   const dataShape = {
     fullName: yup.string().required(),
@@ -414,9 +400,4 @@ ApplyForm.propTypes = {
     url: PropTypes.string.isRequired,
   }).isRequired,
   experienceTypes: PropTypes.object.isRequired,
-  ruEnabled: PropTypes.bool,
-};
-
-ApplyForm.defaultProps = {
-  ruEnabled: false,
 };
