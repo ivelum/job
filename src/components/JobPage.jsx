@@ -8,22 +8,31 @@ import HrLine from './HrLine';
 import * as styles from './JobPage.module.scss';
 
 export default function JobPage({ children, job }) {
+  let applicationLink;
+  if (job.active) {
+    applicationLink = (
+      <div className={styles.jobButton}>
+        <Button confettiAnimation href={`${job.url}form/`}>
+          Откликнуться на вакансию
+        </Button>
+      </div>
+    );
+  } else {
+    applicationLink = (
+      <div className={styles.jobButton}>
+        <h2>⚠️ Эта вакансия уже закрыта, прием откликов прекращен ⚠️</h2>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.job}>
       <About />
-      <div className={styles.jobButton}>
-        <Button confettiAnimation href={`${job.url}form/`}>
-          Откликнуться на вакансию
-        </Button>
-      </div>
+      {applicationLink}
       <HrLine />
       {children}
       <HrLine />
-      <div className={styles.jobButton}>
-        <Button confettiAnimation href={`${job.url}form/`}>
-          Откликнуться на вакансию
-        </Button>
-      </div>
+      {applicationLink}
     </div>
   );
 }

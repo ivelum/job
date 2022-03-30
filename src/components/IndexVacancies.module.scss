@@ -19,6 +19,10 @@
   }
 }
 
+.wrapper-inactive {
+  opacity: 0.5;
+}
+
 .list {
   display: grid;
   grid-gap: 15px;

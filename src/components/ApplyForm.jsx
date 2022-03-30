@@ -61,6 +61,11 @@ const submitData = async (data) => {
 };
 
 export default function ApplyForm({ job, experienceTypes }) {
+  if (!job.active) {
+    navigate(job.url);
+    return null;
+  }
+
   const [submitting, setSubmitting] = useState(false);
   const [submissionError, setSubmissionError] = useState(false);
 
@@ -411,6 +416,7 @@ ApplyForm.propTypes = {
     title: PropTypes.string.isRequired,
     subTitle: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
+    active: PropTypes.bool.isRequired,
   }).isRequired,
   experienceTypes: PropTypes.object.isRequired,
 };
