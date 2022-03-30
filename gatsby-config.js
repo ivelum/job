@@ -3,8 +3,8 @@ module.exports = {
     siteUrl: 'https://job.ivelum.com',
     title: 'Работа в Ivelum',
   },
+  trailingSlash: 'always',
   plugins: [
-    'gatsby-plugin-force-trailing-slashes',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
     'gatsby-plugin-breakpoints',
