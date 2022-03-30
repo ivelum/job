@@ -2,7 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { navigate, Link } from 'gatsby';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import TextareaAutosize from 'react-textarea-autosize';
 import * as yup from 'yup';
@@ -61,8 +61,11 @@ const submitData = async (data) => {
 };
 
 export default function ApplyForm({ job, experienceTypes }) {
+  useEffect(() => {
+    if (!job.active) navigate(job.url);
+  }, [job.active]);
+
   if (!job.active) {
-    navigate(job.url);
     return null;
   }
 
