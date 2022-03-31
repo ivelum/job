@@ -22,7 +22,7 @@ const Jobs = {
     subTitle: 'Full-stack',
     description: 'Frontend / full-stack разработчик',
     url: '/frontend/',
-    active: true,
+    active: false,
   },
 };
 
