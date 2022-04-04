@@ -1,6 +1,5 @@
 import cn from 'classnames';
 import { Link } from 'gatsby';
-import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -12,7 +11,10 @@ import * as styles from './IndexVacancies.module.scss';
 
 function JobLink({ job, index }) {
   return (
-    <Link className={styles.item} to={job.url}>
+    <Link
+      className={cn(styles.item, !job.active && styles.inactive)}
+      to={job.url}
+    >
       <span className={styles.num}>
         {(index + 1).toLocaleString('en-US', {
           minimumIntegerDigits: 2,
@@ -22,7 +24,7 @@ function JobLink({ job, index }) {
       <span className={styles.title}>
         {job.title}
         <span className={styles.subTitle}>
-          {job.subTitle}
+          {job.active ? job.subTitle : 'Вакансия закрыта'}
         </span>
       </span>
       <SvgImage name="ico-angle-arrow" className={styles.ico} />
@@ -42,43 +44,24 @@ JobLink.propTypes = {
 };
 
 export default function IndexVacancies() {
-  const active = _.filter(Jobs, { active: true });
-  const inactive = _.filter(Jobs, { active: false });
+  const jobList = Object.keys(Jobs);
   return (
     <div className={styles.vacancies}>
-      {active.length > 0 && (
-        <>
-          <HrLine />
-          <div className={styles.wrapper}>
-            <h2>Открытые вакансии</h2>
-            <div className={styles.list}>
-              {active.map((job, i) => (
-                <JobLink job={job} key={job.url} index={i} />
-              ))}
-            </div>
+      <HrLine />
+      {jobList.length > 0 && (
+        <div className={styles.wrapper}>
+          <h2>Наши вакансии</h2>
+          <div className={styles.list}>
+            {jobList.map((key, i) => (
+              <JobLink job={Jobs[key]} key={Jobs[key].url} index={i} />
+            ))}
           </div>
-        </>
+        </div>
       )}
-      {inactive.length > 0 && (
-        <>
-          <HrLine />
-          <div className={cn(styles.wrapper, styles.wrapperInactive)}>
-            <h2>Неактивные (закрытые) вакансии</h2>
-            <div className={styles.list}>
-              {inactive.map((job, i) => (
-                <JobLink job={job} key={job.url} index={i + active.length} />
-              ))}
-            </div>
-          </div>
-        </>
-      )}
-      {active.length + inactive.length === 0 && (
-        <>
-          <HrLine />
-          <div className={styles.wrapper}>
-            <h2>Открытых вакансий сейчас нет</h2>
-          </div>
-        </>
+      {jobList.length === 0 && (
+        <div className={styles.wrapper}>
+          <h2>Вакансий сейчас нет</h2>
+        </div>
       )}
     </div>
   );
