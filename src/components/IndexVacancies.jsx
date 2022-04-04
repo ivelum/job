@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import { Link } from 'gatsby';
+import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -45,12 +46,16 @@ JobLink.propTypes = {
 
 export default function IndexVacancies() {
   const jobList = Object.keys(Jobs);
+  const active = _.filter(Jobs, { active: true });
   return (
     <div className={styles.vacancies}>
       <HrLine />
       {jobList.length > 0 && (
         <div className={styles.wrapper}>
-          <h2>Наши вакансии</h2>
+          <h2>{active.length > 0
+            ? 'Наши вакансии'
+            : 'Сейчас открытых вакансий нет'}
+          </h2>
           <div className={styles.list}>
             {jobList.map((key, i) => (
               <JobLink job={Jobs[key]} key={Jobs[key].url} index={i} />
