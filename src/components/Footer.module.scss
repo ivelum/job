@@ -2,9 +2,15 @@
 @import '../mixins';
 
 .footer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   margin-bottom: 30px;
   margin-top: 30px;
-  opacity: 0.5;
+  @include media-up(sm) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
   @include media-up(lg) {
     margin-bottom: 50px;
     margin-top: 60px;
@@ -13,4 +19,20 @@
     margin-bottom: 70px;
     margin-top: 100px;
   }
+}
+
+.youtube {
+  align-items: center;
+  background: none;
+  color: $font-color;
+  display: inline-flex;
+  gap: 14px;
+
+  &:hover {
+    color: $font-color-orange;
+  }
+}
+
+.copyright {
+  color: $font-color-gray;
 }
