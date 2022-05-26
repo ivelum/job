@@ -25,8 +25,12 @@ export const ExternalLinks = {
   wiki: {
     home: 'https://github.com/ivelum/job/wiki/Home-RU',
     compensationPackage: 'https://github.com/ivelum/job/wiki/Пакет-компенсаций',
+    developmentFlow: 'https://github.com/ivelum/job/wiki/Процесс-разработки',
     englishLessons: 'https://github.com/ivelum/job/wiki/Обучение-английскому',
+    feedback: 'https://github.com/ivelum/job/wiki/Обратная-связь-для-коллег',
+    learning: 'https://github.com/ivelum/job/wiki/Постоянное-обучение',
     remoteWork: 'https://github.com/ivelum/job/wiki/График-и-удаленная-работа',
+    teamsStructure: 'https://github.com/ivelum/job/wiki/Структура-команд',
     technology: 'https://github.com/ivelum/job/wiki/Технологии',
   },
 };
