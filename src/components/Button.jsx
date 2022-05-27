@@ -11,6 +11,7 @@ export default function Button({
   children,
   href,
   type,
+  disabled,
   ...otherProps
 }) {
   const content = (
@@ -27,6 +28,7 @@ export default function Button({
     className: cn(
       styles.button,
       className,
+      disabled && styles.disabled,
     ),
     children: content,
     ...otherProps,
@@ -44,6 +46,7 @@ Button.propTypes = {
   children: PropTypes.node.isRequired,
   href: PropTypes.string,
   type: PropTypes.string,
+  disabled: PropTypes.bool,
 };
 
 Button.defaultProps = {
@@ -51,4 +54,5 @@ Button.defaultProps = {
   confettiAnimation: false,
   href: '',
   type: '',
+  disabled: false,
 };

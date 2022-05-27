@@ -20,7 +20,9 @@ export default function JobPage({ children, job }) {
   } else {
     applicationLink = (
       <div className={styles.jobButton}>
-        <h2>⚠️ Эта вакансия уже закрыта, прием откликов прекращен ⚠️</h2>
+        <Button href={`${job.url}form/`} disabled>
+          Вакансия закрыта, прием откликов прекращен
+        </Button>
       </div>
     );
   }
