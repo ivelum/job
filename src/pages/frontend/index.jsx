@@ -88,7 +88,7 @@ export default function frontendJob() {
           <Benefits />
         </JobTextBlock>
         <JobTextBlock title="Как проходит интервью">
-          <InterviewProcess />
+          <InterviewProcess jobIsActive={Jobs.frontend.active} />
         </JobTextBlock>
       </JobPage>
     </Layout>

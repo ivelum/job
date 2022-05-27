@@ -119,7 +119,7 @@ export default function pythonJob() {
           <Benefits />
         </JobTextBlock>
         <JobTextBlock title="Как проходит интервью">
-          <InterviewProcess />
+          <InterviewProcess jobIsActive={Jobs.python.active} />
         </JobTextBlock>
       </JobPage>
     </Layout>

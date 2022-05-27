@@ -89,7 +89,7 @@ export default function phpJob() {
           <Benefits />
         </JobTextBlock>
         <JobTextBlock title="Как проходит интервью">
-          <InterviewProcess />
+          <InterviewProcess jobIsActive={Jobs.php.active} />
         </JobTextBlock>
       </JobPage>
     </Layout>
