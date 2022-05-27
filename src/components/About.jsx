@@ -1,3 +1,4 @@
+import { Link } from 'gatsby';
 import React from 'react';
 
 import ExternalLink, { ExternalLinks } from './ExternalLink';
@@ -13,7 +14,8 @@ export default function About() {
       процессы с&nbsp;Минимумом Бюрократии (тм). Подробнее о&nbsp;нас
       и&nbsp;о&nbsp;том, как мы&nbsp;работаем можно
       почитать в&nbsp;нашей{' '}
-      <ExternalLink href={ExternalLinks.wiki.home}>Wiki</ExternalLink>.
+      <ExternalLink href={ExternalLinks.wiki.home}>Wiki</ExternalLink> и {' '}
+      <Link to="/faq/">FAQ</Link>.
     </p>
   );
 }

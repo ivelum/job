@@ -5,9 +5,11 @@ import jobs from '@/Jobs';
 import ExternalLink, { ExternalLinks } from '@/components/ExternalLink';
 import Layout from '@/components/layout/Layout';
 
+const backLink = { url: '/', text: 'На главную' };
+
 export default function FAQPage() {
   return (
-    <Layout pageTitle="Вопросы и ответы">
+    <Layout pageTitle="Вопросы и ответы" backLink={backLink}>
       <p>
         Здесь собраны ответы на частые, не очень частые, и довольно редкие
         вопросы о работе, которые нам задавали.
@@ -16,7 +18,7 @@ export default function FAQPage() {
       <ul>
         <li>
           <b>Расскажите о проекте и технологиях</b> - на странице каждой
-          вакансии на сайте <a href="/">job.ivelum.com</a> есть описание и
+          вакансии на сайте <Link to="/">job.ivelum.com</Link> есть описание и
           короткое видео (до 5 минут) с рассказом о проекте и технологическом
           стеке.
         </li>
