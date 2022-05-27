@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import * as React from 'react';
@@ -10,7 +11,7 @@ export default function PageTitle({ title, subTitle, backLink }) {
   return (
     <div className={styles.title}>
       {!!backLink && (
-      <Link className={styles.backLink} to={backLink.url}>
+      <Link className={cn(styles.backLink, 'noUnderline')} to={backLink.url}>
         {backLink.text}
         <SvgImage name="ico-long-arrow" className={styles.backLinkIco} />
       </Link>

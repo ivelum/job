@@ -1,8 +1,5 @@
-import cn from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
-
-import * as styles from './ExternalLink.module.scss';
 
 export const ExternalLinks = {
   company: {
@@ -36,7 +33,7 @@ export const ExternalLinks = {
 };
 
 export default function ExternalLink({
-  href, children, className, noUnderline, ...props
+  href, children, className, ...props
 }) {
   const blankProps = href.startsWith('http') ? {
     target: '_blank',
@@ -45,7 +42,7 @@ export default function ExternalLink({
   return (
     <a
       href={href}
-      className={cn(!noUnderline && styles.underlined, className)}
+      className={className}
       {...blankProps}
       {...props}
     >
@@ -58,10 +55,8 @@ ExternalLink.propTypes = {
   href: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  noUnderline: PropTypes.bool,
 };
 
 ExternalLink.defaultProps = {
   className: null,
-  noUnderline: false,
 };

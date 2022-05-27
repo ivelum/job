@@ -13,6 +13,7 @@
 
 .logo {
   @include tr(opacity 0.4s);
+  background-image: none;
 
   &:hover {
     opacity: 0.65;

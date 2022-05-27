@@ -1,4 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
+import cn from 'classnames';
 import { navigate, Link } from 'gatsby';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import PropTypes from 'prop-types';
@@ -178,7 +179,9 @@ export default function ApplyForm({ job, experienceTypes }) {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className={styles.applyForm}>
         <div className={styles.vacancyTitle}>
-          <Link className={styles.vacancyLink} to={job.url}>{job.title}</Link>
+          <Link className={cn(styles.vacancyLink, 'noUnderline')} to={job.url}>
+            {job.title}
+          </Link>
           <span className={styles.vacancySubTitle}>{job.subTitle}</span>
         </div>
         <HrLine />
