@@ -10,23 +10,22 @@ export default function WelcomeText() {
   return (
     <div className={styles.welcome}>
       Привет!
-      <img className={styles.ico} src={hiIco} alt="Привет" /><br />
+      <img className={styles.ico} src={hiIco} alt="Привет" />{' '}
       Ниже перечислены актуальные вакансии, которые сейчас
-      открыты в&nbsp;
+      открыты в{' '}
       <ExternalLink href={ExternalLinks.company.home}>
-        Ivelum
-      </ExternalLink>.
-      Все вакансии подразумевают полную занятость,{' '}
-      <ExternalLink href={ExternalLinks.wiki.remoteWork}>
-        удаленную работу
-      </ExternalLink> и&nbsp;
-      <ExternalLink href={ExternalLinks.wiki.remoteWork}>
-        свободный
-      </ExternalLink> график. Подробную информацию о&nbsp;нас
-      и&nbsp;о&nbsp;том, как мы&nbsp;работаем, вы&nbsp;можете
-      найти в&nbsp;нашей{' '}
-      <ExternalLink href={ExternalLinks.wiki.home}>Wiki</ExternalLink> и {' '}
-      <Link to="/faq/">FAQ</Link>.
+        ivelum
+      </ExternalLink>. Дополнительная информация:
+      <ul>
+        <li>
+          <Link to="/faq/">Вопросы и ответы</Link>
+        </li>
+        <li>
+          <ExternalLink href={ExternalLinks.wiki.home}>
+            Wiki о работе в ivelum
+          </ExternalLink>
+        </li>
+      </ul>
     </div>
   );
 }
