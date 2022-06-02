@@ -34,7 +34,7 @@ export default function phpJob() {
             Посмотрите короткое видео (3&nbsp;мин)
             с&nbsp;рассказом о&nbsp;проекте:
           </p>
-          <Youtube videoId="EPhvHNWfmQI" />
+          <Youtube videoId="emL_dCxGaZ8" />
         </JobTextBlock>
         <JobTextBlock title="Технологии и процессы">
           <TechLogos
