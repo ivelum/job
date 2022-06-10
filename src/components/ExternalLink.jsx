@@ -6,7 +6,7 @@ export const ExternalLinks = {
     home: 'https://ivelum.com',
     jobRepo: 'https://github.com/ivelum/job',
     bookInterview: (
-      'https://calendly.com/oleg-malkov/hiring-interview'
+      'https://calendly.com/olga_lebedeva_/developer-job-interview',
     ),
   },
   contacts: {
