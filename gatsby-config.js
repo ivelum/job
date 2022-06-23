@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     siteUrl: 'https://job.ivelum.com',
-    title: 'Работа в Ivelum',
+    title: 'Работа в ivelum',
   },
   trailingSlash: 'always',
   plugins: [

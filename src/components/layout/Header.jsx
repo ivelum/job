@@ -13,13 +13,13 @@ export default function Header() {
         className={styles.logo}
         activeClassName={styles.logoDisabled}
       >
-        <img src={logoIvelum} className={styles.logoImage} alt="Ivelum" />
+        <img src={logoIvelum} className={styles.logoImage} alt="ivelum" />
       </Link>
       <div className={styles.cat}>
         <span className={styles.catText}>
           Занимаемся продуктовой разработкой с&nbsp;2003
         </span>
-        <img className={styles.catImage} src={catImage} alt="Ivelum cat" />
+        <img className={styles.catImage} src={catImage} alt="ivelum cat" />
       </div>
     </div>
   );

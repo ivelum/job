@@ -7,7 +7,7 @@ export default function About() {
   return (
     <p>
       Привет! Мы&nbsp;&mdash;{' '}
-      <ExternalLink href={ExternalLinks.company.home}>Ivelum</ExternalLink>,
+      <ExternalLink href={ExternalLinks.company.home}>ivelum</ExternalLink>,
       занимаемся продуктовой разработкой с&nbsp;2003 года и&nbsp;работаем
       над крупными софтверными проектами. У&nbsp;нас свободный график
       для всех сотрудников и&nbsp;отлично поставленные

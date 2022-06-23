@@ -10,7 +10,7 @@ import '../_global.scss';
 
 export default function IndexPage() {
   return (
-    <Layout pageTitle="Работа в Ivelum">
+    <Layout pageTitle="Работа в ivelum">
       <Row>
         <WelcomeText />
         <Contacts />
