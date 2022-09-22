@@ -87,10 +87,10 @@ export default function ApplyForm({ job, experienceTypes }) {
       'RU', 'SY', 'VE', 'YE', 'ZW',
       // Concerns about internet freedom and/or political stability.
       // Not included in any list above:
-      'AZ', 'KZ', 'TM', 'SA',
+      'AZ', 'TM', 'SA',
       // High taxes.
       // Not included in any list above:
-      'LV',
+      'IL', 'LV', 'TR',
     ].indexOf(value) === -1,
   );
   country = country.test(
