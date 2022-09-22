@@ -65,7 +65,7 @@ export default function pythonJob() {
             brands={['Python', 'Django', 'React', 'GraphQL', 'Docker', 'AWS']}
           />
           <p>
-            Основные технологии: Python&nbsp;3.10, Django&nbsp;3.2, React.js,
+            Основные технологии: Python&nbsp;3.10, Django&nbsp;4, React.js,
             GraphQL, Docker, AWS. Все наши проекты глубоко автоматизированы,
             включая развертывание как продакшен-инфраструктуры,
             так и&nbsp;локального окружения разработки. Мы&nbsp;активно
@@ -80,9 +80,14 @@ export default function pythonJob() {
               </ExternalLink> в&nbsp;нашей вики;
             </li>
             <li>
-              вебинар о&nbsp;том{' '}
-              <ExternalLink href={ExternalLinks.webinar.continuousDeployment}>
-                как мы&nbsp;предпочитаем деплоить в&nbsp;прод
+              <ExternalLink href={ExternalLinks.teamplify.blog}>
+                блог Teamplify
+              </ExternalLink> со статьями о технологиях и менеджменте;
+            </li>
+            <li>
+              наш{' '}
+              <ExternalLink href={ExternalLinks.youtube.techTalkVideos}>
+                канал&nbsp;на&nbsp;YouTube
               </ExternalLink>.
             </li>
           </ul>

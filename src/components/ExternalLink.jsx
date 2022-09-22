@@ -15,9 +15,12 @@ export const ExternalLinks = {
   },
   teamplify: {
     home: 'https://teamplify.com',
+    blog: 'https://teamplify.com/blog/',
   },
-  webinar: {
-    continuousDeployment: 'https://youtu.be/pt_MkFT51aA',
+  youtube: {
+    techTalkVideos: (
+      'https://www.youtube.com/channel/UChgBoJzbKwLzzaU2nMNWUDw/videos'
+    ),
   },
   wiki: {
     home: 'https://github.com/ivelum/job/wiki/Home-RU',
