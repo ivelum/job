@@ -15,9 +15,17 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
         loader: '@svgr/webpack',
         options: {
           svgoConfig: {
-            plugins: {
-              removeViewBox: false,
-            },
+            plugins: [
+              {
+                name: 'preset-default',
+                params: {
+                  overrides: {
+                    // disable the plugin
+                    removeViewBox: false,
+                  },
+                },
+              },
+            ],
           },
         },
       },
