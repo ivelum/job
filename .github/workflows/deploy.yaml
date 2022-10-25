@@ -12,7 +12,7 @@ jobs:
       - uses: ivelum/github-action-slack-notify-build@v1.6.0
         id: slack
         with:
-          channel_id: C0PT3267R
+          channel_id: G054C3DPL
           status: STARTED
           color: '#ee9b00'
         env:
@@ -46,7 +46,7 @@ jobs:
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         with:
-          channel_id: C0PT3267R
+          channel_id: G054C3DPL
           status: FAILED
           color: '#d7263d'
 
@@ -78,7 +78,7 @@ jobs:
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         with:
-          channel_id: C0PT3267R
+          channel_id: G054C3DPL
           status: FAILED
           color: '#d7263d'
 
@@ -109,7 +109,7 @@ jobs:
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         with:
-          channel_id: C0PT3267R
+          channel_id: G054C3DPL
           status: FAILED
           color: '#d7263d'
 
@@ -125,6 +125,6 @@ jobs:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         with:
           message_id: ${{ needs.notify-build-start.outputs.status_message_id }}
-          channel_id: C0PT3267R
+          channel_id: G054C3DPL
           status: SUCCESS
           color: '#16db65'
