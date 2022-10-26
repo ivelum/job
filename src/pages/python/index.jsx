@@ -65,7 +65,7 @@ export default function pythonJob() {
             brands={['Python', 'Django', 'React', 'GraphQL', 'Docker', 'AWS']}
           />
           <p>
-            Основные технологии: Python&nbsp;3.10, Django&nbsp;4, React.js,
+            Основные технологии: Python&nbsp;3.11, Django&nbsp;4, React.js,
             GraphQL, Docker, AWS. Все наши проекты глубоко автоматизированы,
             включая развертывание как продакшен-инфраструктуры,
             так и&nbsp;локального окружения разработки. Мы&nbsp;активно
