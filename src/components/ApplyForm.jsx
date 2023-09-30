@@ -226,7 +226,7 @@ export default function ApplyForm({ job, experienceTypes }) {
             <div className={styles.formCol3}>
               {renderField({
                 name: 'telegram',
-                label: 'Telegram',
+                label: 'Telegram ...',
                 isRequired: false,
                 componentProps: {
                   className: styles.formControl,
@@ -235,8 +235,8 @@ export default function ApplyForm({ job, experienceTypes }) {
             </div>
             <div className={styles.formCol3}>
               {renderField({
-                name: 'skype',
-                label: 'Skype',
+                name: 'whatsapp',
+                label: '... или Whatsapp',
                 isRequired: false,
                 componentProps: {
                   className: styles.formControl,
