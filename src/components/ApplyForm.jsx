@@ -23,14 +23,6 @@ import * as styles from './ApplyForm.module.scss';
 
 export { allExperienceTypes };
 
-const uaLockedErr = (
-  'В связи с военными действиями найм в Украине временно приостановлен. '
-  + 'Мы очень надеемся и верим, что эта ситуация скоро нормализуется. Мы '
-  + 'знаем, что выехать из Украины сейчас непросто, но если у вас это '
-  + 'получится - пожалуйста, укажите страну в которую вы переезжаете, '
-  + 'и мы с радостью пообщаемся с вами.'
-);
-
 const lockedCountryErr = (
   'В настоящее время у нас нет возможности работать с этой страной.'
 );
@@ -73,7 +65,7 @@ export default function ApplyForm({ job, experienceTypes }) {
   const [submitting, setSubmitting] = useState(false);
   const [submissionError, setSubmissionError] = useState(false);
 
-  let country = yup.string().required().test(
+  const country = yup.string().required().test(
     'checkCountryLocked',
     lockedCountryErr,
     (value) => [
@@ -90,13 +82,8 @@ export default function ApplyForm({ job, experienceTypes }) {
       'AZ', 'TM', 'SA',
       // High taxes.
       // Not included in any list above:
-      'IL', 'LV', 'TR',
+      'IL', 'LV', 'TR', 'NE',
     ].indexOf(value) === -1,
-  );
-  country = country.test(
-    'checkUaLocked',
-    uaLockedErr,
-    (value) => value !== 'UA',
   );
 
   const dataShape = {
@@ -203,8 +190,6 @@ export default function ApplyForm({ job, experienceTypes }) {
               {renderField({
                 name: 'country',
                 label: 'Страна проживания',
-                helpText: 'Если вы планируете переезд в ближайшем времени, '
-                  + 'укажите страну куда собираетесь переезжать',
                 component: CountryDropdown,
                 componentProps: {
                   className: styles.formSelect,
