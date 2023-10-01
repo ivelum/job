@@ -92,7 +92,8 @@ export default function DeveloperForm({ job, experienceTypes }) {
     city: yup.string().required(),
     email: yup.string().required().email(),
     experienceOverall: yup.number().typeError(numberTypeErr).required().min(0),
-    experienceWeb: yup.number().typeError(numberTypeErr).required().min(0),
+    specializedExperience:
+      yup.number().typeError(numberTypeErr).required().min(0),
     education: yup.string().required(),
     linuxCommands: yup.string().required(),
     lovedTasks: yup.string().required(),
@@ -276,7 +277,7 @@ export default function DeveloperForm({ job, experienceTypes }) {
             </div>
             <div className={styles.formCol2}>
               {renderField({
-                name: 'experienceWeb',
+                name: 'specializedExperience',
                 label: 'Сколько из них связано с веб-разработкой?',
                 componentProps: {
                   className: styles.formControl,
