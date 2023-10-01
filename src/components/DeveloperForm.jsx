@@ -19,7 +19,7 @@ import FormErrorMessage from './FormErrorMessage';
 import HrLine from './HrLine';
 import Row from './Row';
 
-import * as styles from './ApplyForm.module.scss';
+import * as styles from './DeveloperForm.module.scss';
 
 export { allExperienceTypes };
 
@@ -53,7 +53,7 @@ const submitData = async (data) => {
   return response.json();
 };
 
-export default function ApplyForm({ job, experienceTypes }) {
+export default function DeveloperForm({ job, experienceTypes }) {
   useEffect(() => {
     if (!job.active) navigate(job.url);
   }, [job.active]);
@@ -97,7 +97,7 @@ export default function ApplyForm({ job, experienceTypes }) {
     linuxCommands: yup.string().required(),
     lovedTasks: yup.string().required(),
     unlovedTasks: yup.string().required(),
-    sourceCode: yup.string().required(),
+    portfolio: yup.string().required(),
     english: yup.string().required(),
     referrer: yup.string().required(),
   };
@@ -243,6 +243,28 @@ export default function ApplyForm({ job, experienceTypes }) {
                 },
               })}
             </div>
+            <div className={styles.formCol1}>
+              {renderField({
+                name: 'education',
+                label: 'Какое у вас образование?',
+                helpText: 'Учебное заведение, год окончания, специальность',
+                componentProps: {
+                  className: styles.formControl,
+                },
+              })}
+            </div>
+            <div className={styles.formCol1}>
+              {renderField({
+                name: 'english',
+                label: 'Как у вас с английским?',
+                helpText: 'С письменным, с устным?',
+                componentProps: {
+                  className: styles.formControl,
+                },
+              })}
+            </div>
+          </Row>
+          <Row>
             <div className={styles.formCol2}>
               {renderField({
                 name: 'experienceOverall',
@@ -256,26 +278,6 @@ export default function ApplyForm({ job, experienceTypes }) {
               {renderField({
                 name: 'experienceWeb',
                 label: 'Сколько из них связано с веб-разработкой?',
-                componentProps: {
-                  className: styles.formControl,
-                },
-              })}
-            </div>
-            <div className={styles.formCol1}>
-              {renderField({
-                name: 'education',
-                label: 'Какое у вас образование?',
-                helpText: 'Учебное заведение, год окончания, специальность.',
-                componentProps: {
-                  className: styles.formControl,
-                },
-              })}
-            </div>
-            <div className={styles.formCol1}>
-              {renderField({
-                name: 'english',
-                label: 'Как у вас с английским?',
-                helpText: 'С письменным, с устным?',
                 componentProps: {
                   className: styles.formControl,
                 },
@@ -311,8 +313,19 @@ export default function ApplyForm({ job, experienceTypes }) {
               {renderField({
                 name: 'linuxCommands',
                 label: 'Назовите консольные команды Linux, '
-                  + 'состоящих из 3 символов, сколько вспомните?',
-                helpText: 'Подглядывать нечестно.',
+                  + 'состоящих из 3 символов, сколько вспомните',
+                helpText: 'Подглядывать нечестно',
+                componentProps: {
+                  className: styles.formControl,
+                },
+              })}
+            </div>
+            <div className={styles.formCol1}>
+              {renderField({
+                name: 'portfolio',
+                label: 'Где можно посмотреть ваш код? GitHub, '
+                  + 'GitLab, иное.',
+                helpText: 'Желательно ссылки на свои проекты, не форки',
                 componentProps: {
                   className: styles.formControl,
                 },
@@ -323,9 +336,7 @@ export default function ApplyForm({ job, experienceTypes }) {
                 name: 'lovedTasks',
                 label: 'Какого рода задачами вам больше '
                   + 'всего нравится заниматься?',
-                helpText: 'Кто-то любит проектировать архитектуру, '
-                  + 'кто-то UI, кто-то заниматься исследованиями нового. '
-                  + 'То, что нравится, обычно делается легко и быстро.',
+                helpText: 'То, что нравится, обычно делается легко и быстро',
                 component: TextareaAutosize,
                 componentProps: {
                   className: styles.formControl,
@@ -337,9 +348,8 @@ export default function ApplyForm({ job, experienceTypes }) {
               {renderField({
                 name: 'unlovedTasks',
                 label: 'А чем не нравится заниматься?',
-                helpText: 'Бывают вещи, от которых воротит, которые '
-                  + 'приходится делать через силу. Их не получется делать '
-                  + 'быстро или не получается делать совсем.',
+                helpText: 'Бывают вещи, которые приходится делать '
+                  + 'через силу или не хочется делать совсем',
                 component: TextareaAutosize,
                 componentProps: {
                   className: styles.formControl,
@@ -349,23 +359,11 @@ export default function ApplyForm({ job, experienceTypes }) {
             </div>
             <div className={styles.formCol1}>
               {renderField({
-                name: 'sourceCode',
-                label: 'Где можно посмотреть ваш код? GitHub, '
-                  + 'GitLab, иное.',
-                helpText: 'Желательно ссылки на свои проекты, не форки.',
-                componentProps: {
-                  className: styles.formControl,
-                },
-              })}
-            </div>
-            <div className={styles.formCol1}>
-              {renderField({
                 name: 'recommendedBy',
                 label: 'Знакомы ли вы с кем-то из ivelum?',
                 helpText: 'Если кто-то из наших сотрудников может вас '
-                  + 'порекомендовать, это упростит прохождение собеседований и '
-                  + 'предоставит дополнительные бонусы. Если вы знаете такого '
-                  + 'человека, укажите его имя здесь',
+                  + 'порекомендовать, это упростит прохождение собеседований. '
+                  + 'Если вы знаете такого человека, укажите его имя здесь',
                 isRequired: false,
                 componentProps: {
                   className: styles.formControl,
@@ -376,8 +374,8 @@ export default function ApplyForm({ job, experienceTypes }) {
               {renderField({
                 name: 'referrer',
                 label: 'Откуда вы узнали о вакансии?',
-                helpText: 'Наименование сайта с объявлением / может, '
-                  + 'мы вам написали сами / или друзья прислали ссылку',
+                helpText: 'Название сайта или чата с объявлением / может, '
+                  + 'мы вам сами написали / или друзья прислали ссылку',
                 componentProps: {
                   className: styles.formControl,
                 },
@@ -416,7 +414,7 @@ export default function ApplyForm({ job, experienceTypes }) {
   );
 }
 
-ApplyForm.propTypes = {
+DeveloperForm.propTypes = {
   job: PropTypes.shape({
     name: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,

@@ -2,7 +2,7 @@ import omit from 'lodash/omit';
 import React from 'react';
 
 import Jobs from '@/Jobs';
-import ApplyForm, { allExperienceTypes } from '@/components/ApplyForm';
+import DeveloperForm, { allExperienceTypes } from '@/components/DeveloperForm';
 import Layout from '@/components/layout/Layout';
 
 const backLink = { url: '/', text: 'Все вакансии' };
@@ -15,7 +15,7 @@ export default function PHPForm() {
       metaDescription={Jobs.php.description}
       backLink={backLink}
     >
-      <ApplyForm
+      <DeveloperForm
         job={Jobs.php}
         experienceTypes={omit(allExperienceTypes, ['django'])}
       />
