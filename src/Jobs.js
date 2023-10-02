@@ -8,6 +8,13 @@ const Jobs = {
     url: '/python/',
     active: true,
   },
+  marketing: {
+    name: 'Marketing',
+    title: 'Head of Marketing',
+    description: 'Product Marketing, Content, Digital, SEO, SMM',
+    url: '/marketing/',
+    active: false,
+  },
   php: {
     name: 'PHP',
     title: 'PHP разработчик',
