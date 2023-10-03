@@ -22,33 +22,32 @@ const getFormSchema = (experienceTypes) => {
     experienceOverall: yup.number().typeError(numberTypeErr).required().min(0),
     specializedExperience:
       yup.number().typeError(numberTypeErr).required().min(0),
-    linuxCommands: yup.string().required(),
     portfolio: yup.string().required(),
   };
   const schema = yup.object().shape(dataShape);
   return schema;
 };
 
-class DeveloperFormComponent extends ApplicationForm {
+class MarketingFormComponent extends ApplicationForm {
   sectionItemsGeneral() {
     const data = super.sectionItemsGeneral();
     data.rows.push({
       id: 'section-general-2',
       items: (
         <>
-          <div className={styles.formCol2}>
+          <div className={styles.formCol3}>
             {super.renderField({
               name: 'experienceOverall',
-              label: 'Сколько у вас лет опыта в программировании?',
+              label: 'Сколько у вас лет опыта в маркетинге?',
               componentProps: {
                 className: styles.formControl,
               },
             })}
           </div>
-          <div className={styles.formCol2}>
+          <div className={styles.formCol3}>
             {super.renderField({
               name: 'specializedExperience',
-              label: 'Сколько из них связано с веб-разработкой?',
+              label: 'Сколько из них связано с программным обеспечением?',
               componentProps: {
                 className: styles.formControl,
               },
@@ -68,43 +67,34 @@ class DeveloperFormComponent extends ApplicationForm {
         gutterY: true,
       },
       items: (
-        <>
-          <div className={styles.formCol1}>
-            {super.renderField({
-              name: 'linuxCommands',
-              label: 'Назовите консольные команды Linux, '
-                + 'состоящих из 3 символов, сколько вспомните',
-              helpText: 'Подглядывать нечестно',
-              componentProps: {
-                className: styles.formControl,
-              },
-            })}
-          </div>
-          <div className={styles.formCol1}>
-            {super.renderField({
-              name: 'portfolio',
-              label: 'Где можно посмотреть ваш код? GitHub, '
-                + 'GitLab, иное.',
-              helpText: 'Желательно ссылки на свои проекты, не форки',
-              componentProps: {
-                className: styles.formControl,
-              },
-            })}
-          </div>
-        </>
+        <div className={styles.formCol1}>
+          {super.renderField({
+            name: 'portfolio',
+            label: 'Есть ли у вас публичные выступления, статьи?',
+            helpText: 'Пожалуйста, укажите ссылки здесь',
+            componentProps: {
+              className: styles.formControl,
+            },
+          })}
+        </div>
       ),
     };
     data.rows[0].props = { gutterY: false };
     data.rows.unshift(row1);
     return data;
   }
+
+  // eslint-disable-next-line class-methods-use-this
+  sectionItemsExperience() {
+    return null;
+  }
 }
 
-DeveloperFormComponent.propTypes = {
+MarketingFormComponent.propTypes = {
   job: PropTypes.shape({
     name: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    subTitle: PropTypes.string.isRequired,
+    subTitle: PropTypes.string,
     url: PropTypes.string.isRequired,
     active: PropTypes.bool.isRequired,
   }).isRequired,
@@ -120,7 +110,7 @@ DeveloperFormComponent.propTypes = {
   breakpoints: PropTypes.object.isRequired,
 };
 
-export default function DeveloperForm({ job, experienceTypes }) {
+export default function MarketingForm({ job, experienceTypes }) {
   const form = useForm({
     resolver: yupResolver(getFormSchema(experienceTypes)),
   });
@@ -132,15 +122,15 @@ export default function DeveloperForm({ job, experienceTypes }) {
     job,
   };
   return (
-    <DeveloperFormComponent {...props} />
+    <MarketingFormComponent {...props} />
   );
 }
 
-DeveloperForm.propTypes = {
+MarketingForm.propTypes = {
   job: PropTypes.shape({
     name: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    subTitle: PropTypes.string.isRequired,
+    subTitle: PropTypes.string,
     url: PropTypes.string.isRequired,
     active: PropTypes.bool.isRequired,
   }).isRequired,

@@ -37,7 +37,7 @@ JobLink.propTypes = {
   job: PropTypes.shape({
     name: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    subTitle: PropTypes.string.isRequired,
+    subTitle: PropTypes.string,
     url: PropTypes.string.isRequired,
     active: PropTypes.bool.isRequired,
   }).isRequired,

@@ -13,7 +13,7 @@ const Jobs = {
     title: 'Head of Marketing',
     description: 'Product Marketing, Content, Digital, SEO, SMM',
     url: '/marketing/',
-    active: false,
+    active: true,
   },
   php: {
     name: 'PHP',
