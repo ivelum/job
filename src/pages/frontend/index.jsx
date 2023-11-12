@@ -40,7 +40,7 @@ export default function frontendJob() {
             Посмотрите короткое видео (3&nbsp;мин) с кратким обзорным
             рассказом о вакансии:
           </p>
-          <Youtube videoId="UqLmD9Vc9vc" />
+          <Youtube videoId="1nARwPKSAGk" />
         </JobTextBlock>
         <JobTextBlock title="Технологии и процессы">
           <TechLogos
