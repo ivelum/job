@@ -8,6 +8,14 @@ const Jobs = {
     url: '/python/',
     active: true,
   },
+  frontend: {
+    name: 'Frontend',
+    title: 'Frontend разработчик',
+    subTitle: 'Full-stack',
+    description: 'Frontend / full-stack разработчик',
+    url: '/frontend/',
+    active: true,
+  },
   marketing: {
     name: 'Marketing',
     title: 'Head of Marketing',
@@ -21,14 +29,6 @@ const Jobs = {
     subTitle: 'Full-stack',
     description: 'Full-stack разработчик (PHP + frontend)',
     url: '/php/',
-    active: false,
-  },
-  frontend: {
-    name: 'Frontend',
-    title: 'Frontend разработчик',
-    subTitle: 'Full-stack',
-    description: 'Frontend / full-stack разработчик',
-    url: '/frontend/',
     active: false,
   },
 };
