@@ -100,6 +100,7 @@ jobs:
           GOOGLE_API_SERVICE_ACCOUNT_INFO: ${{ secrets.GOOGLE_API_SERVICE_ACCOUNT_INFO }}
           GOOGLE_SPREADSHEET_ID: ${{ secrets.GOOGLE_SPREADSHEET_ID }}
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          PIPEDRIVE_TOKEN: ${{ secrets.PIPEDRIVE_TOKEN }}
         run: python run.py deploy-lambda
 
       # Send notification on build or deploy failure
