@@ -76,8 +76,8 @@ def pipedrive_create_deals(client, job, person, data):
             # in case form field was not found, keep it in special pd field
             cf_data[PIPEDRIVE_CUSTOM_FIELD_FALLBACK] += f'{k}: {v}\n'
 
-    name = data.get('fullName', '')
-    name = name or data.get('email', '').split('@')[0]
+    name = person.get('name', '')
+    name = name or person.get('primary_email', '').split('@')[0]
     payload = {
         'title': f'{job} - {name}',
         'person_id': person['id'],
