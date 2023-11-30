@@ -10,6 +10,38 @@ from slack_sdk import WebClient
 
 
 PIPEDRIVE_CUSTOM_FIELD_FALLBACK = "6244292b70f654e8adb467e7c4b6e417c59099a8"
+CUSTOM_FIELDS_MAP = {
+  "city": "f7731ae79d66ce127edafbea25acc23d741964d1",
+  "country": "76d376013db86003c179c2cf97035dd001e6f578",
+  "telegram": "488c8d01086f50c9c82dc9da5fdffefc9dbeff83",
+  "skype": "905c81598e637f1990f0611c74fd9578348bf3bc",
+  "whatsapp": "823484451671cbe10fe9c8fa785869583c7161b3",
+  "portfolio": "bcc3e04c1f33c099e2ee03ad6b7f4e5789cc8f10",
+  "education": "2322c3b704ededc65e25c65fc4fdef436b2d7a4a",
+  "english": "6ffd54d9947c4a749d5794205c4457ab6a4c13fd",
+  "lovedTasks": "8808eb21eb97c4de0e2124a0ebc2f51caa616daf",
+  "unlovedTasks": "9d8ec5f27d6f04082e81b9e7742bb1b394ef752a",
+  "experiencedjango": "dda69ba4f52302a1ca0e5db4c3a2a7fea3f4fd5b",
+  "experienceposition": "b4dc419032b8de6f7f1d67c2c12ec2998200143b",
+  "linuxCommands": "853591293300cce011d4549f92ea7cc8e54d8c35",
+  "experiencedb": "db5f0991b4f13b1ad3802274d9a764449564c9d0",
+  "experiencetests": "17a9192a295f3a0dd3248a02729e190fa979b601",
+  "experiencelinux": "59818648fcbc5a5b2552d09d25c67ebca0221cf2",
+  "experiencerequirements": "b5011e781a2e6a6eb4f04a1041fef86d13447173",
+  "experiencefrontend": "32a1c8173da00a92cac9de5dde834ebb33a7f967",
+  "experiencepython": "6e182fd384f109671c83cb631de95a2bd8fe711f",
+  "specializedExperience": "273b41a8ee293c877ffe4dbb784451a16d429f95",
+  "experiencephp": "3c6b10339c72dec10796ec6bcd7a28c5a99fdd56",
+  "experienceOverall": "9c59f474228e1d86dfb0219e77b0553e9d01b55f",
+  "recommendedBy": "14379c7424c02e6c22109bbb364c0a29a7cd9692",
+  "referrer": "a97a50f0b9a4cb5386f687774370b951356669a2",
+  "experiencerereact": "e800164efb4ad750453a0ed100f1253c90dc0db9",
+  "experiencejs": "d845ea966017a800c33daf960ad25217da87f9bd",
+  "experiencemarkup": "5319f706a4121961b69e80f9f6bb305c5a92acea",
+  "experiencefigma": "3937cc3bcf16f74704d88ddd5db325cd966bf69e",
+  "experiencedesign": "4ba10f18f6b51eb1121cf8b3364a0e1f67e09bfc",
+  "experienceusability": "bee1537c8a8e9a4b056f13423812be4661663275",
+}
 
 
 def pipedrive_get_or_create_person(client, form_person):
@@ -30,23 +62,11 @@ def pipedrive_get_or_create_person(client, form_person):
     return resp['data']
 
 
-def pipedrive_create_deals(client, title, person, data):
-    # pd works with custom fields using internal IDs, not names
-    # making mapping "field_name" : "internal_id" for future usage
-    cf_mapping = {}
-    response = client.deals.get_deal_fields()
-
-    for item in response['data']:
-        if not item.get('edit_flag', False):
-            continue  # built in field in pd
-        cf_mapping[item['name']] = item['key']
-
-    # unknown fields and values will be written into special field
-    # by default it has name "Other"
-    cf_fallback = cf_mapping.pop('Other', PIPEDRIVE_CUSTOM_FIELD_FALLBACK)
+def pipedrive_create_deals(client, job, person, data):
+    cf_mapping = CUSTOM_FIELDS_MAP.copy()
 
     cf_data = {
-        cf_fallback: '',
+        PIPEDRIVE_CUSTOM_FIELD_FALLBACK: '',
     }
 
     for k, v in data.items():
@@ -54,10 +74,12 @@ def pipedrive_create_deals(client, title, person, data):
             cf_data[cf_mapping[k]] = v
         else:
             # in case form field was not found, keep it in special pd field
-            cf_data[cf_fallback] += f'{k}: {v}\n'
+            cf_data[PIPEDRIVE_CUSTOM_FIELD_FALLBACK] += f'{k}: {v}\n'
 
+    name = data.get('fullName', '')
+    name = name or data.get('email', '').split('@')[0]
     payload = {
-        'title': title,
+        'title': f'{job} - {name}',
         'person_id': person['id'],
         **cf_data,
     }
@@ -66,7 +88,7 @@ def pipedrive_create_deals(client, title, person, data):
     print(f"Deals {resp['data']['id']} was created")
 
 
-def send_data_to_pipedrive(title, form_data):
+def send_data_to_pipedrive(job, form_data):
     client = Client(domain='https://api.pipedrive.com')
     client.set_api_token(os.environ.get('PIPEDRIVE_TOKEN'))
     form_person = {
@@ -75,7 +97,7 @@ def send_data_to_pipedrive(title, form_data):
     }
 
     api_person = pipedrive_get_or_create_person(client, form_person)
-    pipedrive_create_deals(client, title, api_person, form_data)
+    pipedrive_create_deals(client, job, api_person, form_data)
 
 
 def lambda_handler(event, context):
@@ -130,17 +152,14 @@ def lambda_handler(event, context):
     )
     slack_client.chat_postMessage(
         channel='G054C3DPL',
-        text=(
-            f'New "{job}" job application :tada:. '
-            f'<{ws_url}|Open applications list>'
-        ),
+        text=f'{job} :tada:. <{ws_url}|Open applications list>',
     )
 
     # average time for longest path is about 1.5-2 s
     # in good circumstances (fast internet, pd works without delays)
     try:
         event_body.pop('ts', None)  # deals has its own ts
-        send_data_to_pipedrive(f'New "{job}" job application', event_body)
+        send_data_to_pipedrive(job, event_body)
     except Exception as e:  # temporary catch all exceptions
         print(str(e))
 
