@@ -10,12 +10,16 @@ from slack_sdk import WebClient
 
 
 PIPEDRIVE_CUSTOM_FIELD_FALLBACK = "6244292b70f654e8adb467e7c4b6e417c59099a8"
+
+PERSON_FIELDS_MAP = {
+    'skype': '4717d3279137c308cc6aa9d67a48622ab596b7ae',
+    'whatsapp': 'b117a397d11ea09aacbb47d98a5f371e8c2bc8c3',
+    'telegram': '6ab6aa18532570c3f6799700ec3c9d7cca1e4d28',
+}
+
 CUSTOM_FIELDS_MAP = {
   "city": "f7731ae79d66ce127edafbea25acc23d741964d1",
   "country": "76d376013db86003c179c2cf97035dd001e6f578",
-  "telegram": "488c8d01086f50c9c82dc9da5fdffefc9dbeff83",
-  "skype": "905c81598e637f1990f0611c74fd9578348bf3bc",
-  "whatsapp": "823484451671cbe10fe9c8fa785869583c7161b3",
   "portfolio": "bcc3e04c1f33c099e2ee03ad6b7f4e5789cc8f10",
   "education": "2322c3b704ededc65e25c65fc4fdef436b2d7a4a",
   "english": "6ffd54d9947c4a749d5794205c4457ab6a4c13fd",
@@ -93,7 +97,10 @@ def send_data_to_pipedrive(job, form_data):
     client.set_api_token(os.environ.get('PIPEDRIVE_TOKEN'))
     form_person = {
         'email': form_data.pop('email', ''),
-        'name': form_data.pop('fullName', '')
+        'name': form_data.pop('fullName', ''),
+        PERSON_FIELDS_MAP['skype']: form_data.pop('skype', ''),
+        PERSON_FIELDS_MAP['whatsapp']: form_data.pop('whatsapp', ''),
+        PERSON_FIELDS_MAP['telegram']: form_data.pop('telegram', ''),
     }
 
     api_person = pipedrive_get_or_create_person(client, form_person)
