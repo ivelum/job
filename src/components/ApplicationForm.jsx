@@ -51,7 +51,7 @@ const country = yup.string().required().test(
     'AZ', 'TM', 'SA', 'NE',
     // High taxes.
     // Not included in any list above:
-    'IL', 'LV', 'TR',
+    'IL', 'LV', 'TR', 'US',
   ].indexOf(value) === -1,
 );
 
