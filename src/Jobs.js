@@ -1,5 +1,13 @@
 // Jobs. Steve Jobs.
 const Jobs = {
+  ux: {
+    name: 'UX',
+    title: 'UX/UI дизайнер',
+    subTitle: 'Проект Teamplify',
+    description: 'Дизайнер продукта в команду Teamplify',
+    url: '/ux/',
+    active: true,
+  },
   python: {
     name: 'Python',
     title: 'Python/Django разработчик',
