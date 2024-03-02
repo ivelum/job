@@ -20,8 +20,6 @@ const getFormSchema = (experienceTypes) => {
   const dataShape = {
     ...baseDataShape,
     experienceOverall: yup.number().typeError(numberTypeErr).required().min(0),
-    specializedExperience:
-      yup.number().typeError(numberTypeErr).required().min(0),
     portfolio: yup.string().required(),
   };
   const schema = yup.object().shape(dataShape);
