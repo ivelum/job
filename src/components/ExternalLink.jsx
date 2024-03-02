@@ -19,7 +19,7 @@ export const ExternalLinks = {
   },
   youtube: {
     techTalkVideos: (
-      'https://www.youtube.com/channel/UChgBoJzbKwLzzaU2nMNWUDw/videos'
+      'https://www.youtube.com/@ivelum-ru'
     ),
   },
   wiki: {
