@@ -39,8 +39,8 @@ const country = yup.string().required().test(
   lockedCountryErr,
   (value) => [
     // https://en.wikipedia.org/wiki/European_Union_tax_haven_blacklist
-    'AS', 'AI', 'BB', 'DM', 'FJ', 'GU', 'PA', 'SC', 'TT', 'PW', 'VI', 'VU',
-    'WS',
+    'AG', 'AI', 'AS', 'BS', 'BZ', 'FJ', 'GU', 'PA', 'PW', 'SC', 'TC', 'TT',
+    'VI', 'VU', 'WS',
     // https://en.wikipedia.org/wiki/United_States_sanctions#Countries
     // ... Combined, the Treasury Department, the Commerce Department and the
     // State Department list embargoes against 20 countries or territories:
@@ -51,7 +51,7 @@ const country = yup.string().required().test(
     'AZ', 'TM', 'SA', 'NE',
     // High taxes.
     // Not included in any list above:
-    'IL', 'LV', 'TR', 'US',
+    'EE', 'ES', 'CH', 'IL', 'IT', 'LV', 'TR', 'US',
   ].indexOf(value) === -1,
 );
 
