@@ -6,7 +6,6 @@ from json import JSONDecodeError
 
 import gspread
 from pipedrive.client import Client
-from slack_sdk import WebClient
 
 
 PIPEDRIVE_CUSTOM_FIELD_FALLBACK = "6244292b70f654e8adb467e7c4b6e417c59099a8"
@@ -150,17 +149,6 @@ def lambda_handler(event, context):
     ws.update(f'A{new_row_num}', [values])
     if missing_values:
         ws.update_cell(new_row_num, len(values) + 1, json.dumps(missing_values))
-
-    slack_client = WebClient(token=os.environ['SLACK_BOT_TOKEN'])
-    # `ws.url` returns link to google api, but we need a link to google docs
-    ws_url = (
-        f'https://docs.google.com/spreadsheets/d/{spreadsheet_id}/'
-        f'edit#gid={ws.id}'
-    )
-    slack_client.chat_postMessage(
-        channel='G054C3DPL',
-        text=f'{job} :tada:. <{ws_url}|Open applications list>',
-    )
 
     # average time for longest path is about 1.5-2 s
     # in good circumstances (fast internet, pd works without delays)
