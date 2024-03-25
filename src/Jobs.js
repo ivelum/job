@@ -6,7 +6,7 @@ const Jobs = {
     subTitle: 'Проект Teamplify',
     description: 'Дизайнер продукта в команду Teamplify',
     url: '/ux/',
-    active: true,
+    active: false,
   },
   python: {
     name: 'Python',
