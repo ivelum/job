@@ -14,7 +14,7 @@ const Jobs = {
     subTitle: 'Full-stack',
     description: 'Full-stack разработчик (Python/Django + frontend)',
     url: '/python/',
-    active: false,
+    active: true,
   },
   frontend: {
     name: 'Frontend',
