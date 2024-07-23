@@ -8,6 +8,13 @@ const Jobs = {
     url: '/python/',
     active: true,
   },
+  marketing: {
+    name: 'Marketing',
+    title: 'Head of Marketing',
+    description: 'Product Marketing, Content, Digital, SEO, SMM',
+    url: '/marketing/',
+    active: true,
+  },
   ux: {
     name: 'UX',
     title: 'UX/UI дизайнер',
@@ -22,13 +29,6 @@ const Jobs = {
     subTitle: 'Full-stack',
     description: 'Frontend / full-stack разработчик',
     url: '/frontend/',
-    active: false,
-  },
-  marketing: {
-    name: 'Marketing',
-    title: 'Head of Marketing',
-    description: 'Product Marketing, Content, Digital, SEO, SMM',
-    url: '/marketing/',
     active: false,
   },
   php: {
