@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ExternalLink from '@/components/ExternalLink';
+import ExternalLink, { ExternalLinks } from '@/components/ExternalLink';
 import SvgImage from '@/components/SvgImage';
 
 import * as styles from './Footer.module.scss';
@@ -9,7 +9,7 @@ export default function Footer() {
   return (
     <div className={styles.footer}>
       <ExternalLink
-        href="https://www.youtube.com/channel/UChgBoJzbKwLzzaU2nMNWUDw/"
+        href={ExternalLinks.youtube.techTalkVideos}
         className={styles.youtube}
       >
         <SvgImage name="ico-youtube" />Наш YouTube
