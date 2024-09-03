@@ -28,7 +28,7 @@ const getFormSchema = (experienceTypes) => {
   return schema;
 };
 
-class MarketingFormComponent extends ApplicationForm {
+class ContentFormComponent extends ApplicationForm {
   sectionItemsGeneral() {
     const data = super.sectionItemsGeneral();
     data.rows.push({
@@ -38,7 +38,7 @@ class MarketingFormComponent extends ApplicationForm {
           <div className={styles.formCol3}>
             {super.renderField({
               name: 'experienceOverall',
-              label: 'Сколько у вас лет опыта в маркетинге?',
+              label: 'Сколько у вас лет опыта?',
               componentProps: {
                 className: styles.formControl,
               },
@@ -47,7 +47,7 @@ class MarketingFormComponent extends ApplicationForm {
           <div className={styles.formCol3}>
             {super.renderField({
               name: 'specializedExperience',
-              label: 'Сколько из них связано с программным обеспечением?',
+              label: 'Сколько из них связано с IT?',
               componentProps: {
                 className: styles.formControl,
               },
@@ -70,7 +70,7 @@ class MarketingFormComponent extends ApplicationForm {
         <div className={styles.formCol1}>
           {super.renderField({
             name: 'portfolio',
-            label: 'Есть ли у вас публичные выступления, статьи?',
+            label: 'Где можно посмотреть примеры ваших работ?',
             helpText: 'Пожалуйста, укажите ссылки здесь',
             componentProps: {
               className: styles.formControl,
@@ -90,7 +90,7 @@ class MarketingFormComponent extends ApplicationForm {
   }
 }
 
-MarketingFormComponent.propTypes = {
+ContentFormComponent.propTypes = {
   job: PropTypes.shape({
     name: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
@@ -122,7 +122,7 @@ export default function ContentForm({ job, experienceTypes }) {
     job,
   };
   return (
-    <MarketingFormComponent {...props} />
+    <ContentFormComponent {...props} />
   );
 }
 
