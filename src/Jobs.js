@@ -1,10 +1,10 @@
 // Jobs. Steve Jobs.
 const Jobs = {
   marketing: {
-    name: 'Marketing',
-    title: 'Head of Marketing',
-    description: 'Product Marketing, Content, Digital, SEO, SMM',
-    url: '/marketing/',
+    name: 'Content',
+    title: 'Контент-менеджер, продюссер',
+    description: 'Content, Product Marketing, Digital, SEO, SMM',
+    url: '/content/',
     active: true,
   },
   python: {
