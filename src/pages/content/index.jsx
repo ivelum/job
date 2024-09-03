@@ -9,15 +9,15 @@ import Layout from '@/components/layout/Layout';
 
 const backLink = { url: '/', text: 'Все вакансии' };
 
-export default function marketingJob() {
+export default function contentJob() {
   return (
     <Layout
-      pageTitle={Jobs.marketing.title}
-      subTitle={Jobs.marketing.subTitle}
-      metaDescription={Jobs.marketing.description}
+      pageTitle={Jobs.content.title}
+      subTitle={Jobs.content.subTitle}
+      metaDescription={Jobs.content.description}
       backLink={backLink}
     >
-      <JobPage job={Jobs.marketing}>
+      <JobPage job={Jobs.content}>
         <JobTextBlock title="Кого мы ищем">
           <p>
             Нам нужен человек который помог бы нам создавать и распространять
@@ -33,7 +33,7 @@ export default function marketingJob() {
             </ExternalLink>.
           </p>
           <p>
-            Мы ожидаем:
+            Мы ожидаем от вас:
           </p>
           <ul>
             <li>опыт работы в этой сфере от 5 лет;</li>
@@ -42,7 +42,7 @@ export default function marketingJob() {
             </li>
             <li>
               вы можете самостоятельно (без ChatGPT) написать интересную статью
-              по IT-тематике, или помочь отредактировать статью которую написал
+              по IT-тематике или помочь отредактировать статью которую написал
               другой человек;
             </li>
             <li>

@@ -1,8 +1,8 @@
 // Jobs. Steve Jobs.
 const Jobs = {
-  marketing: {
+  content: {
     name: 'Content',
-    title: 'Контент-менеджер, продюссер',
+    title: 'Контент-менеджер, продюсер',
     description: 'Content, Product Marketing, Digital, SEO, SMM',
     url: '/content/',
     active: true,

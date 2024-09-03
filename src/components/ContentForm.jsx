@@ -110,7 +110,7 @@ MarketingFormComponent.propTypes = {
   breakpoints: PropTypes.object.isRequired,
 };
 
-export default function MarketingForm({ job, experienceTypes }) {
+export default function ContentForm({ job, experienceTypes }) {
   const form = useForm({
     resolver: yupResolver(getFormSchema(experienceTypes)),
   });
@@ -126,7 +126,7 @@ export default function MarketingForm({ job, experienceTypes }) {
   );
 }
 
-MarketingForm.propTypes = {
+ContentForm.propTypes = {
   job: PropTypes.shape({
     name: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
