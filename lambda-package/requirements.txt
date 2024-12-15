@@ -1,3 +1,2 @@
-gspread==4.0.1
 slack-sdk==3.9.1
 pipedrive-python-lib==1.2.3

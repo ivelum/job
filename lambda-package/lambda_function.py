@@ -4,7 +4,6 @@ import sys
 from datetime import datetime
 from json import JSONDecodeError
 
-import gspread
 from pipedrive.client import Client
 
 
@@ -108,9 +107,6 @@ def send_data_to_pipedrive(job, form_data):
 
 
 def lambda_handler(event, context):
-    info = json.loads(os.environ['GOOGLE_API_SERVICE_ACCOUNT_INFO'])
-    spreadsheet_id = os.environ['GOOGLE_SPREADSHEET_ID']
-
     def error_response(message):
         sys.stdout.write(str(event))
         return {'status': 'error', 'message': message}
@@ -126,37 +122,9 @@ def lambda_handler(event, context):
     except KeyError:
         return error_response('Wrong input: missing "job" param.')
 
-    event_body['ts'] = datetime.now().isoformat()
-
-    gc = gspread.service_account_from_dict(info)
-    wb = gc.open_by_key(spreadsheet_id)
     try:
-        ws = wb.worksheet(job)
-    except gspread.exceptions.WorksheetNotFound:
-        return error_response(f'Wrong input: unknown "{job}" job.')
-
-    fields = ws.row_values(1)
-
-    values = []
-    for col_index, field in enumerate(fields, start=1):
-        if field == 'ts':
-            # save timestamp col index as it should always have a value
-            # and we can check its values count later
-            ts_col_index = col_index
-        values.append(event_body.get(field, ''))
-
-    missing_values = {k: v for k, v in event_body.items() if k not in fields}
-    new_row_num = len(ws.col_values(ts_col_index)) + 1
-    ws.update(f'A{new_row_num}', [values])
-    if missing_values:
-        ws.update_cell(new_row_num, len(values) + 1, json.dumps(missing_values))
-
-    # average time for longest path is about 1.5-2 s
-    # in good circumstances (fast internet, pd works without delays)
-    try:
-        event_body.pop('ts', None)  # deals has its own ts
         send_data_to_pipedrive(job, event_body)
-    except Exception as e:  # temporary catch all exceptions
-        print(str(e))
+    except Exception:
+        return error_response('Failed to save data')
 
     return {'status': 'ok'}
