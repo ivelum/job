@@ -8,13 +8,21 @@ const Jobs = {
     url: '/python/',
     active: true,
   },
+  wordpress: {
+    name: 'WordPress',
+    title: 'PHP/WordPress разработчик',
+    subTitle: 'Full-stack',
+    description: 'Full-stack разработчик (PHP/WordPress + frontend)',
+    url: '/wordpress/',
+    active: true,
+  },
   php: {
     name: 'PHP',
     title: 'PHP разработчик',
     subTitle: 'Full-stack',
     description: 'Full-stack разработчик (PHP + frontend)',
     url: '/php/',
-    active: true,
+    active: false,
   },
   content: {
     name: 'Content',

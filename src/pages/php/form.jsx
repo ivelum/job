@@ -17,7 +17,7 @@ export default function PHPForm() {
     >
       <DeveloperForm
         job={Jobs.php}
-        experienceTypes={omit(allExperienceTypes, ['django'])}
+        experienceTypes={omit(allExperienceTypes, ['wordpress', 'django'])}
       />
     </Layout>
   );

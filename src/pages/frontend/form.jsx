@@ -17,7 +17,9 @@ export default function FrontendForm() {
     >
       <DeveloperForm
         job={Jobs.frontend}
-        experienceTypes={omit(allExperienceTypes, ['php', 'python', 'django'])}
+        experienceTypes={
+          omit(allExperienceTypes, ['php', 'wordpress', 'python', 'django'])
+        }
       />
     </Layout>
   );

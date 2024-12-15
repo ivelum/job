@@ -9,6 +9,7 @@ import * as styles from './ExperienceRadioField.module.scss';
 export const allExperienceTypes = {
   linux: 'Linux',
   php: 'PHP',
+  wordpress: 'WordPress',
   python: 'Python',
   django: 'Django',
   db: 'Реляционные БД',
