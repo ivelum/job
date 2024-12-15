@@ -35,6 +35,7 @@ CUSTOM_FIELDS_MAP = {
   "experiencepython": "6e182fd384f109671c83cb631de95a2bd8fe711f",
   "specializedExperience": "273b41a8ee293c877ffe4dbb784451a16d429f95",
   "experiencephp": "3c6b10339c72dec10796ec6bcd7a28c5a99fdd56",
+  "experiencewordpress": "6fce4f306ae12b0a25bc424e66649013d3d121ac",
   "experienceOverall": "9c59f474228e1d86dfb0219e77b0553e9d01b55f",
   "recommendedBy": "14379c7424c02e6c22109bbb364c0a29a7cd9692",
   "referrer": "a97a50f0b9a4cb5386f687774370b951356669a2",
