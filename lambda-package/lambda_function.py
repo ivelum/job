@@ -1,7 +1,6 @@
 import json
 import os
 import sys
-from datetime import datetime
 from json import JSONDecodeError
 
 from pipedrive.client import Client
