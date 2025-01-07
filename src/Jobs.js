@@ -6,7 +6,7 @@ const Jobs = {
     subTitle: 'Full-stack',
     description: 'Full-stack разработчик (Python/Django + frontend)',
     url: '/python/',
-    active: true,
+    active: false,
   },
   wordpress: {
     name: 'WordPress',
@@ -14,7 +14,7 @@ const Jobs = {
     subTitle: 'Full-stack',
     description: 'Full-stack разработчик (PHP/WordPress + frontend)',
     url: '/wordpress/',
-    active: true,
+    active: false,
   },
   php: {
     name: 'PHP',
