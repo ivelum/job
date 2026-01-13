@@ -6,6 +6,7 @@ export const ExternalLinks = {
     home: 'https://ivelum.com',
     jobRepo: 'https://github.com/ivelum/job',
     bookInterview: 'https://calendly.com/olga_lebedeva_/job_interview',
+    blog: 'https://ivelum.com/blog/',
   },
   contacts: {
     email: 'mailto:job@ivelum.com',
@@ -13,10 +14,9 @@ export const ExternalLinks = {
   },
   teamplify: {
     home: 'https://teamplify.com',
-    blog: 'https://teamplify.com/blog/',
   },
   youtube: {
-    techTalkVideos: 'https://www.youtube.com/@ivelum-ru',
+    techTalkVideos: 'https://www.youtube.com/@ivelum',
   },
   wiki: {
     home: 'https://github.com/ivelum/job/wiki/Home-RU',

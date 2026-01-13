@@ -86,8 +86,8 @@ export default function pythonJob() {
               </ExternalLink> в&nbsp;нашей вики;
             </li>
             <li>
-              <ExternalLink href={ExternalLinks.teamplify.blog}>
-                блог Teamplify
+              <ExternalLink href={ExternalLinks.company.blog}>
+                наш блог
               </ExternalLink> со статьями о технологиях и менеджменте;
             </li>
             <li>
