@@ -10,10 +10,10 @@ runs:
       shell: bash
     - name: get pip cache dir
       id: pip-cache
-      run: echo "::set-output name=dir::$(pip cache dir)"
+      run: echo "dir=$(pip cache dir)" >> $GITHUB_OUTPUT
       shell: bash
     - name: cache pip
-      uses: actions/cache@v2
+      uses: actions/cache@v4
       with:
         path: ${{ steps.pip-cache.outputs.dir }}
         key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
