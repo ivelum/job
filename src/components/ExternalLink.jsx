@@ -5,7 +5,8 @@ export const ExternalLinks = {
   company: {
     home: 'https://ivelum.com',
     jobRepo: 'https://github.com/ivelum/job',
-    bookInterview: 'https://calendly.com/olga_lebedeva_/job_interview',
+    bookInterview:
+      'https://calendly.com/olga_lebedeva_/developer-job-interview',
     blog: 'https://ivelum.com/blog/',
   },
   contacts: {
