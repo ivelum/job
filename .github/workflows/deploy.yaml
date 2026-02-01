@@ -89,7 +89,7 @@ jobs:
 
       - uses: ./.github/actions/install-python-dependencies
       - run: |
-          uv export --format requirements.txt -o lambda-package/requirements.txt
+          uv export --format requirements.txt --no-emit-project --only-group lambda-app -o lambda-package/requirements.txt
           uvx pip install --target lambda-package/dependencies -r lambda-package/requirements.txt
           rm lambda-package/requirements.txt
 
