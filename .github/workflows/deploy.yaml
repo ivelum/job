@@ -1,7 +1,7 @@
 name: Deploy
 on:
   push:
-    branches: [master]
+    branches: [ master ]
   workflow_dispatch:
 jobs:
   notify-build-start:
@@ -33,11 +33,7 @@ jobs:
 
       - uses: ./.github/actions/install-js-dependencies
       - uses: ./.github/actions/install-python-dependencies
-
-      - run: yarn eslint
-      - run: yarn stylelint
-      - run: isort .
-      - run: flake8 .
+      - run: uv run dev codestyle
 
       # Send notification on check failure
       - name: Notify slack fail
@@ -69,7 +65,7 @@ jobs:
       - env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        run: python run.py deploy-app
+        run: uv run deploy deploy-app
 
       # Send notification on build or deploy failure
       - name: Notify slack fail
@@ -92,7 +88,10 @@ jobs:
           python-version: 3.9
 
       - uses: ./.github/actions/install-python-dependencies
-      - run: pip install --target lambda-package/dependencies -r lambda-package/requirements.txt
+      - run: |
+          uv export --format requirements.txt -o lambda-package/requirements.txt
+          uvx pip install --target lambda-package/dependencies -r lambda-package/requirements.txt
+          rm lambda-package/requirements.txt
 
       - env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -101,7 +100,7 @@ jobs:
           GOOGLE_SPREADSHEET_ID: ${{ secrets.GOOGLE_SPREADSHEET_ID }}
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
           PIPEDRIVE_TOKEN: ${{ secrets.PIPEDRIVE_TOKEN }}
-        run: python run.py deploy-lambda
+        run: uv run deploy deploy-lambda
 
       # Send notification on build or deploy failure
       - name: Notify slack fail
@@ -116,7 +115,7 @@ jobs:
 
   notify-build-success:
     if: ${{ github.event_name == 'push' }}
-    needs: [deploy-app, deploy-lambda, notify-build-start]
+    needs: [ deploy-app, deploy-lambda, notify-build-start ]
     runs-on: ubuntu-latest
     steps:
       # Send notification on build success

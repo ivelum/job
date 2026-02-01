@@ -16,7 +16,13 @@ def aws_cmd(cmd, region):
     return f'{command} {cmd}'
 
 
-def aws(cmd, region=None, parse_output=True, **kwargs):
+def aws(
+    cmd,
+    region: str | None = None,
+    *,
+    parse_output: bool = True,
+    **kwargs,
+):
     """
     Shortcut for aws cli.
     """
@@ -30,6 +36,6 @@ def aws(cmd, region=None, parse_output=True, **kwargs):
 
 def resource_details(stack_name, logical_id):
     return aws(
-        'cloudformation describe-stack-resource --stack-name %s '
-        '--logical-resource-id %s' % (stack_name, logical_id),
+        f'cloudformation describe-stack-resource --stack-name {stack_name} '
+        f'--logical-resource-id {logical_id}'
     )['StackResourceDetail']

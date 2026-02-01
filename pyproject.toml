@@ -1,0 +1,103 @@
+[project]
+name = "ivelum-job"
+version = "0.1.0"
+requires-python = ">=3.14,<3.15"
+
+# Local CLI tools - used by developers via `uv run <command>`
+dependencies = [
+    "awscli==1.44.29",
+    "click==8.3.1",
+    "sarge==0.1.8",
+    "ruff==0.14.14",
+]
+
+[dependency-groups]
+# Lambda application - installed via `--only-group lambda-app`
+lambda-app = [
+    "pipedrive-python-lib==1.2.3",
+]
+
+[project.scripts]
+deploy = "deploy.cli.deploy:deploy"
+dev = "deploy.cli.dev:dev"
+
+[build-system]
+requires = ["uv_build>=0.9.26,<0.10.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-root = ""
+module-name = "deploy"
+
+[tool.ruff]
+line-length = 100
+target-version = "py314"
+force-exclude = true
+
+exclude = [
+    ".git",
+    ".venv",
+    "lambda-package/dependencies",
+    "node_modules",
+]
+
+[tool.ruff.lint]
+select = [
+    "A",
+    "ARG",
+    "ASYNC",
+    "B",
+    "C4",
+    "COM",
+    "DTZ",
+    "E",
+    "EM",
+    "ERA",
+    "EXE",
+    "F",
+    "FBT",
+    "FURB",
+    "G",
+    "I",
+    "ICN",
+    "ISC",
+    "LOG",
+    "N",
+    "PERF",
+    "PGH",
+    "PIE",
+    "PL",
+    "PTH",
+    "Q",
+    "RET",
+    "RSE",
+    "RUF",
+    "S",
+    "SIM",
+    "SLF",
+    "SLOT",
+    "T10",
+    "T20",
+    "TID",
+    "TRY",
+    "UP",
+    "W",
+    "YTT"
+]
+
+ignore = [
+    "COM812",
+    "Q000",
+    "Q003"
+]
+
+[tool.ruff.format]
+quote-style = "single"
+
+[tool.ruff.lint.isort]
+known-first-party = ["deploy"]
+section-order = ["future", "standard-library", "third-party", "first-party", "local-folder"]
+lines-after-imports = 2
+no-lines-before = ["standard-library"]
+force-wrap-aliases = true
+combine-as-imports = true
