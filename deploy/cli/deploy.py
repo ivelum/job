@@ -40,7 +40,7 @@ def deploy_app():
 def deploy_lambda():
     function_name = resource_details(
         PROJECT_NAME,
-        'JobApplicationLambda',
+        'JobApplicationApplyLambda',
     )['PhysicalResourceId']
 
     package_path = Path('lambda-package')

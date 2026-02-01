@@ -21,31 +21,31 @@ Resources:
       PolicyDocument:
         Version: "2012-10-17"
         Statement:
-        - Action: "s3:GetObject"
-          Effect: Allow
-          Principal: "*"
-          Resource:
-            Fn::Sub: "arn:aws:s3:::${WebsiteBucket}/*"
+          - Action: "s3:GetObject"
+            Effect: Allow
+            Principal: "*"
+            Resource:
+              Fn::Sub: "arn:aws:s3:::${WebsiteBucket}/*"
   WebsiteDistribution:
     Type: AWS::CloudFront::Distribution
     DependsOn: WebsiteBucket
     Properties:
       DistributionConfig:
         Aliases:
-        - job.ivelum.com
+          - job.ivelum.com
         CustomErrorResponses:
           - ErrorCode: 403
             ResponseCode: 404
             ResponsePagePath: /404.html
         Origins:
-        - DomainName:
-            Ref: WebsiteBucket
-          Id:
-            Ref: WebsiteBucket
-          CustomOriginConfig:
-            HTTPPort: 80
-            HTTPSPort: 443
-            OriginProtocolPolicy: 'http-only'
+          - DomainName:
+              Ref: WebsiteBucket
+            Id:
+              Ref: WebsiteBucket
+            CustomOriginConfig:
+              HTTPPort: 80
+              HTTPSPort: 443
+              OriginProtocolPolicy: 'http-only'
         Enabled: 'true'
         DefaultRootObject: index.html
         DefaultCacheBehavior:
@@ -66,9 +66,9 @@ Resources:
             Cookies:
               Forward: none
             Headers:
-            - Access-Control-Request-Headers
-            - Access-Control-Request-Method
-            - Origin
+              - Access-Control-Request-Headers
+              - Access-Control-Request-Method
+              - Origin
         ViewerCertificate:
           AcmCertificateArn:
             Ref: WebsiteCertificateARN
@@ -80,29 +80,29 @@ Resources:
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/AWSCloudFormationReadOnlyAccess
       Policies:
-      - PolicyDocument:
-          Statement:
-          - Action:
-              - s3:ListBucket
-            Effect: Allow
-            Resource:
-              Fn::Sub: "arn:aws:s3:::${WebsiteBucket}"
-          - Action:
-              - s3:*Object*
-            Effect: Allow
-            Resource:
-              Fn::Sub: "arn:aws:s3:::${WebsiteBucket}/*"
-          - Action:
-              - cloudfront:CreateInvalidation
-            Effect: Allow
-            Resource: "*"
-          - Action:
-              - lambda:GetFunction
-              - lambda:UpdateFunctionCode
-              - lambda:UpdateFunctionConfiguration
-            Effect: Allow
-            Resource: !GetAtt JobApplicationLambda.Arn
-        PolicyName: manage-static-website
+        - PolicyDocument:
+            Statement:
+              - Action:
+                  - s3:ListBucket
+                Effect: Allow
+                Resource:
+                  Fn::Sub: "arn:aws:s3:::${WebsiteBucket}"
+              - Action:
+                  - s3:*Object*
+                Effect: Allow
+                Resource:
+                  Fn::Sub: "arn:aws:s3:::${WebsiteBucket}/*"
+              - Action:
+                  - cloudfront:CreateInvalidation
+                Effect: Allow
+                Resource: "*"
+              - Action:
+                  - lambda:GetFunction
+                  - lambda:UpdateFunctionCode
+                  - lambda:UpdateFunctionConfiguration
+                Effect: Allow
+                Resource: !GetAtt JobApplicationApplyLambda.Arn
+          PolicyName: manage-static-website
   LambdaExecutionRole:
     Type: AWS::IAM::Role
     Properties:
@@ -115,8 +115,18 @@ Resources:
             Action: sts:AssumeRole
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
-  JobApplicationLambda:
-    Type: "AWS::Lambda::Function"
+  JobApplicationAPI:
+    Type: AWS::ApiGatewayV2::Api
+    Properties:
+      Description: Job Application HTTP API
+      Name: job-application-lambda-api
+      ProtocolType: HTTP
+      CorsConfiguration:
+        AllowOrigins: [ "https://job.ivelum.com" ]
+        AllowMethods: [ "GET", "HEAD", "OPTIONS", "POST" ]
+        AllowHeaders: [ "*" ]
+  JobApplicationApplyLambda:
+    Type: AWS::Lambda::Function
     Properties:
       Handler: "lambda_function.lambda_handler"
       Role: !GetAtt LambdaExecutionRole.Arn
@@ -127,24 +137,26 @@ Resources:
         ZipFile: import this
       Runtime: "python3.9"
       Timeout: 10
-  JobApplicationAPI:
-    Type: AWS::ApiGatewayV2::Api
+  JobApplicationApplyAPIIntegration:
+    Type: AWS::ApiGatewayV2::Integration
     Properties:
-      Description: Job Application HTTP API
-      Name: job-application-lambda-api
-      ProtocolType: HTTP
-      Target: !GetAtt JobApplicationLambda.Arn
-      CorsConfiguration:
-        AllowOrigins: ["https://job.ivelum.com"]
-        AllowMethods: ["GET", "HEAD", "OPTIONS", "POST"]
-        AllowHeaders: ["*"]
-  JobApplicationAPIInvokeLambdaPermission:
+      ApiId: !Ref JobApplicationAPI
+      IntegrationType: AWS_PROXY
+      IntegrationUri: !GetAtt JobApplicationApplyLambda.Arn
+      PayloadFormatVersion: "2.0"
+  JobApplicationApplyAPIRoute:
+    Type: AWS::ApiGatewayV2::Route
+    Properties:
+      ApiId: !Ref JobApplicationAPI
+      RouteKey: "ANY /{proxy+}"
+      Target: !Sub integrations/${JobApplicationApplyAPIIntegration}
+  JobApplicationApplyAPIInvokeLambdaPermission:
     Type: AWS::Lambda::Permission
     Properties:
-      FunctionName: !Ref JobApplicationLambda
+      FunctionName: !Ref JobApplicationApplyLambda
       Action: lambda:InvokeFunction
       Principal: apigateway.amazonaws.com
-      SourceArn: !Sub arn:${AWS::Partition}:execute-api:${AWS::Region}:${AWS::AccountId}:${JobApplicationAPI}/$default/$default
+      SourceArn: !Sub arn:${AWS::Partition}:execute-api:${AWS::Region}:${AWS::AccountId}:${JobApplicationAPI}/*/*
 
 Outputs:
   JobApplicationInvokeURL:
