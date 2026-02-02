@@ -89,9 +89,9 @@ jobs:
 
       - uses: ./.github/actions/install-python-dependencies
       - run: |
-          uv export --format requirements.txt --no-emit-project --only-group lambda-app -o lambda-package/requirements.txt
-          uvx pip install --target lambda-package/dependencies -r lambda-package/requirements.txt
-          rm lambda-package/requirements.txt
+          uv export --format requirements.txt --no-emit-project --only-group lambda-app -o lambdas/requirements.txt
+          uvx pip install --target lambdas/dependencies -r lambdas/requirements.txt
+          rm lambdas/requirements.txt
 
       - env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
