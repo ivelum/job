@@ -124,6 +124,24 @@ class PipedriveService:
         resp = self.client.deals.create_deal(payload)
         return resp['data']
 
+    def get_deal_title(self, deal_id: int) -> str:
+        """
+        Retrieve the title of a deal by its ID.
+        """
+        resp = self.client.deals.get_deal(deal_id)
+        if resp.get('data'):
+            return resp['data']['title']
+        return f'deal {deal_id}'
+
+    def get_user_name(self, user_id: int) -> str:
+        """
+        Retrieve the name of a user by their ID.
+        """
+        resp = self.client.users.get_user(user_id)
+        if resp.get('data'):
+            return resp['data']['name']
+        return 'Someone'
+
     def get_stage_name(self, stage_id: int) -> str:
         """
         Retrieve the name of a stage by its ID.
