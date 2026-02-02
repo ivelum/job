@@ -38,6 +38,13 @@ def deploy_app():
 @deploy.command(help='Deploy lambda function to production')
 @timing
 def deploy_lambda():
+    resource_ids: dict[str, str] = {}
+    for func_name in LAMBDA_FUNCTIONS:
+        resource_ids[func_name] = resource_details(
+            PROJECT_NAME,
+            func_name,
+        )['PhysicalResourceId']
+
     package_path = Path('lambdas')
     package_deps_path = package_path / 'dependencies'
     code_archive_name = 'lambda-package.zip'
@@ -48,16 +55,18 @@ def deploy_lambda():
 
     code_archive_path = f'fileb://{package_path}/{code_archive_name}'
     for func_name in LAMBDA_FUNCTIONS:
+        func_id = resource_ids[func_name]
         aws(
             f'lambda update-function-code '
-            f'--function-name {func_name} '
+            f'--function-name {func_id} '
             f'--zip-file {code_archive_path} '
             f'--publish',
         )
 
     def get_function_config(fn: str) -> dict:
+        fi = resource_ids[fn]
         return aws(
-            f'lambda get-function-configuration --function-name {fn}',
+            f'lambda get-function-configuration --function-name {fi}',
         )['Configuration']
 
     in_progress_functions: set[str] = set(LAMBDA_FUNCTIONS)
@@ -83,9 +92,10 @@ def deploy_lambda():
     slack_bot_token = os.environ['SLACK_BOT_TOKEN']
     pipedrive_token = os.environ['PIPEDRIVE_TOKEN']
     for func_name in updated_functions:
+        func_id = resource_ids[func_name]
         aws(
             f'lambda update-function-configuration '
-            f'--function-name {func_name} '
+            f'--function-name {func_id} '
             f'--environment "Variables={{'
             f"GOOGLE_API_SERVICE_ACCOUNT_INFO='{info}',"
             f'GOOGLE_SPREADSHEET_ID={spreadsheet_id},'
