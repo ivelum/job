@@ -155,13 +155,13 @@ def handler(
     meta = payload.get('meta') or {}
     event_type = f'{meta.get("action")}.{meta.get("entity")}'
     match event_type:
-        case 'added.note' | 'updated.note':
+        case 'create.note' | 'change.note':
             handle_note(payload, slack, pipedrive)
-        case 'updated.deal' if curr_status == 'lost' and prev_status != 'lost':
+        case 'change.deal' if curr_status == 'lost' and prev_status != 'lost':
             handle_deal_lost(payload, slack)
-        case 'updated.deal' if curr_status == 'won' and prev_status != 'won':
+        case 'change.deal' if curr_status == 'won' and prev_status != 'won':
             handle_deal_won(payload, slack)
-        case 'updated.deal' if curr_stage != prev_stage and prev_stage:
+        case 'change.deal' if curr_stage != prev_stage and prev_stage:
             handle_stage_changed(payload, slack, pipedrive)
 
     return success_response('How did it go?')
