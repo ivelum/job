@@ -71,11 +71,14 @@ def deploy_lambda():
     in_progress_functions: set[str] = set(LAMBDA_FUNCTIONS)
     failed_functions: set[str] = set()
     updated_functions: set[str] = set()
-    while in_progress_functions:
+    attempt = 0
+    max_attempts = 120
+    while in_progress_functions and attempt <= max_attempts:
+        attempt += 1
         time.sleep(1)
         for func_name in set(in_progress_functions):
             status = get_function_config(func_name)['LastUpdateStatus']
-            echo(f'Function {func_name} status: {status}')
+            echo(f'({attempt}/{max_attempts}) Function {func_name} status: {status}')
             match status:
                 case 'InProgress':
                     continue
