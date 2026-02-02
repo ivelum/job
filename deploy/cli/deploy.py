@@ -38,7 +38,7 @@ def deploy_app():
 @deploy.command(help='Deploy lambda function to production')
 @timing
 def deploy_lambda():
-    package_path = Path('lambda-package')
+    package_path = Path('lambdas')
     package_deps_path = package_path / 'dependencies'
     code_archive_name = 'lambda-package.zip'
 
