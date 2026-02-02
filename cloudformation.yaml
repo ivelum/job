@@ -101,7 +101,9 @@ Resources:
                   - lambda:UpdateFunctionCode
                   - lambda:UpdateFunctionConfiguration
                 Effect: Allow
-                Resource: !GetAtt JobApplicationApplyLambda.Arn
+                Resource:
+                  - !GetAtt JobApplicationApplyLambda.Arn
+                  - !GetAtt JobApplicationPipedriveWebhookLambda.Arn
           PolicyName: manage-static-website
   LambdaExecutionRole:
     Type: AWS::IAM::Role
