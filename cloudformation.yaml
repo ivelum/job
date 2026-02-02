@@ -128,14 +128,14 @@ Resources:
   JobApplicationApplyLambda:
     Type: AWS::Lambda::Function
     Properties:
-      Handler: "handlers.job_apply_handler"
+      Handler: "functions.job_apply_handler"
       Role: !GetAtt LambdaExecutionRole.Arn
       Code:
         # use CF feature - it compares yaml config with its previous version
         # without looking at the actual state of the lambda function
         # this way we can update code, deps and env vars during deploy
         ZipFile: import this
-      Runtime: "python3.9"
+      Runtime: "python3.14"
       Timeout: 10
   JobApplicationApplyAPIIntegration:
     Type: AWS::ApiGatewayV2::Integration
@@ -154,6 +154,38 @@ Resources:
     Type: AWS::Lambda::Permission
     Properties:
       FunctionName: !Ref JobApplicationApplyLambda
+      Action: lambda:InvokeFunction
+      Principal: apigateway.amazonaws.com
+      SourceArn: !Sub arn:${AWS::Partition}:execute-api:${AWS::Region}:${AWS::AccountId}:${JobApplicationAPI}/*/*
+  JobApplicationPipedriveWebhookLambda:
+    Type: AWS::Lambda::Function
+    Properties:
+      Handler: "functions.pipedrive_webhook_handler"
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Code:
+        # use CF feature - it compares yaml config with its previous version
+        # without looking at the actual state of the lambda function
+        # this way we can update code, deps and env vars during deploy
+        ZipFile: import this
+      Runtime: "python3.14"
+      Timeout: 20
+  JobApplicationPipedriveWebhookAPIIntegration:
+    Type: AWS::ApiGatewayV2::Integration
+    Properties:
+      ApiId: !Ref JobApplicationAPI
+      IntegrationType: AWS_PROXY
+      IntegrationUri: !GetAtt JobApplicationPipedriveWebhookLambda.Arn
+      PayloadFormatVersion: "2.0"
+  JobApplicationPipedriveWebhookAPIRoute:
+    Type: AWS::ApiGatewayV2::Route
+    Properties:
+      ApiId: !Ref JobApplicationAPI
+      RouteKey: "POST /pipedrive-webhook"
+      Target: !Sub integrations/${JobApplicationPipedriveWebhookAPIIntegration}
+  JobApplicationPipedriveWebhookAPIInvokeLambdaPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref JobApplicationPipedriveWebhookLambda
       Action: lambda:InvokeFunction
       Principal: apigateway.amazonaws.com
       SourceArn: !Sub arn:${AWS::Partition}:execute-api:${AWS::Region}:${AWS::AccountId}:${JobApplicationAPI}/*/*

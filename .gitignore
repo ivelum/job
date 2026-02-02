@@ -3,8 +3,8 @@
 node_modules/
 public
 .venv
-lambda-package/dependencies/
-lambda-package/lambda-package.zip
+lambdas/dependencies/
+lambdas/lambda-package.zip
 
 #
 # See https://github.com/github/gitignore/blob/master/Global/JetBrains.gitignore

@@ -24,7 +24,7 @@ def dev():
 @click.option('--autofix', '--fix', is_flag=True, help='Auto format the code to comply with checks')
 @timing
 def codestyle(*, autofix: bool) -> None:
-    py_files = './deploy ./lambda-package'
+    py_files = './deploy ./lambdas'
     js_files = './src'
     css_files = './src/**/*.scss'
     result = (

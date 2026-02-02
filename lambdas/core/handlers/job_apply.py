@@ -1,18 +1,13 @@
 import json
-import sys
 from collections.abc import Mapping
 from json import JSONDecodeError
 from typing import Any
 
 from core.pipedrive import PipedriveService
+from core.utils import error_response, success_response
 
 
-def error_response(event: Any, message: str) -> dict[str, str]:
-    sys.stdout.write(str(event))
-    return {'status': 'error', 'message': message}
-
-
-def job_apply_handler(
+def handler(
     event: Mapping[str, Any],
     context,  # noqa: ARG001
 ) -> dict:
@@ -37,4 +32,4 @@ def job_apply_handler(
     except Exception:
         return error_response('Failed to save data')
 
-    return {'status': 'ok'}
+    return success_response('New deal? Nice.')

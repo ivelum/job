@@ -15,6 +15,7 @@ dependencies = [
 # Lambda application - installed via `--only-group lambda-app`
 lambda-app = [
     "pipedrive-python-lib==1.2.3",
+    "slack_sdk==3.39.0",
 ]
 
 [project.scripts]
@@ -37,7 +38,7 @@ force-exclude = true
 exclude = [
     ".git",
     ".venv",
-    "lambda-package/dependencies",
+    "lambdas/dependencies",
     "node_modules",
 ]
 

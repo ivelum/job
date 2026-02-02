@@ -124,6 +124,15 @@ class PipedriveService:
         resp = self.client.deals.create_deal(payload)
         return resp['data']
 
+    def get_stage_name(self, stage_id: int) -> str:
+        """
+        Retrieve the name of a stage by its ID.
+        """
+        resp = self.client.stages.get_stage(stage_id)
+        if resp.get('data'):
+            return resp['data']['name']
+        return f'stage {stage_id}'
+
     def create_deal_from_form_data(
         self,
         job: str,
