@@ -128,7 +128,7 @@ Resources:
   JobApplicationApplyLambda:
     Type: AWS::Lambda::Function
     Properties:
-      Handler: "lambda_function.lambda_handler"
+      Handler: "handlers.job_apply_handler"
       Role: !GetAtt LambdaExecutionRole.Arn
       Code:
         # use CF feature - it compares yaml config with its previous version

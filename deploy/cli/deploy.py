@@ -48,7 +48,8 @@ def deploy_lambda():
     code_archive_name = 'lambda-package.zip'
 
     run(f'zip -r ../{code_archive_name} .', cwd=package_deps_path)
-    run(f'zip -g {code_archive_name} lambda_function.py', cwd=package_path)
+    run(f'zip -r {code_archive_name} core', cwd=package_path)
+    run(f'zip -g {code_archive_name} handlers.py', cwd=package_path)
 
     code_archive_path = f'fileb://{package_path}/{code_archive_name}'
     aws(
