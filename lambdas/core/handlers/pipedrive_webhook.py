@@ -142,9 +142,9 @@ def handler(
     except (KeyError, JSONDecodeError):
         return error_response(event, 'Malformed webhook payload.')
 
-    event_type = payload.get('event', '')
-    current = payload.get('current', {})
-    previous = payload.get('previous', {})
+    event_type = payload.get('event') or ''
+    current = payload.get('current') or {}
+    previous = payload.get('previous') or {}
 
     slack = SlackService()
 
