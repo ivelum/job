@@ -98,6 +98,7 @@ Resources:
                 Resource: "*"
               - Action:
                   - lambda:GetFunction
+                  - lambda:GetFunctionConfiguration
                   - lambda:UpdateFunctionCode
                   - lambda:UpdateFunctionConfiguration
                 Effect: Allow
