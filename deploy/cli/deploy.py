@@ -65,14 +65,13 @@ def deploy_lambda():
 
     def get_function_config(fn: str) -> dict:
         fi = resource_ids[fn]
-        return aws(
-            f'lambda get-function-configuration --function-name {fi}',
-        )['Configuration']
+        return aws(f'lambda get-function-configuration --function-name {fi}')
 
     in_progress_functions: set[str] = set(LAMBDA_FUNCTIONS)
     failed_functions: set[str] = set()
     updated_functions: set[str] = set()
     while in_progress_functions:
+        time.sleep(1)
         for func_name in in_progress_functions:
             status = get_function_config(func_name)['LastUpdateStatus']
             match status:
@@ -84,7 +83,6 @@ def deploy_lambda():
                 case _:
                     in_progress_functions.remove(func_name)
                     updated_functions.add(func_name)
-        time.sleep(1)
 
     info = os.environ['GOOGLE_API_SERVICE_ACCOUNT_INFO']
     info = info.replace('"', '\\"')  # encode quotes inside json string
@@ -107,8 +105,8 @@ def deploy_lambda():
     failed: list[str] = []
     for func_name in failed_functions:
         function_config = get_function_config(func_name)
-        reason = function_config['LastUpdateStatusReason']
-        reason_code = function_config['LastUpdateStatusReasonCode']
+        reason = function_config.get('LastUpdateStatusReason', 'N/A')
+        reason_code = function_config.get('LastUpdateStatusReasonCode', 'N/A')
         failed.append(f'{func_name}: {reason_code} | {reason}')
     if failed:
         msg = f'Failed to update lambda function. {";".join(failed)}'
