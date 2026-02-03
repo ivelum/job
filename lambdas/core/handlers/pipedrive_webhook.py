@@ -18,7 +18,11 @@ class HTMLToText(HTMLParser):
         super().__init__()
         self._parts: list[str] = []
 
-    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]):
+    def handle_starttag(
+        self,
+        tag: str,
+        attrs: list[tuple[str, str | None]],  # noqa: ARG002
+    ):
         if tag == 'br':
             self._parts.append('\n')
 
