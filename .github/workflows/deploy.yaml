@@ -16,7 +16,7 @@ jobs:
           status: STARTED
           color: '#ee9b00'
         env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_DEPLOY_TOKEN }}
     outputs:
       status_message_id: ${{ steps.slack.outputs.message_id }}
 
@@ -40,7 +40,7 @@ jobs:
         uses: ivelum/github-action-slack-notify-build@v1.6.0
         if: failure()
         env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_DEPLOY_TOKEN }}
         with:
           channel_id: G054C3DPL
           status: FAILED
@@ -72,7 +72,7 @@ jobs:
         uses: ivelum/github-action-slack-notify-build@v1.6.0
         if: failure()
         env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_DEPLOY_TOKEN }}
         with:
           channel_id: G054C3DPL
           status: FAILED
@@ -98,7 +98,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           GOOGLE_API_SERVICE_ACCOUNT_INFO: ${{ secrets.GOOGLE_API_SERVICE_ACCOUNT_INFO }}
           GOOGLE_SPREADSHEET_ID: ${{ secrets.GOOGLE_SPREADSHEET_ID }}
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_LAMBDA_TOKEN }}
           PIPEDRIVE_TOKEN: ${{ secrets.PIPEDRIVE_TOKEN }}
         run: uv run deploy deploy-lambda
 
@@ -107,7 +107,7 @@ jobs:
         uses: ivelum/github-action-slack-notify-build@v1.6.0
         if: failure()
         env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_DEPLOY_TOKEN }}
         with:
           channel_id: G054C3DPL
           status: FAILED
@@ -122,7 +122,7 @@ jobs:
       - name: Notify slack success
         uses: ivelum/github-action-slack-notify-build@v1.6.0
         env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_DEPLOY_TOKEN }}
         with:
           message_id: ${{ needs.notify-build-start.outputs.status_message_id }}
           channel_id: G054C3DPL
