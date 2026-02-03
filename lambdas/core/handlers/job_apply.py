@@ -1,10 +1,14 @@
 import json
+import logging
 from collections.abc import Mapping
 from json import JSONDecodeError
 from typing import Any
 
 from core.pipedrive import PipedriveService
 from core.utils import error_response, success_response
+
+
+log = logging.getLogger(__name__)
 
 
 def handler(
@@ -27,9 +31,16 @@ def handler(
     except KeyError:
         return error_response(event, 'Wrong input: missing "job" param.')
 
-    try:
-        PipedriveService().create_deal_from_form_data(job, event_body)
-    except Exception:
-        return error_response('Failed to save data')
-
-    return success_response('New deal? Nice.')
+    attempt = 0
+    max_attempts = 2
+    while attempt < max_attempts:
+        attempt += 1
+        # noinspection PyBroadException
+        try:
+            PipedriveService().create_deal_from_form_data(job, event_body)
+        except Exception:
+            log.exception('Failed to save data')
+            continue
+        else:
+            return success_response('New deal? Nice.')
+    return error_response(event, 'Failed to save data')
