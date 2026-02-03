@@ -1,4 +1,5 @@
 import json
+import re
 from collections.abc import Mapping
 from html.parser import HTMLParser
 from json import JSONDecodeError
@@ -17,11 +18,20 @@ class HTMLToText(HTMLParser):
         super().__init__()
         self._parts: list[str] = []
 
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]):
+        if tag == 'br':
+            self._parts.append('\n')
+
+    def handle_endtag(self, tag: str):
+        if tag == 'p':
+            self._parts.append('\n')
+
     def handle_data(self, data: str):
         self._parts.append(data)
 
     def get_text(self) -> str:
-        return ''.join(self._parts)
+        text = ''.join(self._parts)
+        return re.sub(r'\n{3,}', lambda m: m.group()[:-1], text)
 
 
 def strip_html(html: str) -> str:
