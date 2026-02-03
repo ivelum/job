@@ -102,10 +102,11 @@ def handle_deal_lost(payload: dict, slack: SlackService):
     """
     data = payload['data']
     link = format_deal_link(data['id'], data['title'])
-    lost_reason = data.get('lost_reason')
-    reason_part = f'Reason: {lost_reason}. ' if lost_reason else ''
-    text = f'Deal {link} was lost. {reason_part}'
-    slack.post_message(text=text)
+    text = f'Deal {link} was lost.'
+    attachments = None
+    if lost_reason := data.get('lost_reason'):
+        attachments = [{'text': lost_reason}]
+    slack.post_message(text=text, attachments=attachments)
 
 
 def handle_deal_won(payload: dict, slack: SlackService):

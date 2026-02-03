@@ -13,11 +13,13 @@ class SlackService:
         self,
         text: str,
         blocks: list | None = None,
+        attachments: list | None = None,
         channel: str | None = None,
     ):
         self.client.chat_postMessage(
             channel=channel or self.default_channel,
             text=text,
             blocks=blocks,
+            attachments=attachments,
             username='iVelum Job',
         )
