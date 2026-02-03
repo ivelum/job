@@ -119,6 +119,16 @@ def handle_deal_won(payload: dict, slack: SlackService):
     slack.post_message(text=text)
 
 
+def handle_deal_created(payload: dict, slack: SlackService):
+    """
+    Post a Slack notification when a new deal is created.
+    """
+    data = payload['data']
+    link = format_deal_link(data['id'], data['title'])
+    text = f'New deal created: {link}'
+    slack.post_message(text=text)
+
+
 def handle_stage_changed(payload: dict, slack: SlackService, pipedrive: PipedriveService):
     """
     Post a Slack notification when a deal moves to a different pipeline stage.
@@ -158,6 +168,8 @@ def handler(
     match event_type:
         case 'create.note' | 'change.note':
             handle_note(payload, slack, pipedrive)
+        case 'create.deal':
+            handle_deal_created(payload, slack)
         case 'change.deal' if curr_status == 'lost' and prev_status != 'lost':
             handle_deal_lost(payload, slack)
         case 'change.deal' if curr_status == 'won' and prev_status != 'won':
