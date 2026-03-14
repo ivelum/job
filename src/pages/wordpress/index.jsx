@@ -43,8 +43,9 @@ export default function wordpressJob() {
             следовать прочим инженерным best practices.
           </p>
           <p>
-            У нас есть и другие проекты на PHP, Python
-            и Node.js, в будущем может предстоять работа и с ними.
+            Помимо проектов на WordPress, у нас есть и проекты на других
+            технических стеках (Python, Node.js), и в будущем может предстоять
+            работа и с ними.
           </p>
         </JobTextBlock>
         <JobTextBlock title="О вас">

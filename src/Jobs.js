@@ -14,7 +14,7 @@ const Jobs = {
     subTitle: 'Full-stack',
     description: 'Full-stack разработчик (PHP/WordPress + frontend)',
     url: '/wordpress/',
-    active: false,
+    active: true,
   },
   php: {
     name: 'PHP',
