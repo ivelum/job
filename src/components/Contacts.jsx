@@ -37,16 +37,6 @@ export default function Contacts() {
             job@ivelum.com
           </ExternalLink>
         </div>
-        <div className={styles.name}><span>/</span> Телеграм</div>
-        <div className={styles.val}>
-          <ExternalLink
-            href={ExternalLinks.contacts.telegram}
-            className={styles.link}
-          >
-            <SvgImage name="ico-telegram" className={styles.ico} />
-            @ivelum
-          </ExternalLink>
-        </div>
       </div>
     </div>
   );

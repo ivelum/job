@@ -11,7 +11,6 @@ export const ExternalLinks = {
   },
   contacts: {
     email: 'mailto:job@ivelum.com',
-    telegram: 'tg://resolve?domain=IvelumBot',
   },
   teamplify: {
     home: 'https://teamplify.com',
