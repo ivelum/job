@@ -1,19 +1,19 @@
 // Jobs. Steve Jobs.
 const Jobs = {
-  wordpress: {
-    name: 'WordPress',
-    title: 'PHP/WordPress разработчик',
-    subTitle: 'Full-stack',
-    description: 'Full-stack разработчик (PHP/WordPress + frontend)',
-    url: '/wordpress/',
-    active: true,
-  },
   python: {
     name: 'Python',
     title: 'Python/Django разработчик',
     subTitle: 'Full-stack',
     description: 'Full-stack разработчик (Python/Django + frontend)',
     url: '/python/',
+    active: false,
+  },
+  wordpress: {
+    name: 'WordPress',
+    title: 'PHP/WordPress разработчик',
+    subTitle: 'Full-stack',
+    description: 'Full-stack разработчик (PHP/WordPress + frontend)',
+    url: '/wordpress/',
     active: false,
   },
   php: {
