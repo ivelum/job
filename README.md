@@ -19,16 +19,6 @@ etc. Available in two languages:
 
 Contact us at [job@ivelum.com](mailto:job@ivelum.com)
 
-## Code challenges
-
-- for [Python developers](https://github.com/ivelum/job/blob/master/challenges/python.md);
-- for [PHP developers](https://github.com/ivelum/job/blob/master/challenges/php.md);
-- for [Frontend developers](https://github.com/ivelum/job/blob/master/challenges/frontend.md).
-
-If you'd like to complete one of the code challenges and send us your solution,
-please apply for the corresponding position first at
-[job.ivelum.com](https://job.ivelum.com).
-
 ## [job.ivelum.com](https://job.ivelum.com) source code
 
 The instructions below describe how to work with the jobs site source code. Key
